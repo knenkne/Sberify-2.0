@@ -1,0 +1,27 @@
+{
+  "name": "sberify",
+  "version": "1.0.0",
+  "description": "Music App",
+  "main": "index.js",
+  "dependencies": {
+    "next": "10.0.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enkztw/Sberify-2.0.git"
+  },
+  "author": "MaxK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enkztw/Sberify-2.0/issues"
+  },
+  "homepage": "https://github.com/enkztw/Sberify-2.0#readme"
+}
