@@ -1,14 +1,9 @@
-import { useRouter } from 'next/router'
+import { Layout } from '../components/layout'
 
-import { Layout } from '../../components/layout'
-
-const Artist = () => {
-  const router = useRouter()
-  const { name } = router.query
-
+const Home = () => {
   return (
-    <Layout title={name}>
-      <section>
+    <Layout title={'Home'}>
+      {/* <section>
         <h2>{name}</h2>
         <img src="https://via.placeholder.com/300" alt={name} />
         <p>
@@ -17,9 +12,9 @@ const Artist = () => {
           perspiciatis maxime dolore aspernatur modi. Quod vitae architecto
           dolore expedita incidunt ipsum.
         </p>
-      </section>
+      </section> */}
     </Layout>
   )
 }
 
-export default Artist
+export default Home
