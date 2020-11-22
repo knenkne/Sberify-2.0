@@ -1,7 +1,13 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from "next/head"
+import Link from "next/link"
 
-import styles from './layout.module.css'
+import {
+  HeaderWrapperStyled,
+  HeaderStyled,
+  NavStyled,
+  LinkStyled,
+  SignUpStyled,
+} from "./layout.styles"
 
 const Layout = ({ children, title }) => {
   return (
@@ -9,42 +15,33 @@ const Layout = ({ children, title }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <div className={styles.wrapper}>
-        <header className={styles.header}>
-          <img
-            src="https://cdn.icon-icons.com/icons2/1384/PNG/512/sberbank-crypto-cryptocurrency-cryptocurrencies-cash-money-bank-payment_95262.png"
-            alt="logo"
-            width="26"
-            height="26"
-            className={styles.logo}
-          />
-          <nav>
-            {/* TODO: Map links */}
-            <ul className={styles.nav}>
+      <HeaderWrapperStyled>
+        <HeaderStyled>
+          <NavStyled>
+            <ul>
               <li>
                 <Link href="/">
-                  <a className={styles.active}>Home</a>
+                  <LinkStyled active>Home</LinkStyled>
                 </Link>
               </li>
               <li>
                 <Link href="/artists">
-                  <a>Artists</a>
+                  <LinkStyled>Artists</LinkStyled>
                 </Link>
               </li>
               <li>
                 <Link href="/albums">
-                  <a>Albums</a>
+                  <LinkStyled>Albums</LinkStyled>
                 </Link>
               </li>
             </ul>
-          </nav>
+          </NavStyled>
           <Link href="/sign-up">
-            <a className={styles['sign-up']}>Sign Up</a>
+            <SignUpStyled>Sign Up</SignUpStyled>
           </Link>
-        </header>
-      </div>
-
-      <main className={styles.main}>{children}</main>
+        </HeaderStyled>
+      </HeaderWrapperStyled>
+      <main>{children}</main>
     </>
   )
 }
