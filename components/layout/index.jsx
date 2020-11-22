@@ -7,7 +7,9 @@ import {
   NavStyled,
   LinkStyled,
   SignUpStyled,
-} from "./layout.styles"
+  MainStyled,
+  LogoStyled,
+} from "./styles"
 
 const Layout = ({ children, title }) => {
   return (
@@ -16,6 +18,7 @@ const Layout = ({ children, title }) => {
         <title>{title}</title>
       </Head>
       <HeaderWrapperStyled>
+        <LogoStyled>Sberify</LogoStyled>
         <HeaderStyled>
           <NavStyled>
             <ul>
@@ -41,7 +44,7 @@ const Layout = ({ children, title }) => {
           </Link>
         </HeaderStyled>
       </HeaderWrapperStyled>
-      <main>{children}</main>
+      <MainStyled>{children}</MainStyled>
     </>
   )
 }

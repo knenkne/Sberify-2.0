@@ -1,4 +1,4 @@
-import { css, Global } from "@emotion/core"
+import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 
 const activeStyle = ({ active }) => {
@@ -97,10 +97,34 @@ export const HeaderStyled = styled.header`
   margin: 0 auto;
 `
 
+export const LogoStyled = styled.h1`
+  position: relative;
+  width: 1048px;
+  padding: 0 24px;
+  margin: 0 auto;
+  font-size: 30px;
+  line-height: 30px;
+  padding-top: 16px;
+  letter-spacing: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #000;
+
+  .dark-mode & {
+    color: #fff;
+  }
+`
+
 export const HeaderWrapperStyled = styled.div`
   box-shadow: inset 0 -1px #eaeaea;
 
   .dark-mode & {
     box-shadow: inset 0 -1px #333;
   }
+`
+
+export const MainStyled = styled.main`
+  width: 1048px;
+  padding: 0 24px;
+  margin: 0 auto;
 `

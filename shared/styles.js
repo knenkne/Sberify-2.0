@@ -16,6 +16,10 @@ const globalStyle = () => css`
     list-style: none;
   }
 
+  h1, h2 {
+    margin: 0;
+  }
+
   body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     color: #666;
