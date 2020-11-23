@@ -49,4 +49,4 @@ const Layout = ({ children, title }) => {
   )
 }
 
-export { Layout }
+export default Layout

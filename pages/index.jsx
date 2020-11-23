@@ -1,4 +1,4 @@
-import { Layout } from "../components/layout"
+import Layout from "../components/layout"
 import { BannerStyled, LogoStyled, HeadlineStyled } from "./styles"
 
 const headlines = ["Explore.", "Listen.", "Share."]
