@@ -1,20 +1,4 @@
-import Layout from "../components/layout"
-import { BannerStyled, LogoStyled, HeadlineStyled } from "./styles"
+import Home from "../components/home"
 
-const headlines = ["Explore.", "Listen.", "Share."]
-
-const Home = () => {
-  return (
-    <Layout title={"Home"}>
-      <BannerStyled>
-        {headlines.map((title) => (
-          <HeadlineStyled key={title} title={title}>
-            <span>{title}</span>
-          </HeadlineStyled>
-        ))}
-      </BannerStyled>
-    </Layout>
-  )
-}
-
+// TODO: Layout for all pages
 export default Home
