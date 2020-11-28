@@ -148,7 +148,3 @@ export const HeadlineStyled = styled.h2`
     }
   }
 `
-
-export const BannerStyled = styled.div`
-  padding: 130px 0;
-`
