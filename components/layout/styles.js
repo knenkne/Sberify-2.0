@@ -32,17 +32,20 @@ export const LinkStyled = styled.a`
   color: #666;
   transition: color 0.2s ease;
   cursor: pointer;
-  ${activeStyle};
 
   &:hover {
     color: #000;
   }
 
   .dark-mode & {
+    color: #888;
+
     &:hover {
       color: #fff;
     }
   }
+
+  ${activeStyle};
 `
 
 export const SignUpStyled = styled(LinkStyled)`

@@ -87,6 +87,7 @@ const pulseBackground3 = keyframes`
 
 export const HeadlineStyled = styled.h2`
   position: relative;
+  width: 100%;
   font-size: 160px;
   line-height: 160px;
   text-align: center;
@@ -138,6 +139,8 @@ export const HeadlineStyled = styled.h2`
   }
 
   &:last-of-type {
+    margin-bottom: 64px;
+
     span {
       animation-name: ${pulseForeground3};
       background-image: linear-gradient(90deg, #ff4d4d, #f9cb28);

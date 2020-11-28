@@ -31,6 +31,7 @@ const globalStyle = () => css`
     background-color: #fff;
 
     &.dark-mode {
+      color: #888;
       background-color: #000;
     }
   }
