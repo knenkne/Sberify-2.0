@@ -90,6 +90,8 @@ export const HeadlineStyled = styled.h2`
   width: 100%;
   font-size: 160px;
   line-height: 160px;
+  font-weight: 400;
+  text-transform: uppercase;
   text-align: center;
   margin: 0;
   letter-spacing: -12.8px;

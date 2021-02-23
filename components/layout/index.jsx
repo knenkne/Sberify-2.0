@@ -18,7 +18,7 @@ const Layout = ({ children, title }) => {
         <title>{title}</title>
       </Head>
       <HeaderWrapperStyled>
-        <LogoStyled>Sberify</LogoStyled>
+        {/* <LogoStyled>Sberify</LogoStyled>  */}
         <HeaderStyled>
           <NavStyled>
             <ul>

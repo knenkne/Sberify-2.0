@@ -32,6 +32,7 @@ export const LinkStyled = styled.a`
   color: #666;
   transition: color 0.2s ease;
   cursor: pointer;
+  text-transform: uppercase;
 
   &:hover {
     color: #000;
@@ -105,10 +106,9 @@ export const LogoStyled = styled.h1`
   width: 1048px;
   padding: 0 24px;
   margin: 0 auto;
-  font-size: 30px;
+  font-size: 32px;
   line-height: 30px;
   padding-top: 16px;
-  letter-spacing: 13px;
   font-weight: 400;
   text-transform: uppercase;
   color: #000;
