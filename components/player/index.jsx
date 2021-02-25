@@ -1,5 +1,10 @@
-import { useCallback } from "react"
+import { useCallback, useState, useEffect } from "react"
 import usePlayer from "./use-player"
+import Slider from './slider'
+import {
+  WrapperStyled,
+  PlayerStyled,
+} from "./styles"
 
 const Player = ({ artist, name, image, src }) => {
   const { element, state, controls } = usePlayer({ src })
@@ -15,17 +20,23 @@ const Player = ({ artist, name, image, src }) => {
     }
   }, [pause, play, pause])
 
+  const handleSliderChange = useCallback((value) => {
+  }, [])
+
   return (
-    <article>
-      {element}
-      <button onClick={handlePlayButtonClick}>Play</button>
-      <img src={image} alt={`${name} by ${artist}`} />
-      <div>{name}</div>
-      <div>{artist}</div>
-      <span>
+    <WrapperStyled>
+      <PlayerStyled>
+        {element}
+        <Slider onChange={handleSliderChange} />
+        {/* <img src={image} alt={`${name} by ${artist}`} /> */}
+        {/* <button onClick={handlePlayButtonClick}>Play</button> */}
+        {/* <div>{name}</div> */}
+        {/* <div>{artist}</div> */}
+        {/* <span>
         {Math.round(time)} / {Math.round(duration)}
-      </span>
-    </article>
+      </span> */}
+      </PlayerStyled>
+    </WrapperStyled>
   )
 }
 
