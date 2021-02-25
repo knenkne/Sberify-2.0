@@ -4,11 +4,16 @@
   "description": "Music App",
   "main": "index.js",
   "dependencies": {
+    "@emotion/core": "10.0.35",
+    "@emotion/styled": "10.0.27",
     "next": "10.0.1",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "use-dark-mode": "^2.3.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-plugin-emotion": "10.0.27"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
