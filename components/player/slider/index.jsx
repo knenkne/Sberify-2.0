@@ -1,18 +1,22 @@
 import { useMemo, useCallback, useEffect, useState, useReducer } from "react"
 import { InputStyled, ThumbStyled, SliderStyled } from "./styles"
 
-const Slider = ({ onChange, percent: audioPercent }) => {
-  const [percent, setPercent] = useState(audioPercent)
+const getPercent = (time, duration) => ((time / duration) * 100).toFixed(1)
+
+const Slider = ({ onChange, time, duration }) => {
+  const [percent, setPercent] = useState(0)
   const [isRewinding, setIsRewinding] = useState(false)
+
+  const nextPercent = getPercent(time, duration)
 
   useEffect(() => {
     if (!isRewinding) {
-      setPercent(audioPercent)
+      setPercent(nextPercent)
     }
-  }, [audioPercent])
+  }, [time, duration])
 
   useEffect(() => {
-    if (!isRewinding && audioPercent !== percent) {
+    if (!isRewinding && nextPercent !== percent) {
       onChange(percent)
     }
   }, [isRewinding])
