@@ -34,4 +34,4 @@ const Home = () => (
   </Layout>
 )
 
-export default Home
+export default Home;

@@ -1,8 +1,7 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 const InlineJS = () => {
-
-  const code = `(function() {
+    const code = `(function() {
     // Change these if you use something different in your hook.
     var storageKey = 'darkMode';
     var classNameDark = 'dark-mode';
@@ -36,10 +35,10 @@ const InlineJS = () => {
       var isDarkMode = document.body.classList.contains(classNameDark);
       localStorage.setItem(storageKey, JSON.stringify(isDarkMode));
     }
-  })();`
+  })();`;
 
-  return <script dangerouslySetInnerHTML={{ __html: code }} />
-}
+    return <script dangerouslySetInnerHTML={{ __html: code }} />;
+};
 export default class extends Document {
   render() {
     return (
