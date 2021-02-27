@@ -1,9 +1,9 @@
-import { Layout } from '../components/layout'
+import { Layout } from '../components/layout';
 
 const Home = () => {
-  return (
-    <Layout title={'Home'}>
-      {/* <section>
+    return (
+        <Layout title={'Home'}>
+            {/* <section>
         <h2>{name}</h2>
         <img src="https://via.placeholder.com/300" alt={name} />
         <p>
@@ -13,8 +13,8 @@ const Home = () => {
           dolore expedita incidunt ipsum.
         </p>
       </section> */}
-    </Layout>
-  )
-}
+        </Layout>
+    );
+};
 
-export default Home
+export default Home;
