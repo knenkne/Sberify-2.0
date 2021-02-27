@@ -13,5 +13,52 @@ export const WrapperStyled = styled.div`
   width: 100%;
   height: 100vh;
   margin: auto;
-  background-color: gray;
+  background-color: #861657;
+  background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+`
+
+export const ImageStyled = styled.img`
+  display: block;
+  width: 75%;
+  border-radius: 5%;
+  margin: 0 auto 15%;
+`
+
+export const InfoStyled = styled.div`
+  margin-bottom: 20px;
+`
+
+export const SongNameStyled = styled.h2`
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+`
+
+export const ArtistNameStyled = styled.h2`
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+`
+
+export const ControlsStyled = styled.div``
+
+export const PlayButtonStyled = styled.button`
+  display: block;
+  /* TODO: паддинг у контейнера инфо и контролов */
+  margin: 20px auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+`
+
+export const DurationStyled = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+`
+export const TimeStyled = styled.span`
+  color: rgba(255, 255, 255, 0.35);
 `

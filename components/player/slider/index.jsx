@@ -1,24 +1,46 @@
-import { useCallback, useState } from "react"
+import { useMemo, useCallback, useEffect, useState, useReducer } from "react"
 import { InputStyled, ThumbStyled, SliderStyled } from "./styles"
 
-const Slider = ({ onChange }) => {
-  const [percent, setPercent] = useState(0)
+const Slider = ({ onChange, percent: audioPercent }) => {
+  const [percent, setPercent] = useState(audioPercent)
+  const [isRewinding, setIsRewinding] = useState(false)
 
-  const handleSliderChange = useCallback(({ target }) => {
-    const { value } = target
+  useEffect(() => {
+    if (!isRewinding) {
+      setPercent(audioPercent)
+    }
+  }, [audioPercent])
 
-    onChange(value)
-    setPercent(value)
-  }, [onChange])
+  useEffect(() => {
+    if (!isRewinding && audioPercent !== percent) {
+      onChange(percent)
+    }
+  }, [isRewinding])
+
+  const handleMouseDown = useCallback(() => {
+    setIsRewinding(true)
+  }, [])
+
+  const handleMouseUp = useCallback(() => {
+    setIsRewinding(false)
+  }, [])
+
+  const handleChange = useCallback(({ target }) => {
+    const { value: percent } = target
+
+    setPercent(percent)
+  }, [])
 
   return (
     <SliderStyled percent={percent}>
-      <ThumbStyled percent={percent} />
+      <ThumbStyled />
       <InputStyled
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
         type="range"
-        step="1"
-        onChange={handleSliderChange}
-        defaultValue={0}
+        step="0.1"
+        onChange={handleChange}
+        value={percent}
       />
     </SliderStyled>
   )

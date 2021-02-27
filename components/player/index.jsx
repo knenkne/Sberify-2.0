@@ -4,13 +4,21 @@ import Slider from './slider'
 import {
   WrapperStyled,
   PlayerStyled,
+  ImageStyled,
+  InfoStyled,
+  SongNameStyled,
+  ArtistNameStyled,
+  ControlsStyled,
+  PlayButtonStyled,
+  DurationStyled,
+  TimeStyled
 } from "./styles"
 
 const Player = ({ artist, name, image, src }) => {
   const { element, state, controls } = usePlayer({ src })
 
   const { paused, time, duration } = state
-  const { play, pause } = controls
+  const { play, pause, seek } = controls
 
   const handlePlayButtonClick = useCallback(() => {
     if (paused) {
@@ -18,17 +26,41 @@ const Player = ({ artist, name, image, src }) => {
     } else {
       pause()
     }
-  }, [pause, play, pause])
+  }, [play, pause])
 
-  const handleSliderChange = useCallback((value) => {
-  }, [])
+  const handleSliderChange = useCallback((percent) => {
+    const time = percent * duration / 100
+
+    seek(time)
+
+    // if (paused) {
+    //   play()
+    // }
+    // onChange(value)
+    // setPercent(value)
+  }, [seek])
 
   return (
     <WrapperStyled>
       <PlayerStyled>
         {element}
-        <Slider onChange={handleSliderChange} />
-        {/* <img src={image} alt={`${name} by ${artist}`} /> */}
+        <ImageStyled src={image} alt={`${name} by ${artist}`} />
+        <InfoStyled>
+          <SongNameStyled>{name}</SongNameStyled>
+          <ArtistNameStyled>{artist}</ArtistNameStyled>
+        </InfoStyled>
+        <Slider onChange={handleSliderChange} percent={(time / duration * 100).toFixed(2)} />
+        <DurationStyled>
+          <TimeStyled>
+            0:{Math.round(time)}
+          </TimeStyled>
+          <TimeStyled>
+            0:{Math.round(duration)}
+          </TimeStyled>
+        </DurationStyled>
+        <ControlsStyled>
+          <PlayButtonStyled onClick={handlePlayButtonClick} />
+        </ControlsStyled>
         {/* <button onClick={handlePlayButtonClick}>Play</button> */}
         {/* <div>{name}</div> */}
         {/* <div>{artist}</div> */}

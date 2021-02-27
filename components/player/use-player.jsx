@@ -27,6 +27,9 @@ const usePlayer = ({ src }) => {
 
       setState({ time })
     },
+    onEnded: () => {
+      setState({ time: 0 })
+    }
   })
 
   const controls = {
@@ -48,11 +51,21 @@ const usePlayer = ({ src }) => {
 
       audio.pause()
     },
+    seek: (time) => {
+      const audio = ref.current
+
+      if (!audio || state.duration === undefined) {
+        return
+      }
+
+      time = Math.min(state.duration, Math.max(0, time))
+      audio.currentTime = time || 0
+    },
   }
 
   useEffect(() => {
     const audio = ref.current
-    audio.volume = 0.1
+    audio.volume = 0.025
   }, [src])
 
   return { element, state, controls }
