@@ -40,21 +40,21 @@ const InlineJS = () => {
     return <script dangerouslySetInnerHTML={{ __html: code }} />;
 };
 export default class extends Document {
-    render() {
-        return (
-            <Html>
-                <Head>
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-                        rel="stylesheet"
-                    />
-                </Head>
-                <body>
-                    <InlineJS />
-                    <Main />
-                    <NextScript />
-                </body>
-            </Html>
-        );
-    }
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <body>
+          <InlineJS />
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
 }
