@@ -1,9 +1,17 @@
-import { ButtonStyled } from "./styles"
+import PropTypes from 'prop-types';
 
-const Button = ({ children, size = "md", filled }) => (
-  <ButtonStyled size={size} filled={filled}>
-    {children}
-  </ButtonStyled>
-)
+import { ButtonStyled } from './styles';
 
-export default Button
+const Button = ({ children, size = 'md', filled }) => (
+    <ButtonStyled size={size} filled={filled}>
+        {children}
+    </ButtonStyled>
+);
+
+Button.propTypes = {
+    children: PropTypes.node,
+    size: PropTypes.oneOf(['sm', 'md', 'lg']),
+    filled: PropTypes.bool
+};
+
+export default Button;

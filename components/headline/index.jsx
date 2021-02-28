@@ -1,9 +1,15 @@
-import { HeadlineStyled } from "./styles"
+import PropTypes from 'prop-types';
+
+import { HeadlineStyled } from './styles';
 
 const Headline = ({ title }) => (
-  <HeadlineStyled title={title}>
-    <span>{title}</span>
-  </HeadlineStyled>
-)
+    <HeadlineStyled title={title}>
+        <span>{title}</span>
+    </HeadlineStyled>
+);
 
-export default Headline
+Headline.propTypes = {
+    title: PropTypes.string
+};
+
+export default Headline;

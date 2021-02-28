@@ -1,78 +1,66 @@
-import { useCallback, useState, useEffect } from "react"
-import usePlayer from "./use-player"
-import Slider from "./slider"
+import PropTypes from 'prop-types';
+import { useCallback } from 'react';
+
+import Slider from './slider';
 import {
-  WrapperStyled,
-  PlayerStyled,
-  ImageStyled,
-  InfoStyled,
-  SongNameStyled,
-  ArtistNameStyled,
-  ControlsStyled,
-  PlayButtonStyled,
-  DurationStyled,
-  TimeStyled,
-} from "./styles"
+    ArtistNameStyled,
+    ControlsStyled,
+    ImageStyled,
+    InfoStyled,
+    PlayButtonStyled,
+    PlayerStyled,
+    SongNameStyled,
+    WrapperStyled
+} from './styles';
+import usePlayer from './use-player';
 
 const Player = ({ artist, name, image, src }) => {
-  const { element, state, controls } = usePlayer({ src })
+    const { element, state, controls } = usePlayer({ src });
 
-  const { paused, time, duration } = state
-  const { play, pause, seek } = controls
+    const { paused, time, duration } = state;
+    const { play, pause, rewind } = controls;
 
-  const handlePlayButtonClick = useCallback(() => {
-    if (paused) {
-      play()
-    } else {
-      pause()
-    }
-  }, [play, pause])
+    const handlePlayButtonClick = useCallback(() => {
+        if (paused) {
+            play();
+        } else {
+            pause();
+        }
+    }, [paused]);
 
-  const handleSliderChange = useCallback(
-    (percent) => {
-      const time = (percent * duration) / 100
+    const handleSliderChange = useCallback(
+        (percent) => {
+            // TODO: getTime
+            const time = (percent * duration) / 100;
 
-      seek(time)
+            rewind(time);
+        },
+        [duration]
+    );
 
-      // if (paused) {
-      //   play()
-      // }
-      // onChange(value)
-      // setPercent(value)
-    },
-    [seek]
-  )
+    return (
+        <WrapperStyled>
+            <PlayerStyled>
+                {element}
+                <ImageStyled src={image} alt={`${name} by ${artist}`} />
+                <InfoStyled>
+                    <SongNameStyled>{name}</SongNameStyled>
+                    <ArtistNameStyled>{artist}</ArtistNameStyled>
+                </InfoStyled>
+                <Slider onChange={handleSliderChange} time={time} duration={duration} />
+                <ControlsStyled>
+                    <PlayButtonStyled onClick={handlePlayButtonClick} />
+                </ControlsStyled>
+            </PlayerStyled>
+        </WrapperStyled>
+    );
+};
 
-  return (
-    <WrapperStyled>
-      <PlayerStyled>
-        {element}
-        <ImageStyled src={image} alt={`${name} by ${artist}`} />
-        <InfoStyled>
-          <SongNameStyled>{name}</SongNameStyled>
-          <ArtistNameStyled>{artist}</ArtistNameStyled>
-        </InfoStyled>
-        <Slider
-          onChange={handleSliderChange}
-          time={time}
-          duration={duration}
-        />
-        <DurationStyled>
-          <TimeStyled>0:{Math.round(time)}</TimeStyled>
-          <TimeStyled>0:{Math.round(duration)}</TimeStyled>
-        </DurationStyled>
-        <ControlsStyled>
-          <PlayButtonStyled onClick={handlePlayButtonClick} />
-        </ControlsStyled>
-        {/* <button onClick={handlePlayButtonClick}>Play</button> */}
-        {/* <div>{name}</div> */}
-        {/* <div>{artist}</div> */}
-        {/* <span>
-        {Math.round(time)} / {Math.round(duration)}
-      </span> */}
-      </PlayerStyled>
-    </WrapperStyled>
-  )
-}
+Player.propTypes = {
+    artist: PropTypes.string,
+    name: PropTypes.string,
+    image: PropTypes.string,
+    src: PropTypes.string
+};
 
-export default Player
+export default Player;

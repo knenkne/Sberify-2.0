@@ -1,7 +1,10 @@
-import { ParagraphStyled } from "./styles"
+import PropTypes from 'prop-types';
 
-const Paragraph = ({ children }) => (
-  <ParagraphStyled>{children}</ParagraphStyled>
-)
+import { ParagraphStyled } from './styles';
 
-export default Paragraph
+const Paragraph = ({ children }) => <ParagraphStyled>{children}</ParagraphStyled>;
+
+Paragraph.propTypes = {
+    children: PropTypes.node
+};
+export default Paragraph;

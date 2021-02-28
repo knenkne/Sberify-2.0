@@ -1,45 +1,44 @@
 {
-  "name": "sberify",
-  "version": "1.0.0",
-  "description": "Music App",
-  "main": "index.js",
-  "dependencies": {
-    "@emotion/core": "10.0.35",
-    "@emotion/styled": "10.0.27",
-    "next": "10.0.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "use-dark-mode": "^2.3.1"
-  },
-  "devDependencies": {
-
-    "@emotion/babel-preset-css-prop": "10.0.27",
-    "eslint": "^7.20.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "prettier": "^2.2.1",
-    "babel-plugin-emotion": "10.0.27"
-
-  },
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint --fix .",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/enkztw/Sberify-2.0.git"
-  },
-  "author": "MaxK",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/enkztw/Sberify-2.0/issues"
-  },
-  "homepage": "https://github.com/enkztw/Sberify-2.0#readme"
+    "name": "sberify",
+    "version": "1.0.0",
+    "description": "Music App",
+    "main": "index.js",
+    "dependencies": {
+        "@emotion/core": "10.0.35",
+        "@emotion/styled": "10.0.27",
+        "next": "10.0.1",
+        "prop-types": "^15.7.2",
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "use-dark-mode": "^2.3.1"
+    },
+    "devDependencies": {
+        "@emotion/babel-preset-css-prop": "10.0.27",
+        "eslint": "^7.20.0",
+        "eslint-config-prettier": "^8.1.0",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "eslint-plugin-simple-import-sort": "^7.0.0",
+        "prettier": "^2.2.1",
+        "babel-plugin-emotion": "10.0.27"
+    },
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint --fix **/*",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md,json}\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/enkztw/Sberify-2.0.git"
+    },
+    "author": "MaxK",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/enkztw/Sberify-2.0/issues"
+    },
+    "homepage": "https://github.com/enkztw/Sberify-2.0#readme"
 }
