@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import { useCallback } from 'react';
 
+import { SLIDER_STEP } from '../constants';
 import { InputStyled, SliderStyled, ThumbStyled } from './styles';
-
-const STEP = 0.1;
 
 const Slider = ({ onChange, percent, ...props }) => {
     const handleChange = useCallback(({ target }) => {
         const { value: nextPercent } = target;
 
-        onChange((parseFloat(nextPercent) + STEP).toFixed(1));
+        onChange((parseFloat(nextPercent) + SLIDER_STEP).toFixed(1));
     }, []);
 
     return (
@@ -17,7 +16,7 @@ const Slider = ({ onChange, percent, ...props }) => {
             <ThumbStyled />
             <InputStyled
                 type="range"
-                step="0.1"
+                step={SLIDER_STEP}
                 value={percent}
                 onChange={handleChange}
                 {...props}

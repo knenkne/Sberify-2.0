@@ -1,35 +1,39 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useReducer, useRef } from 'react';
+
+import { DEFAULT_VOLUME } from './constants';
+import { pause, play, setTime } from './store/actions';
+import reducer from './store/reducer';
+
+const initialState = {
+    time: 0,
+    duration: 30,
+    paused: true
+};
 
 const usePlayer = ({ src }) => {
     const ref = useRef(null);
-    // TODO: useReducer
     // TODO: volume
-    const [state, setOrgState] = useState({
-        time: 0,
-        duration: 30,
-        paused: true
-    });
-
-    const setState = (partState) => setOrgState({ ...state, ...partState });
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { duration } = state;
 
     const element = React.createElement('audio', {
         src,
         controls: false,
         ref,
-        onPlay: () => setState({ paused: false }),
-        onPause: () => setState({ paused: true }),
+        onPlay: () => dispatch(play()),
+        onPause: () => dispatch(pause()),
         onTimeUpdate: () => {
             const audio = ref.current;
-            const { currentTime: time } = audio;
+            const { currentTime } = audio;
 
             if (!audio) {
                 return;
             }
 
-            setState({ time });
+            dispatch(setTime(currentTime));
         },
         onEnded: () => {
-            setState({ time: 0 });
+            dispatch(setTime(0));
         }
     });
 
@@ -55,18 +59,17 @@ const usePlayer = ({ src }) => {
         rewind: (time) => {
             const audio = ref.current;
 
-            if (!audio || state.duration === undefined) {
+            if (!audio) {
                 return;
             }
 
-            time = Math.min(state.duration, Math.max(0, time));
-            audio.currentTime = time || 0;
+            audio.currentTime = Math.min(duration, Math.max(0, time));
         }
     };
 
     useEffect(() => {
         const audio = ref.current;
-        audio.volume = 0.025;
+        audio.volume = DEFAULT_VOLUME;
     }, [src]);
 
     return { element, state, controls };

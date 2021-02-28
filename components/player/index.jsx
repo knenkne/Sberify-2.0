@@ -14,6 +14,7 @@ import {
     WrapperStyled
 } from './styles';
 import usePlayer from './use-player';
+import { getTime } from './utils';
 
 const Player = ({ artist, name, image, src }) => {
     const { element, state, controls } = usePlayer({ src });
@@ -32,7 +33,7 @@ const Player = ({ artist, name, image, src }) => {
     const handleSliderChange = useCallback(
         (percent) => {
             // TODO: getTime
-            const time = (percent * duration) / 100;
+            const time = getTime(percent, duration);
 
             rewind(time);
         },

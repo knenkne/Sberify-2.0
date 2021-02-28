@@ -1,17 +1,8 @@
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { formatTime, getLeftTime, getPercent, getTime } from '../../utils';
 import { BlockStyled, TimeStyled } from './styles';
-
-const getPercent = (time, duration) => ((time / duration) * 100).toFixed(1);
-const getTime = (percent, duration) => Math.floor((percent * duration) / 100);
-const getLeftTime = (time, duration) => Math.floor(duration - time);
-const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const leftSeconds = String(seconds % 60).padStart(2, '0');
-
-    return `${minutes}:${leftSeconds}`;
-};
 
 const withTime = (WrappedSlider) => {
     const WithTime = ({ onChange, time, duration }) => {
@@ -33,7 +24,6 @@ const withTime = (WrappedSlider) => {
         useEffect(() => {
             // Set the new percent when rewinding has ended
             if (!isRewinding) {
-                console.log(currentTrackPercent, percent);
                 onChange(percent);
             }
         }, [isRewinding]);
@@ -72,8 +62,8 @@ const withTime = (WrappedSlider) => {
     WithTime.displayName = `WithTime(${WrappedSlider.name})`;
     WithTime.propTypes = {
         onChange: PropTypes.func.isRequired,
-        time: PropTypes.string,
-        duration: PropTypes.duration
+        time: PropTypes.number,
+        duration: PropTypes.number
     };
 
     return WithTime;
