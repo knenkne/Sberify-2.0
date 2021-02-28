@@ -32,7 +32,6 @@ const Player = ({ artist, name, image, src }) => {
 
     const handleSliderChange = useCallback(
         (percent) => {
-            // TODO: getTime
             const time = getTime(percent, duration);
 
             rewind(time);
