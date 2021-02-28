@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
 import useDarkMode from 'use-dark-mode';
 
 import { globalStyles } from '../shared/styles';
 
+// eslint-disable-next-line react/prop-types
 const App = ({ Component, pageProps }) => {
     useDarkMode();
 
@@ -12,11 +12,6 @@ const App = ({ Component, pageProps }) => {
             <Component {...pageProps} />
         </>
     );
-};
-
-App.propTypes = {
-    Component: PropTypes.node,
-    pageProps: PropTypes.object
 };
 
 export default App;

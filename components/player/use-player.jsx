@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const usePlayer = ({ src }) => {
     const ref = useRef(null);
     // TODO: useReducer
+    // TODO: volume
     const [state, setOrgState] = useState({
         time: 0,
         duration: 30,

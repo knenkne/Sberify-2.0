@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
+import withTime from './hoc/with-time';
 import Slider from './slider';
 import {
     ArtistNameStyled,
@@ -38,6 +39,8 @@ const Player = ({ artist, name, image, src }) => {
         [duration]
     );
 
+    const TimeSlider = useMemo(() => withTime(Slider), []);
+
     return (
         <WrapperStyled>
             <PlayerStyled>
@@ -47,7 +50,7 @@ const Player = ({ artist, name, image, src }) => {
                     <SongNameStyled>{name}</SongNameStyled>
                     <ArtistNameStyled>{artist}</ArtistNameStyled>
                 </InfoStyled>
-                <Slider onChange={handleSliderChange} time={time} duration={duration} />
+                <TimeSlider onChange={handleSliderChange} time={time} duration={duration} />
                 <ControlsStyled>
                     <PlayButtonStyled onClick={handlePlayButtonClick} />
                 </ControlsStyled>

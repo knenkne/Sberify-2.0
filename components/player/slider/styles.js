@@ -48,6 +48,7 @@ export const SliderStyled = styled.div(
 export const InputStyled = styled.input`
     display: block;
     -webkit-appearance: none;
+    appearance: none;
     background-color: rgba(0, 0, 0, 0.2);
     height: ${SLIDER_HEIGHT}px;
     width: 100%;
@@ -60,8 +61,8 @@ export const InputStyled = styled.input`
         outline: none;
     }
 
+    /* TODO: убрать дублирование */
     &::-webkit-slider-thumb {
-        -webkit-appearance: none;
         width: 16px;
         height: 16px;
         border-radius: 50%;
@@ -69,16 +70,19 @@ export const InputStyled = styled.input`
         background-color: rgba(255, 255, 255, 1);
         /* z-index: 10; */
         opacity: 0;
+        border: 0;
         cursor: pointer;
     }
-`;
 
-export const BlockStyled = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-`;
-
-export const TimeStyled = styled.span`
-    color: rgba(255, 255, 255, 0.35);
+    &::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 1);
+        /* z-index: 10; */
+        opacity: 0;
+        border: 0;
+        cursor: pointer;
+    }
 `;
