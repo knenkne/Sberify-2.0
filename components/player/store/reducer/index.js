@@ -23,6 +23,13 @@ const reducer = (state, action) => {
             };
         }
 
+        case types.SET_VOLUME: {
+            return {
+                ...state,
+                volume: action.payload
+            };
+        }
+
         default: {
             return state;
         }

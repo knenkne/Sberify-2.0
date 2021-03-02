@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 
 import { SLIDER_STEP } from '../constants';
 import { InputStyled, SliderStyled, ThumbStyled } from './styles';
@@ -30,4 +30,4 @@ Slider.propTypes = {
     percent: PropTypes.string
 };
 
-export default Slider;
+export default memo(Slider);

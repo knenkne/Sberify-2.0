@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { useCallback, useMemo } from 'react';
 
-import withTime from './hoc/with-time';
+import { VOLUME_RATIO } from './constants';
 import Slider from './slider';
+import withTime from './slider/hoc/with-time';
 import {
     ArtistNameStyled,
     ControlsStyled,
@@ -19,8 +20,8 @@ import { getTime } from './utils';
 const Player = ({ artist, name, image, src }) => {
     const { element, state, controls } = usePlayer({ src });
 
-    const { paused, time, duration } = state;
-    const { play, pause, rewind } = controls;
+    const { paused, time, duration, volume } = state;
+    const { play, pause, rewind, setVolume } = controls;
 
     const handlePlayButtonClick = useCallback(() => {
         if (paused) {
@@ -30,7 +31,7 @@ const Player = ({ artist, name, image, src }) => {
         }
     }, [paused]);
 
-    const handleSliderChange = useCallback(
+    const handleTimeSliderChange = useCallback(
         (percent) => {
             const time = getTime(percent, duration);
 
@@ -39,7 +40,14 @@ const Player = ({ artist, name, image, src }) => {
         [duration]
     );
 
+    const handleVolumeSliderChange = useCallback((percent) => {
+        const ratio = percent / 100;
+
+        setVolume(ratio);
+    }, []);
+
     const TimeSlider = useMemo(() => withTime(Slider), []);
+    const volumePercent = useMemo(() => (volume * 100 * VOLUME_RATIO).toFixed(1), [volume]);
 
     return (
         <WrapperStyled>
@@ -50,10 +58,11 @@ const Player = ({ artist, name, image, src }) => {
                     <SongNameStyled>{name}</SongNameStyled>
                     <ArtistNameStyled>{artist}</ArtistNameStyled>
                 </InfoStyled>
-                <TimeSlider onChange={handleSliderChange} time={time} duration={duration} />
+                <TimeSlider time={time} duration={duration} onChange={handleTimeSliderChange} />
                 <ControlsStyled>
                     <PlayButtonStyled onClick={handlePlayButtonClick} />
                 </ControlsStyled>
+                <Slider percent={volumePercent} onChange={handleVolumeSliderChange} />
             </PlayerStyled>
         </WrapperStyled>
     );

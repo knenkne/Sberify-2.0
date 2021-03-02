@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { formatTime, getLeftTime, getPercent, getTime } from '../../utils';
+import { formatTime, getLeftTime, getPercent, getTime } from '../../../utils';
 import { BlockStyled, TimeStyled } from './styles';
 
 const withTime = (WrappedSlider) => {
