@@ -1,5 +1,11 @@
-import { WrapperStyled } from "./styles"
+import PropTypes from 'prop-types';
 
-const Wrapper = ({ children }) => <WrapperStyled>{children}</WrapperStyled>
+import { WrapperStyled } from './styles';
 
-export default Wrapper
+const Wrapper = ({ children }) => <WrapperStyled>{children}</WrapperStyled>;
+
+Wrapper.propTypes = {
+    children: PropTypes.node
+};
+
+export default Wrapper;

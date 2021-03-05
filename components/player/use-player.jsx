@@ -1,61 +1,67 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useReducer, useRef } from 'react';
 
-const usePlayer = ({ src }) => {
-  const ref = useRef(null)
-  // TODO: useReducer
-  const [state, setOrgState] = useState({
+import { DEFAULT_VOLUME, VOLUME_RATIO } from './constants';
+import { pause, play, setTime, setVolume } from './store/actions';
+import reducer from './store/reducer';
+
+const initialState = {
     time: 0,
     duration: 30,
     paused: true,
-  })
+    volume: DEFAULT_VOLUME
+};
 
-  const setState = (partState) => setOrgState({ ...state, ...partState })
+const usePlayer = ({ src }) => {
+    const ref = useRef(null);
+    // TODO: volume
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { volume, duration } = state;
 
-  const element = React.createElement("audio", {
-    src,
-    controls: false,
-    ref,
-    onPlay: () => setState({ paused: false }),
-    onPause: () => setState({ paused: true }),
-    onTimeUpdate: () => {
-      const audio = ref.current
-      const { currentTime: time } = audio
+    const element = React.createElement('audio', {
+        src,
+        controls: false,
+        ref,
+        onPlay: () => dispatch(play()),
+        onPause: () => dispatch(pause()),
+        onTimeUpdate: () => {
+            const audio = ref.current;
+            const { currentTime } = audio;
 
-      if (!audio) {
-        return
-      }
+            dispatch(setTime(currentTime));
+        },
+        onEnded: () => {
+            dispatch(setTime(0));
+        }
+    });
 
-      setState({ time })
-    },
-  })
+    const controls = {
+        play: () => {
+            const audio = ref.current;
 
-  const controls = {
-    play: () => {
-      const audio = ref.current
+            audio.play();
+        },
+        pause: () => {
+            const audio = ref.current;
 
-      if (!audio) {
-        return
-      }
+            audio.pause();
+        },
+        rewind: (time) => {
+            const audio = ref.current;
 
-      audio.play()
-    },
-    pause: () => {
-      const audio = ref.current
+            audio.currentTime = Math.min(duration, Math.max(0, time));
+        },
+        setVolume: (percent) => {
+            dispatch(setVolume(percent / VOLUME_RATIO));
+        }
+    };
 
-      if (!audio) {
-        return
-      }
+    useEffect(() => {
+        const audio = ref.current;
 
-      audio.pause()
-    },
-  }
+        audio.volume = volume;
+    }, [volume]);
 
-  useEffect(() => {
-    const audio = ref.current
-    audio.volume = 0.1
-  }, [src])
+    return { element, state, controls };
+};
 
-  return { element, state, controls }
-}
-
-export default usePlayer
+export default usePlayer;
