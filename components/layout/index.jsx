@@ -33,7 +33,7 @@ const Layout = ({ children, title }) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/albums">
+                                <Link href="/track/0AHINsVlQQH5w9kXqvyNod">
                                     <LinkStyled>Albums</LinkStyled>
                                 </Link>
                             </li>

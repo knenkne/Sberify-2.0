@@ -2,11 +2,12 @@ import axios from 'axios';
 import qs from 'qs';
 
 export const axiosApiInstance = axios.create({
-    baseURL: process.env.API_URL
+    baseURL: process.env.API_URL,
+    withCredentials: true
 });
 
 const refreshAccessToken = () =>
-    axiosApiInstance
+    axios
         .post(
             process.env.TOKEN_URL,
             qs.stringify({
@@ -20,11 +21,13 @@ const refreshAccessToken = () =>
             }
         )
         .then(({ data }) => data)
-        .catch((err) => console.log(err));
+        .catch((error) => console.error(error));
 
 // Request interceptor for API calls
 axiosApiInstance.interceptors.request.use(
     (config) => {
+        console.log('ENTER', config);
+
         return config;
     },
     (error) => {
@@ -38,10 +41,12 @@ axiosApiInstance.interceptors.response.use(
     },
     async (error) => {
         const originalRequest = error.config;
+
         if (error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-
+            console.log('401', axiosApiInstance.defaults.headers);
             const { access_token, token_type } = await refreshAccessToken();
+            console.count('TOKEN UPDATED');
 
             axiosApiInstance.defaults.headers.common[
                 'Authorization'
@@ -54,4 +59,4 @@ axiosApiInstance.interceptors.response.use(
     }
 );
 
-export default axiosApiInstance;
+export const fetcher = (url) => axiosApiInstance.get(url).then((res) => res.data);

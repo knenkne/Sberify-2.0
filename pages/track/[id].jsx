@@ -1,14 +1,13 @@
 import Player from '../../components/player';
-import { fetcher } from '../../utils';
+import { fetcher } from '../../network';
 
 const Track = (props) => {
     return <Player {...props} />;
 };
 
-export async function getServerSideProps({ params }) {
-    const { name, artists, preview_url, album } = await fetcher(
-        `${process.env.BASE_URL}/api/track/${params.id}`
-    );
+export async function getServerSideProps(ctx) {
+    const { params } = ctx;
+    const { name, album, artists, preview_url } = await fetcher(`/v1/tracks/${params.id}`);
 
     return {
         props: {
