@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import Button from '../components/button';
 import Headline from '../components/headline';
 import Layout from '../components/layout';
 import Paragraph from '../components/paragraph';
 import Player from '../components/player';
 import Wrapper from '../components/wrapper';
+import { fetcher } from '../network';
 
 const titles = ['Explore.', 'Listen.', 'Share.'];
 
@@ -33,5 +35,19 @@ const Home = () => (
         </Wrapper>
     </Layout>
 );
+
+export async function getServerSideProps(ctx) {
+    const { params } = ctx;
+    // TODO: Suspense + SWR
+    const { name, album, artists, preview_url } = await fetcher(
+        `/v1/browse/new-releases/${params.id}`
+    );
+
+    // /v1/browse/featured-playlists
+
+    return {
+        props: {}
+    };
+}
 
 export default Home;
