@@ -126,8 +126,4 @@ export const HeaderWrapperStyled = styled.div`
     }
 `;
 
-export const MainStyled = styled.main`
-    width: 1048px;
-    padding: 0 24px;
-    margin: 0 auto;
-`;
+export const MainStyled = styled.main``;

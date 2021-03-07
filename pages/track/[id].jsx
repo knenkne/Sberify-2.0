@@ -5,9 +5,12 @@ const Track = (props) => {
     return <Player {...props} />;
 };
 
-export async function getServerSideProps(ctx) {
-    const { params } = ctx;
-    const { name, album, artists, preview_url } = await fetcher(`/v1/tracks/${params.id}`);
+export const getServerSideProps = async (ctx) => {
+    const {
+        params: { id }
+    } = ctx;
+
+    const { name, album, artists, preview_url } = await fetcher(`/v1/tracks/${id}`);
 
     return {
         props: {
@@ -17,6 +20,6 @@ export async function getServerSideProps(ctx) {
             src: preview_url
         }
     };
-}
+};
 
 export default Track;
