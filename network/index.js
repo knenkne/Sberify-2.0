@@ -2,8 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 export const axiosApiInstance = axios.create({
-    baseURL: process.env.API_URL,
-    withCredentials: true
+    baseURL: process.env.API_URL
 });
 
 const refreshAccessToken = () =>
@@ -21,13 +20,11 @@ const refreshAccessToken = () =>
             }
         )
         .then(({ data }) => data)
-        .catch((error) => console.error(error));
+        .catch((error) => console.error('AUTH ERROR', error));
 
 // Request interceptor for API calls
 axiosApiInstance.interceptors.request.use(
     (config) => {
-        console.log('ENTER', config);
-
         return config;
     },
     (error) => {
@@ -44,8 +41,9 @@ axiosApiInstance.interceptors.response.use(
 
         if (error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
-            console.log('401', axiosApiInstance.defaults.headers);
+
             const { access_token, token_type } = await refreshAccessToken();
+
             console.count('TOKEN UPDATED');
 
             axiosApiInstance.defaults.headers.common[
