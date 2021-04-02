@@ -1,129 +1,82 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
-const activeStyle = ({ active }) => {
-    if (!active) {
-        return '';
-    }
-
-    return css`
-        position: relative;
-        color: #000;
-
-        &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 9px;
-            right: 9px;
-            bottom: 0;
-            border-bottom: 2px solid;
-        }
-
-        .dark-mode & {
-            color: #fff;
-        }
-    `;
-};
-
-export const LinkStyled = styled.a`
-    display: inline-block;
-    padding: 16px 12px;
-    color: #666;
-    transition: color 0.2s ease;
-    cursor: pointer;
-    text-transform: uppercase;
-
-    &:hover {
-        color: #000;
-    }
-
-    .dark-mode & {
-        color: #888;
-
-        &:hover {
-            color: #fff;
-        }
-    }
-
-    ${activeStyle};
+export const BodyStyled = styled.div`
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(38, 38, 38, 0.08);
 `;
 
-export const SignUpStyled = styled(LinkStyled)`
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 32px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    border: 1px solid #000;
-    background-color: #000;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-
-    &:hover {
-        background-color: transparent;
-    }
-
-    transition-property: color, background-color;
-
-    .dark-mode & {
-        color: #000;
-        background-color: #fff;
-        border-color: #fff;
-
-        &:hover {
-            background-color: transparent;
-        }
-    }
+export const SideBarStyled = styled.aside`
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    height: calc(100vh - 75px);
+    width: 20%;
+    min-width: 400px;
+    max-width: 600px;
+    box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 4px 8px rgba(38, 38, 38, 0.16);
 `;
 
-export const NavStyled = styled.nav`
-    ul {
-        display: flex;
-
-        li:first-of-type {
-            ${LinkStyled} {
-                margin-left: -8px;
-            }
-        }
-    }
+export const ContentStyled = styled.main`
+    flex-grow: 1;
+    min-height: calc(100vh - 75px);
+    height: 400vh;
 `;
 
 export const HeaderStyled = styled.header`
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 1048px;
-    padding: 0 24px;
-    margin: 0 auto;
+    width: 100%;
+    padding: 20px 40px;
 `;
 
-export const LogoStyled = styled.h1`
-    position: relative;
-    width: 1048px;
-    padding: 0 24px;
-    margin: 0 auto;
-    font-size: 32px;
-    line-height: 30px;
-    padding-top: 16px;
-    font-weight: 400;
+export const NavStyled = styled.nav`
+    display: flex;
+    margin-right: 60px;
+`;
+
+export const DownBarStyled = styled.aside`
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    height: 75px;
+    width: 100%;
+    background-color: #f5f5f5;
+    box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 8px 16px rgba(38, 38, 38, 0.16);
+    z-index: 10;
+`;
+
+export const SearchStyled = styled.input`
+    width: 400px;
+    background: rgba(38, 38, 38, 0.08);
+    border-radius: 16px;
+    padding: 0;
+    padding: 8px 16px;
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+`;
+
+export const ImageStyled = styled.img`
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    padding: 0;
+    margin-left: auto;
+`;
+
+export const LinkStyled = styled.a`
+    font-weight: 500;
     text-transform: uppercase;
-    color: #000;
+    color: #ffffff;
 
-    .dark-mode & {
-        color: #fff;
+    &:not(:last-of-type) {
+        margin-right: 20px;
     }
 `;
-
-export const HeaderWrapperStyled = styled.div`
-    box-shadow: inset 0 -1px #eaeaea;
-
-    .dark-mode & {
-        box-shadow: inset 0 -1px #333;
-    }
-`;
-
-export const MainStyled = styled.main``;

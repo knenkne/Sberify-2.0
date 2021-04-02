@@ -3,12 +3,15 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import {
+    BodyStyled,
+    ContentStyled,
+    DownBarStyled,
     HeaderStyled,
-    HeaderWrapperStyled,
     LinkStyled,
-    MainStyled,
     NavStyled,
-    SignUpStyled
+    SearchStyled,
+    ImageStyled,
+    SideBarStyled
 } from './styles';
 
 const Layout = ({ children, title }) => {
@@ -17,8 +20,31 @@ const Layout = ({ children, title }) => {
             <Head>
                 <title>{title}</title>
             </Head>
-            <HeaderWrapperStyled>
-                {/* <LogoStyled>Sberify</LogoStyled>  */}
+            <BodyStyled>
+                <SideBarStyled />
+                <ContentStyled>
+                    <HeaderStyled>
+                        <NavStyled>
+                            <Link href="/" passHref>
+                                <LinkStyled>Discover</LinkStyled>
+                            </Link>
+
+                            <Link href="/library" passHref>
+                                <LinkStyled>My Library</LinkStyled>
+                            </Link>
+                            <Link href="/radio" passHref>
+                                <LinkStyled>Radios</LinkStyled>
+                            </Link>
+                        </NavStyled>
+                        <SearchStyled />
+                        {/* TODO: next/image */}
+                        <ImageStyled src="https://avatars.githubusercontent.com/u/35743791?v=4" />
+                    </HeaderStyled>
+                    {children}
+                </ContentStyled>
+                <DownBarStyled />
+
+                {/* <HeaderWrapperStyled>
                 <HeaderStyled>
                     <NavStyled>
                         <ul>
@@ -44,7 +70,8 @@ const Layout = ({ children, title }) => {
                     </Link>
                 </HeaderStyled>
             </HeaderWrapperStyled>
-            <MainStyled>{children}</MainStyled>
+            <MainStyled>{children}</MainStyled> */}
+            </BodyStyled>
         </>
     );
 };
