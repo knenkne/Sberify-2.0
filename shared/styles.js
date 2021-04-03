@@ -1,6 +1,56 @@
 import { css, Global } from '@emotion/core';
 
 const globalStyle = () => css`
+    /* TODO: */
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/Light.ttf');
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/Regular.ttf');
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/SemiBold.ttf');
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/Bold.ttf');
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+    }
+
+    /* Roboto */
+    @font-face {
+        font-family: 'Roboto';
+        src: url('/fonts/Roboto/Regular.ttf');
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Roboto';
+        src: url('/fonts/Roboto/Medium.ttf');
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+    }
+
     * {
         box-sizing: border-box;
     }

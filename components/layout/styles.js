@@ -1,6 +1,5 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import Link from 'next/link';
 
 export const BodyStyled = styled.div`
     position: relative;
@@ -15,13 +14,12 @@ export const SideBarStyled = styled.aside`
     left: 0;
     background-color: #ffffff;
     height: calc(100vh - 75px);
-    width: 20%;
-    min-width: 400px;
-    max-width: 600px;
+    width: 480px;
     box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 4px 8px rgba(38, 38, 38, 0.16);
 `;
 
 export const ContentStyled = styled.main`
+    position: relative;
     flex-grow: 1;
     min-height: calc(100vh - 75px);
     height: 400vh;
@@ -36,7 +34,8 @@ export const HeaderStyled = styled.header`
 
 export const NavStyled = styled.nav`
     display: flex;
-    margin-right: 60px;
+    justify-content: space-between;
+    width: 300px;
 `;
 
 export const DownBarStyled = styled.aside`
@@ -50,13 +49,47 @@ export const DownBarStyled = styled.aside`
     z-index: 10;
 `;
 
+export const SearchWrapperStyled = styled.div`
+    position: relative;
+    width: 320px;
+    margin-left: 40px;
+
+    svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        top: calc(50% - 8px);
+        left: 8px;
+
+        path {
+            transition: 0.1s;
+            fill: rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    &:hover,
+    &:focus-within {
+        svg {
+            path {
+                fill: rgba(255, 255, 255, 1);
+            }
+        }
+    }
+`;
+
 export const SearchStyled = styled.input`
-    width: 400px;
-    background: rgba(38, 38, 38, 0.08);
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     padding: 0;
-    padding: 8px 16px;
+    padding: 8px 16px 8px 32px;
     border: none;
+    border-radius: 16px;
+    font-family: 'Roboto';
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
 
     &:focus {
         outline: none;
@@ -69,14 +102,4 @@ export const ImageStyled = styled.img`
     border-radius: 50%;
     padding: 0;
     margin-left: auto;
-`;
-
-export const LinkStyled = styled.a`
-    font-weight: 500;
-    text-transform: uppercase;
-    color: #ffffff;
-
-    &:not(:last-of-type) {
-        margin-right: 20px;
-    }
 `;
