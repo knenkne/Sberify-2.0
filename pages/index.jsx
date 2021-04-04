@@ -10,12 +10,13 @@ import Wrapper from '../components/wrapper';
 import Releases from '../components/releases';
 import { fetcher } from '../network';
 
-const titles = ['Explore.', 'Listen.', 'Share.'];
+import Banner from '../components/banner';
 
-const Home = ({ releases }) => (
+const Home = ({ release }) => (
     <Layout title="Home">
+        <Banner />
         {/* TODO: Banner */}
-        <Releases releases={releases} />
+        {/* <Releases releases={releases} /> */}
         {/* <Wrapper>
             {titles.map((title) => (
                 <Headline key={title} title={title} />
@@ -39,11 +40,20 @@ export async function getServerSideProps(ctx) {
         albums: { items: releases }
     } = await fetcher(`/v1/browse/new-releases`);
 
+    const { id } = releases[0].artists[0];
+    const artist = await fetcher(`https://api.spotify.com/v1/artists/${id}`);
+
     return {
         props: {
-            releases
+            release: releases[0],
+            artist
         }
     };
+    // return {
+    //     props: {
+    //         releases
+    //     }
+    // };
 }
 
 export default Home;

@@ -1,129 +1,123 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
-const activeStyle = ({ active }) => {
-    if (!active) {
-        return '';
-    }
-
-    return css`
-        position: relative;
-        color: #000;
-
-        &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 9px;
-            right: 9px;
-            bottom: 0;
-            border-bottom: 2px solid;
-        }
-
-        .dark-mode & {
-            color: #fff;
-        }
-    `;
-};
-
-export const LinkStyled = styled.a`
-    display: inline-block;
-    padding: 16px 12px;
-    color: #666;
-    transition: color 0.2s ease;
-    cursor: pointer;
-    text-transform: uppercase;
-
-    &:hover {
-        color: #000;
-    }
+export const BodyStyled = styled.div`
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(38, 38, 38, 0.08);
 
     .dark-mode & {
-        color: #888;
-
-        &:hover {
-            color: #fff;
-        }
+        background-color: #121212;
     }
-
-    ${activeStyle};
 `;
 
-export const SignUpStyled = styled(LinkStyled)`
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 32px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    border: 1px solid #000;
-    background-color: #000;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 500;
-
-    &:hover {
-        background-color: transparent;
-    }
-
-    transition-property: color, background-color;
+export const SideBarStyled = styled.aside`
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    height: calc(100vh - 75px);
+    width: 480px;
+    /* TODO: dark theme shadow */
+    box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 4px 8px rgba(38, 38, 38, 0.16);
 
     .dark-mode & {
-        color: #000;
-        background-color: #fff;
-        border-color: #fff;
-
-        &:hover {
-            background-color: transparent;
-        }
+        background-color: #121212;
+        box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
     }
+`;
+
+export const ContentStyled = styled.main`
+    position: relative;
+    flex-grow: 1;
+    min-height: calc(100vh - 75px);
+    height: 400vh;
+`;
+
+export const HeaderStyled = styled.header`
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px 40px;
+    z-index: 2;
 `;
 
 export const NavStyled = styled.nav`
-    ul {
-        display: flex;
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+`;
 
-        li:first-of-type {
-            ${LinkStyled} {
-                margin-left: -8px;
+export const DownBarStyled = styled.aside`
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    height: 75px;
+    width: 100%;
+    background-color: #f5f5f5;
+    box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 8px 16px rgba(38, 38, 38, 0.16);
+    z-index: 10;
+
+    .dark-mode & {
+        background-color: #1e1e1e;
+        box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
+    }
+`;
+
+export const SearchWrapperStyled = styled.div`
+    position: relative;
+    width: 320px;
+    margin-left: 40px;
+
+    svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        top: calc(50% - 8px);
+        left: 8px;
+
+        path {
+            transition: 0.1s;
+            fill: rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    &:hover,
+    &:focus-within {
+        svg {
+            path {
+                fill: rgba(255, 255, 255, 1);
             }
         }
     }
 `;
 
-export const HeaderStyled = styled.header`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 1048px;
-    padding: 0 24px;
-    margin: 0 auto;
-`;
+export const SearchStyled = styled.input`
+    width: 100%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 0;
+    padding: 8px 16px 8px 32px;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
 
-export const LogoStyled = styled.h1`
-    position: relative;
-    width: 1048px;
-    padding: 0 24px;
-    margin: 0 auto;
-    font-size: 32px;
-    line-height: 30px;
-    padding-top: 16px;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: #000;
-
-    .dark-mode & {
-        color: #fff;
+    &:focus {
+        outline: none;
     }
 `;
 
-export const HeaderWrapperStyled = styled.div`
-    box-shadow: inset 0 -1px #eaeaea;
-
-    .dark-mode & {
-        box-shadow: inset 0 -1px #333;
-    }
+export const ImageStyled = styled.img`
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    padding: 0;
+    margin-left: auto;
 `;
-
-export const MainStyled = styled.main``;

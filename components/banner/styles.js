@@ -1,0 +1,80 @@
+import { css } from '@emotion/core';
+import styled from '@emotion/styled';
+
+export const AlbumStyled = styled.img`
+    width: 250px;
+    height: 250px;
+    padding: 0;
+    border-radius: 16px;
+`;
+
+export const InfoStyled = styled.div`
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 80px;
+    right: 40px;
+    /* height: 400px; */
+    width: 800px;
+    /* background: red; */
+`;
+
+export const WrapperStyled = styled.div`
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 800px;
+    margin-top: -80px;
+    z-index: 1;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background-color: red;
+        background: linear-gradient(to top, #eeeeee 20%, transparent 100%);
+
+        .dark-mode & {
+            background: linear-gradient(to top, #121212 20%, transparent 100%);
+        }
+    }
+`;
+
+export const BannerStyled = styled.img`
+    width: 100%;
+    height: auto;
+`;
+
+export const TitleStyled = styled.h3`
+    width: 100%;
+    position: relative;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: 60px;
+    line-height: 1;
+    color: #fff;
+    /* max-width: 800px; */
+    text-align: center;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    font-family: 'Roboto';
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 760px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        /* TODO: */
+        z-index: -1;
+        background-image: url('images/brush.svg');
+        background-size: 100%;
+        background-position: center;
+        transform: scaleY(1.5) scaleX(1.25) rotate(2deg);
+        background-repeat: no-repeat;
+    }
+`;

@@ -1,6 +1,56 @@
 import { css, Global } from '@emotion/core';
 
 const globalStyle = () => css`
+    /* TODO: */
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/Light.ttf');
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/Regular.ttf');
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/SemiBold.ttf');
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/Bold.ttf');
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+    }
+
+    /* Roboto */
+    @font-face {
+        font-family: 'Roboto';
+        src: url('/fonts/Roboto/Regular.ttf');
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Roboto';
+        src: url('/fonts/Roboto/Medium.ttf');
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+    }
+
     * {
         box-sizing: border-box;
     }
@@ -16,7 +66,11 @@ const globalStyle = () => css`
     }
 
     h1,
-    h2 {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         margin: 0;
     }
 
@@ -30,11 +84,6 @@ const globalStyle = () => css`
         -webkit-font-smoothing: antialiased;
         margin: 0;
         background-color: #fff;
-
-        &.dark-mode {
-            color: #888;
-            background-color: #000;
-        }
     }
 `;
 
