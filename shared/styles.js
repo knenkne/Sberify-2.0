@@ -1,6 +1,28 @@
 import { css, Global } from '@emotion/core';
 
 const globalStyle = () => css`
+    :root {
+        --primary-BG: #ffffff;
+        --secondary-BG: #eeeeee;
+        --primary-brand: #ff4d4d;
+        --secondary-brand: #f9cb28;
+
+        --nav: #ffffff;
+        --nav-inactive: rgba(255, 255, 255, 0.8);
+
+        /* TODO: */
+        --primary-text: #121212;
+        --secondary-text: #1e1e1e;
+    }
+
+    .dark-mode:root {
+        --primary-BG: #121212;
+        --secondary-BG: #1e1e1e;
+
+        --primary-text: #ffffff;
+        --secondary-text: rgba(255, 255, 255, 0.8);
+    }
+
     /* TODO: */
     @font-face {
         font-family: 'Archivio';
@@ -85,13 +107,15 @@ const globalStyle = () => css`
     body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
             'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-        color: #666;
         font-weight: 400;
         font-size: 16px;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         margin: 0;
-        background-color: #fff;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
     }
 `;
 

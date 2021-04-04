@@ -7,19 +7,25 @@ import {
     ReleaseStyled,
     CoverStyled,
     NameStyled,
-    ArtistStyled
+    ArtistStyled,
+    LinkStyled,
+    InfoStyled
 } from './style';
 
 const Releases = ({ releases }) => (
     <ReleasesStyled>
-        {releases.map(({ id, name, images, artists }) => (
-            <Link href={`/album/${id}`} key={id}>
-                <ReleaseStyled>
-                    <CoverStyled src={images[0].url} alt="" />
-                    {/* <NameStyled>{name}</NameStyled>
-                    <ArtistStyled>{artists[0].name}</ArtistStyled> */}
-                </ReleaseStyled>
-            </Link>
+        {releases.map(({ id, name, images, artists, album_type }) => (
+            <ReleaseStyled key={id}>
+                <Link href={`/album/${id}`} passHref>
+                    <LinkStyled single={album_type === 'single'}>
+                        <CoverStyled src={images[0].url} alt="" />
+                        <InfoStyled>
+                            <NameStyled>{name}</NameStyled>
+                            <ArtistStyled>{artists[0].name}</ArtistStyled>
+                        </InfoStyled>
+                    </LinkStyled>
+                </Link>
+            </ReleaseStyled>
         ))}
     </ReleasesStyled>
 );

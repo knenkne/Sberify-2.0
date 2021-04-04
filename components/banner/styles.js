@@ -7,9 +7,7 @@ export const InfoStyled = styled.div`
     position: absolute;
     bottom: 80px;
     right: 40px;
-    /* height: 400px; */
     width: 800px;
-    /* background: red; */
 `;
 
 export const WrapperStyled = styled.div`
@@ -27,18 +25,14 @@ export const WrapperStyled = styled.div`
         left: 0;
         width: 100%;
         height: 200px;
-        background-color: red;
-        background: linear-gradient(to top, #eeeeee 20%, transparent 100%);
-
-        .dark-mode & {
-            background: linear-gradient(to top, #121212 20%, transparent 100%);
-        }
+        background: linear-gradient(to top, var(--secondary-BG) 20%, transparent 100%);
     }
 `;
 
 export const BannerStyled = styled.img`
     width: 100%;
     height: auto;
+    /* filter: blur(5px); */
 `;
 
 export const TitleStyled = styled.h3`
