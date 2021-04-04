@@ -5,36 +5,33 @@ export const BodyStyled = styled.div`
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(38, 38, 38, 0.08);
-
-    .dark-mode & {
-        background-color: #121212;
-    }
+    background-color: var(--secondary-BG);
 `;
 
 export const SideBarStyled = styled.aside`
     position: sticky;
     top: 0;
     left: 0;
-    background-color: #ffffff;
-    height: calc(100vh - 75px);
-    width: 480px;
+    background-color: var(--primary-BG);
+    height: 100vh;
+    width: 400px;
     /* TODO: dark theme shadow */
     box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 4px 8px rgba(38, 38, 38, 0.16);
 
     .dark-mode & {
-        background-color: #121212;
         box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
     }
 `;
 
 export const ContentStyled = styled.main`
+    display: flex;
+    flex-direction: column;
     position: relative;
     flex-grow: 1;
     width: calc(100% - 480px);
     min-height: calc(100vh - 75px);
     /* TODO: */
-    height: 400vh;
+    /* height: 400vh; */
 `;
 
 export const HeaderStyled = styled.header`
@@ -84,7 +81,7 @@ export const SearchWrapperStyled = styled.div`
 
         path {
             transition: 0.1s;
-            fill: rgba(255, 255, 255, 0.8);
+            fill: var(--nav-inactive);
         }
     }
 
@@ -92,7 +89,7 @@ export const SearchWrapperStyled = styled.div`
     &:focus-within {
         svg {
             path {
-                fill: rgba(255, 255, 255, 1);
+                fill: var(--nav);
             }
         }
     }
@@ -109,7 +106,7 @@ export const SearchStyled = styled.input`
     border-radius: 16px;
     font-family: 'Roboto';
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--nav-inactive);
 
     &:focus {
         outline: none;

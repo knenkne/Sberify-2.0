@@ -8,7 +8,7 @@ const activeStyle = ({ active }) => {
 
     return css`
         font-weight: 500;
-        color: #ffffff;
+        color: var(--nav);
 
         &::after {
             content: '';
@@ -17,7 +17,7 @@ const activeStyle = ({ active }) => {
             height: 2px;
             bottom: 0;
             left: 0;
-            background: linear-gradient(90deg, #ff4d4d, #f9cb28);
+            background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
         }
 
         &:hover {
@@ -31,7 +31,7 @@ export const LinkStyled = styled.a`
     font-family: 'Archivio';
     font-weight: 300;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--nav-inactive);
     font-size: 16px;
     padding: 5px 2px;
     transition: 0.3s;
@@ -42,7 +42,7 @@ export const LinkStyled = styled.a`
 
     /* TODO: */
     &:hover {
-        color: rgba(255, 255, 255, 1);
+        color: var(--nav);
         text-shadow: 0 0 1.4px #fff;
         /* font-weight: 500; */
     }

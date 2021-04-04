@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+import dynamic from 'next/dynamic';
 import Link from '../link';
 import {
     BodyStyled,
@@ -12,7 +13,8 @@ import {
     ImageStyled,
     SideBarStyled
 } from './styles';
-import ThemeButton from '../button/theme';
+
+const ThemeButton = dynamic(() => import('../button/theme'), { ssr: false });
 
 const Layout = ({ children, title }) => {
     return (

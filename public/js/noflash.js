@@ -4,9 +4,9 @@
     var classNameDark = 'dark-mode';
     var classNameLight = 'light-mode';
 
-    function setClassOnDocumentBody(darkMode) {
-        document.body.classList.add(darkMode ? classNameDark : classNameLight);
-        document.body.classList.remove(darkMode ? classNameLight : classNameDark);
+    function setClassOnHtml(darkMode) {
+        document.documentElement.classList.add(darkMode ? classNameDark : classNameLight);
+        document.documentElement.classList.remove(darkMode ? classNameLight : classNameDark);
     }
 
     var preferDarkQuery = '(prefers-color-scheme: dark)';
@@ -15,7 +15,9 @@
     var localStorageTheme = null;
     try {
         localStorageTheme = localStorage.getItem(storageKey);
-    } catch (err) {}
+    } catch (err) {
+        console.error(err);
+    }
     var localStorageExists = localStorageTheme !== null;
     if (localStorageExists) {
         localStorageTheme = JSON.parse(localStorageTheme);
@@ -24,14 +26,14 @@
     // Determine the source of truth
     if (localStorageExists) {
         // source of truth from localStorage
-        setClassOnDocumentBody(localStorageTheme);
+        setClassOnHtml(localStorageTheme);
     } else if (supportsColorSchemeQuery) {
         // source of truth from system
-        setClassOnDocumentBody(mql.matches);
+        setClassOnHtml(mql.matches);
         localStorage.setItem(storageKey, mql.matches);
     } else {
-        // source of truth from document.body
-        var isDarkMode = document.body.classList.contains(classNameDark);
+        // source of truth from document.documentElement
+        var isDarkMode = document.documentElement.classList.contains(classNameDark);
         localStorage.setItem(storageKey, JSON.stringify(isDarkMode));
     }
 })();

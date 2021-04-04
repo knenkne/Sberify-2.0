@@ -9,6 +9,7 @@ const App = ({ Component, pageProps }) => {
 
     return (
         <>
+            {/* TODO: progress w/ theming */}
             <NextNprogress color="rgba(0,0,0, 0.8)" options={progressOptions} />
             {globalStyles}
             <Component {...pageProps} />
