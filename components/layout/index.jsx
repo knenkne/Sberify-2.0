@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-
 import Link from '../link';
 import {
     BodyStyled,
@@ -13,6 +12,7 @@ import {
     ImageStyled,
     SideBarStyled
 } from './styles';
+import ThemeButton from '../button/theme';
 
 const Layout = ({ children, title }) => {
     return (
@@ -26,8 +26,8 @@ const Layout = ({ children, title }) => {
                     <HeaderStyled>
                         <NavStyled>
                             <Link href="/">Discover</Link>
-                            <Link href="/library">My Library</Link>
-                            <Link href="/radio">Radios</Link>
+                            <Link href="/artists">Artists</Link>
+                            <Link href="/albums">Albums</Link>
                         </NavStyled>
                         <SearchWrapperStyled>
                             <svg
@@ -42,11 +42,12 @@ const Layout = ({ children, title }) => {
                             <SearchStyled />
                         </SearchWrapperStyled>
                         {/* TODO: next/image */}
-                        <ImageStyled src="https://avatars.githubusercontent.com/u/35743791?v=4" />
+                        <ThemeButton />
+                        {/* <ImageStyled src="https://avatars.githubusercontent.com/u/35743791?v=4" /> */}
                     </HeaderStyled>
                     {children}
                 </ContentStyled>
-                <DownBarStyled />
+                {/* <DownBarStyled /> */}
 
                 {/* <HeaderWrapperStyled>
                 <HeaderStyled>

@@ -1,13 +1,6 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
-export const AlbumStyled = styled.img`
-    width: 250px;
-    height: 250px;
-    padding: 0;
-    border-radius: 16px;
-`;
-
 export const InfoStyled = styled.div`
     display: flex;
     justify-content: center;

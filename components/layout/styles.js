@@ -31,7 +31,9 @@ export const SideBarStyled = styled.aside`
 export const ContentStyled = styled.main`
     position: relative;
     flex-grow: 1;
+    width: calc(100% - 480px);
     min-height: calc(100vh - 75px);
+    /* TODO: */
     height: 400vh;
 `;
 
