@@ -6,6 +6,10 @@ export const BodyStyled = styled.div`
     display: flex;
     flex-wrap: wrap;
     background-color: rgba(38, 38, 38, 0.08);
+
+    .dark-mode & {
+        background-color: #121212;
+    }
 `;
 
 export const SideBarStyled = styled.aside`
@@ -15,7 +19,13 @@ export const SideBarStyled = styled.aside`
     background-color: #ffffff;
     height: calc(100vh - 75px);
     width: 480px;
+    /* TODO: dark theme shadow */
     box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 4px 8px rgba(38, 38, 38, 0.16);
+
+    .dark-mode & {
+        background-color: #121212;
+        box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
+    }
 `;
 
 export const ContentStyled = styled.main`
@@ -26,10 +36,12 @@ export const ContentStyled = styled.main`
 `;
 
 export const HeaderStyled = styled.header`
+    position: relative;
     display: flex;
     align-items: center;
     width: 100%;
     padding: 20px 40px;
+    z-index: 2;
 `;
 
 export const NavStyled = styled.nav`
@@ -47,6 +59,11 @@ export const DownBarStyled = styled.aside`
     background-color: #f5f5f5;
     box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 8px 16px rgba(38, 38, 38, 0.16);
     z-index: 10;
+
+    .dark-mode & {
+        background-color: #1e1e1e;
+        box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
+    }
 `;
 
 export const SearchWrapperStyled = styled.div`
@@ -81,6 +98,7 @@ export const SearchWrapperStyled = styled.div`
 
 export const SearchStyled = styled.input`
     width: 100%;
+    height: 30px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     padding: 0;
@@ -88,7 +106,7 @@ export const SearchStyled = styled.input`
     border: none;
     border-radius: 16px;
     font-family: 'Roboto';
-    font-size: 12px;
+    font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
 
     &:focus {
