@@ -12,42 +12,25 @@ import { fetcher } from '../network';
 
 import Banner from '../components/banner';
 
-const Home = ({ release }) => (
-    <Layout title="Home">
+const Home = ({ releases }) => (
+    <Layout title="Discover">
         <Banner />
-        {/* TODO: Banner */}
-        {/* <Releases releases={releases} /> */}
-        {/* <Wrapper>
-            {titles.map((title) => (
-                <Headline key={title} title={title} />
-            ))}
-            <Button filled>Start Exploring</Button>
-            <Button>Get a Demo</Button>
-            <Paragraph>
-                Sberify combines the best music experience with an obsessive focus on things you
-                like.
-                <br />
-                It contains a lot of artists, albums, songs, lyrics & even more.
-            </Paragraph>
-        </Wrapper> */}
+        <Releases releases={releases} />
     </Layout>
 );
 
-export async function getServerSideProps(ctx) {
+export async function getStaticProps(ctx) {
     const { params } = ctx;
     // TODO: Suspense + SWR
     const {
         albums: { items: releases }
     } = await fetcher(`/v1/browse/new-releases`);
 
-    const { id } = releases[0].artists[0];
-    const artist = await fetcher(`https://api.spotify.com/v1/artists/${id}`);
-
     return {
         props: {
-            release: releases[0],
-            artist
-        }
+            releases
+        },
+        revalidate: 60 * 60 * 24
     };
     // return {
     //     props: {

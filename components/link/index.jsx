@@ -5,7 +5,7 @@ import { LinkStyled } from './styles';
 
 const Link = ({ href, children }) => {
     const router = useRouter();
-    console.log(router.pathname === href);
+
     return (
         <NextLink href={href} passHref>
             <LinkStyled active={router.pathname === href}>{children}</LinkStyled>

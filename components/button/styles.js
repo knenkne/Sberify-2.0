@@ -28,7 +28,18 @@ const filledStyle = ({ filled }) => {
 };
 
 export const ButtonStyled = styled.a`
-    display: inline-flex;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 160px;
+    color: #ffffff;
+    font-family: 'Roboto';
+    font-size: 18px;
+    background: linear-gradient(90deg, #ff4d4d, #f9cb28);
+    border-radius: 16px;
+    /* display: inline-flex;
     justify-content: center;
     align-items: center;
     width: 200px;
@@ -62,5 +73,5 @@ export const ButtonStyled = styled.a`
         }
     }
 
-    ${filledStyle};
+    ${filledStyle}; */
 `;

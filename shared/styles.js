@@ -37,6 +37,14 @@ const globalStyle = () => css`
     /* Roboto */
     @font-face {
         font-family: 'Roboto';
+        src: url('/fonts/Roboto/Light.ttf');
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Roboto';
         src: url('/fonts/Roboto/Regular.ttf');
         font-style: normal;
         font-weight: 400;
