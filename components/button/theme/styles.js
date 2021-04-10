@@ -7,6 +7,6 @@ export const ThemeButtonStyled = styled.button`
     height: 40px;
     border-radius: 50%;
     margin-left: auto;
-    /* background: red; */
     border: none;
+    padding: 0;
 `;

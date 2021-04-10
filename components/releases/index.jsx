@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
 
 import {
-    WrapperStyled,
+    ArtistStyled,
+    CoverStyled,
+    InfoStyled,
+    LinkStyled,
+    NameStyled,
     ReleasesStyled,
     ReleaseStyled,
-    CoverStyled,
-    NameStyled,
-    ArtistStyled,
-    LinkStyled,
-    InfoStyled
+    WrapperStyled
 } from './style';
 
 const Releases = ({ releases }) => (
