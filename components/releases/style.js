@@ -57,6 +57,7 @@ export const CoverStyled = styled.img`
     border-radius: 4px;
     transition: 0.3s;
     z-index: 1;
+    box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.4);
 `;
 
 export const LinkStyled = styled.a`

@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { fetcher } from '../../network';
 
-const Album = (props) => {
-    return <div>Album</div>;
+const Album = ({ name }) => {
+    return <div>{name}</div>;
 };
 
 export async function getServerSideProps(ctx) {
     const { params } = ctx;
-    const data = await fetcher(`/v1/albums/${params.id}`);
+    const album = await fetcher(`/v1/albums/${params.id}`);
 
     return {
-        props: {}
+        props: album
     };
 }
 

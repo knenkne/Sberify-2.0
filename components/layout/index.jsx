@@ -1,20 +1,17 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
+
+import ThemeButton from '../button/theme';
 import Link from '../link';
 import {
     BodyStyled,
     ContentStyled,
-    DownBarStyled,
     HeaderStyled,
     NavStyled,
-    SearchWrapperStyled,
     SearchStyled,
-    ImageStyled,
+    SearchWrapperStyled,
     SideBarStyled
 } from './styles';
-
-const ThemeButton = dynamic(() => import('../button/theme'), { ssr: false });
 
 const Layout = ({ children, title }) => {
     return (
@@ -45,39 +42,10 @@ const Layout = ({ children, title }) => {
                         </SearchWrapperStyled>
                         {/* TODO: next/image */}
                         <ThemeButton />
-                        {/* <ImageStyled src="https://avatars.githubusercontent.com/u/35743791?v=4" /> */}
                     </HeaderStyled>
                     {children}
                 </ContentStyled>
                 {/* <DownBarStyled /> */}
-
-                {/* <HeaderWrapperStyled>
-                <HeaderStyled>
-                    <NavStyled>
-                        <ul>
-                            <li>
-                                <Link href="/">
-                                    <LinkStyled active>Home</LinkStyled>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/artists">
-                                    <LinkStyled>Artists</LinkStyled>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/track/0AHINsVlQQH5w9kXqvyNod">
-                                    <LinkStyled>Albums</LinkStyled>
-                                </Link>
-                            </li>
-                        </ul>
-                    </NavStyled>
-                    <Link href="/sign-up">
-                        <SignUpStyled>Sign Up</SignUpStyled>
-                    </Link>
-                </HeaderStyled>
-            </HeaderWrapperStyled>
-            <MainStyled>{children}</MainStyled> */}
             </BodyStyled>
         </>
     );

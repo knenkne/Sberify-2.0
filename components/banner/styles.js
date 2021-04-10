@@ -32,7 +32,6 @@ export const WrapperStyled = styled.div`
 export const BannerStyled = styled.img`
     width: 100%;
     height: auto;
-    /* filter: blur(5px); */
 `;
 
 export const TitleStyled = styled.h3`

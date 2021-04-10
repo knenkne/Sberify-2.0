@@ -23,7 +23,7 @@ const globalStyle = () => css`
         --secondary-text: rgba(255, 255, 255, 0.8);
     }
 
-    /* TODO: */
+    /* Archivio */
     @font-face {
         font-family: 'Archivio';
         src: url('/fonts/Archivio/Light.ttf');
@@ -116,6 +116,16 @@ const globalStyle = () => css`
 
     &::-webkit-scrollbar {
         display: none;
+    }
+
+    #nprogress .bar {
+        width: 100%;
+        background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
+    }
+
+    #nprogress .peg {
+        display: none;
+        height: 0px;
     }
 `;
 

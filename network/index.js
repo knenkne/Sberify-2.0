@@ -14,6 +14,7 @@ const refreshAccessToken = () =>
             }),
             {
                 headers: {
+                    // TODO:
                     Authorization: `Basic ${process.env.CLIENT_SECRET}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
@@ -21,16 +22,6 @@ const refreshAccessToken = () =>
         )
         .then(({ data }) => data)
         .catch((error) => console.error('AUTH ERROR', error));
-
-// Request interceptor for API calls
-axiosApiInstance.interceptors.request.use(
-    (config) => {
-        return config;
-    },
-    (error) => {
-        Promise.reject(error);
-    }
-);
 
 axiosApiInstance.interceptors.response.use(
     (response) => {
@@ -46,6 +37,7 @@ axiosApiInstance.interceptors.response.use(
 
             console.count('TOKEN UPDATED');
 
+            // TODO:
             axiosApiInstance.defaults.headers.common[
                 'Authorization'
             ] = `${token_type} ${access_token}`;

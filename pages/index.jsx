@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
 import { Suspense } from 'react';
 import useSWR from 'swr';
+
+import Banner from '../components/banner';
 import Button from '../components/button';
 import Headline from '../components/headline';
 import Layout from '../components/layout';
 import Paragraph from '../components/paragraph';
 import Player from '../components/player';
-import Wrapper from '../components/wrapper';
 import Releases from '../components/releases';
+import Wrapper from '../components/wrapper';
 import { fetcher } from '../network';
-
-import Banner from '../components/banner';
 
 const Home = ({ releases }) => (
     <Layout title="Discover">
