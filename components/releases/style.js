@@ -21,7 +21,8 @@ export const ReleaseStyled = styled.li`
     height: 140px;
     flex-shrink: 0;
 
-    /* margin-right: 40px; */
+    padding-right: 40px;
+    box-sizing: content-box;
     /* box-shadow: 0 0 10px 2px var(--primary-brand); */
     /* display: flex;
     flex-direction: column;

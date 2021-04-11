@@ -18,7 +18,6 @@ const swiperParams = {
     ContainerEl: 'section',
     WrapperEl: 'ul',
     slidesPerView: 'auto',
-    spaceBetween: 40,
     autoplay: true
 };
 
