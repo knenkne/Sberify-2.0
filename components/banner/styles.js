@@ -17,6 +17,7 @@ export const WrapperStyled = styled.div`
     height: 800px;
     margin-top: -80px;
     z-index: 1;
+    flex-shrink: 0;
 
     &::after {
         content: '';
@@ -24,7 +25,7 @@ export const WrapperStyled = styled.div`
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 200px;
+        height: 250px;
         background: linear-gradient(to top, var(--secondary-BG) 20%, transparent 100%);
     }
 `;

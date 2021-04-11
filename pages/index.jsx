@@ -24,7 +24,7 @@ export async function getStaticProps(ctx) {
     // TODO: Suspense + SWR
     const {
         albums: { items: releases }
-    } = await fetcher(`/v1/browse/new-releases`);
+    } = await fetcher(`/v1/browse/new-releases?limit=50`);
 
     return {
         props: {

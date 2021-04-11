@@ -18,6 +18,8 @@
         "qs": "^6.9.6",
         "react": "17.0.1",
         "react-dom": "17.0.1",
+        "react-id-swiper": "^4.0.0",
+        "swiper": "^6.5.6",
         "swr": "^0.4.2",
         "use-dark-mode": "^2.3.1"
     },
