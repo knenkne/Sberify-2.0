@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import Swiper, { Autoplay } from 'swiper';
 
 import {
     ArtistStyled,
@@ -8,12 +9,21 @@ import {
     LinkStyled,
     NameStyled,
     ReleasesStyled,
-    ReleaseStyled,
-    WrapperStyled
+    ReleaseStyled
 } from './style';
 
+const swiperParams = {
+    Swiper,
+    modules: [Autoplay],
+    ContainerEl: 'section',
+    WrapperEl: 'ul',
+    slidesPerView: 'auto',
+    spaceBetween: 40,
+    autoplay: true
+};
+
 const Releases = ({ releases }) => (
-    <ReleasesStyled>
+    <ReleasesStyled {...swiperParams}>
         {releases.map(({ id, name, images, artists, album_type }) => (
             <ReleaseStyled key={id}>
                 <Link href={`/album/${id}`} passHref>

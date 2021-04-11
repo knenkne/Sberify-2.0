@@ -1,38 +1,27 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import Swiper from 'react-id-swiper/lib/ReactIdSwiper.custom';
 
-export const ReleasesStyled = styled.ul`
-    position: relative;
-    z-index: 1;
+export const SwiperStyled = styled(Swiper)`
     width: 100%;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    /* overflow: hidden; */
-    /* margin: 0 auto; */
-    flex-grow: 1;
-    padding: 0 40px;
-    display: flex;
-    margin-top: -5px;
-    /* overflow: hidden; */
-    /* justify-content: space-between; */
-    /* overflow: hidden; */
-    /* border-radius: 8px; */
-    /* background-color: #fff; */
-    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12); */
-    /* padding: 20px 14px; */
-    /* margin-top: -60px; */
 `;
+
+// export const RelesesWrapperStyled = styled.div`
+//     display: flex;
+//     align-items: center;
+//     /* padding-left: 36px; */
+//     height: 220px;
+//     margin-top: -48px;
+// `;
+
+export const ReleasesStyled = styled(Swiper)``;
 
 export const ReleaseStyled = styled.li`
     width: 140px;
     height: 140px;
     flex-shrink: 0;
-    /* box-shadow: 0 0 10px 2px var(--primary-brand); */
 
-    &:not(:last-of-type) {
-        margin-right: 36px;
-    }
+    /* box-shadow: 0 0 10px 2px var(--primary-brand); */
     /* display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -60,6 +49,7 @@ export const CoverStyled = styled.img`
     box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.4);
 `;
 
+// TODO: onFocus
 export const LinkStyled = styled.a`
     position: relative;
     display: block;

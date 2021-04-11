@@ -114,10 +114,6 @@ const globalStyle = () => css`
         margin: 0;
     }
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
     #nprogress .bar {
         width: 100%;
         background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
@@ -126,6 +122,19 @@ const globalStyle = () => css`
     #nprogress .peg {
         display: none;
         height: 0px;
+    }
+
+    .swiper-container {
+        width: 100%;
+        min-height: calc(100vh - 800px + 50px);
+        margin-top: -50px;
+        flex-shrink: 0;
+        padding-left: 40px;
+    }
+
+    .swiper-wrapper {
+        display: flex;
+        align-items: center;
     }
 `;
 

@@ -9,14 +9,16 @@ export const BodyStyled = styled.div`
 `;
 
 export const SideBarStyled = styled.aside`
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     background-color: var(--primary-BG);
     height: 100vh;
+    /* TODO: constants */
     width: 400px;
     /* TODO: dark theme shadow */
     box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 4px 8px rgba(38, 38, 38, 0.16);
+    z-index: 10;
 
     .dark-mode & {
         box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
@@ -29,7 +31,9 @@ export const ContentStyled = styled.main`
     position: relative;
     flex-grow: 1;
     width: calc(100% - 480px);
-    min-height: calc(100vh - 75px);
+    height: 100vh;
+    margin-left: 400px;
+    /* overflow: hidden; */
     /* TODO: */
     /* height: 400vh; */
 `;
