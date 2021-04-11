@@ -18,8 +18,7 @@ const swiperParams = {
     ContainerEl: 'section',
     WrapperEl: 'ul',
     slidesPerView: 'auto',
-    autoplay: true,
-    loop: true
+    autoplay: true
 };
 
 const Releases = ({ releases }) => (
