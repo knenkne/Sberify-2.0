@@ -128,11 +128,13 @@ const globalStyle = () => css`
         width: 100%;
         min-height: calc(100vh - 800px + 50px);
         margin-top: -50px;
-        flex-shrink: 0;
+        /* flex-shrink: 0; */
+        /* margin-left: 40px; */
         padding-left: 40px;
     }
 
     .swiper-wrapper {
+        width: 100%;
         display: flex;
         align-items: center;
     }
