@@ -44,7 +44,7 @@ export const LinkStyled = styled.a`
 
     &:hover {
         ${CoverStyled} {
-            transform: translateY(-25%);
+            transform: translateY(-40px);
         }
     }
 
