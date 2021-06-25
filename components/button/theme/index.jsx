@@ -7,11 +7,7 @@ const ThemeButton = () => {
         element: typeof document !== 'undefined' ? document.documentElement : null
     });
 
-    return (
-        <ThemeButtonStyled onClick={toggle}>
-            {/* <WaveStyled /> */}
-        </ThemeButtonStyled>
-    );
+    return <ThemeButtonStyled onClick={toggle}>{/* <WaveStyled /> */}</ThemeButtonStyled>;
 };
 
 export default ThemeButton;
