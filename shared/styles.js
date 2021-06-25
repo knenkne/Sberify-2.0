@@ -112,6 +112,7 @@ const globalStyle = () => css`
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         margin: 0;
+        background-color: var(--secondary-BG);
     }
 
     #nprogress .bar {

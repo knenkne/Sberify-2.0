@@ -1,11 +1,9 @@
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 export const BodyStyled = styled.div`
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    background-color: var(--secondary-BG);
 `;
 
 export const SideBarStyled = styled.aside`
