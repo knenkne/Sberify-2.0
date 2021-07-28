@@ -112,6 +112,7 @@ const globalStyle = () => css`
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         margin: 0;
+        background-color: var(--secondary-BG);
     }
 
     #nprogress .bar {
@@ -126,9 +127,12 @@ const globalStyle = () => css`
 
     .swiper-container {
         position: relative;
+        flex-shrink: 0;
+        flex-grow: 1;
         z-index: 10;
         width: 100%;
-        min-height: calc(100vh - 800px + 50px);
+        /* min-height: calc(100vh - 800px + 50px); */
+        height: 220px;
         margin-top: -50px;
         padding-left: 40px;
     }

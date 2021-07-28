@@ -18,24 +18,31 @@ const swiperParams = {
     ContainerEl: 'section',
     WrapperEl: 'ul',
     slidesPerView: 'auto',
-    autoplay: true
+    autoplay: {
+        pauseOnMouseEnter: true
+    }
 };
 
 const Releases = ({ releases }) => (
     <ReleasesStyled {...swiperParams}>
-        {releases.map(({ id, name, images, artists, album_type }) => (
-            <ReleaseStyled key={id}>
-                <Link href={`/album/${id}`} passHref>
-                    <LinkStyled single={album_type === 'single'}>
-                        <CoverStyled src={images[0].url} alt="" />
-                        <InfoStyled>
-                            <NameStyled>{name}</NameStyled>
-                            <ArtistStyled>{artists[0].name}</ArtistStyled>
-                        </InfoStyled>
-                    </LinkStyled>
-                </Link>
-            </ReleaseStyled>
-        ))}
+        {releases.map(({ id, name, images, artists, album_type }) => {
+            const coverUrl = images[0].url;
+            const artist = artists[0].name;
+
+            return (
+                <ReleaseStyled key={id}>
+                    <Link href={`/album/${id}`} passHref>
+                        <LinkStyled single={album_type === 'single'}>
+                            <CoverStyled src={coverUrl} alt={`${name} by ${artist}`} />
+                            <InfoStyled>
+                                <NameStyled>{name}</NameStyled>
+                                <ArtistStyled>{artist}</ArtistStyled>
+                            </InfoStyled>
+                        </LinkStyled>
+                    </Link>
+                </ReleaseStyled>
+            );
+        })}
     </ReleasesStyled>
 );
 

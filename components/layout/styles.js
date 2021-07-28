@@ -1,11 +1,9 @@
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 export const BodyStyled = styled.div`
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    background-color: var(--secondary-BG);
 `;
 
 export const SideBarStyled = styled.aside`
@@ -23,6 +21,11 @@ export const SideBarStyled = styled.aside`
     .dark-mode & {
         box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
     }
+
+    @media (max-width: 1599.98px) {
+        position: relative;
+        width: 64px;
+    }
 `;
 
 export const ContentStyled = styled.main`
@@ -33,9 +36,11 @@ export const ContentStyled = styled.main`
     width: calc(100% - 480px);
     height: 100vh;
     margin-left: 400px;
-    /* overflow: hidden; */
-    /* TODO: */
-    /* height: 400vh; */
+
+    /* TODO: custom properties */
+    @media (max-width: 1599.98px) {
+        margin-left: 0;
+    }
 `;
 
 export const HeaderStyled = styled.header`
