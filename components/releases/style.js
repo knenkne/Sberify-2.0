@@ -43,7 +43,10 @@ export const LinkStyled = styled.a`
     display: block;
     height: 100%;
 
+    &:focus-within,
     &:hover {
+        /* TODO: FOCUS STYLE */
+        outline: none;
         ${CoverStyled} {
             transform: translateY(-40px);
         }
