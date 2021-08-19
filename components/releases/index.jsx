@@ -19,6 +19,7 @@ const swiperParams = {
     WrapperEl: 'ul',
     slidesPerView: 'auto',
     autoplay: {
+        disableOnInteraction: false,
         pauseOnMouseEnter: true
     }
 };

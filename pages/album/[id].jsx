@@ -1,9 +1,11 @@
-/* eslint-disable no-unused-vars */
+import Layout from '../../components/layout';
 import { fetcher } from '../../network';
 
-const Album = ({ name }) => {
-    return <div>{name}</div>;
-};
+const Album = ({ name }) => (
+    <Layout>
+        <div>{name}</div>
+    </Layout>
+);
 
 export async function getServerSideProps(ctx) {
     const { params } = ctx;
