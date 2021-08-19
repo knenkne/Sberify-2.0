@@ -13,7 +13,7 @@ import Wrapper from '../components/wrapper';
 import { fetcher } from '../network';
 
 const Home = ({ releases }) => (
-    <Layout title="Discover">
+    <Layout>
         <Banner />
         <Releases releases={releases} />
     </Layout>

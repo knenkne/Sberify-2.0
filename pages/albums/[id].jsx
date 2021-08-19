@@ -2,7 +2,7 @@ import Layout from '../../components/layout';
 import { fetcher } from '../../network';
 
 const Album = ({ name }) => (
-    <Layout>
+    <Layout title={name}>
         <div>{name}</div>
     </Layout>
 );

@@ -13,7 +13,7 @@ import {
     SideBarStyled
 } from './styles';
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, title = 'Sberify 2.0' }) => {
     return (
         <>
             <Head>
