@@ -30,6 +30,7 @@ export const CoverStyled = styled.img`
     position: relative;
     width: auto;
     height: 100%;
+    /* TODO: border-radius vars */
     border-radius: 4px;
     transition: 0.3s;
     z-index: 1;

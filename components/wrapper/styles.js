@@ -1,9 +1,22 @@
 import styled from '@emotion/styled';
 
 export const WrapperStyled = styled.section`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 56px 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    min-height: 600px;
+    /* TODO: header height constant */
+    margin-top: -80px;
+    z-index: 1;
+    flex-grow: 1;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(to top, var(--secondary-BG) 20%, transparent 100%);
+    }
 `;

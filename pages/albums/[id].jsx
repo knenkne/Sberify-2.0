@@ -1,9 +1,14 @@
 import Layout from '../../components/layout';
+import Wrapper from '../../components/wrapper';
+import AlbumInfo from '../../components/album-info';
 import { fetcher } from '../../network';
 
-const Album = ({ name }) => (
+// TODO: extract here from albuminfo component
+const Album = (props) => (
     <Layout title={name}>
-        <div>{name}</div>
+        <Wrapper>
+            <AlbumInfo {...props} />
+        </Wrapper>
     </Layout>
 );
 
