@@ -4,11 +4,12 @@ import { useRouter } from 'next/router';
 import { LinkStyled } from './styles';
 
 const Link = ({ href, children }) => {
-    const router = useRouter();
+    const { pathname } = useRouter();
+    const [cleanPathname] = pathname.split('/[');
 
     return (
         <NextLink href={href} passHref>
-            <LinkStyled active={router.pathname === href}>{children}</LinkStyled>
+            <LinkStyled active={cleanPathname === href}>{children}</LinkStyled>
         </NextLink>
     );
 };

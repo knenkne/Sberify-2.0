@@ -19,6 +19,7 @@ const swiperParams = {
     WrapperEl: 'ul',
     slidesPerView: 'auto',
     autoplay: {
+        disableOnInteraction: false,
         pauseOnMouseEnter: true
     }
 };
@@ -31,7 +32,7 @@ const Releases = ({ releases }) => (
 
             return (
                 <ReleaseStyled key={id}>
-                    <Link href={`/album/${id}`} passHref>
+                    <Link href={`/albums/${id}`} passHref>
                         <LinkStyled single={album_type === 'single'}>
                             <CoverStyled src={coverUrl} alt={`${name} by ${artist}`} />
                             <InfoStyled>
