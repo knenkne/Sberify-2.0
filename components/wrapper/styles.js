@@ -28,7 +28,7 @@ export const WrapperStyled = styled.section`
     margin-top: -80px;
     z-index: 1;
     flex-grow: 1;
-    background-color: #252525;
+    background-color: var(--tertiary-BG);
 
     ${shadelessStyle};
 `;

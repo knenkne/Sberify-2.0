@@ -4,6 +4,8 @@ export const AlbumWrapperStyled = styled.div`
     padding: 100px 40px 40px;
     background-color: var(--secondary-BG);
     box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.5), -6px 4px 12px rgba(18, 18, 18, 0.5);
+    /* TODO: light theme */
+    /* box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.15), -6px 4px 12px rgba(18, 18, 18, 0.15); */
 
     /* border-bottom: 1px solid var(--secondary-text); ; */
 `;

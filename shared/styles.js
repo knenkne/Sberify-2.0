@@ -4,11 +4,12 @@ const globalStyle = () => css`
     :root {
         --primary-BG: #ffffff;
         --secondary-BG: #eeeeee;
+        --tertiary-BG: #f5f5f5;
         --primary-brand: #ff4d4d;
         --secondary-brand: #f9cb28;
 
-        --nav: #ffffff;
-        --nav-inactive: rgba(255, 255, 255, 0.8);
+        --nav: #000000;
+        --nav-inactive: rgba(0, 0, 0, 0.8);
 
         /* TODO: */
         --primary-text: #121212;
@@ -18,6 +19,10 @@ const globalStyle = () => css`
     .dark-mode:root {
         --primary-BG: #121212;
         --secondary-BG: #1e1e1e;
+        --tertiary-BG: #252525;
+
+        --nav: #ffffff;
+        --nav-inactive: rgba(255, 255, 255, 0.8);
 
         --primary-text: #ffffff;
         --secondary-text: rgba(255, 255, 255, 0.8);

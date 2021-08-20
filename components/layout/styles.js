@@ -107,7 +107,10 @@ export const SearchWrapperStyled = styled.div`
 export const SearchStyled = styled.input`
     width: 100%;
     height: 30px;
-    background: rgba(255, 255, 255, 0.2);
+    /* TODO: light theme */
+    /* background: rgba(0, 0, 0, 0.2); */
+    /* background: rgba(255, 255, 255, 0.2); */
+    background: var(--primary-BG);
     border-radius: 16px;
     padding: 0;
     padding: 8px 16px 8px 32px;

@@ -29,22 +29,16 @@ const activeStyle = ({ active }) => {
 export const LinkStyled = styled.a`
     position: relative;
     font-family: 'Archivio';
-    font-weight: 300;
+    font-weight: 400;
     text-transform: uppercase;
     color: var(--nav-inactive);
     font-size: 16px;
     padding: 5px 2px;
     transition: 0.3s;
 
-    &:not(:last-of-type) {
-        /* margin-right: 20px; */
-    }
-
-    /* TODO: */
     &:hover {
         color: var(--nav);
-        text-shadow: 0 0 1.4px #fff;
-        /* font-weight: 500; */
+        text-shadow: 0 0 1.4px var(--nav);
     }
 
     ${activeStyle};
