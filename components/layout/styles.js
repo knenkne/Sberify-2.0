@@ -19,7 +19,7 @@ export const SideBarStyled = styled.aside`
     z-index: 10;
 
     .dark-mode & {
-        box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
+        box-shadow: 0px 1px 4px rgba(18, 18, 18, 0.6), 0px 4px 8px rgba(18, 18, 18, 0.8);
     }
 
     @media (max-width: 1599.98px) {

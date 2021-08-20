@@ -6,7 +6,7 @@ import { fetcher } from '../../network';
 // TODO: extract here from albuminfo component
 const Album = (props) => (
     <Layout title={props.name}>
-        <Wrapper>
+        <Wrapper shadeless>
             <AlbumInfo {...props} />
         </Wrapper>
     </Layout>
