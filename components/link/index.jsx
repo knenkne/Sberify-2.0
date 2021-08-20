@@ -5,6 +5,7 @@ import { LinkStyled } from './styles';
 
 const Link = ({ href, children }) => {
     const { pathname } = useRouter();
+    // /albums/[id] -> /albums
     const [cleanPathname] = pathname.split('/[');
 
     return (

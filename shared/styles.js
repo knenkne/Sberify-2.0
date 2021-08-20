@@ -12,7 +12,7 @@ const globalStyle = () => css`
 
         /* TODO: */
         --primary-text: #121212;
-        --secondary-text: #1e1e1e;
+        --secondary-text: #434343;
     }
 
     .dark-mode:root {
@@ -53,6 +53,14 @@ const globalStyle = () => css`
         src: url('/fonts/Archivio/Bold.ttf');
         font-style: normal;
         font-weight: 800;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/ExtraBold.ttf');
+        font-style: normal;
+        font-weight: 900;
         font-display: swap;
     }
 

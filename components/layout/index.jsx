@@ -25,8 +25,8 @@ const Layout = ({ children, title = 'Sberify 2.0' }) => {
                     <HeaderStyled>
                         <NavStyled>
                             <Link href="/">Discover</Link>
-                            <Link href="/artists">Artists</Link>
-                            <Link href="/albums">Albums</Link>
+                            <Link href="/artist">Artists</Link>
+                            <Link href="/album">Albums</Link>
                         </NavStyled>
                         <SearchWrapperStyled>
                             <svg

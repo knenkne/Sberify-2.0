@@ -32,7 +32,7 @@ const Releases = ({ releases }) => (
 
             return (
                 <ReleaseStyled key={id}>
-                    <Link href={`/albums/${id}`} passHref>
+                    <Link href={`/album/${id}`} passHref>
                         <LinkStyled single={album_type === 'single'}>
                             <CoverStyled src={coverUrl} alt={`${name} by ${artist}`} />
                             <InfoStyled>
