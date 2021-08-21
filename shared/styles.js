@@ -14,6 +14,9 @@ const globalStyle = () => css`
         /* TODO: */
         --primary-text: #121212;
         --secondary-text: #505050;
+
+        --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.16);
+        --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.16);
     }
 
     .dark-mode:root {
@@ -26,6 +29,9 @@ const globalStyle = () => css`
 
         --primary-text: #ffffff;
         --secondary-text: rgba(255, 255, 255, 0.8);
+
+        --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.36);
+        --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.36);
     }
 
     /* Archivio */

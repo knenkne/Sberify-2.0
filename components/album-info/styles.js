@@ -3,11 +3,7 @@ import styled from '@emotion/styled';
 export const AlbumWrapperStyled = styled.div`
     padding: 100px 40px 40px;
     background-color: var(--secondary-BG);
-    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.36), -6px 4px 12px rgba(18, 18, 18, 0.36);
-    /* TODO: light theme */
-    /* box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24); */
-
-    /* border-bottom: 1px solid var(--secondary-text); ; */
+    box-shadow: var(--secondary-shadow-1), var(--secondary-shadow-2);
 `;
 
 export const CoverWrapperStyled = styled.div`
@@ -26,6 +22,8 @@ export const CoverStyled = styled.img`
 export const AlbumInfoStyled = styled.div`
     position: relative;
     flex-grow: 1;
+    /* Text overflow fix */
+    min-width: 0;
     padding-left: 20px;
 `;
 
