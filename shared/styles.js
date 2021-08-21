@@ -13,7 +13,7 @@ const globalStyle = () => css`
 
         /* TODO: */
         --primary-text: #121212;
-        --secondary-text: #434343;
+        --secondary-text: #505050;
     }
 
     .dark-mode:root {

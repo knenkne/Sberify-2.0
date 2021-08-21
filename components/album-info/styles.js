@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 export const AlbumWrapperStyled = styled.div`
     padding: 100px 40px 40px;
     background-color: var(--secondary-BG);
-    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.5), -6px 4px 12px rgba(18, 18, 18, 0.5);
+    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.36), -6px 4px 12px rgba(18, 18, 18, 0.36);
     /* TODO: light theme */
-    /* box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.15), -6px 4px 12px rgba(18, 18, 18, 0.15); */
+    /* box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24); */
 
     /* border-bottom: 1px solid var(--secondary-text); ; */
 `;
@@ -33,7 +33,6 @@ export const TitleStyled = styled.h2`
     margin: 0;
     font-size: 72px;
     line-height: 1;
-    padding-bottom: 10px;
     font-weight: 500;
     font-family: 'Archivio';
     color: var(--primary-text);
@@ -47,7 +46,6 @@ export const TitleStyled = styled.h2`
 export const SubtitleStyled = styled.span`
     display: block;
     margin: 0;
-    margin-top: -16px;
     font-size: 16px;
     line-height: 1;
     font-weight: 500;

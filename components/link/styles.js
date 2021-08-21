@@ -26,6 +26,20 @@ const activeStyle = ({ active }) => {
     `;
 };
 
+const indexStyle = ({ active, index }) => {
+    if (!index) {
+        return '';
+    }
+
+    return css`
+        color: ${active ? '#ffffff' : 'rgba(255, 255, 255, 0.8)'};
+
+        &:hover {
+            color: #ffffff;
+        }
+    `;
+};
+
 export const LinkStyled = styled.a`
     position: relative;
     font-family: 'Archivio';
@@ -42,4 +56,5 @@ export const LinkStyled = styled.a`
     }
 
     ${activeStyle};
+    ${indexStyle};
 `;

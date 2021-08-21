@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 export const BodyStyled = styled.div`
@@ -43,6 +44,26 @@ export const ContentStyled = styled.main`
     }
 `;
 
+const indexStyle = ({ index }) => {
+    if (!index) {
+        return '';
+    }
+
+    return css`
+        ${SearchWrapperStyled} {
+            svg {
+                path {
+                    fill: rgba(255, 255, 255, 0.8);
+                }
+            }
+        }
+
+        ${SearchStyled} {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    `;
+};
+
 export const HeaderStyled = styled.header`
     position: relative;
     display: flex;
@@ -50,6 +71,8 @@ export const HeaderStyled = styled.header`
     width: 100%;
     padding: 20px 40px;
     z-index: 2;
+
+    ${indexStyle};
 `;
 
 export const NavStyled = styled.nav`
@@ -107,9 +130,6 @@ export const SearchWrapperStyled = styled.div`
 export const SearchStyled = styled.input`
     width: 100%;
     height: 30px;
-    /* TODO: light theme */
-    /* background: rgba(0, 0, 0, 0.2); */
-    /* background: rgba(255, 255, 255, 0.2); */
     background: var(--primary-BG);
     border-radius: 16px;
     padding: 0;
