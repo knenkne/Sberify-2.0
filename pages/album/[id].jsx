@@ -6,6 +6,7 @@ import { fetcher } from '../../network';
 // TODO: extract here from albuminfo component
 const Album = (props) => (
     <Layout title={props.name}>
+        {console.log(props)}
         <Wrapper shadeless>
             <AlbumInfo {...props} />
         </Wrapper>
@@ -15,7 +16,6 @@ const Album = (props) => (
 export async function getServerSideProps(ctx) {
     const { params } = ctx;
     const album = await fetcher(`/v1/albums/${params.id}`);
-
     return {
         props: album
     };
