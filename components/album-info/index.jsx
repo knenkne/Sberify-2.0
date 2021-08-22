@@ -1,10 +1,13 @@
+import NextLink from 'next/link';
+
 import {
     AlbumWrapperStyled,
     CoverWrapperStyled,
     CoverStyled,
     AlbumInfoStyled,
     TitleStyled,
-    SubtitleStyled
+    SubtitleStyled,
+    LinkStyled
 } from './styles';
 
 const months = [
@@ -36,7 +39,12 @@ const AlbumInfo = (props) => {
                 <AlbumInfoStyled>
                     <TitleStyled>{props.name}</TitleStyled>
                     <SubtitleStyled>
-                        {props.artists[0].name} • {releaseMonth} {releaseYear}
+                        {props.artists.map(({ name, id }) => (
+                            <NextLink href={`/artist/${id}`} passHref key={id}>
+                                <LinkStyled>{name} • </LinkStyled>
+                            </NextLink>
+                        ))}
+                        {releaseMonth} {releaseYear}
                     </SubtitleStyled>
                 </AlbumInfoStyled>
             </CoverWrapperStyled>

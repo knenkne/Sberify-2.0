@@ -113,7 +113,7 @@ export const SearchWrapperStyled = styled.div`
 
         path {
             transition: 0.1s;
-            fill: var(--nav-inactive);
+            fill: var(--nav);
         }
     }
 
@@ -121,7 +121,7 @@ export const SearchWrapperStyled = styled.div`
     &:focus-within {
         svg {
             path {
-                fill: var(--nav);
+                fill: var(--nav-hover);
             }
         }
     }
@@ -138,7 +138,7 @@ export const SearchStyled = styled.input`
     border-radius: 16px;
     font-family: 'Roboto';
     font-size: 16px;
-    color: var(--nav-inactive);
+    color: var(--nav);
 
     &:focus {
         outline: none;

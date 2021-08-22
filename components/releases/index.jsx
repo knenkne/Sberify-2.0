@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import Swiper, { Autoplay } from 'swiper';
 
@@ -32,7 +32,7 @@ const Releases = ({ releases }) => (
 
             return (
                 <ReleaseStyled key={id}>
-                    <Link href={`/album/${id}`} passHref>
+                    <NextLink href={`/album/${id}`} passHref>
                         <LinkStyled single={album_type === 'single'}>
                             <CoverStyled src={coverUrl} alt={`${name} by ${artist}`} />
                             <InfoStyled>
@@ -40,7 +40,7 @@ const Releases = ({ releases }) => (
                                 <ArtistStyled>{artist}</ArtistStyled>
                             </InfoStyled>
                         </LinkStyled>
-                    </Link>
+                    </NextLink>
                 </ReleaseStyled>
             );
         })}

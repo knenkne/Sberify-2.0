@@ -8,12 +8,15 @@ const globalStyle = () => css`
         --primary-brand: #ff4d4d;
         --secondary-brand: #f9cb28;
 
-        --nav: #000000;
-        --nav-inactive: rgba(0, 0, 0, 0.8);
+        --nav: rgba(0, 0, 0, 0.8);
+        --nav-active: #000000;
+        --nav-hover: #000000;
+        --nav-hover-shadow: 0 0 1.4px var(--nav-hover);
 
-        /* TODO: */
         --primary-text: #121212;
         --secondary-text: #505050;
+        --secondary-text-hover: #000000;
+        --secondary-text-hover-shadow: 0 0 1.4px var(--secondary-text-hover);
 
         --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.16);
         --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.16);
@@ -24,11 +27,13 @@ const globalStyle = () => css`
         --secondary-BG: #1e1e1e;
         --tertiary-BG: #252525;
 
-        --nav: #ffffff;
-        --nav-inactive: rgba(255, 255, 255, 0.8);
+        --nav: rgba(255, 255, 255, 0.8);
+        --nav-active: #ffffff;
+        --nav-hover: #ffffff;
 
         --primary-text: #ffffff;
         --secondary-text: rgba(255, 255, 255, 0.8);
+        --secondary-text-hover: #ffffff;
 
         --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.36);
         --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.36);

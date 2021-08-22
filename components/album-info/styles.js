@@ -30,7 +30,7 @@ export const AlbumInfoStyled = styled.div`
 export const TitleStyled = styled.h2`
     margin: 0;
     font-size: 72px;
-    line-height: 1;
+    /* line-height: 1; */
     font-weight: 500;
     font-family: 'Archivio';
     color: var(--primary-text);
@@ -39,14 +39,25 @@ export const TitleStyled = styled.h2`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* padding-bottom: 4px; */
 `;
 
 export const SubtitleStyled = styled.span`
     display: block;
     margin: 0;
     font-size: 16px;
-    line-height: 1;
     font-weight: 500;
     margin-left: 4px;
+    margin-top: -8px;
     color: var(--secondary-text);
+`;
+
+export const LinkStyled = styled.a`
+    color: var(--secondary-text);
+    transition: 0.3s;
+
+    &:hover {
+        color: var(--secondary-text-hover);
+        text-shadow: 0 0 1.4px var(--nav);
+    }
 `;

@@ -8,7 +8,7 @@ const activeStyle = ({ active }) => {
 
     return css`
         font-weight: 500;
-        color: var(--nav);
+        color: var(--nav-active);
 
         &::after {
             content: '';
@@ -45,14 +45,14 @@ export const LinkStyled = styled.a`
     font-family: 'Archivio';
     font-weight: 400;
     text-transform: uppercase;
-    color: var(--nav-inactive);
+    color: var(--nav);
     font-size: 16px;
     padding: 5px 2px;
     transition: 0.3s;
 
     &:hover {
-        color: var(--nav);
-        text-shadow: 0 0 1.4px var(--nav);
+        color: var(--nav-hover);
+        text-shadow: var(--nav-hover-shadow);
     }
 
     ${activeStyle};
