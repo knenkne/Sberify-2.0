@@ -42,7 +42,7 @@ const globalStyle = () => css`
     /* Archivio */
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/Light.ttf');
+        src: url('/fonts/Archivio/Light.ttf') format('woff2');
         font-style: normal;
         font-weight: 300;
         font-display: swap;
@@ -50,7 +50,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/Regular.ttf');
+        src: url('/fonts/Archivio/Regular.woff2') format('woff2');
         font-style: normal;
         font-weight: 400;
         font-display: swap;
@@ -58,7 +58,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/SemiBold.ttf');
+        src: url('/fonts/Archivio/SemiBold.woff2') format('woff2');
         font-style: normal;
         font-weight: 500;
         font-display: swap;
@@ -66,7 +66,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/Bold.ttf');
+        src: url('/fonts/Archivio/Bold.woff2') format('woff2');
         font-style: normal;
         font-weight: 800;
         font-display: swap;
@@ -74,16 +74,17 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/ExtraBold.ttf');
+        src: url('/fonts/Archivio/ExtraBold.woff2') format('woff2');
         font-style: normal;
         font-weight: 900;
         font-display: swap;
     }
 
+    /* TODO: merge to one font family */
     /* Roboto */
     @font-face {
         font-family: 'Roboto';
-        src: url('/fonts/Roboto/Light.ttf');
+        src: url('/fonts/Roboto/Light.woff2') format('woff2');
         font-style: normal;
         font-weight: 300;
         font-display: swap;
@@ -91,7 +92,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Roboto';
-        src: url('/fonts/Roboto/Regular.ttf');
+        src: url('/fonts/Roboto/Regular.woff2') format('woff2');
         font-style: normal;
         font-weight: 400;
         font-display: swap;
@@ -99,7 +100,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Roboto';
-        src: url('/fonts/Roboto/Medium.ttf');
+        src: url('/fonts/Roboto/SemiBold.woff2') format('woff2');
         font-style: normal;
         font-weight: 500;
         font-display: swap;
