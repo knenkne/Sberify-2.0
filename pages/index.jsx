@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import PropTypes from 'prop-types';
 import { Suspense } from 'react';
 import useSWR from 'swr';
 
@@ -38,5 +39,9 @@ export async function getStaticProps(ctx) {
     //     }
     // };
 }
+
+Home.propTypes = {
+    releases: PropTypes.array
+};
 
 export default Home;

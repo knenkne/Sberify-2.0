@@ -1,5 +1,6 @@
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 
 import { LinkStyled } from './styles';
 
@@ -15,6 +16,11 @@ const Link = ({ href, children, index }) => {
             </LinkStyled>
         </NextLink>
     );
+};
+
+Link.propTypes = {
+    href: PropTypes.string,
+    children: PropTypes.string
 };
 
 export default Link;
