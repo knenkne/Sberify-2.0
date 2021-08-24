@@ -30,6 +30,7 @@ export const CoverStyled = styled.img`
     position: relative;
     width: auto;
     height: 100%;
+    /* TODO: border-radius vars */
     border-radius: 4px;
     transition: 0.3s;
     z-index: 1;
@@ -42,7 +43,10 @@ export const LinkStyled = styled.a`
     display: block;
     height: 100%;
 
+    &:focus-within,
     &:hover {
+        /* TODO: FOCUS STYLE */
+        outline: none;
         ${CoverStyled} {
             transform: translateY(-40px);
         }

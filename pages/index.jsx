@@ -14,7 +14,7 @@ import Wrapper from '../components/wrapper';
 import { fetcher } from '../network';
 
 const Home = ({ releases }) => (
-    <Layout>
+    <Layout index>
         <Banner />
         <Releases releases={releases} />
     </Layout>

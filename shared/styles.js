@@ -4,29 +4,45 @@ const globalStyle = () => css`
     :root {
         --primary-BG: #ffffff;
         --secondary-BG: #eeeeee;
+        --tertiary-BG: #f5f5f5;
         --primary-brand: #ff4d4d;
         --secondary-brand: #f9cb28;
 
-        --nav: #ffffff;
-        --nav-inactive: rgba(255, 255, 255, 0.8);
+        --nav: rgba(0, 0, 0, 0.8);
+        --nav-active: #000000;
+        --nav-hover: #000000;
+        --nav-hover-shadow: 0 0 1.4px var(--nav-hover);
 
-        /* TODO: */
         --primary-text: #121212;
-        --secondary-text: #1e1e1e;
+        --secondary-text: #505050;
+        --secondary-text-hover: #000000;
+        --secondary-text-hover-shadow: 0 0 1.4px var(--secondary-text-hover);
+
+        --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.16);
+        --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.16);
     }
 
     .dark-mode:root {
         --primary-BG: #121212;
         --secondary-BG: #1e1e1e;
+        --tertiary-BG: #252525;
+
+        --nav: rgba(255, 255, 255, 0.8);
+        --nav-active: #ffffff;
+        --nav-hover: #ffffff;
 
         --primary-text: #ffffff;
         --secondary-text: rgba(255, 255, 255, 0.8);
+        --secondary-text-hover: #ffffff;
+
+        --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.36);
+        --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.36);
     }
 
     /* Archivio */
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/Light.ttf');
+        src: url('/fonts/Archivio/Light.ttf') format('woff2');
         font-style: normal;
         font-weight: 300;
         font-display: swap;
@@ -34,7 +50,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/Regular.ttf');
+        src: url('/fonts/Archivio/Regular.woff2') format('woff2');
         font-style: normal;
         font-weight: 400;
         font-display: swap;
@@ -42,7 +58,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/SemiBold.ttf');
+        src: url('/fonts/Archivio/SemiBold.woff2') format('woff2');
         font-style: normal;
         font-weight: 500;
         font-display: swap;
@@ -50,16 +66,25 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Archivio';
-        src: url('/fonts/Archivio/Bold.ttf');
+        src: url('/fonts/Archivio/Bold.woff2') format('woff2');
         font-style: normal;
         font-weight: 800;
         font-display: swap;
     }
 
+    @font-face {
+        font-family: 'Archivio';
+        src: url('/fonts/Archivio/ExtraBold.woff2') format('woff2');
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+    }
+
+    /* TODO: merge to one font family */
     /* Roboto */
     @font-face {
         font-family: 'Roboto';
-        src: url('/fonts/Roboto/Light.ttf');
+        src: url('/fonts/Roboto/Light.woff2') format('woff2');
         font-style: normal;
         font-weight: 300;
         font-display: swap;
@@ -67,7 +92,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Roboto';
-        src: url('/fonts/Roboto/Regular.ttf');
+        src: url('/fonts/Roboto/Regular.woff2') format('woff2');
         font-style: normal;
         font-weight: 400;
         font-display: swap;
@@ -75,7 +100,7 @@ const globalStyle = () => css`
 
     @font-face {
         font-family: 'Roboto';
-        src: url('/fonts/Roboto/Medium.ttf');
+        src: url('/fonts/Roboto/SemiBold.woff2') format('woff2');
         font-style: normal;
         font-weight: 500;
         font-display: swap;

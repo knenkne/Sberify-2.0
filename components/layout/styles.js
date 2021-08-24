@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 export const BodyStyled = styled.div`
@@ -19,7 +20,7 @@ export const SideBarStyled = styled.aside`
     z-index: 10;
 
     .dark-mode & {
-        box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
+        box-shadow: 0px 1px 4px rgba(18, 18, 18, 0.6), 0px 4px 8px rgba(18, 18, 18, 0.8);
     }
 
     @media (max-width: 1599.98px) {
@@ -43,6 +44,26 @@ export const ContentStyled = styled.main`
     }
 `;
 
+const indexStyle = ({ index }) => {
+    if (!index) {
+        return '';
+    }
+
+    return css`
+        ${SearchWrapperStyled} {
+            svg {
+                path {
+                    fill: rgba(255, 255, 255, 0.8);
+                }
+            }
+        }
+
+        ${SearchStyled} {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    `;
+};
+
 export const HeaderStyled = styled.header`
     position: relative;
     display: flex;
@@ -50,6 +71,8 @@ export const HeaderStyled = styled.header`
     width: 100%;
     padding: 20px 40px;
     z-index: 2;
+
+    ${indexStyle};
 `;
 
 export const NavStyled = styled.nav`
@@ -90,7 +113,7 @@ export const SearchWrapperStyled = styled.div`
 
         path {
             transition: 0.1s;
-            fill: var(--nav-inactive);
+            fill: var(--nav);
         }
     }
 
@@ -98,7 +121,7 @@ export const SearchWrapperStyled = styled.div`
     &:focus-within {
         svg {
             path {
-                fill: var(--nav);
+                fill: var(--nav-hover);
             }
         }
     }
@@ -107,7 +130,7 @@ export const SearchWrapperStyled = styled.div`
 export const SearchStyled = styled.input`
     width: 100%;
     height: 30px;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--primary-BG);
     border-radius: 16px;
     padding: 0;
     padding: 8px 16px 8px 32px;
@@ -115,7 +138,7 @@ export const SearchStyled = styled.input`
     border-radius: 16px;
     font-family: 'Roboto';
     font-size: 16px;
-    color: var(--nav-inactive);
+    color: var(--nav);
 
     &:focus {
         outline: none;
