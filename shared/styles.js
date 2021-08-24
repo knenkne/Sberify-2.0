@@ -150,22 +150,35 @@ const globalStyle = () => css`
         height: 0px;
     }
 
-    .swiper-container {
-        position: relative;
-        flex-shrink: 0;
-        flex-grow: 1;
-        z-index: 10;
-        width: 100%;
-        /* min-height: calc(100vh - 800px + 50px); */
+    .embla {
+        overflow: hidden;
         height: 220px;
+        flex-shrink: 0;
         margin-top: -50px;
-        padding-left: 40px;
+        z-index: 10;
     }
 
-    .swiper-wrapper {
-        width: 100%;
+    .embla__container {
         display: flex;
         align-items: center;
+        width: calc(100% - 40px);
+        min-height: calc(100vh - 800px + 50px);
+        height: 100%;
+        margin-left: 40px;
+    }
+
+    .embla__slide {
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        height: 60%;
+        min-height: 140px;
+        min-width: 140px;
+        -webkit-flex-shrink: 0;
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        padding-right: 40px;
+        box-sizing: content-box;
     }
 `;
 
