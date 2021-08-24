@@ -1,6 +1,6 @@
 import useDarkMode from 'use-dark-mode';
 
-import { ThemeButtonStyled, WaveStyled } from './styles';
+import { ThemeButtonStyled } from './styles';
 
 const ThemeButton = () => {
     const { toggle } = useDarkMode(true, {
