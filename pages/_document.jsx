@@ -7,7 +7,6 @@ export default class extends Document {
         return (
             <Html className="dark-mode">
                 <Head>
-                    <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;900&family=Roboto:wght@500&display=swap"
@@ -15,7 +14,7 @@ export default class extends Document {
                     />
                 </Head>
                 <body>
-                    <script src="/js/noflash.js" />
+                    <script src="/js/noflash.min.js" />
                     <Main />
                     <NextScript />
                 </body>
