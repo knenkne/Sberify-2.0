@@ -1,5 +1,4 @@
-import Button from '../button';
-import { AlbumStyled, BannerStyled, InfoStyled, TitleStyled, WrapperStyled } from './styles';
+import { BannerStyled, InfoStyled, WrapperStyled } from './styles';
 
 const Banner = () => (
     <WrapperStyled>
