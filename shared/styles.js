@@ -38,70 +38,6 @@ const globalStyle = () => css`
         --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.36);
         --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.36);
     }
-    /* 
-    @font-face {
-        font-family: 'Archivio';
-        src: url('/fonts/Archivio/Light.ttf') format('woff2');
-        font-style: normal;
-        font-weight: 300;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Archivio';
-        src: url('/fonts/Archivio/Regular.woff2') format('woff2');
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Archivio';
-        src: url('/fonts/Archivio/SemiBold.woff2') format('woff2');
-        font-style: normal;
-        font-weight: 500;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Archivio';
-        src: url('/fonts/Archivio/Bold.woff2') format('woff2');
-        font-style: normal;
-        font-weight: 800;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Archivio';
-        src: url('/fonts/Archivio/ExtraBold.woff2') format('woff2');
-        font-style: normal;
-        font-weight: 900;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Roboto';
-        src: url('/fonts/Roboto/Light.woff2') format('woff2');
-        font-style: normal;
-        font-weight: 300;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Roboto';
-        src: url('/fonts/Roboto/Regular.woff2') format('woff2');
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: 'Roboto';
-        src: url('/fonts/Roboto/SemiBold.woff2') format('woff2');
-        font-style: normal;
-        font-weight: 500;
-        font-display: swap;
-    } */
 
     * {
         box-sizing: border-box;
@@ -165,14 +101,10 @@ const globalStyle = () => css`
     }
 
     .embla__slide {
-        width: -webkit-fit-content;
-        width: -moz-fit-content;
         width: fit-content;
         height: 60%;
         min-height: 140px;
         min-width: 140px;
-        -webkit-flex-shrink: 0;
-        -ms-flex-negative: 0;
         flex-shrink: 0;
         padding-right: 40px;
         box-sizing: content-box;
