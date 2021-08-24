@@ -7,7 +7,7 @@ export default class extends Document {
         return (
             <Html className="dark-mode">
                 <Head>
-                    <link
+                    {/* <link
                         rel="preload"
                         href="/fonts/Archivio/Light.woff2"
                         as="font"
@@ -51,7 +51,7 @@ export default class extends Document {
                     />
                     <link
                         rel="preload"
-                        href="/fonts/Roboto/Medium.woff2"
+                        href="/fonts/Roboto/SemiBold.woff2"
                         as="font"
                         type="font/woff2"
                         crossOrigin=""
@@ -62,7 +62,7 @@ export default class extends Document {
                         as="font"
                         type="font/woff2"
                         crossOrigin=""
-                    />
+                    /> */}
                 </Head>
                 <body>
                     <script src="/js/noflash.js" />

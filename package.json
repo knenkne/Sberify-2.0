@@ -12,7 +12,7 @@
         "from": "^0.1.7",
         "http-proxy": "^1.18.1",
         "next": "^11.1.0",
-        "nextjs-progressbar": "0.0.7",
+        "nextjs-progressbar": "^0.0.7",
         "nookies": "^2.5.2",
         "prop-types": "^15.7.2",
         "qs": "^6.9.6",
