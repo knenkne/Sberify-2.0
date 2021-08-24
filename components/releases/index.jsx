@@ -30,7 +30,12 @@ const Releases = ({ releases }) => {
                                         loader={Loader}
                                         layout="fill"
                                     /> */}
-                                    <CoverStyled src={coverUrl} alt={`${name} by ${artist}`} />
+                                    <CoverStyled
+                                        src={coverUrl}
+                                        alt={`${name} by ${artist}`}
+                                        width="140"
+                                        height="140"
+                                    />
                                     <InfoStyled>
                                         <NameStyled>{name}</NameStyled>
                                         <ArtistStyled>{artist}</ArtistStyled>
