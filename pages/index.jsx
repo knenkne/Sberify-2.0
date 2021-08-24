@@ -16,7 +16,7 @@ import { fetcher } from '../network';
 const Home = ({ releases }) => (
     <Layout index>
         <Banner />
-        <Releases releases={releases} />
+        {/* <Releases releases={releases} /> */}
     </Layout>
 );
 
