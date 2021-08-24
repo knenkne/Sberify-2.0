@@ -32,7 +32,7 @@ export const TitleStyled = styled.h2`
     font-size: 72px;
     /* line-height: 1; */
     font-weight: 500;
-    font-family: 'Archivio';
+    font-family: 'Archivo';
     color: var(--primary-text);
     font-weight: 900;
     width: 100%;

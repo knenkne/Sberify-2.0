@@ -38,8 +38,7 @@ const globalStyle = () => css`
         --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.36);
         --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.36);
     }
-
-    /* Archivio */
+    /* 
     @font-face {
         font-family: 'Archivio';
         src: url('/fonts/Archivio/Light.ttf') format('woff2');
@@ -80,8 +79,6 @@ const globalStyle = () => css`
         font-display: swap;
     }
 
-    /* TODO: merge to one font family */
-    /* Roboto */
     @font-face {
         font-family: 'Roboto';
         src: url('/fonts/Roboto/Light.woff2') format('woff2');
@@ -104,7 +101,7 @@ const globalStyle = () => css`
         font-style: normal;
         font-weight: 500;
         font-display: swap;
-    }
+    } */
 
     * {
         box-sizing: border-box;

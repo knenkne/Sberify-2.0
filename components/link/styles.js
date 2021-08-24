@@ -42,7 +42,7 @@ const indexStyle = ({ active, index }) => {
 
 export const LinkStyled = styled.a`
     position: relative;
-    font-family: 'Archivio';
+    font-family: 'Archivo';
     font-weight: 400;
     text-transform: uppercase;
     color: var(--nav);
