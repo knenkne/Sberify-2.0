@@ -36,7 +36,7 @@ const AlbumInfo = (props) => {
     return (
         <AlbumWrapperStyled>
             <CoverWrapperStyled>
-                <CoverStyled src={props.images[0].url} alt={props.name} />
+                <CoverStyled src={props.images[1].url} alt={props.name} />
                 <AlbumInfoStyled>
                     <TitleStyled>{props.name}</TitleStyled>
                     <SubtitleStyled>

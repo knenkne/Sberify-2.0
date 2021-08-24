@@ -1,20 +1,13 @@
 import { useEmblaCarousel } from 'embla-carousel/react';
+import Image from 'next/image';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
 import { ArtistStyled, CoverStyled, InfoStyled, LinkStyled, NameStyled } from './style';
 
-// const swiperParams = {
-//     Swiper,
-//     modules: [Autoplay],
-//     ContainerEl: 'section',
-//     WrapperEl: 'ul',
-//     slidesPerView: 'auto',
-//     autoplay: {
-//         disableOnInteraction: false,
-//         pauseOnMouseEnter: true
-//     }
-// };
+const Loader = ({ src }) => {
+    return `${src}`;
+};
 
 const Releases = ({ releases }) => {
     const [emblaRef] = useEmblaCarousel({
@@ -24,16 +17,24 @@ const Releases = ({ releases }) => {
     });
 
     return (
+        // TODO: styled semantic components w/ className
         <div className="embla" ref={emblaRef}>
             <div className="embla__container">
                 {releases.map(({ id, name, images, artists, album_type }) => {
-                    const coverUrl = images[0].url;
+                    const coverUrl = images[1].url;
                     const artist = artists[0].name;
 
                     return (
                         <div className="embla__slide" key={id}>
                             <NextLink href={`/album/${id}`} passHref>
                                 <LinkStyled single={album_type === 'single'}>
+                                    {/* TODO: placeholder */}
+                                    {/* <Image
+                                        src={coverUrl}
+                                        alt={`${name} by ${artist}`}
+                                        loader={Loader}
+                                        layout="fill"
+                                    /> */}
                                     <CoverStyled src={coverUrl} alt={`${name} by ${artist}`} />
                                     <InfoStyled>
                                         <NameStyled>{name}</NameStyled>
