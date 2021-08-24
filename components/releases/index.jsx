@@ -2,15 +2,7 @@ import { useEmblaCarousel } from 'embla-carousel/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
-import {
-    ArtistStyled,
-    CoverStyled,
-    InfoStyled,
-    LinkStyled,
-    NameStyled,
-    ReleasesStyled,
-    ReleaseStyled
-} from './style';
+import { ArtistStyled, CoverStyled, InfoStyled, LinkStyled, NameStyled } from './style';
 
 // const swiperParams = {
 //     Swiper,
@@ -25,7 +17,7 @@ import {
 // };
 
 const Releases = ({ releases }) => {
-    const [emblaRef, emblaApi] = useEmblaCarousel({
+    const [emblaRef] = useEmblaCarousel({
         loop: false,
         align: 'start',
         containScroll: 'keepSnaps'
