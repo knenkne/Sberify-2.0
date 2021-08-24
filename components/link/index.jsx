@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { LinkStyled } from './styles';
 
+// eslint-disable-next-line react/prop-types
 const Link = ({ href, children, index }) => {
     const { pathname } = useRouter();
     // /albums/[id] -> /albums

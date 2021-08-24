@@ -1,10 +1,11 @@
+import AlbumInfo from '../../components/album-info';
 import Layout from '../../components/layout';
 import Wrapper from '../../components/wrapper';
-import AlbumInfo from '../../components/album-info';
 import { fetcher } from '../../network';
 
 // TODO: extract here from albuminfo component
 const Album = (props) => (
+    // eslint-disable-next-line react/prop-types
     <Layout title={props.name}>
         <Wrapper shadeless>
             <AlbumInfo {...props} />

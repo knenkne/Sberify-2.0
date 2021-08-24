@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 import NextLink from 'next/link';
 
 import {
-    AlbumWrapperStyled,
-    CoverWrapperStyled,
-    CoverStyled,
     AlbumInfoStyled,
-    TitleStyled,
+    AlbumWrapperStyled,
+    CoverStyled,
+    CoverWrapperStyled,
+    LinkStyled,
     SubtitleStyled,
-    LinkStyled
+    TitleStyled
 } from './styles';
 
 const months = [
