@@ -1,19 +1,20 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import Swiper from 'react-id-swiper/lib/ReactIdSwiper.custom';
 
-export const ReleasesStyled = styled(Swiper)`
+// TODO: embla to Styled
+export const ReleasesStyled = styled.ul`
     z-index: 10;
+    /* flex-grow: 1; */
 `;
 
-export const ReleaseStyled = styled.li`
+export const ReleaseStyled = styled.div`
     width: fit-content;
     height: 60%;
     min-height: 140px;
     min-width: 140px;
     flex-shrink: 0;
 
-    padding-right: 40px;
+    /* padding-right: 40px; */
     box-sizing: content-box;
 `;
 
