@@ -1,13 +1,8 @@
 import { useEmblaCarousel } from 'embla-carousel/react';
-import Image from 'next/image';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
 import { ArtistStyled, CoverStyled, InfoStyled, LinkStyled, NameStyled } from './style';
-
-const Loader = ({ src }) => {
-    return `${src}`;
-};
 
 const Releases = ({ releases }) => {
     const [emblaRef] = useEmblaCarousel({
