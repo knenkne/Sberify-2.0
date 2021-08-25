@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import NextImage from 'next/image';
 
 // TODO: embla to Styled
 export const ReleasesStyled = styled.ul`
@@ -26,16 +27,17 @@ const singleStyle = ({ single }) => {
     return css``;
 };
 
-export const CoverStyled = styled.img`
-    display: block;
+export const CoverWrapperStyled = styled.div`
     position: relative;
-    width: auto;
+    z-index: 1;
+    transition: 0.3s;
     height: 100%;
+    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24);
+`;
+
+export const CoverStyled = styled(NextImage)`
     /* TODO: border-radius vars */
     border-radius: 4px;
-    transition: 0.3s;
-    z-index: 1;
-    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24);
 `;
 
 // TODO: onFocus
@@ -48,7 +50,7 @@ export const LinkStyled = styled.a`
     &:hover {
         /* TODO: FOCUS STYLE */
         outline: none;
-        ${CoverStyled} {
+        ${CoverWrapperStyled} {
             transform: translateY(-40px);
         }
     }

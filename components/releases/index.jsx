@@ -2,7 +2,7 @@ import { useEmblaCarousel } from 'embla-carousel/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
-import { ArtistStyled, CoverStyled, InfoStyled, LinkStyled, NameStyled } from './style';
+import { ArtistStyled, CoverWrapperStyled, CoverStyled, InfoStyled, LinkStyled, NameStyled } from './style';
 
 const Releases = ({ releases }) => {
     const [emblaRef] = useEmblaCarousel({
@@ -24,18 +24,18 @@ const Releases = ({ releases }) => {
                             <NextLink href={`/album/${id}`} passHref>
                                 <LinkStyled single={album_type === 'single'}>
                                     {/* TODO: placeholder */}
-                                    {/* <Image
-                                        src={coverUrl}
-                                        alt={`${name} by ${artist}`}
-                                        loader={Loader}
-                                        layout="fill"
-                                    /> */}
-                                    <CoverStyled
-                                        src={coverUrl}
-                                        alt={`${name} by ${artist}`}
-                                        width="140"
-                                        height="140"
-                                    />
+                                    {/* TODO: semantic */}
+                                    {/* TODO: loader for matching sizes automaticly */}
+                                    <CoverWrapperStyled>
+                                        <CoverStyled
+                                            src={coverUrl}
+                                            alt={`${name} by ${artist}`}
+                                            layout="fixed"
+                                            width="140"
+                                            height="140"
+                                            unoptimized
+                                        />
+                                    </CoverWrapperStyled>
                                     <InfoStyled>
                                         <NameStyled>{name}</NameStyled>
                                         <ArtistStyled>{artist}</ArtistStyled>
