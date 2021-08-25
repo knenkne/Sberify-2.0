@@ -15,6 +15,7 @@ const Home = ({ releases }) => (
                 alt="Featured: Machine Gun Kelly"
                 layout="responsive"
                 placeholder="blur"
+                priority
             />
         </Wrapper>
         <Releases releases={releases} />
