@@ -3,14 +3,7 @@ import NextImage from 'next/image';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
-import {
-    ArtistStyled,
-    CoverStyled,
-    CoverWrapperStyled,
-    InfoStyled,
-    LinkStyled,
-    NameStyled
-} from './style';
+import { ArtistStyled, CoverWrapperStyled, InfoStyled, LinkStyled, NameStyled } from './style';
 
 const shimmer = () =>
     `<?xml version="1.0" encoding="UTF-8"?>
