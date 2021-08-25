@@ -2,7 +2,14 @@ import { useEmblaCarousel } from 'embla-carousel/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
-import { ArtistStyled, CoverWrapperStyled, CoverStyled, InfoStyled, LinkStyled, NameStyled } from './style';
+import {
+    ArtistStyled,
+    CoverStyled,
+    CoverWrapperStyled,
+    InfoStyled,
+    LinkStyled,
+    NameStyled
+} from './style';
 
 const Releases = ({ releases }) => {
     const [emblaRef] = useEmblaCarousel({
