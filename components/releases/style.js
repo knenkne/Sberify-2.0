@@ -1,6 +1,5 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import NextImage from 'next/image';
 
 // TODO: embla to Styled
 export const ReleasesStyled = styled.ul`
@@ -32,13 +31,17 @@ export const CoverWrapperStyled = styled.div`
     z-index: 1;
     transition: 0.3s;
     height: 100%;
+    /* TODO: border-radius vars */
     border-radius: 4px;
     overflow: hidden;
     box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24);
-`;
+    background-color: var(--primary-BG);
 
-export const CoverStyled = styled(NextImage)`
-    /* TODO: border-radius vars */
+    /* Removing next/image blur cause there is no need on it, 
+    also it causes square box bug on windows chrome */
+    img {
+        filter: blur(5px);
+    }
 `;
 
 // TODO: onFocus
