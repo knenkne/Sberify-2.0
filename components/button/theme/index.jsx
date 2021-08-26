@@ -1,13 +1,20 @@
-import useDarkMode from 'use-dark-mode';
+import { useDarkMode } from 'next-dark-mode';
+import { useCallback, useEffect } from 'react';
 
 import { ThemeButtonStyled } from './styles';
 
 const ThemeButton = () => {
-    const { toggle } = useDarkMode(true, {
-        element: typeof document !== 'undefined' ? document.documentElement : null
-    });
+    const { darkModeActive, switchToDarkMode, switchToLightMode } = useDarkMode();
 
-    return <ThemeButtonStyled onClick={toggle}>{/* <WaveStyled /> */}</ThemeButtonStyled>;
+    const handleClick = useCallback(() => {
+        darkModeActive ? switchToLightMode() : switchToDarkMode();
+    }, [darkModeActive]);
+
+    useEffect(() => {
+        document.documentElement.classList.toggle('dark-mode', darkModeActive);
+    }, [darkModeActive]);
+
+    return <ThemeButtonStyled onClick={handleClick}>{/* <WaveStyled /> */}</ThemeButtonStyled>;
 };
 
 export default ThemeButton;
