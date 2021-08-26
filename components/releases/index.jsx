@@ -1,8 +1,8 @@
 import { useEmblaCarousel } from 'embla-carousel/react';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
+import { useDarkMode } from 'next-dark-mode';
 import PropTypes from 'prop-types';
-import useDarkMode from 'use-dark-mode';
 
 import { DARK_THEME, LIGHT_THEME } from '../../shared/colors';
 import { ArtistStyled, CoverWrapperStyled, InfoStyled, LinkStyled, NameStyled } from './style';
@@ -38,8 +38,7 @@ const toBase64 = (str) =>
     process.browser ? window.btoa(str) : Buffer.from(str).toString('base64');
 
 const Releases = ({ releases }) => {
-    const { value: darkMode } = useDarkMode();
-    console.log(document);
+    const { darkModeActive } = useDarkMode();
     const [emblaRef] = useEmblaCarousel({
         loop: false,
         align: 'start',
@@ -71,7 +70,7 @@ const Releases = ({ releases }) => {
                                             height="140"
                                             placeholder="blur"
                                             blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                                                shimmer(140, 140, darkMode)
+                                                shimmer(140, 140, darkModeActive)
                                             )}`}
                                             unoptimized
                                         />
