@@ -10,7 +10,13 @@ import banner from '../public/images/banner.jpg';
 const Home = ({ releases }) => (
     <Layout index>
         <Wrapper>
-            <Image src={banner} alt="Featured: Machine Gun Kelly" layout="responsive" priority />
+            <Image
+                src={banner}
+                alt="Featured: Machine Gun Kelly"
+                layout="responsive"
+                placeholder="blur"
+                priority
+            />
         </Wrapper>
         <Releases releases={releases} />
     </Layout>
