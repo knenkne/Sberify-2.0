@@ -1,19 +1,22 @@
-import { useDarkMode } from 'next-dark-mode';
-import { useCallback, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { useCallback, useEffect, useState } from 'react';
 
 import { ThemeButtonStyled } from './styles';
 
 const ThemeButton = () => {
-    const { darkModeActive, switchToDarkMode, switchToLightMode } = useDarkMode();
-
+    const [mounted, setMounted] = useState(false);
+    const { theme, setTheme } = useTheme();
     const handleClick = useCallback(() => {
-        darkModeActive ? switchToLightMode() : switchToDarkMode();
-    }, [darkModeActive]);
-
-    useEffect(() => {
-        document.documentElement.classList.toggle('dark-mode', darkModeActive);
-    }, [darkModeActive]);
-
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+    }, [theme]);
+    // When mounted on client, now we can show the UI
+    useEffect(() => setMounted(true), []);
+    // useEffect(() => {
+    //     document.documentElement.classList.toggle('dark-mode', darkModeActive);
+    // }, [darkModeActive]);
+    if (!mounted) {
+        return null;
+    }
     return <ThemeButtonStyled onClick={handleClick}>{/* <WaveStyled /> */}</ThemeButtonStyled>;
 };
 

@@ -1,4 +1,4 @@
-import withDarkMode, { MODE as Mode } from 'next-dark-mode';
+import { ThemeProvider } from 'next-themes';
 import NextNprogress from 'nextjs-progressbar';
 import { useMemo } from 'react';
 
@@ -9,12 +9,12 @@ const App = ({ Component, pageProps }) => {
     const progressOptions = useMemo(() => ({ showSpinner: false }), []);
 
     return (
-        <>
+        <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
             <NextNprogress options={progressOptions} />
             {globalStyles}
             <Component {...pageProps} />
-        </>
+        </ThemeProvider>
     );
 };
 
-export default withDarkMode(App, { defaultMode: Mode.DARK });
+export default App;
