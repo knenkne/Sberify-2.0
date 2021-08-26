@@ -36,6 +36,12 @@ export const CoverWrapperStyled = styled.div`
     overflow: hidden;
     box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24);
     background-color: var(--primary-BG);
+
+    /* Removing next/image blur cause there is no need on it, 
+    also it causes square box bug on windows chrome */
+    img {
+        filter: none !important;
+    }
 `;
 
 // TODO: onFocus

@@ -18,8 +18,8 @@ const globalStyle = () => css`
         --secondary-text-hover: #000000;
         --secondary-text-hover-shadow: 0 0 1.4px var(--secondary-text-hover);
 
-        --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.16);
-        --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.16);
+        --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.08);
+        --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.08);
     }
 
     .dark-mode:root {
@@ -35,8 +35,8 @@ const globalStyle = () => css`
         --secondary-text: rgba(255, 255, 255, 0.8);
         --secondary-text-hover: #ffffff;
 
-        --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.36);
-        --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.36);
+        --secondary-shadow-1: -6px 4px 8px rgba(18, 18, 18, 0.4);
+        --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.4);
     }
 
     * {
