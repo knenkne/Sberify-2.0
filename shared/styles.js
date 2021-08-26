@@ -22,7 +22,7 @@ const globalStyle = () => css`
         --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.08);
     }
 
-    .dark-mode:root {
+    [data-theme='dark']:root {
         --primary-BG: #121212;
         --secondary-BG: #1e1e1e;
         --tertiary-BG: #252525;

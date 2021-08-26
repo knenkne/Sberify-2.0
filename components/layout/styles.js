@@ -69,6 +69,7 @@ export const HeaderStyled = styled.header`
     display: flex;
     align-items: center;
     width: 100%;
+    min-height: 80px;
     padding: 20px 40px;
     z-index: 2;
 

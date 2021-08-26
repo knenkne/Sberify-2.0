@@ -28,19 +28,24 @@ const singleStyle = ({ single }) => {
 
 export const CoverWrapperStyled = styled.div`
     position: relative;
-    z-index: 1;
+    z-index: 2;
     transition: 0.3s;
-    height: 100%;
+    height: 140px;
+    width: 140px;
     /* TODO: border-radius vars */
     border-radius: 4px;
     overflow: hidden;
-    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24);
-    background-color: var(--primary-BG);
+    /* TODO: w/ theme shadow */
+    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.08), -6px 4px 12px rgba(18, 18, 18, 0.08);
+    background-image: url("data:image/svg+xml,%3Csvg aria-labelledby='loading-aria' preserveAspectRatio='none' role='img' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3ELoading%3C/title%3E%3Crect width='100%25' height='100%25' clip-path='url(%23b)' fill='url(%23a)'/%3E%3Cdefs%3E%3CclipPath id='b'%3E%3Crect x='71' y='79' width='1' height='7' rx='0' ry='0'/%3E%3Crect width='140' height='140' rx='0' ry='0'/%3E%3C/clipPath%3E%3ClinearGradient id='a'%3E%3Cstop stop-color='%23ffffff' offset='.59996'%3E%3Canimate attributeName='offset' dur='2s' keyTimes='0; 0.25; 1' repeatCount='indefinite' values='-2; -2; 1'/%3E%3C/stop%3E%3Cstop stop-color='%23f5f5f5' offset='1.6'%3E%3Canimate attributeName='offset' dur='2s' keyTimes='0; 0.25; 1' repeatCount='indefinite' values='-1; -1; 2'/%3E%3C/stop%3E%3Cstop stop-color='%23ffffff' offset='2.6'%3E%3Canimate attributeName='offset' dur='2s' keyTimes='0; 0.25; 1' repeatCount='indefinite' values='0; 0; 3'/%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
 
+    [data-theme='dark'] & {
+        background-image: url("data:image/svg+xml,%3Csvg aria-labelledby='loading-aria' preserveAspectRatio='none' role='img' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3ELoading%3C/title%3E%3Crect width='100%25' height='100%25' clip-path='url(%23b)' fill='url(%23a)'/%3E%3Cdefs%3E%3CclipPath id='b'%3E%3Crect x='71' y='79' width='1' height='7' rx='0' ry='0'/%3E%3Crect width='140' height='140' rx='0' ry='0'/%3E%3C/clipPath%3E%3ClinearGradient id='a'%3E%3Cstop stop-color='%23121212' offset='.59996'%3E%3Canimate attributeName='offset' dur='2s' keyTimes='0; 0.25; 1' repeatCount='indefinite' values='-2; -2; 1'/%3E%3C/stop%3E%3Cstop stop-color='%23252525' offset='1.6'%3E%3Canimate attributeName='offset' dur='2s' keyTimes='0; 0.25; 1' repeatCount='indefinite' values='-1; -1; 2'/%3E%3C/stop%3E%3Cstop stop-color='%23121212' offset='2.6'%3E%3Canimate attributeName='offset' dur='2s' keyTimes='0; 0.25; 1' repeatCount='indefinite' values='0; 0; 3'/%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+    }
     /* Removing next/image blur cause there is no need on it, 
     also it causes square box bug on windows chrome */
     img {
-        filter: blur(5px);
+        filter: none !important;
     }
 `;
 
