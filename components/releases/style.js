@@ -32,12 +32,13 @@ export const CoverWrapperStyled = styled.div`
     z-index: 1;
     transition: 0.3s;
     height: 100%;
+    border-radius: 4px;
+    overflow: hidden;
     box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24);
 `;
 
 export const CoverStyled = styled(NextImage)`
     /* TODO: border-radius vars */
-    border-radius: 4px;
 `;
 
 // TODO: onFocus

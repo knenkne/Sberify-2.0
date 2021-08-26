@@ -1,7 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 // TODO: OpenGraph
-// TODO: Fonts shift fix
 export default class extends Document {
     render() {
         return (
