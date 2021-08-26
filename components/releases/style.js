@@ -30,7 +30,8 @@ export const CoverWrapperStyled = styled.div`
     position: relative;
     z-index: 2;
     transition: 0.3s;
-    height: 100%;
+    height: 140px;
+    width: 140px;
     /* TODO: border-radius vars */
     border-radius: 4px;
     overflow: hidden;
