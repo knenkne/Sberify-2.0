@@ -29,7 +29,8 @@ export async function getStaticProps({ params: { id } }) {
     const album = await fetcher(`/v1/albums/${id}`);
 
     return {
-        props: album
+        props: album,
+        revalidate: 60 * 60 * 24
     };
 }
 
