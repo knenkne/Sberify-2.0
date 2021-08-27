@@ -23,8 +23,6 @@ const Home = ({ releases }) => (
 );
 
 export async function getStaticProps() {
-    // const { params } = ctx;
-    // TODO: Suspense + SWR
     const {
         albums: { items: releases }
     } = await fetcher(`/v1/browse/new-releases?limit=50`);
@@ -35,11 +33,6 @@ export async function getStaticProps() {
         },
         revalidate: 60 * 60 * 24
     };
-    // return {
-    //     props: {
-    //         releases
-    //     }
-    // };
 }
 
 Home.propTypes = {
