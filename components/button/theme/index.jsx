@@ -6,10 +6,11 @@ import { ThemeButtonStyled } from './styles';
 const ThemeButton = () => {
     const { theme, setTheme } = useTheme();
     const handleClick = useCallback(() => {
+        // TODO: Enum
         setTheme(theme === 'dark' ? 'light' : 'dark');
     }, [theme]);
 
-    return <ThemeButtonStyled onClick={handleClick}>{/* <WaveStyled /> */}</ThemeButtonStyled>;
+    return <ThemeButtonStyled onClick={handleClick} />;
 };
 
 export default ThemeButton;

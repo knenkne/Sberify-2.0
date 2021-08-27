@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
+import NextImage from 'next/image';
 import NextLink from 'next/link';
 
 import {
     AlbumInfoStyled,
+    AlbumStyled,
     AlbumWrapperStyled,
-    CoverStyled,
     CoverWrapperStyled,
     LinkStyled,
     SubtitleStyled,
@@ -35,8 +36,17 @@ const AlbumInfo = (props) => {
 
     return (
         <AlbumWrapperStyled>
-            <CoverWrapperStyled>
-                <CoverStyled src={props.images[1].url} alt={props.name} />
+            <AlbumStyled>
+                <CoverWrapperStyled>
+                    <NextImage
+                        src={props.images[1].url}
+                        // alt={`${props.name} by ${props.artist}`}
+                        layout="fixed"
+                        width="300"
+                        height="300"
+                        unoptimized
+                    />
+                </CoverWrapperStyled>
                 <AlbumInfoStyled>
                     <TitleStyled>{props.name}</TitleStyled>
                     <SubtitleStyled>
@@ -48,7 +58,7 @@ const AlbumInfo = (props) => {
                         {releaseMonth} {releaseYear}
                     </SubtitleStyled>
                 </AlbumInfoStyled>
-            </CoverWrapperStyled>
+            </AlbumStyled>
         </AlbumWrapperStyled>
     );
 };
