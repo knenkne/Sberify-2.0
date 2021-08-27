@@ -1,22 +1,28 @@
 import styled from '@emotion/styled';
 
+import { withShimmer } from '../../shared/styles';
+
 export const AlbumWrapperStyled = styled.div`
     padding: 100px 40px 40px;
     background-color: var(--secondary-BG);
     box-shadow: var(--secondary-shadow-1), var(--secondary-shadow-2);
 `;
 
-export const CoverWrapperStyled = styled.div`
+export const AlbumStyled = styled.div`
     display: flex;
     align-items: flex-end;
 `;
 
-// TODO: Next/image
-export const CoverStyled = styled.img`
+export const CoverWrapperStyled = styled.div`
+    position: relative;
+    flex-shrink: 0;
     width: 300px;
     height: 300px;
     border-radius: 8px;
+    overflow: hidden;
     box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24);
+
+    ${withShimmer(300, 300)}
 `;
 
 export const AlbumInfoStyled = styled.div`
