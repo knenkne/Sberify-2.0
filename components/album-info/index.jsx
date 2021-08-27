@@ -40,6 +40,7 @@ const AlbumInfo = (props) => {
                 <CoverWrapperStyled>
                     <NextImage
                         src={props.images[1].url}
+                        // TODO: alt
                         // alt={`${props.name} by ${props.artist}`}
                         layout="fixed"
                         width="300"
