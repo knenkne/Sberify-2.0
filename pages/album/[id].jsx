@@ -13,9 +13,21 @@ const Album = (props) => (
     </Layout>
 );
 
-export async function getServerSideProps(ctx) {
-    const { params } = ctx;
-    const album = await fetcher(`/v1/albums/${params.id}`);
+export async function getStaticPaths() {
+    const {
+        albums: { items: releases }
+    } = await fetcher('/v1/browse/new-releases?limit=50');
+
+    const paths = releases.map(({ id }) => ({
+        params: { id }
+    }));
+
+    return { paths, fallback: 'blocking' };
+}
+
+export async function getStaticProps({ params: { id } }) {
+    const album = await fetcher(`/v1/albums/${id}`);
+
     return {
         props: album
     };
