@@ -52,9 +52,9 @@ export const TrackPlayButtonStyled = styled.button`
     cursor: pointer;
     border-radius: 4px;
 
-    &:focus {
+    /* &:focus {
         opacity: 1;
-    }
+    } */
 
     svg {
         width: 16px;
@@ -114,8 +114,8 @@ export const TrackStyled = styled.li`
         background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
     }
 
-    &:hover,
-    &:focus-within {
+    /* &:focus-within, */
+    &:hover {
         background-color: var(--secondary-BG);
 
         &::after {
