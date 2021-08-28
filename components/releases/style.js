@@ -38,7 +38,11 @@ export const CoverWrapperStyled = styled.div`
     border-radius: 4px;
     overflow: hidden;
     /* TODO: w/ theme shadow */
-    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.08), -6px 4px 12px rgba(18, 18, 18, 0.08);
+    box-shadow: -2px 2px 8px rgba(18, 18, 18, 0.16), -2px 2px 8px rgba(18, 18, 18, 0.16);
+
+    [data-theme='dark'] & {
+        box-shadow: -2px 2px 8px rgba(18, 18, 18, 0.48), -2px 2px 8px rgba(18, 18, 18, 0.48);
+    }
 
     /* Removing next/image blur cause there is no need on it, 
         also it causes square box bug on windows chrome */

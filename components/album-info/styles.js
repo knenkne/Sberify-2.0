@@ -20,7 +20,12 @@ export const CoverWrapperStyled = styled.div`
     height: 300px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: -6px 4px 8px rgba(18, 18, 18, 0.24), -6px 4px 12px rgba(18, 18, 18, 0.24);
+    box-shadow: -4px 4px 8px rgba(18, 18, 18, 0.08), -4px 4px 8px rgba(18, 18, 18, 0.08);
+    margin-right: 20px;
+
+    [data-theme='dark'] & {
+        box-shadow: -4px 4px 8px rgba(18, 18, 18, 0.24), -4px 4px 8px rgba(18, 18, 18, 0.24);
+    }
 
     ${withShimmer(300, 300)}
 `;
@@ -30,7 +35,6 @@ export const AlbumInfoStyled = styled.div`
     flex-grow: 1;
     /* Text overflow fix */
     min-width: 0;
-    padding-left: 20px;
 `;
 
 export const TitleStyled = styled.h2`
