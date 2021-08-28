@@ -27,7 +27,8 @@ const Layout = ({ children, title = 'Sberify 2.0', index }) => {
             </Head>
             <BodyStyled>
                 <SideBarStyled />
-                <ContentStyled>
+                {/* TODO: index */}
+                <ContentStyled index={index}>
                     <HeaderStyled index={index}>
                         <NavStyled>
                             {Object.keys(Path).map((pathName) => (
