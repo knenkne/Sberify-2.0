@@ -78,7 +78,7 @@ const AlbumInfo = (props) => {
                 {props.tracks.items.map((track, i) => {
                     const [name] = track.name.split(FEAT_REG);
                     return (
-                        <TrackStyled key={track.id}>
+                        <TrackStyled key={track.id} explicit={track.explicit}>
                             <TrackPlayButtonStyled>
                                 <svg viewBox="0 0 460.114 460.114">
                                     <path
@@ -90,7 +90,7 @@ const AlbumInfo = (props) => {
                             </TrackPlayButtonStyled>
                             <TrackNumberStyled>{i + 1}</TrackNumberStyled>
                             <TrackInfoStyled>
-                                <TrackNameStyled>{name}</TrackNameStyled>
+                                <TrackNameStyled>{name.trim()}</TrackNameStyled>
                                 <TrackArtistStyled>
                                     {track.artists.map(({ name, id }, i) => (
                                         <>

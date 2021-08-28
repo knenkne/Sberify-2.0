@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import { withShimmer } from '../../shared/styles';
@@ -121,6 +122,7 @@ export const TrackPlayButtonStyled = styled.button`
     background-color: var(--secondary-BG);
     opacity: 0;
     cursor: pointer;
+    border-radius: 4px;
 
     &:focus {
         opacity: 1;
@@ -135,6 +137,34 @@ export const TrackPlayButtonStyled = styled.button`
     }
 `;
 
+// eslint-disable-next-line no-unused-vars
+const explicitStyle = ({ explicit }) => {
+    if (!explicit) {
+        return '';
+    }
+
+    return css`
+        ${TrackNameStyled}:after {
+            content: 'E';
+            /* font-weight: 500; */
+            font-family: 'Roboto';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+            font-size: 10px;
+            line-height: 12px;
+            width: 12px;
+            height: 12px;
+            color: var(--tertiary-BG);
+            text-align: center;
+            border-radius: 2px;
+            background-color: var(--secondary-text);
+            margin-left: 4px;
+        }
+    `;
+};
+
 export const TrackStyled = styled.li`
     position: relative;
     display: flex;
@@ -142,7 +172,8 @@ export const TrackStyled = styled.li`
     height: 60px;
     /* background: rgba(255, 255, 255, 0.2); */
     border-radius: 4px;
-    overflow: hidden;
+    /* overflow: hidden; */
+    /* background: red; */
 
     &::after {
         position: absolute;
