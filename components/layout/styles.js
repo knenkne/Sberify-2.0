@@ -56,6 +56,15 @@ const indexStyle = ({ index }) => {
                     fill: rgba(255, 255, 255, 0.8);
                 }
             }
+
+            &:hover,
+            &:focus-within {
+                svg {
+                    path {
+                        fill: rgba(255, 255, 255, 1);
+                    }
+                }
+            }
         }
 
         ${SearchStyled} {
