@@ -1,16 +1,13 @@
 import AlbumInfo from '../../components/album-info';
-import Layout from '../../components/layout';
 import Wrapper from '../../components/wrapper';
 import { fetcher } from '../../network';
 
 // TODO: extract here from albuminfo component
 const Album = (props) => (
     // eslint-disable-next-line react/prop-types
-    <Layout title={props.name}>
-        <Wrapper shadeless>
-            <AlbumInfo {...props} />
-        </Wrapper>
-    </Layout>
+    <Wrapper shadeless>
+        <AlbumInfo {...props} />
+    </Wrapper>
 );
 
 export async function getStaticPaths() {
@@ -30,7 +27,8 @@ export async function getStaticProps({ params: { id } }) {
 
     return {
         props: album,
-        revalidate: 60 * 60 * 24
+        // Revalidate in 3 days
+        revalidate: 60 * 60 * 24 * 3
     };
 }
 
