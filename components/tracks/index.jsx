@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import NextLink from 'next/link';
-import { useCallback, useEffect } from 'react';
-import { atom, useRecoilState, useResetRecoilState } from 'recoil';
+import { memo, useCallback, useEffect } from 'react';
 
+import { useStore } from '../../store';
 // TODO: common.styles
 import { LinkStyled } from '../album-info/styles';
 import usePlayer from '../player/use-player';
@@ -18,18 +18,12 @@ import {
     TrackStyled
 } from './styles';
 
-const FEAT_REG = /\(()(feat|ft)/;
+// TODO: sanitize release also
+// common.constants
+const FEAT_REG = /\(()(feat|ft|with)/;
 
-const playingTrackAtom = atom({
-    key: 'playing-track-atom',
-    default: null
-});
-
-const Track = ({ name, artists, id, i, preview_url }) => {
+const Track = memo(({ name, artists, id, i, preview_url, playing, onClick }) => {
     const [cleanName] = name.split(FEAT_REG);
-
-    const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackAtom);
-    const resetPlayingTrack = useResetRecoilState(playingTrackAtom);
 
     const {
         element,
@@ -38,20 +32,13 @@ const Track = ({ name, artists, id, i, preview_url }) => {
     } = usePlayer({ src: preview_url });
 
     const handlePlayButtonClick = useCallback(() => {
-        if (paused) {
-            play();
-            setPlayingTrack(id);
-        } else {
-            pause();
-            resetPlayingTrack();
-        }
-    }, [paused, element]);
+        onClick(playing ? null : id);
+    }, [playing, element]);
 
     useEffect(() => {
-        if (!paused && playingTrack !== id) {
-            pause();
-        }
-    }, [id, playingTrack, paused]);
+        // TODO: stop()
+        playing ? play() : pause();
+    }, [playing]);
 
     return (
         <TrackStyled key={id}>
@@ -103,13 +90,31 @@ c8.746-5.954,13.98-15.848,13.98-26.428C407.519,219.477,402.285,209.582,393.538,2
             )}
         </TrackStyled>
     );
-};
+});
 
-const Tracks = ({ tracks }) => (
-    <TracksStyled>
-        {tracks.items.map((track, i) => (
-            <Track key={track.id} {...track} i={i} />
-        ))}
-    </TracksStyled>
-);
+const Tracks = ({ tracks }) => {
+    const currentTrack = useStore((state) => state.currentTrack);
+    const setCurrentTrack = useStore((state) => state.setCurrentTrack);
+
+    const handlePlayButtonClick = useCallback(
+        (id) => {
+            setCurrentTrack(id);
+        },
+        [setCurrentTrack]
+    );
+
+    return (
+        <TracksStyled>
+            {tracks.items.map((track, i) => (
+                <Track
+                    key={track.id}
+                    i={i}
+                    playing={currentTrack === track.id}
+                    onClick={handlePlayButtonClick}
+                    {...track}
+                />
+            ))}
+        </TracksStyled>
+    );
+};
 export default Tracks;
