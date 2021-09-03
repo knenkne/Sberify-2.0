@@ -1,6 +1,3 @@
-import 'swiper/swiper-bundle.min.css';
-
-import NextNprogress from 'nextjs-progressbar';
 import { useMemo } from 'react';
 
 import { globalStyles } from '../shared/styles';
