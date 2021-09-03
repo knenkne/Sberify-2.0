@@ -1,21 +1,20 @@
-import { useMemo } from 'react';
+import { ThemeProvider } from 'next-themes';
+import NextNprogress from 'nextjs-progressbar';
+import { RecoilRoot } from 'recoil';
 
+import { nextNprogressOptions } from '../shared/constants';
 import { globalStyles } from '../shared/styles';
-// TODO: customizeSwiper modules
-// import SwiperCore, { Autoplay, Pagination } from 'swiper';
-// SwiperCore.use([Autoplay, Pagination]);
 
 // eslint-disable-next-line react/prop-types
 const App = ({ Component, pageProps }) => {
-    const progressOptions = useMemo(() => ({ showSpinner: false }), []);
-
     return (
-        <>
-            {/* TODO: progress w/ theming */}
-            <NextNprogress options={progressOptions} />
+        <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
+            <NextNprogress options={nextNprogressOptions} />
             {globalStyles}
-            <Component {...pageProps} />
-        </>
+            <RecoilRoot>
+                <Component {...pageProps} />
+            </RecoilRoot>
+        </ThemeProvider>
     );
 };
 

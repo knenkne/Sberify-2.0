@@ -1,4 +1,36 @@
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+
+const indexStyle = ({ index }) => {
+    if (!index) {
+        return '';
+    }
+
+    return css`
+        height: 100vh;
+
+        ${SearchWrapperStyled} {
+            svg {
+                path {
+                    fill: rgba(255, 255, 255, 0.8);
+                }
+            }
+
+            &:hover,
+            &:focus-within {
+                svg {
+                    path {
+                        fill: rgba(255, 255, 255, 1);
+                    }
+                }
+            }
+        }
+
+        ${SearchStyled} {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    `;
+};
 
 export const BodyStyled = styled.div`
     position: relative;
@@ -11,7 +43,7 @@ export const SideBarStyled = styled.aside`
     top: 0;
     left: 0;
     background-color: var(--primary-BG);
-    height: 100vh;
+    min-height: 100vh;
     /* TODO: constants */
     width: 400px;
     /* TODO: dark theme shadow */
@@ -19,7 +51,7 @@ export const SideBarStyled = styled.aside`
     z-index: 10;
 
     .dark-mode & {
-        box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
+        box-shadow: 0px 1px 4px rgba(18, 18, 18, 0.6), 0px 4px 8px rgba(18, 18, 18, 0.8);
     }
 
     @media (max-width: 1599.98px) {
@@ -34,13 +66,15 @@ export const ContentStyled = styled.main`
     position: relative;
     flex-grow: 1;
     width: calc(100% - 480px);
-    height: 100vh;
     margin-left: 400px;
+    min-height: 100vh;
 
     /* TODO: custom properties */
     @media (max-width: 1599.98px) {
         margin-left: 0;
     }
+
+    ${indexStyle};
 `;
 
 export const HeaderStyled = styled.header`
@@ -48,6 +82,7 @@ export const HeaderStyled = styled.header`
     display: flex;
     align-items: center;
     width: 100%;
+    min-height: 80px;
     padding: 20px 40px;
     z-index: 2;
 `;
@@ -90,7 +125,7 @@ export const SearchWrapperStyled = styled.div`
 
         path {
             transition: 0.1s;
-            fill: var(--nav-inactive);
+            fill: var(--nav);
         }
     }
 
@@ -98,7 +133,7 @@ export const SearchWrapperStyled = styled.div`
     &:focus-within {
         svg {
             path {
-                fill: var(--nav);
+                fill: var(--nav-hover);
             }
         }
     }
@@ -107,7 +142,7 @@ export const SearchWrapperStyled = styled.div`
 export const SearchStyled = styled.input`
     width: 100%;
     height: 30px;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--primary-BG);
     border-radius: 16px;
     padding: 0;
     padding: 8px 16px 8px 32px;
@@ -115,7 +150,7 @@ export const SearchStyled = styled.input`
     border-radius: 16px;
     font-family: 'Roboto';
     font-size: 16px;
-    color: var(--nav-inactive);
+    color: var(--nav);
 
     &:focus {
         outline: none;

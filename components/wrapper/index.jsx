@@ -1,11 +1,11 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
 
 import { WrapperStyled } from './styles';
 
-const Wrapper = ({ children }) => <WrapperStyled>{children}</WrapperStyled>;
-
-Wrapper.propTypes = {
-    children: PropTypes.node
-};
+const Wrapper = ({ children, shadeless }) => (
+    <WrapperStyled shadeless={shadeless}>{children}</WrapperStyled>
+);
 
 export default Wrapper;

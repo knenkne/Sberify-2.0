@@ -1,51 +1,56 @@
-import Link from 'next/link';
+import { useEmblaCarousel } from 'embla-carousel/react';
+import NextImage from 'next/image';
+import NextLink from 'next/link';
 import PropTypes from 'prop-types';
-import Swiper, { Autoplay } from 'swiper';
 
-import {
-    ArtistStyled,
-    CoverStyled,
-    InfoStyled,
-    LinkStyled,
-    NameStyled,
-    ReleasesStyled,
-    ReleaseStyled
-} from './style';
+import { ArtistStyled, CoverWrapperStyled, InfoStyled, LinkStyled, NameStyled } from './style';
 
-const swiperParams = {
-    Swiper,
-    modules: [Autoplay],
-    ContainerEl: 'section',
-    WrapperEl: 'ul',
-    slidesPerView: 'auto',
-    autoplay: {
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true
-    }
+const Releases = ({ releases }) => {
+    const [emblaRef] = useEmblaCarousel({
+        loop: false,
+        align: 'start',
+        containScroll: 'keepSnaps'
+    });
+
+    return (
+        // TODO: styled semantic components w/ className
+        <div className="embla" ref={emblaRef}>
+            <div className="embla__container">
+                {releases.map(({ id, name, images, artists, album_type }) => {
+                    const coverUrl = images[0].url;
+                    const artist = artists[0].name;
+
+                    return (
+                        <div className="embla__slide" key={id}>
+                            <NextLink href={`/album/${id}`} passHref>
+                                <LinkStyled single={album_type === 'single'}>
+                                    {/* TODO: placeholder */}
+                                    {/* TODO: semantic */}
+                                    {/* TODO: loader for matching sizes automaticly */}
+                                    {/* TODO: light theme shadow more gentle */}
+                                    <CoverWrapperStyled>
+                                        <NextImage
+                                            src={coverUrl}
+                                            alt={`${name} by ${artist}`}
+                                            layout="fixed"
+                                            width="140"
+                                            height="140"
+                                            unoptimized
+                                        />
+                                    </CoverWrapperStyled>
+                                    <InfoStyled>
+                                        <NameStyled>{name}</NameStyled>
+                                        <ArtistStyled>{artist}</ArtistStyled>
+                                    </InfoStyled>
+                                </LinkStyled>
+                            </NextLink>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
 };
-
-const Releases = ({ releases }) => (
-    <ReleasesStyled {...swiperParams}>
-        {releases.map(({ id, name, images, artists, album_type }) => {
-            const coverUrl = images[0].url;
-            const artist = artists[0].name;
-
-            return (
-                <ReleaseStyled key={id}>
-                    <Link href={`/albums/${id}`} passHref>
-                        <LinkStyled single={album_type === 'single'}>
-                            <CoverStyled src={coverUrl} alt={`${name} by ${artist}`} />
-                            <InfoStyled>
-                                <NameStyled>{name}</NameStyled>
-                                <ArtistStyled>{artist}</ArtistStyled>
-                            </InfoStyled>
-                        </LinkStyled>
-                    </Link>
-                </ReleaseStyled>
-            );
-        })}
-    </ReleasesStyled>
-);
 
 Releases.propTypes = {
     releases: PropTypes.array

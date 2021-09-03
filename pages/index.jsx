@@ -1,43 +1,39 @@
-/* eslint-disable no-unused-vars */
+import Image from 'next/image';
 import PropTypes from 'prop-types';
-import { Suspense } from 'react';
-import useSWR from 'swr';
 
-import Banner from '../components/banner';
-import Button from '../components/button';
-import Headline from '../components/headline';
 import Layout from '../components/layout';
-import Paragraph from '../components/paragraph';
-import Player from '../components/player';
 import Releases from '../components/releases';
 import Wrapper from '../components/wrapper';
 import { fetcher } from '../network';
+import banner from '../public/images/banner.jpg';
+import { RELEASES_COUNT, REVALIDATE_PERIOD, Route } from '../shared/constants';
 
 const Home = ({ releases }) => (
-    <Layout>
-        <Banner />
+    <Layout index>
+        <Wrapper>
+            <Image
+                src={banner}
+                alt="Featured: Machine Gun Kelly"
+                layout="responsive"
+                placeholder="blur"
+                priority
+            />
+        </Wrapper>
         <Releases releases={releases} />
     </Layout>
 );
 
-export async function getStaticProps(ctx) {
-    const { params } = ctx;
-    // TODO: Suspense + SWR
+export async function getStaticProps() {
     const {
         albums: { items: releases }
-    } = await fetcher(`/v1/browse/new-releases?limit=50`);
+    } = await fetcher(`/${process.env.API_VERSION}/${Route.RELEASES}?limit=${RELEASES_COUNT}`);
 
     return {
         props: {
             releases
         },
-        revalidate: 60 * 60 * 24
+        revalidate: REVALIDATE_PERIOD
     };
-    // return {
-    //     props: {
-    //         releases
-    //     }
-    // };
 }
 
 Home.propTypes = {

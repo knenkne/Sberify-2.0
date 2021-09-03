@@ -13,7 +13,13 @@ import {
     SideBarStyled
 } from './styles';
 
-const Layout = ({ children, title = 'Sberify 2.0' }) => {
+const Path = {
+    Discover: '/',
+    Artists: '/artist',
+    Albums: '/album'
+};
+
+const Layout = ({ children, title = 'Sberify 2.0', index }) => {
     return (
         <>
             <Head>
@@ -21,12 +27,15 @@ const Layout = ({ children, title = 'Sberify 2.0' }) => {
             </Head>
             <BodyStyled>
                 <SideBarStyled />
-                <ContentStyled>
-                    <HeaderStyled>
+                {/* TODO: index */}
+                <ContentStyled index={index}>
+                    <HeaderStyled index={index}>
                         <NavStyled>
-                            <Link href="/">Discover</Link>
-                            <Link href="/artists">Artists</Link>
-                            <Link href="/albums">Albums</Link>
+                            {Object.keys(Path).map((pathName) => (
+                                <Link href={Path[pathName]} index={index} key={pathName}>
+                                    {pathName}
+                                </Link>
+                            ))}
                         </NavStyled>
                         <SearchWrapperStyled>
                             <svg
@@ -53,7 +62,8 @@ const Layout = ({ children, title = 'Sberify 2.0' }) => {
 
 Layout.propTypes = {
     children: PropTypes.node,
-    title: PropTypes.string
+    title: PropTypes.string,
+    index: PropTypes.bool
 };
 
 export default Layout;
