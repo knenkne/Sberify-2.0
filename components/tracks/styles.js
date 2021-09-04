@@ -28,14 +28,28 @@ export const TrackNameStyled = styled.h3`
     color: var(--primary-text);
 `;
 
-export const FeatStyled = styled.span`
-    color: var(--primary-text);
+export const TrackArtistsStyled = styled.ul`
+    display: flex;
 `;
 
-export const TrackArtistStyled = styled.h4`
+export const TrackArtistStyled = styled.li`
+    position: relative;
     font-size: 12px;
     font-weight: 500;
     color: var(--secondary-text);
+
+    /* Not a first (main) artist -> It's a feat */
+    &:nth-of-type(2)::before {
+        content: ' ft. ';
+        color: var(--primary-text);
+        white-space: pre;
+    }
+
+    &:nth-of-type(n + 3)::before {
+        content: ', ';
+        color: var(--primary-text);
+        white-space: pre;
+    }
 `;
 
 export const TrackPlayButtonStyled = styled.button`

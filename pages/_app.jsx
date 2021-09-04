@@ -1,22 +1,28 @@
+import { useRouter } from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import NextNprogress from 'nextjs-progressbar';
-import { useMemo } from 'react';
-import { RecoilRoot } from 'recoil';
 
+import Layout from '../components/layout';
+import { nextNprogressOptions } from '../shared/constants';
 import { globalStyles } from '../shared/styles';
+import { PlayerProvider } from '../store';
 
 // eslint-disable-next-line react/prop-types
 const App = ({ Component, pageProps }) => {
-    const progressOptions = useMemo(() => ({ showSpinner: false }), []);
+    const { pathname } = useRouter();
 
     return (
-        <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
-            <NextNprogress options={progressOptions} />
+        <>
+            <NextNprogress options={nextNprogressOptions} />
             {globalStyles}
-            <RecoilRoot>
-                <Component {...pageProps} />
-            </RecoilRoot>
-        </ThemeProvider>
+            <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
+                <PlayerProvider>
+                    <Layout index={pathname === '/'}>
+                        <Component {...pageProps} />
+                    </Layout>
+                </PlayerProvider>
+            </ThemeProvider>
+        </>
     );
 };
 

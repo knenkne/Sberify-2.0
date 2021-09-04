@@ -6,7 +6,7 @@ const THUMB_SIZE = SLIDER_HEIGHT * 3;
 
 export const ThumbStyled = styled.div`
     position: absolute;
-    background-color: white;
+    background-color: var(--primary-text);
     border-radius: 50%;
     pointer-events: none;
     user-select: none;
@@ -21,7 +21,7 @@ export const SliderStyled = styled.div(
 
         &::before {
             content: '';
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: var(--primary-text);
             width: calc(
                 ${THUMB_SIZE}px + 100% / 100 * ${percent} - (${THUMB_SIZE}px / 100 * ${percent})
             );
@@ -49,7 +49,9 @@ export const InputStyled = styled.input`
     display: block;
     -webkit-appearance: none;
     appearance: none;
-    background-color: rgba(0, 0, 0, 0.2);
+    /* TODO: theme */
+    background-color: rgba(255, 255, 255, 0.25);
+
     height: ${SLIDER_HEIGHT}px;
     width: 100%;
     cursor: pointer;
@@ -66,8 +68,7 @@ export const InputStyled = styled.input`
         width: 16px;
         height: 16px;
         border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.2);
-        background-color: rgba(255, 255, 255, 1);
+        background-color: var(--primary-text);
         /* z-index: 10; */
         opacity: 0;
         border: 0;
@@ -78,8 +79,7 @@ export const InputStyled = styled.input`
         width: 16px;
         height: 16px;
         border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.2);
-        background-color: rgba(255, 255, 255, 1);
+        background-color: red;
         /* z-index: 10; */
         opacity: 0;
         border: 0;

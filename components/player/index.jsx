@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 
+import { PlayerContext } from '../../store';
 import { VOLUME_RATIO } from './constants';
 import Slider from './slider';
 import withTime from './slider/hoc/with-time';
@@ -17,11 +18,16 @@ import {
 import usePlayer from './use-player';
 import { getTime } from './utils';
 
-const Player = ({ artist, name, image, src }) => {
-    const { element, state, controls } = usePlayer({ src });
+const Player = () => {
+    const { currentTrack, setTrack, paused, play, pause } = useContext(PlayerContext);
+    const { element, state, controls } = usePlayer({
+        src: currentTrack?.src,
+        paused,
+        onEnded: () => setTrack(null)
+    });
 
-    const { paused, time, duration, volume } = state;
-    const { play, pause, rewind, setVolume } = controls;
+    const { time, duration, volume } = state;
+    const { rewind, setVolume } = controls;
 
     const handlePlayButtonClick = useCallback(() => {
         if (paused) {
@@ -53,10 +59,13 @@ const Player = ({ artist, name, image, src }) => {
         <WrapperStyled>
             <PlayerStyled>
                 {element}
-                <ImageStyled src={image} alt={`${name} by ${artist}`} />
+                <ImageStyled
+                    src={currentTrack?.image}
+                    alt={`${currentTrack?.name} by ${currentTrack?.artist}`}
+                />
                 <InfoStyled>
-                    <SongNameStyled>{name}</SongNameStyled>
-                    <ArtistNameStyled>{artist}</ArtistNameStyled>
+                    <SongNameStyled>{currentTrack?.name}</SongNameStyled>
+                    <ArtistNameStyled>{currentTrack?.artist}</ArtistNameStyled>
                 </InfoStyled>
                 <TimeSlider time={time} duration={duration} onChange={handleTimeSliderChange} />
                 <ControlsStyled>

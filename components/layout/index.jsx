@@ -1,23 +1,17 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-import ThemeButton from '../button/theme';
+import { Route } from '../../shared/constants';
 import Link from '../link';
+import Sidebar from '../siderbar';
 import {
     BodyStyled,
     ContentStyled,
     HeaderStyled,
     NavStyled,
     SearchStyled,
-    SearchWrapperStyled,
-    SideBarStyled
+    SearchWrapperStyled
 } from './styles';
-
-const Path = {
-    Discover: '/',
-    Artists: '/artist',
-    Albums: '/album'
-};
 
 const Layout = ({ children, title = 'Sberify 2.0', index }) => {
     return (
@@ -26,13 +20,13 @@ const Layout = ({ children, title = 'Sberify 2.0', index }) => {
                 <title>{title}</title>
             </Head>
             <BodyStyled>
-                <SideBarStyled />
+                <Sidebar />
                 {/* TODO: index */}
                 <ContentStyled index={index}>
                     <HeaderStyled index={index}>
                         <NavStyled>
-                            {Object.keys(Path).map((pathName) => (
-                                <Link href={Path[pathName]} index={index} key={pathName}>
+                            {Object.keys(Route).map((pathName) => (
+                                <Link href={Route[pathName]} index={index} key={pathName}>
                                     {pathName}
                                 </Link>
                             ))}
@@ -50,7 +44,6 @@ const Layout = ({ children, title = 'Sberify 2.0', index }) => {
                             <SearchStyled />
                         </SearchWrapperStyled>
                         {/* TODO: next/image */}
-                        <ThemeButton />
                     </HeaderStyled>
                     {children}
                 </ContentStyled>

@@ -12,8 +12,8 @@ export const WrapperStyled = styled.div`
     width: 100%;
     height: 100vh;
     margin: auto;
-    background-color: #861657;
-    background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%);
+    /* background-color: #861657; */
+    /* background-image: linear-gradient(326deg, #861657 0%, #ffa69e 74%); */
 `;
 
 export const ImageStyled = styled.img`
@@ -30,13 +30,13 @@ export const InfoStyled = styled.div`
 export const SongNameStyled = styled.h2`
     font-size: 18px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-text);
 `;
 
 export const ArtistNameStyled = styled.h2`
     font-size: 16px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--secondary-text);
 `;
 
 export const ControlsStyled = styled.div``;
@@ -49,6 +49,6 @@ export const PlayButtonStyled = styled.button`
     height: 40px;
     border-radius: 6px;
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: var(--primary-text);
     border: none;
 `;

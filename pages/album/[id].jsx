@@ -1,22 +1,20 @@
 import AlbumInfo from '../../components/album-info';
-import Layout from '../../components/layout';
 import Wrapper from '../../components/wrapper';
 import { fetcher } from '../../network';
+import { ApiRoute, RELEASES_COUNT, REVALIDATE_PERIOD } from '../../shared/constants';
 
 // TODO: extract here from albuminfo component
 const Album = (props) => (
     // eslint-disable-next-line react/prop-types
-    <Layout title={props.name}>
-        <Wrapper shadeless>
-            <AlbumInfo {...props} />
-        </Wrapper>
-    </Layout>
+    <Wrapper shadeless>
+        <AlbumInfo {...props} />
+    </Wrapper>
 );
 
 export async function getStaticPaths() {
     const {
         albums: { items: releases }
-    } = await fetcher('/v1/browse/new-releases?limit=50');
+    } = await fetcher(`/${process.env.API_VERSION}/${ApiRoute.RELEASES}?limit=${RELEASES_COUNT}`);
 
     const paths = releases.map(({ id }) => ({
         params: { id }
@@ -26,11 +24,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
-    const album = await fetcher(`/v1/albums/${id}`);
+    const album = await fetcher(`/${process.env.API_VERSION}/${ApiRoute.ALBUMS}/${id}`);
 
     return {
         props: album,
-        revalidate: 60 * 60 * 24
+        revalidate: REVALIDATE_PERIOD
     };
 }
 
