@@ -1,14 +1,20 @@
 import styled from '@emotion/styled';
 
 export const PlayerStyled = styled.article`
-    width: 300px;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 140px;
+    /* background-color: red; */
+    padding: 0 40px;
+    margin-bottom: 40px;
 `;
 
 export const WrapperStyled = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
     width: 100%;
     height: 100vh;
     margin: auto;
@@ -44,11 +50,19 @@ export const ControlsStyled = styled.div``;
 export const PlayButtonStyled = styled.button`
     display: block;
     /* TODO: паддинг у контейнера инфо и контролов */
-    margin: 20px auto;
+    margin: auto auto 0;
     width: 40px;
     height: 40px;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
-    background-color: var(--primary-text);
+    background-color: var(--tertiary-BG);
     border: none;
+`;
+
+export const PlaceholderStyled = styled.div`
+    width: 40px;
+    height: 40px;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    margin-bottom: 10px;
+    border-radius: 4px;
 `;
