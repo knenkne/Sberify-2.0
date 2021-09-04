@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'next-themes';
 import NextNprogress from 'nextjs-progressbar';
-import { RecoilRoot } from 'recoil';
 
 import { nextNprogressOptions } from '../shared/constants';
 import { globalStyles } from '../shared/styles';
@@ -11,9 +10,7 @@ const App = ({ Component, pageProps }) => {
         <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
             <NextNprogress options={nextNprogressOptions} />
             {globalStyles}
-            <RecoilRoot>
-                <Component {...pageProps} />
-            </RecoilRoot>
+            <Component {...pageProps} />
         </ThemeProvider>
     );
 };
