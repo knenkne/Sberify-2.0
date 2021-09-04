@@ -5,7 +5,8 @@ const reducer = (state, action) => {
         case SET_CURRENT_TRACK: {
             return {
                 ...state,
-                currentTrack: action.payload
+                currentTrack: action.payload,
+                paused: false
             };
         }
 

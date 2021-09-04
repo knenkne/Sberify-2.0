@@ -6,9 +6,5 @@ export const ThemeButtonStyled = styled.button`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    margin-left: auto;
-    border: none;
-    padding: 0;
-
-    background-color: var(--secondary-BG);
+    background-color: var(--primary-text);
 `;

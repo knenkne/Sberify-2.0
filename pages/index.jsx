@@ -5,7 +5,7 @@ import Releases from '../components/releases';
 import Wrapper from '../components/wrapper';
 import { fetcher } from '../network';
 import banner from '../public/images/banner.jpg';
-import { RELEASES_COUNT, REVALIDATE_PERIOD, Route } from '../shared/constants';
+import { ApiRoute, RELEASES_COUNT, RELEASES_COUNTRY, REVALIDATE_PERIOD } from '../shared/constants';
 
 const Home = ({ releases }) => (
     <>
@@ -25,7 +25,9 @@ const Home = ({ releases }) => (
 export async function getStaticProps() {
     const {
         albums: { items: releases }
-    } = await fetcher(`/${process.env.API_VERSION}/${Route.RELEASES}?limit=${RELEASES_COUNT}`);
+    } = await fetcher(
+        `/${process.env.API_VERSION}/${ApiRoute.RELEASES}?limit=${RELEASES_COUNT}&country=${RELEASES_COUNTRY}`
+    );
 
     return {
         props: {

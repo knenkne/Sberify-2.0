@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { useCallback, useEffect, useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 
 import { pauseTrack, playTrack, setCurrentTrack } from './actions';
 import reducer from './reducer';
@@ -19,7 +19,7 @@ const PlayerProvider = ({ children }) => {
     const setTrack = useCallback(
         (track) => {
             // Play/pause active song
-            if (track.id === currentTrack?.id) {
+            if (track?.id === currentTrack?.id) {
                 paused ? dispatch(playTrack()) : dispatch(pauseTrack());
             }
             // New track init
@@ -30,14 +30,16 @@ const PlayerProvider = ({ children }) => {
         [state, currentTrack, paused]
     );
 
-    useEffect(() => {
-        if (currentTrack) {
-            dispatch(playTrack());
-        }
-    }, [currentTrack]);
+    const play = useCallback(() => {
+        dispatch(playTrack());
+    }, []);
+
+    const pause = useCallback(() => {
+        dispatch(pauseTrack());
+    }, []);
 
     return (
-        <PlayerContext.Provider value={{ currentTrack, paused, setTrack }}>
+        <PlayerContext.Provider value={{ currentTrack, setTrack, paused, play, pause }}>
             {children}
         </PlayerContext.Provider>
     );

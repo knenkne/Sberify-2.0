@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCallback, useContext, useEffect, useMemo } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 
 import { PlayerContext } from '../../store';
 import { VOLUME_RATIO } from './constants';
@@ -19,11 +19,15 @@ import usePlayer from './use-player';
 import { getTime } from './utils';
 
 const Player = () => {
-    const { currentTrack, paused } = useContext(PlayerContext);
-    const { element, state, controls } = usePlayer({ src: currentTrack?.src });
+    const { currentTrack, setTrack, paused, play, pause } = useContext(PlayerContext);
+    const { element, state, controls } = usePlayer({
+        src: currentTrack?.src,
+        paused,
+        onEnded: () => setTrack(null)
+    });
 
     const { time, duration, volume } = state;
-    const { play, pause, rewind, setVolume } = controls;
+    const { rewind, setVolume } = controls;
 
     const handlePlayButtonClick = useCallback(() => {
         if (paused) {
@@ -50,14 +54,6 @@ const Player = () => {
 
     const TimeSlider = useMemo(() => withTime(Slider), []);
     const volumePercent = useMemo(() => (volume * 100 * VOLUME_RATIO).toFixed(1), [volume]);
-
-    useEffect(() => {
-        paused ? pause() : play();
-    }, [paused]);
-
-    useEffect(() => {
-        currentTrack ? play() : pause();
-    }, [currentTrack]);
 
     return (
         <WrapperStyled>

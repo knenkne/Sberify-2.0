@@ -2,6 +2,7 @@
 import NextLink from 'next/link';
 import { useContext } from 'react';
 
+import { FEAT_REGEXP } from '../../shared/constants';
 import { PlayerContext } from '../../store';
 // TODO: common.styles
 import { LinkStyled } from '../album-info/styles';
@@ -18,10 +19,10 @@ import {
 
 // TODO: sanitize release also
 // common.constants
-const FEAT_REG = /\(()(feat|ft|with)/;
 
 const Track = ({ id, name, artists, image, i, preview_url, playing, onClick }) => {
-    const [cleanName] = name.split(FEAT_REG);
+    // TODO: parse at backennd
+    const [cleanName] = name.split(FEAT_REGEXP);
 
     const handlePlayButtonClick = () => {
         onClick({
