@@ -19,6 +19,7 @@
     "devDependencies": {
         "@babel/core": "^7.15.0",
         "@emotion/babel-preset-css-prop": "10.0.27",
+        "@next/bundle-analyzer": "^11.1.2",
         "babel-plugin-emotion": "10.0.27",
         "dotenv": "^10.0.0",
         "eslint": "^7.20.0",

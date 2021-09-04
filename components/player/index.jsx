@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useCallback, useContext, useEffect, useMemo } from 'react';
 
-import StoreContext from '../../store';
+import { PlayerContext } from '../../store';
 import { VOLUME_RATIO } from './constants';
 import Slider from './slider';
 import withTime from './slider/hoc/with-time';
@@ -19,7 +19,7 @@ import usePlayer from './use-player';
 import { getTime } from './utils';
 
 const Player = () => {
-    const { currentTrack, paused } = useContext(StoreContext);
+    const { currentTrack, paused } = useContext(PlayerContext);
     const { element, state, controls } = usePlayer({ src: currentTrack?.src });
 
     const { time, duration, volume } = state;

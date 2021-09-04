@@ -1,31 +1,18 @@
-// import create from 'zustand';
-// import { devtools } from 'zustand/middleware';
-
-// export const useStore = create(
-//     devtools((set) => ({
-//         currentTrack: null,
-//         paused: true,
-//         setCurrentTrack: (track) => set(() => ({ currentTrack: track })),
-//         play: () => set(() => ({ paused: false })),
-//         pause: () => set(() => ({ paused: true }))
-//     }))
-// );
-
+import { createContext } from 'react';
 import { useCallback, useEffect, useReducer } from 'react';
 
 import { pauseTrack, playTrack, setCurrentTrack } from './actions';
 import reducer from './reducer';
 
-// import { DEFAULT_VOLUME, VOLUME_RATIO } from './constants';
-// import { pause, play, setTime, setVolume } from './store/actions';
-// import reducer from './store/reducer';
+const PlayerContext = createContext();
 
 const initialState = {
     currentTrack: null,
     paused: true
 };
 
-const useStore = () => {
+// eslint-disable-next-line react/prop-types
+const PlayerProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { currentTrack, paused } = state;
 
@@ -49,7 +36,11 @@ const useStore = () => {
         }
     }, [currentTrack]);
 
-    return { currentTrack, paused, setTrack };
+    return (
+        <PlayerContext.Provider value={{ currentTrack, paused, setTrack }}>
+            {children}
+        </PlayerContext.Provider>
+    );
 };
 
-export default useStore;
+export { PlayerContext, PlayerProvider };

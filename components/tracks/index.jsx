@@ -2,7 +2,7 @@
 import NextLink from 'next/link';
 import { useContext } from 'react';
 
-import StoreContext from '../../store';
+import { PlayerContext } from '../../store';
 // TODO: common.styles
 import { LinkStyled } from '../album-info/styles';
 import {
@@ -81,7 +81,7 @@ c8.746-5.954,13.98-15.848,13.98-26.428C407.519,219.477,402.285,209.582,393.538,2
 };
 
 const Tracks = ({ tracks, image }) => {
-    const { currentTrack, setTrack, paused } = useContext(StoreContext);
+    const { currentTrack, setTrack, paused } = useContext(PlayerContext);
     // TODO: useCallback insideusecallback
     const handlePlayButtonClick = (track) => setTrack(track);
 
