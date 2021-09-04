@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import ThemeButton from '../button/theme';
 import Link from '../link';
+import Player from '../player';
 import {
     BodyStyled,
     ContentStyled,
@@ -26,7 +27,9 @@ const Layout = ({ children, title = 'Sberify 2.0', index }) => {
                 <title>{title}</title>
             </Head>
             <BodyStyled>
-                <SideBarStyled />
+                <SideBarStyled>
+                    <Player />
+                </SideBarStyled>
                 {/* TODO: index */}
                 <ContentStyled index={index}>
                     <HeaderStyled index={index}>

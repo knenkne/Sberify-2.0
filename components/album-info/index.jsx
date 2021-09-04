@@ -66,7 +66,7 @@ const AlbumInfo = (props) => {
                     </AlbumInfoStyled>
                 </AlbumStyled>
             </AlbumWrapperStyled>
-            <Tracks tracks={props.tracks} />
+            <Tracks tracks={props.tracks} image={props.images[1].url} />
         </>
     );
 };

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useContext, useEffect, useMemo } from 'react';
 
+import StoreContext from '../../store';
 import { VOLUME_RATIO } from './constants';
 import Slider from './slider';
 import withTime from './slider/hoc/with-time';
@@ -17,10 +18,11 @@ import {
 import usePlayer from './use-player';
 import { getTime } from './utils';
 
-const Player = ({ artist, name, image, src }) => {
-    const { element, state, controls } = usePlayer({ src });
+const Player = () => {
+    const { currentTrack, paused } = useContext(StoreContext);
+    const { element, state, controls } = usePlayer({ src: currentTrack?.src });
 
-    const { paused, time, duration, volume } = state;
+    const { time, duration, volume } = state;
     const { play, pause, rewind, setVolume } = controls;
 
     const handlePlayButtonClick = useCallback(() => {
@@ -49,14 +51,25 @@ const Player = ({ artist, name, image, src }) => {
     const TimeSlider = useMemo(() => withTime(Slider), []);
     const volumePercent = useMemo(() => (volume * 100 * VOLUME_RATIO).toFixed(1), [volume]);
 
+    useEffect(() => {
+        paused ? pause() : play();
+    }, [paused]);
+
+    useEffect(() => {
+        currentTrack ? play() : pause();
+    }, [currentTrack]);
+
     return (
         <WrapperStyled>
             <PlayerStyled>
                 {element}
-                <ImageStyled src={image} alt={`${name} by ${artist}`} />
+                <ImageStyled
+                    src={currentTrack?.image}
+                    alt={`${currentTrack?.name} by ${currentTrack?.artist}`}
+                />
                 <InfoStyled>
-                    <SongNameStyled>{name}</SongNameStyled>
-                    <ArtistNameStyled>{artist}</ArtistNameStyled>
+                    <SongNameStyled>{currentTrack?.name}</SongNameStyled>
+                    <ArtistNameStyled>{currentTrack?.artist}</ArtistNameStyled>
                 </InfoStyled>
                 <TimeSlider time={time} duration={duration} onChange={handleTimeSliderChange} />
                 <ControlsStyled>
