@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+/* eslint-disable react/prop-types */
 import { ThemeProvider } from 'next-themes';
 import NextNprogress from 'nextjs-progressbar';
 
@@ -9,18 +9,16 @@ import { PlayerProvider } from '../store';
 
 // eslint-disable-next-line react/prop-types
 const App = ({ Component, pageProps }) => {
-    const { pathname } = useRouter();
+    // Absctraction to pass the props to Layout from GSP if necessary
+    const withLayout = Component.withLayout ?? ((page) => <Layout>{page}</Layout>);
+    const { playlists, ...rest } = pageProps;
 
     return (
         <>
             <NextNprogress options={nextNprogressOptions} />
             {globalStyles}
             <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
-                <PlayerProvider>
-                    <Layout index={pathname === '/'}>
-                        <Component {...pageProps} />
-                    </Layout>
-                </PlayerProvider>
+                <PlayerProvider>{withLayout(<Component {...rest} />, playlists)}</PlayerProvider>
             </ThemeProvider>
         </>
     );
