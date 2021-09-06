@@ -1,4 +1,4 @@
-import { css, Global } from '@emotion/core';
+import { css, Global } from '@emotion/react';
 
 const globalStyle = () => css`
     :root {
@@ -58,7 +58,8 @@ const globalStyle = () => css`
     h3,
     h4,
     h5,
-    h6 {
+    h6,
+    p {
         margin: 0;
     }
 

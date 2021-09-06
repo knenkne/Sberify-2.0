@@ -1,5 +1,4 @@
 import AlbumInfo from '../../components/album-info';
-import Layout from '../../components/layout';
 import Wrapper from '../../components/wrapper';
 import { fetcher } from '../../network';
 import { ApiRoute, RELEASES_COUNT, REVALIDATE_PERIOD } from '../../shared/constants';

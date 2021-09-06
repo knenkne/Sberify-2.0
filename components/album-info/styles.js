@@ -1,73 +1,10 @@
-import styled from '@emotion/styled';
+import tw from 'twin.macro';
 
-import { withShimmer } from '../../shared/styles';
-
-export const AlbumWrapperStyled = styled.div`
-    padding: 100px 40px 40px;
-    background-color: var(--secondary-BG);
-    box-shadow: var(--secondary-shadow-1), var(--secondary-shadow-2);
-`;
-
-export const AlbumStyled = styled.div`
-    display: flex;
-    align-items: flex-end;
-`;
-
-export const CoverWrapperStyled = styled.div`
-    position: relative;
-    flex-shrink: 0;
-    width: 300px;
-    height: 300px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: -4px 4px 8px rgba(18, 18, 18, 0.08), -4px 4px 8px rgba(18, 18, 18, 0.08);
-    margin-right: 20px;
-
-    [data-theme='dark'] & {
-        box-shadow: -4px 4px 8px rgba(18, 18, 18, 0.24), -4px 4px 8px rgba(18, 18, 18, 0.24);
-    }
-
-    ${withShimmer(300, 300)}
-`;
-
-export const AlbumInfoStyled = styled.div`
-    position: relative;
-    flex-grow: 1;
-    /* Text overflow fix */
-    min-width: 0;
-`;
-
-export const TitleStyled = styled.h2`
-    margin: 0;
-    font-size: 72px;
-    /* line-height: 1; */
-    font-weight: 500;
-    font-family: 'Archivo';
-    color: var(--primary-text);
-    font-weight: 900;
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* padding-bottom: 4px; */
-`;
-
-export const SubtitleStyled = styled.span`
-    display: block;
-    margin: 0;
-    font-size: 16px;
-    font-weight: 500;
-    margin-left: 4px;
-    margin-top: -8px;
-    color: var(--secondary-text);
-`;
-
-export const LinkStyled = styled.a`
-    color: var(--secondary-text);
-    transition: 0.3s;
-
-    &:hover {
-        color: var(--secondary-text-hover);
-        text-shadow: 0 0 1.4px var(--nav);
-    }
-`;
+// TODO: shadows
+export const AlbumWrapperStyled = tw.div`pt-24 px-10 pb-10 bg-secondary`;
+export const AlbumStyled = tw.div`flex items-end`;
+export const CoverWrapperStyled = tw.div`relative w-1/5 h-1/5 flex-shrink-0 rounded-lg overflow-hidden mr-5 shimmer light:shimmer-light`;
+export const AlbumInfoStyled = tw.div`relative min-w-0 flex-grow`;
+export const TitleStyled = tw.h2`w-full truncate font-archivo font-black text-7xl text-primary`;
+export const SubtitleStyled = tw.p`font-medium text-base text-secondary ml-1 -mt-2`;
+export const LinkStyled = tw.a`text-secondary duration-300 hover:text-secondary-hover hover:text-shadow`;

@@ -44,7 +44,7 @@ const AlbumInfo = (props) => {
                             src={props.images[1].url}
                             // TODO: alt
                             // alt={`${props.name} by ${props.artist}`}
-                            layout="fixed"
+                            layout="responsive"
                             width="300"
                             height="300"
                             unoptimized

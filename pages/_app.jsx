@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { ThemeProvider } from 'next-themes';
 import NextNprogress from 'nextjs-progressbar';
+import { GlobalStyles } from 'twin.macro';
 
 import Layout from '../components/layout';
 import { nextNprogressOptions } from '../shared/constants';
@@ -15,6 +16,7 @@ const App = ({ Component, pageProps }) => {
 
     return (
         <>
+            <GlobalStyles />
             <NextNprogress options={nextNprogressOptions} />
             {globalStyles}
             <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
