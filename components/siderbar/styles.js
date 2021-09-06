@@ -34,9 +34,8 @@ export const ProfileStyled = styled.button`
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    overflow: hidden;
     border: none;
     padding: 0;
     background-color: var(--primary-text);
-    background-image: url('https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/7e/7e28241577008d6c0deb7346f7ab9f35df22d099_full.jpg');
-    background-size: 100%;
 `;

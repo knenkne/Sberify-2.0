@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { getSession } from 'next-auth/client';
 import PropTypes from 'prop-types';
 
 import Releases from '../components/releases';
@@ -22,7 +23,7 @@ const Home = ({ releases }) => (
     </>
 );
 
-export async function getStaticProps() {
+export async function getStaticProps(ctx) {
     const {
         albums: { items: releases }
     } = await fetcher(
