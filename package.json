@@ -21,8 +21,10 @@
         "@emotion/babel-plugin": "^11.3.0",
         "@emotion/babel-preset-css-prop": "10.0.27",
         "@next/bundle-analyzer": "^11.1.2",
+        "autoprefixer": "^10.3.4",
         "babel-plugin-emotion": "10.0.27",
         "babel-plugin-macros": "^2.8.0",
+        "classnames": "^2.2.6",
         "dotenv": "^10.0.0",
         "eslint": "^7.20.0",
         "eslint-config-prettier": "^8.1.0",
@@ -31,6 +33,7 @@
         "eslint-plugin-react": "^7.22.0",
         "eslint-plugin-react-hooks": "^4.2.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
+        "postcss": "^8.3.6",
         "prettier": "^2.2.1",
         "tailwindcss": "^2.2.9",
         "twin.macro": "^2.7.0"

@@ -71,22 +71,6 @@ export const NavStyled = styled.nav`
     width: 300px;
 `;
 
-export const DownBarStyled = styled.aside`
-    position: sticky;
-    left: 0;
-    bottom: 0;
-    height: 75px;
-    width: 100%;
-    background-color: #f5f5f5;
-    box-shadow: 0px 1px 2px rgba(38, 38, 38, 0.04), 0px 8px 16px rgba(38, 38, 38, 0.16);
-    z-index: 10;
-
-    .dark-mode & {
-        background-color: #1e1e1e;
-        box-shadow: 0px 1px 2px rgba(18, 18, 18, 0.24), 0px 4px 8px rgba(18, 18, 18, 0.6);
-    }
-`;
-
 export const SearchWrapperStyled = styled.div`
     position: relative;
     width: 320px;

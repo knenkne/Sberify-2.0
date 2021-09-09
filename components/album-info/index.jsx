@@ -3,15 +3,6 @@ import NextImage from 'next/image';
 import NextLink from 'next/link';
 
 import Tracks from '../tracks';
-import {
-    AlbumInfoStyled,
-    AlbumStyled,
-    AlbumWrapperStyled,
-    CoverWrapperStyled,
-    LinkStyled,
-    SubtitleStyled,
-    TitleStyled
-} from './styles';
 
 const months = [
     'January',
@@ -36,10 +27,10 @@ const AlbumInfo = (props) => {
     const releaseMonth = months[releseDateParsed.getUTCMonth()];
 
     return (
-        <>
-            <AlbumWrapperStyled>
-                <AlbumStyled>
-                    <CoverWrapperStyled>
+        <section>
+            <div className="pt-24 px-10 pb-10 bg-secondary">
+                <div className="flex items-end">
+                    <div className="relative w-1/5 h-1/5 flex-shrink-0 rounded-lg overflow-hidden mr-5 shimmer light:shimmer-light">
                         <NextImage
                             src={props.images[1].url}
                             // TODO: alt
@@ -49,25 +40,29 @@ const AlbumInfo = (props) => {
                             height="300"
                             unoptimized
                         />
-                    </CoverWrapperStyled>
-                    <AlbumInfoStyled>
-                        <TitleStyled>{props.name}</TitleStyled>
-                        <SubtitleStyled>
+                    </div>
+                    <div className="relative min-w-0 flex-grow">
+                        <h3 className="w-full truncate font-archivo font-black text-7xl text-primary">
+                            {props.name}
+                        </h3>
+                        <h4 className="font-medium text-base text-secondary ml-1 -mt-2">
                             {props.artists.map(({ name, id }) => (
                                 <>
                                     <NextLink href={`/artist/${id}`} passHref key={id}>
-                                        <LinkStyled>{name}</LinkStyled>
+                                        <a className="text-secondary duration-300 hover:text-secondary-hover hover:text-shadow">
+                                            {name}
+                                        </a>
                                     </NextLink>
                                     {` • `}
                                 </>
                             ))}
                             {releaseMonth} {releaseYear}
-                        </SubtitleStyled>
-                    </AlbumInfoStyled>
-                </AlbumStyled>
-            </AlbumWrapperStyled>
+                        </h4>
+                    </div>
+                </div>
+            </div>
             <Tracks tracks={props.tracks} image={props.images[1].url} />
-        </>
+        </section>
     );
 };
 

@@ -4,8 +4,6 @@ import { useContext } from 'react';
 
 import { FEAT_REGEXP } from '../../shared/constants';
 import { PlayerContext } from '../../store';
-// TODO: common.styles
-import { LinkStyled } from '../album-info/styles';
 import {
     TrackArtistsStyled,
     TrackArtistStyled,
@@ -70,7 +68,9 @@ c8.746-5.954,13.98-15.848,13.98-26.428C407.519,219.477,402.285,209.582,393.538,2
                     {artists.map(({ name, id }) => (
                         <TrackArtistStyled key={id}>
                             <NextLink href={`/artist/${id}`} passHref>
-                                <LinkStyled>{name}</LinkStyled>
+                                <a className="text-secondary duration-300 hover:text-secondary-hover hover:text-shadow">
+                                    {name}
+                                </a>
                             </NextLink>
                         </TrackArtistStyled>
                     ))}

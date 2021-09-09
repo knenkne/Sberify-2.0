@@ -1,14 +1,11 @@
 import AlbumInfo from '../../components/album-info';
-import Wrapper from '../../components/wrapper';
 import { fetcher } from '../../network';
 import { ApiRoute, RELEASES_COUNT, REVALIDATE_PERIOD } from '../../shared/constants';
 
 // TODO: extract here from albuminfo component
 const Album = (props) => (
     // eslint-disable-next-line react/prop-types
-    <Wrapper shadeless>
-        <AlbumInfo {...props} />
-    </Wrapper>
+    <AlbumInfo {...props} />
 );
 
 export async function getStaticPaths() {

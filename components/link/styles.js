@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -40,7 +41,7 @@ const indexStyle = ({ active, index }) => {
     `;
 };
 
-export const LinkStyled = styled.a`
+const LinkStyled = styled.a`
     position: relative;
     font-family: 'Archivo';
     font-weight: 400;

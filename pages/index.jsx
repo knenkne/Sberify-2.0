@@ -1,9 +1,8 @@
-import Image from 'next/image';
+import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 
 import Layout from '../components/layout';
 import Releases from '../components/releases';
-import Wrapper from '../components/wrapper';
 import { fetcher } from '../network';
 import banner from '../public/images/banner.jpg';
 import {
@@ -17,15 +16,18 @@ import {
 function Home({ releases }) {
     return (
         <>
-            <Wrapper>
-                <Image
+            <div className="relative flex-1 overflow-hidden">
+                <NextImage
                     src={banner}
                     alt="Featured: Machine Gun Kelly"
-                    layout="responsive"
+                    objectFit="cover"
+                    objectPosition="top left"
+                    layout="fill"
                     placeholder="blur"
                     priority
                 />
-            </Wrapper>
+            </div>
+
             <Releases releases={releases} />
         </>
     );
