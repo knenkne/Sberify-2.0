@@ -27,8 +27,8 @@ const AlbumInfo = (props) => {
     const releaseMonth = months[releseDateParsed.getUTCMonth()];
 
     return (
-        <section>
-            <div className="pt-24 px-10 pb-10 bg-secondary">
+        <>
+            <div className="bg-secondary px-10 pb-12 shadow-md z-10">
                 <div className="flex items-end">
                     <div className="relative w-1/5 h-1/5 flex-shrink-0 rounded-lg overflow-hidden mr-5 shimmer light:shimmer-light">
                         <NextImage
@@ -61,8 +61,10 @@ const AlbumInfo = (props) => {
                     </div>
                 </div>
             </div>
-            <Tracks tracks={props.tracks} image={props.images[1].url} />
-        </section>
+            <div className="bg-tertiary h-full pb-10">
+                <Tracks tracks={props.tracks} image={props.images[1].url} />
+            </div>
+        </>
     );
 };
 

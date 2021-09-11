@@ -16,7 +16,7 @@ import {
 function Home({ releases }) {
     return (
         <>
-            <div className="relative flex-1 overflow-hidden">
+            <div className="relative flex-1 -mt-24 overflow-hidden">
                 <NextImage
                     src={banner}
                     alt="Featured: Machine Gun Kelly"
@@ -27,7 +27,6 @@ function Home({ releases }) {
                     priority
                 />
             </div>
-
             <Releases releases={releases} />
         </>
     );

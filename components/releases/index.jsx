@@ -25,7 +25,7 @@ const Releases = ({ releases }) => {
                 after:h-28
                 after:bg-gradient-to-t
                 after:from-[var(--secondary-BG)] 
-                after:to-brand-[transparent]
+                after:to-transparent
                 bg-secondary
         ">
             <div

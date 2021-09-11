@@ -4,7 +4,7 @@ import { HeaderStyled, ProfileStyled } from './styles';
 
 const Sidebar = () => {
     return (
-        <aside className="w-1/5 bg-primary">
+        <aside className="w-1/5 flex-shrink-0 bg-primary">
             <HeaderStyled>
                 <ProfileStyled />
                 <ThemeButton />

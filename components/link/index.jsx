@@ -19,14 +19,15 @@ const Link = ({ href, children, index }) => {
                     'font-archivo',
                     'text-base',
                     'px-0.5',
-                    'py-1',
                     'uppercase',
                     'duration-300',
                     'hover:text-shadow',
                     'hover:text-tertiary-hover',
-                    !active && 'text-tertiary',
+                    !active && (index ? 'text-[rgba(255,255,255,0.8)]' : 'text-tertiary'),
                     active &&
-                        'font-medium text-primary after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-brand-primary after:to-brand-secondary'
+                        `font-medium ${
+                            index ? 'text-[#ffffff]' : 'text-primary'
+                        } after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-brand-primary after:to-brand-secondary`
                 )}>
                 {children}
             </a>
