@@ -37,7 +37,7 @@ const Releases = ({ releases }) => {
                 ref={emblaRef}>
                 <div className="embla__container flex items-center h-full ml-10">
                     {releases.map(({ id, name, images, artists }) => {
-                        const coverUrl = images[0].url;
+                        const coverUrl = images[1].url;
                         const artist = artists[0].name;
 
                         return (
