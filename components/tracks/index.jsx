@@ -12,9 +12,9 @@ import {
     TrackInfoStyled,
     TrackNameStyled,
     TrackNumberStyled,
-    TrackPlayButtonStyled,
-    TracksStyled,
-    TrackStyled
+    // TrackPlayButtonStyled,
+    TracksStyled
+    // TrackStyled
 } from './styles';
 
 // common.constants
