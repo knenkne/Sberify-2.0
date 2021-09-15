@@ -34,8 +34,7 @@ const AlbumInfo = (props) => {
                         <div className="absolute top-0 left-0 w-full h-full bg-primary animate-pulse" />
                         <NextImage
                             src={props.images[1].url}
-                            // TODO: alt
-                            // alt={`${props.name} by ${props.artist}`}
+                            alt={`${props.name} by ${props.artist}`}
                             layout="responsive"
                             width="300"
                             height="300"

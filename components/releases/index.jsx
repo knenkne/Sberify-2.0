@@ -53,11 +53,11 @@ const Releases = ({ releases }) => {
 
                         return (
                             <div
-                                className="embla__slide group relative w-36 h-36 flex flex-col justify-end flex-shrink-0 box-content pr-10"
+                                className="embla__slide group flex-shrink-0 relative w-36 h-36 box-content pr-10"
                                 key={id}>
                                 <NextLink href={`/album/${id}`} passHref>
                                     <a
-                                        className="absolute w-36 h-36 rounded bg-secondary shadow-md overflow-hidden group-hover:-translate-y-10 group-hover:shadow-lg focus:-translate-y-10 delay-75 duration-300"
+                                        className="relative block w-36 h-36 rounded bg-secondary shadow-md overflow-hidden group-hover:-translate-y-10 group-hover:shadow-lg focus:-translate-y-10 delay-75 duration-300"
                                         onClick={handleClick}>
                                         <div className="absolute top-0 left-0 w-full h-full bg-primary animate-pulse" />
                                         <NextImage
@@ -69,12 +69,14 @@ const Releases = ({ releases }) => {
                                         />
                                     </a>
                                 </NextLink>
-                                <h3 className="font-roboto font-medium text-primary leading-5 truncate">
-                                    {name}
-                                </h3>
-                                <h4 className="font-roboto font-medium text-secondary text-xs truncate">
-                                    {artist}
-                                </h4>
+                                <div className="-mt-9">
+                                    <h3 className="font-roboto font-medium text-primary leading-5 truncate">
+                                        {name}
+                                    </h3>
+                                    <h4 className="font-roboto font-medium text-secondary text-xs truncate">
+                                        {artist}
+                                    </h4>
+                                </div>
                             </div>
                         );
                     })}
