@@ -21,9 +21,10 @@ const Link = ({ href, children, index }) => {
                     'px-0.5',
                     'uppercase',
                     'duration-300',
-                    'hover:text-shadow',
-                    'hover:text-tertiary-hover',
-                    !active && (index ? 'text-[rgba(255,255,255,0.8)]' : 'text-tertiary'),
+                    !active &&
+                        (index
+                            ? 'text-[rgba(255,255,255,0.8)] hover:text-[#ffffff] hover:text-shadow-explicit'
+                            : 'text-tertiary hover:text-tertiary-hover hover:text-shadow'),
                     active &&
                         `font-medium ${
                             index ? 'text-[#ffffff]' : 'text-primary'

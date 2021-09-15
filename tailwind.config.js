@@ -40,6 +40,9 @@ module.exports = {
             const newUtilities = {
                 '.text-shadow': {
                     'text-shadow': '0 0 1.4px var(--nav)'
+                },
+                '.text-shadow-explicit': {
+                    'text-shadow': '0 0 1.4px rgba(255, 255, 255, 0.8)'
                 }
             };
 

@@ -30,7 +30,8 @@ const AlbumInfo = (props) => {
         <>
             <div className="bg-secondary px-10 pb-12 shadow-md z-10">
                 <div className="flex items-end">
-                    <div className="relative w-1/5 h-1/5 flex-shrink-0 rounded-lg overflow-hidden mr-5 shimmer light:shimmer-light">
+                    <div className="relative w-72 h-72 flex-shrink-0 rounded-lg shadow-md overflow-hidden mr-5">
+                        <div className="absolute top-0 left-0 w-full h-full bg-primary animate-pulse" />
                         <NextImage
                             src={props.images[1].url}
                             // TODO: alt

@@ -6,7 +6,6 @@ import { useEmblaCarousel } from 'embla-carousel/react';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
-import { useCallback } from 'react';
 
 const Releases = ({ releases }) => {
     const [emblaRef, embla] = useEmblaCarousel({
@@ -16,14 +15,11 @@ const Releases = ({ releases }) => {
     });
 
     // tiny hack for preact to stop propogation while drag the carousel
-    const handleClick = useCallback(
-        (e) => {
-            if (!embla?.clickAllowed()) {
-                e.preventDefault();
-            }
-        },
-        [embla]
-    );
+    const handleClick = (e) => {
+        if (!embla?.clickAllowed()) {
+            e.preventDefault();
+        }
+    };
 
     return (
         // TODO: semantic components
@@ -61,16 +57,16 @@ const Releases = ({ releases }) => {
                                 key={id}>
                                 <NextLink href={`/album/${id}`} passHref>
                                     <a
-                                        className="absolute w-36 h-36 shadow-md group-hover:-translate-y-10  group-hover:shadow-xl focus:-translate-y-10 delay-75 duration-300"
+                                        className="absolute w-36 h-36 rounded bg-secondary shadow-md overflow-hidden group-hover:-translate-y-10 group-hover:shadow-lg focus:-translate-y-10 delay-75 duration-300"
                                         onClick={handleClick}>
-                                        <div className="relative w-full h-full rounded overflow-hidden">
-                                            <NextImage
-                                                src={coverUrl}
-                                                alt={`${name} by ${artist}`}
-                                                layout="fill"
-                                                unoptimized
-                                            />
-                                        </div>
+                                        <div className="absolute top-0 left-0 w-full h-full bg-primary animate-pulse" />
+                                        <NextImage
+                                            src={coverUrl}
+                                            alt={`${name} by ${artist}`}
+                                            layout="fill"
+                                            unoptimized
+                                            className="z-10"
+                                        />
                                     </a>
                                 </NextLink>
                                 <h3 className="font-roboto font-medium text-primary leading-5 truncate">

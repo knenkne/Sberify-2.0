@@ -9,13 +9,14 @@ module.exports = {
         TOKEN_URL: process.env.TOKEN_URL,
         API_URL: process.env.API_URL
     },
-    webpack: (config) => {
-        Object.assign(config.resolve.alias, {
-            react: 'preact/compat',
-            'react-dom/test-utils': 'preact/test-utils',
-            'react-dom': 'preact/compat'
-        });
-
+    webpack: (config, { dev, isServer }) => {
+        if (!dev && !isServer) {
+            Object.assign(config.resolve.alias, {
+                react: 'preact/compat',
+                'react-dom/test-utils': 'preact/test-utils',
+                'react-dom': 'preact/compat'
+            });
+        }
         return config;
     }
 };
