@@ -88,7 +88,7 @@ const Tracks = ({ tracks, image }) => {
 
     return (
         <TracksStyled>
-            {tracks.items.map((track, i) => (
+            {tracks.map((track, i) => (
                 <Track
                     key={track.id}
                     // TODO: counter pseudo

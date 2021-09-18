@@ -3,37 +3,40 @@ import PropTypes from 'prop-types';
 
 import Releases from '../components/releases';
 import Wrapper from '../components/wrapper';
-import { fetcher } from '../network';
+import { initializeApollo } from '../lib/apollo';
+import { GET_RELEASES } from '../lib/apollo/queries';
 import banner from '../public/images/banner.jpg';
-import { ApiRoute, RELEASES_COUNT, RELEASES_COUNTRY, REVALIDATE_PERIOD } from '../shared/constants';
 
-const Home = ({ releases }) => (
-    <>
-        <Wrapper>
-            <Image
-                src={banner}
-                alt="Featured: Machine Gun Kelly"
-                layout="responsive"
-                placeholder="blur"
-                priority
-            />
-        </Wrapper>
-        <Releases releases={releases} />
-    </>
-);
+const Home = ({ releases }) => {
+    return (
+        <>
+            <Wrapper>
+                <Image
+                    src={banner}
+                    alt="Featured: Machine Gun Kelly"
+                    layout="responsive"
+                    placeholder="blur"
+                    priority
+                />
+            </Wrapper>
+            <Releases releases={releases} />
+        </>
+    );
+};
 
 export async function getStaticProps() {
+    const apolloClient = initializeApollo();
+
     const {
-        albums: { items: releases }
-    } = await fetcher(
-        `/${process.env.API_VERSION}/${ApiRoute.RELEASES}?limit=${RELEASES_COUNT}&country=${RELEASES_COUNTRY}`
-    );
+        data: { releases }
+    } = await apolloClient.query({
+        query: GET_RELEASES
+    });
 
     return {
         props: {
             releases
-        },
-        revalidate: REVALIDATE_PERIOD
+        }
     };
 }
 

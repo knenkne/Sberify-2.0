@@ -30,8 +30,8 @@ const months = [
 
 const AlbumInfo = (props) => {
     // TODO: parse on backend
-    const { release_date } = props;
-    const releseDateParsed = new Date(release_date);
+    const { releaseDate } = props;
+    const releseDateParsed = new Date(releaseDate);
     const releaseYear = releseDateParsed.getUTCFullYear();
     const releaseMonth = months[releseDateParsed.getUTCMonth()];
 
