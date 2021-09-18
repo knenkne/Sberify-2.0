@@ -1,7 +1,8 @@
 // 3 days revalidation
 export const REVALIDATE_PERIOD = 60 * 60 * 24 * 3;
 export const RELEASES_COUNT = 50;
-export const RELEASES_COUNTRY = 'US';
+export const PLAYLISTS_COUNT = 1;
+export const MARKET_COUNTRY = 'US';
 export const FEAT_REGEXP = /\(()(feat|ft|with)/;
 
 export const Theme = {
@@ -17,7 +18,8 @@ export const Route = {
 
 export const ApiRoute = {
     ALBUMS: 'albums',
-    RELEASES: 'browse/new-releases'
+    RELEASES: 'browse/new-releases',
+    PLAYLISTS: 'browse/featured-playlists'
 };
 
 export const nextNprogressOptions = {

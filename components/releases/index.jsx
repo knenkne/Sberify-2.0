@@ -1,52 +1,86 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402
 import { useEmblaCarousel } from 'embla-carousel/react';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
-import { ArtistStyled, CoverWrapperStyled, InfoStyled, LinkStyled, NameStyled } from './style';
-
 const Releases = ({ releases }) => {
-    const [emblaRef] = useEmblaCarousel({
+    const [emblaRef, embla] = useEmblaCarousel({
         loop: false,
         align: 'start',
         containScroll: 'keepSnaps'
     });
 
-    return (
-        // TODO: styled semantic components w/ className
-        <div className="embla" ref={emblaRef}>
-            <div className="embla__container">
-                {releases.map(({ id, name, images, artists, album_type }) => {
-                    const coverUrl = images[0].url;
-                    const artist = artists[0].name;
+    // tiny hack for preact to stop propogation while drag the carousel
+    const handleClick = (e) => {
+        if (!embla?.clickAllowed()) {
+            e.preventDefault();
+        }
+    };
 
-                    return (
-                        <div className="embla__slide" key={id}>
-                            <NextLink href={`/album/${id}`} passHref>
-                                <LinkStyled single={album_type === 'single'}>
-                                    {/* TODO: placeholder */}
-                                    {/* TODO: semantic */}
-                                    {/* TODO: loader for matching sizes automaticly */}
-                                    {/* TODO: light theme shadow more gentle */}
-                                    <CoverWrapperStyled>
+    return (
+        // TODO: semantic components
+        <div
+            className="                    
+                relative
+                h-56
+                -mt-28
+                flex-shrink-0 
+                after:absolute 
+                after:-top-28
+                after:left-0 
+                after:w-full 
+                after:h-28
+                after:bg-gradient-to-t
+                after:from-[var(--secondary-BG)] 
+                after:to-transparent
+                bg-secondary
+        ">
+            <div
+                className="
+                    embla 
+                    h-full
+                    overflow-hidden
+                "
+                ref={emblaRef}>
+                <div className="embla__container flex items-center h-full ml-10">
+                    {releases.map(({ id, name, images, artists }) => {
+                        const coverUrl = images[1].url;
+                        const artist = artists[0].name;
+
+                        return (
+                            <div
+                                className="embla__slide group flex-shrink-0 relative w-36 h-36 box-content pr-10"
+                                key={id}>
+                                <NextLink href={`/album/${id}`} passHref>
+                                    <a
+                                        className="relative block w-36 h-36 rounded bg-secondary shadow-md overflow-hidden group-hover:-translate-y-10 group-hover:shadow-lg focus:-translate-y-10 delay-75 duration-300"
+                                        onClick={handleClick}>
+                                        <div className="absolute top-0 left-0 w-full h-full bg-primary animate-pulse" />
                                         <NextImage
                                             src={coverUrl}
                                             alt={`${name} by ${artist}`}
-                                            layout="fixed"
-                                            width="140"
-                                            height="140"
+                                            layout="fill"
                                             unoptimized
+                                            className="z-10"
                                         />
-                                    </CoverWrapperStyled>
-                                    <InfoStyled>
-                                        <NameStyled>{name}</NameStyled>
-                                        <ArtistStyled>{artist}</ArtistStyled>
-                                    </InfoStyled>
-                                </LinkStyled>
-                            </NextLink>
-                        </div>
-                    );
-                })}
+                                    </a>
+                                </NextLink>
+                                <div className="-mt-9">
+                                    <h3 className="font-roboto font-medium text-primary leading-5 truncate">
+                                        {name}
+                                    </h3>
+                                    <h4 className="font-roboto font-medium text-secondary text-xs truncate">
+                                        {artist}
+                                    </h4>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

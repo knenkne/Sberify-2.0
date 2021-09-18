@@ -1,20 +1,37 @@
+/* eslint-disable no-unused-vars */
+import cx from 'classnames';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
-import { LinkStyled } from './styles';
-
 // eslint-disable-next-line react/prop-types
 const Link = ({ href, children, index }) => {
-    const { pathname } = useRouter();
     // /albums/[id] -> /albums
+    const { pathname } = useRouter();
     const [cleanPathname] = pathname.split('/[');
+    const active = cleanPathname === href;
 
     return (
         <NextLink href={href} passHref>
-            <LinkStyled active={cleanPathname === href} index={index}>
+            <a
+                className={cx(
+                    'relative',
+                    'font-archivo',
+                    'text-base',
+                    'px-0.5',
+                    'uppercase',
+                    'duration-300',
+                    !active &&
+                        (index
+                            ? 'text-[rgba(255,255,255,0.8)] hover:text-[#ffffff] hover:text-shadow-explicit'
+                            : 'text-tertiary hover:text-tertiary-hover hover:text-shadow'),
+                    active &&
+                        `font-medium ${
+                            index ? 'text-[#ffffff]' : 'text-primary'
+                        } after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-brand-primary after:to-brand-secondary`
+                )}>
                 {children}
-            </LinkStyled>
+            </a>
         </NextLink>
     );
 };

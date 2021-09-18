@@ -1,34 +1,41 @@
+/* eslint-disable react/prop-types */
 import AlbumInfo from '../../components/album-info';
-import Wrapper from '../../components/wrapper';
-import { fetcher } from '../../network';
-import { ApiRoute, RELEASES_COUNT, REVALIDATE_PERIOD } from '../../shared/constants';
+import createApolloClient from '../../lib/apollo';
+import { GET_ALBUM, GET_RELEASES } from '../../lib/apollo/queries';
 
 // TODO: extract here from albuminfo component
 const Album = (props) => (
     // eslint-disable-next-line react/prop-types
-    <Wrapper shadeless>
-        <AlbumInfo {...props} />
-    </Wrapper>
+    <AlbumInfo {...props} />
 );
 
 export async function getStaticPaths() {
+    const apolloClient = createApolloClient();
+
     const {
-        albums: { items: releases }
-    } = await fetcher(`/${process.env.API_VERSION}/${ApiRoute.RELEASES}?limit=${RELEASES_COUNT}`);
+        data: { releases }
+    } = await apolloClient.query({
+        query: GET_RELEASES
+    });
 
-    const paths = releases.map(({ id }) => ({
-        params: { id }
-    }));
-
-    return { paths, fallback: 'blocking' };
+    return {
+        paths: releases.map(({ id }) => ({ params: { id } })),
+        fallback: 'blocking'
+    };
 }
 
 export async function getStaticProps({ params: { id } }) {
-    const album = await fetcher(`/${process.env.API_VERSION}/${ApiRoute.ALBUMS}/${id}`);
+    const apolloClient = createApolloClient();
+
+    const {
+        data: { album }
+    } = await apolloClient.query({
+        query: GET_ALBUM,
+        variables: { id }
+    });
 
     return {
-        props: album,
-        revalidate: REVALIDATE_PERIOD
+        props: album
     };
 }
 

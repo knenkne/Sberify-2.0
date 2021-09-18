@@ -1,16 +1,16 @@
-// import ThemeButton from '../button/theme';
-import Player from '../player';
-import { HeaderStyled, ProfileStyled, SideBarStyled } from './styles';
+import ThemeButton from '../button/theme';
+// import Player from '../player';
+import { HeaderStyled, ProfileStyled } from './styles';
 
 const Sidebar = () => {
     return (
-        <SideBarStyled>
+        <aside className="w-1/5 flex-shrink-0 bg-primary">
             <HeaderStyled>
                 <ProfileStyled />
-                {/* <ThemeButton /> */}
+                <ThemeButton />
             </HeaderStyled>
-            <Player />
-        </SideBarStyled>
+            {/* <Player /> */}
+        </aside>
     );
 };
 
