@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
 import AlbumInfo from '../../components/album-info';
 import Wrapper from '../../components/wrapper';
-import { initializeApollo } from '../../lib/apollo';
+import createApolloClient from '../../lib/apollo';
 import { GET_ALBUM, GET_RELEASES } from '../../lib/apollo/queries';
-// import { graphFetcher } from '../../network';
-// import { REVALIDATE_PERIOD } from '../../shared/constants';
 
 // TODO: extract here from albuminfo component
 const Album = (props) => (
@@ -15,7 +13,7 @@ const Album = (props) => (
 );
 
 export async function getStaticPaths() {
-    const apolloClient = initializeApollo();
+    const apolloClient = createApolloClient();
 
     const {
         data: { releases }
@@ -30,7 +28,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
-    const apolloClient = initializeApollo();
+    const apolloClient = createApolloClient();
 
     const {
         data: { album }

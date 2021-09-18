@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Releases from '../components/releases';
 import Wrapper from '../components/wrapper';
-import { initializeApollo } from '../lib/apollo';
+import createApolloClient from '../lib/apollo';
 import { GET_RELEASES } from '../lib/apollo/queries';
 import banner from '../public/images/banner.jpg';
 
@@ -25,7 +25,7 @@ const Home = ({ releases }) => {
 };
 
 export async function getStaticProps() {
-    const apolloClient = initializeApollo();
+    const apolloClient = createApolloClient();
 
     const {
         data: { releases }
