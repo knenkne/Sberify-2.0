@@ -5,6 +5,7 @@ import Releases from '../components/releases';
 import createApolloClient from '../lib/apollo';
 import { GET_RELEASES } from '../lib/apollo/queries';
 import banner from '../public/images/banner.jpg';
+import { REVALIDATION_PERIOD } from '../shared/constants';
 
 const Home = ({ releases }) => {
     return (
@@ -37,7 +38,8 @@ export async function getStaticProps() {
     return {
         props: {
             releases
-        }
+        },
+        revalidate: REVALIDATION_PERIOD
     };
 }
 
