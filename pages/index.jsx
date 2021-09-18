@@ -1,8 +1,7 @@
-import Image from 'next/image';
+import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 
 import Releases from '../components/releases';
-import Wrapper from '../components/wrapper';
 import createApolloClient from '../lib/apollo';
 import { GET_RELEASES } from '../lib/apollo/queries';
 import banner from '../public/images/banner.jpg';
@@ -10,15 +9,17 @@ import banner from '../public/images/banner.jpg';
 const Home = ({ releases }) => {
     return (
         <>
-            <Wrapper>
-                <Image
+            <div className="relative flex-1 -mt-24 overflow-hidden">
+                <NextImage
                     src={banner}
                     alt="Featured: Machine Gun Kelly"
-                    layout="responsive"
+                    objectFit="cover"
+                    objectPosition="top left"
+                    layout="fill"
                     placeholder="blur"
                     priority
                 />
-            </Wrapper>
+            </div>
             <Releases releases={releases} />
         </>
     );

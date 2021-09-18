@@ -1,10 +1,11 @@
-import { css, Global } from '@emotion/core';
+import { css, Global } from '@emotion/react';
 
 const globalStyle = () => css`
     :root {
         --primary-BG: #ffffff;
         --secondary-BG: #eeeeee;
         --tertiary-BG: #f5f5f5;
+        --nav-BG: rgba(255, 255, 255, 0.2);
         --primary-brand: #ff4d4d;
         --secondary-brand: #f9cb28;
 
@@ -58,7 +59,8 @@ const globalStyle = () => css`
     h3,
     h4,
     h5,
-    h6 {
+    h6,
+    p {
         margin: 0;
     }
 
@@ -91,30 +93,30 @@ const globalStyle = () => css`
     }
 
     .embla {
-        overflow: hidden;
+        /* overflow: hidden;
         height: 220px;
         flex-shrink: 0;
         margin-top: -50px;
-        z-index: 10;
+        z-index: 10; */
     }
 
     .embla__container {
-        display: flex;
+        /* display: flex;
         align-items: center;
         width: calc(100% - 40px);
         min-height: calc(100vh - 800px + 50px);
         height: 100%;
-        margin-left: 40px;
+        margin-left: 40px; */
     }
 
     .embla__slide {
-        width: fit-content;
+        /* width: fit-content;
         height: 60%;
         min-height: 140px;
         min-width: 140px;
         flex-shrink: 0;
         padding-right: 40px;
-        box-sizing: content-box;
+        box-sizing: content-box; */
     }
 `;
 

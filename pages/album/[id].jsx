@@ -1,15 +1,12 @@
 /* eslint-disable react/prop-types */
 import AlbumInfo from '../../components/album-info';
-import Wrapper from '../../components/wrapper';
 import createApolloClient from '../../lib/apollo';
 import { GET_ALBUM, GET_RELEASES } from '../../lib/apollo/queries';
 
 // TODO: extract here from albuminfo component
 const Album = (props) => (
     // eslint-disable-next-line react/prop-types
-    <Wrapper shadeless>
-        <AlbumInfo {...props} />
-    </Wrapper>
+    <AlbumInfo {...props} />
 );
 
 export async function getStaticPaths() {

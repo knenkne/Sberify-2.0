@@ -2,22 +2,21 @@
 import NextLink from 'next/link';
 import { useContext } from 'react';
 
+import PauseIcon from '../../public/icons/pause.svg';
+import PlayIcon from '../../public/icons/play.svg';
 import { FEAT_REGEXP } from '../../shared/constants';
 import { PlayerContext } from '../../store';
-// TODO: common.styles
-import { LinkStyled } from '../album-info/styles';
 import {
     TrackArtistsStyled,
     TrackArtistStyled,
     TrackInfoStyled,
     TrackNameStyled,
     TrackNumberStyled,
-    TrackPlayButtonStyled,
-    TracksStyled,
-    TrackStyled
+    // TrackPlayButtonStyled,
+    TracksStyled
+    // TrackStyled
 } from './styles';
 
-// TODO: sanitize release also
 // common.constants
 
 const Track = ({ id, name, artists, image, i, preview_url, playing, onClick }) => {
@@ -35,33 +34,17 @@ const Track = ({ id, name, artists, image, i, preview_url, playing, onClick }) =
     };
 
     return (
-        <TrackStyled>
+        <li className="group relative flex items-center h-14 rounded hover:bg-secondary">
             {preview_url && (
-                <TrackPlayButtonStyled onClick={handlePlayButtonClick}>
-                    {/* TODO: static */}
+                <button
+                    className="group-hover:opacity-100 absolute flex items-center justify-center w-14 h-14 bg-secondary opacity-0 cursor-pointer rounded"
+                    onClick={handlePlayButtonClick}>
                     {!playing ? (
-                        <svg viewBox="0 0 460.114 460.114">
-                            <path
-                                d="M393.538,203.629L102.557,5.543c-9.793-6.666-22.468-7.372-32.94-1.832c-10.472,5.538-17.022,16.413-17.022,28.26v396.173
-c0,11.846,6.55,22.721,17.022,28.26c10.471,5.539,23.147,4.834,32.94-1.832l290.981-198.087
-c8.746-5.954,13.98-15.848,13.98-26.428C407.519,219.477,402.285,209.582,393.538,203.629z"
-                            />
-                        </svg>
+                        <PlayIcon className="w-4 h-4 fill-current text-primary" />
                     ) : (
-                        <svg viewBox="0 0 47.607 47.607">
-                            <g>
-                                <path
-                                    d="M17.991,40.976c0,3.662-2.969,6.631-6.631,6.631l0,0c-3.662,0-6.631-2.969-6.631-6.631V6.631C4.729,2.969,7.698,0,11.36,0
-		l0,0c3.662,0,6.631,2.969,6.631,6.631V40.976z"
-                                />
-                                <path
-                                    d="M42.877,40.976c0,3.662-2.969,6.631-6.631,6.631l0,0c-3.662,0-6.631-2.969-6.631-6.631V6.631
-		C29.616,2.969,32.585,0,36.246,0l0,0c3.662,0,6.631,2.969,6.631,6.631V40.976z"
-                                />
-                            </g>
-                        </svg>
+                        <PauseIcon className="w-4 h-4 fill-current text-primary" />
                     )}
-                </TrackPlayButtonStyled>
+                </button>
             )}
             <TrackNumberStyled>{i + 1}</TrackNumberStyled>
             <TrackInfoStyled>
@@ -70,14 +53,16 @@ c8.746-5.954,13.98-15.848,13.98-26.428C407.519,219.477,402.285,209.582,393.538,2
                     {artists.map(({ name, id }) => (
                         <TrackArtistStyled key={id}>
                             <NextLink href={`/artist/${id}`} passHref>
-                                <LinkStyled>{name}</LinkStyled>
+                                <a className="text-secondary duration-300 hover:text-secondary-hover hover:text-shadow">
+                                    {name}
+                                </a>
                             </NextLink>
                         </TrackArtistStyled>
                     ))}
                 </TrackArtistsStyled>
             </TrackInfoStyled>
             {preview_url && <TrackNumberStyled>0:30</TrackNumberStyled>}
-        </TrackStyled>
+        </li>
     );
 };
 
