@@ -1,5 +1,5 @@
 import ThemeButton from '../button/theme';
-// import Player from '../player';
+import Player from '../player';
 import { HeaderStyled, ProfileStyled } from './styles';
 
 const Sidebar = () => {
@@ -9,7 +9,7 @@ const Sidebar = () => {
                 <ProfileStyled />
                 <ThemeButton />
             </HeaderStyled>
-            {/* <Player /> */}
+            <Player />
         </aside>
     );
 };

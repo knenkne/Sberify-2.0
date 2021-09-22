@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-export const TracksStyled = styled.ul`
+export const TracksStyled = styled.ol`
     padding: 40px;
 `;
 

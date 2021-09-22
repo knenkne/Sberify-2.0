@@ -4,40 +4,38 @@ import { useContext } from 'react';
 
 import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
-import { FEAT_REGEXP } from '../../shared/constants';
+import { cleanName } from '../../shared/utils';
 import { PlayerContext } from '../../store';
 import {
     TrackArtistsStyled,
     TrackArtistStyled,
     TrackInfoStyled,
     TrackNameStyled,
-    TrackNumberStyled,
+    TrackNumberStyled
     // TrackPlayButtonStyled,
-    TracksStyled
+    // TracksStyled
     // TrackStyled
 } from './styles';
 
 // common.constants
 
-const Track = ({ id, name, artists, image, i, preview_url, playing, onClick }) => {
-    // TODO: parse at backennd
-    const [cleanName] = name.split(FEAT_REGEXP);
-
+const Track = (props) => {
+    const { id, name, artists, image, previewUrl, playing, onClick } = props;
     const handlePlayButtonClick = () => {
         onClick({
             id,
             artist: artists[0].name,
             name,
             image,
-            src: preview_url
+            src: previewUrl
         });
     };
 
     return (
-        <li className="group relative flex items-center h-14 rounded hover:bg-secondary">
-            {preview_url && (
+        <li className="group relative flex items-center h-14 rounded hover:bg-secondary pl-14">
+            {previewUrl && (
                 <button
-                    className="group-hover:opacity-100 absolute flex items-center justify-center w-14 h-14 bg-secondary opacity-0 cursor-pointer rounded"
+                    className="group-hover:opacity-100 absolute top-0 left-0 flex items-center justify-center w-14 h-14 bg-secondary opacity-0 cursor-pointer rounded"
                     onClick={handlePlayButtonClick}>
                     {!playing ? (
                         <PlayIcon className="w-4 h-4 fill-current text-primary" />
@@ -46,9 +44,9 @@ const Track = ({ id, name, artists, image, i, preview_url, playing, onClick }) =
                     )}
                 </button>
             )}
-            <TrackNumberStyled>{i + 1}</TrackNumberStyled>
+            {/* <TrackNumberStyled>{i + 1}</TrackNumberStyled> */}
             <TrackInfoStyled>
-                <TrackNameStyled>{cleanName.trim()}</TrackNameStyled>
+                <TrackNameStyled>{cleanName(name)}</TrackNameStyled>
                 <TrackArtistsStyled>
                     {artists.map(({ name, id }) => (
                         <TrackArtistStyled key={id}>
@@ -61,7 +59,7 @@ const Track = ({ id, name, artists, image, i, preview_url, playing, onClick }) =
                     ))}
                 </TrackArtistsStyled>
             </TrackInfoStyled>
-            {preview_url && <TrackNumberStyled>0:30</TrackNumberStyled>}
+            {previewUrl && <TrackNumberStyled>0:30</TrackNumberStyled>}
         </li>
     );
 };
@@ -72,7 +70,7 @@ const Tracks = ({ tracks, image }) => {
     const handlePlayButtonClick = (track) => setTrack(track);
 
     return (
-        <TracksStyled>
+        <ol className="p-10 list-decimal list-inside text-purple-800">
             {tracks.map((track, i) => (
                 <Track
                     key={track.id}
@@ -84,7 +82,7 @@ const Tracks = ({ tracks, image }) => {
                     {...track}
                 />
             ))}
-        </TracksStyled>
+        </ol>
     );
 };
 export default Tracks;
