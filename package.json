@@ -50,7 +50,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "format": "prettier-eslint --write \"**/*.{js,jsx,ts,tsx,css,md,json}\""
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md,json}\""
     },
     "repository": {
         "type": "git",

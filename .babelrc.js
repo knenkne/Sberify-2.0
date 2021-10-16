@@ -10,9 +10,5 @@ module.exports = {
             }
         ]
     ],
-    plugins: [
-        '@emotion/babel-plugin',
-        'babel-plugin-macros',
-        'inline-react-svg'
-    ]
+    plugins: ['@emotion/babel-plugin', 'babel-plugin-macros', 'inline-react-svg']
 };

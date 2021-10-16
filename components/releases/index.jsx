@@ -3,9 +3,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402
 import { useEmblaCarousel } from 'embla-carousel/react';
-import NextImage from 'next/image';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
+
+import Cover from '../cover';
 
 const Releases = ({ releases }) => {
     const [emblaRef, embla] = useEmblaCarousel({
@@ -59,17 +60,11 @@ const Releases = ({ releases }) => {
                                 key={id}
                             >
                                 <NextLink href={`/album/${id}`} passHref>
-                                    <a
-                                        className="relative block w-36 h-36 rounded bg-secondary shadow-md overflow-hidden group-hover:-translate-y-10 group-hover:shadow-lg focus:-translate-y-10 delay-75 duration-300"
-                                        onClick={handleClick}
-                                    >
-                                        <div className="absolute top-0 left-0 w-full h-full bg-primary animate-pulse" />
-                                        <NextImage
+                                    <a onClick={handleClick}>
+                                        <Cover
                                             src={coverUrl}
                                             alt={`${name} by ${artist}`}
-                                            layout="fill"
-                                            unoptimized
-                                            className="z-10"
+                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-hover:shadow-lg group-focus-within:-translate-y-10 delay-75 duration-300"
                                         />
                                     </a>
                                 </NextLink>

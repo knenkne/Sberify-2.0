@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-export const TracksStyled = styled.ul`
+export const TracksStyled = styled.ol`
     padding: 40px;
 `;
 
@@ -125,11 +125,7 @@ export const TrackStyled = styled.li`
         height: 2px;
         bottom: 0;
         left: 0;
-        background: linear-gradient(
-            90deg,
-            var(--primary-brand),
-            var(--secondary-brand)
-        );
+        background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
     }
 
     /* &:focus-within, */

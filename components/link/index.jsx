@@ -25,9 +25,7 @@ const Link = ({ href, children, index }) => {
                             ? 'text-[rgba(255,255,255,0.8)] hover:text-[#ffffff] hover:text-shadow-explicit'
                             : 'text-tertiary hover:text-tertiary-hover hover:text-shadow'),
                     active &&
-                        `font-medium ${
-                            index ? 'text-[#ffffff]' : 'text-primary'
-                        } 
+                        `font-medium ${index ? 'text-[#ffffff]' : 'text-primary'} 
                         after:absolute 
                         after:w-full 
                         after:h-0.5 

@@ -1,8 +1,8 @@
 // eslint-disable-next-line @next/next/no-document-import-in-page
-import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 // TODO: OpenGraph
-export default class Document extends NextDocument {
+export default class CustomDocument extends Document {
     render() {
         return (
             <Html>

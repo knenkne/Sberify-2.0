@@ -1,5 +1,4 @@
-export const getPercent = (time, duration) =>
-    ((time / duration) * 100).toFixed(1);
+export const getPercent = (time, duration) => ((time / duration) * 100).toFixed(1);
 export const getTime = (percent, duration) => (percent * duration) / 100;
 export const getLeftTime = (time, duration) => duration - time;
 export const formatTime = (seconds) => {

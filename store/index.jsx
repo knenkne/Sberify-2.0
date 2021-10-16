@@ -39,9 +39,7 @@ const PlayerProvider = ({ children }) => {
     }, []);
 
     return (
-        <PlayerContext.Provider
-            value={{ currentTrack, setTrack, paused, play, pause }}
-        >
+        <PlayerContext.Provider value={{ currentTrack, setTrack, paused, play, pause }}>
             {children}
         </PlayerContext.Provider>
     );
