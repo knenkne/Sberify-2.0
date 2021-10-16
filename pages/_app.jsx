@@ -21,7 +21,11 @@ const App = ({ Component, pageProps }) => {
         <>
             <NextNprogress options={nextNprogressOptions} />
             {globalStyles}
-            <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
+            <ThemeProvider
+                enableSystem={false}
+                defaultTheme="dark"
+                disableTransitionOnChange
+            >
                 <PlayerProvider>
                     <Layout index={pathname === '/'}>
                         <Component {...pageProps} />

@@ -125,7 +125,11 @@ export const TrackStyled = styled.li`
         height: 2px;
         bottom: 0;
         left: 0;
-        background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
+        background: linear-gradient(
+            90deg,
+            var(--primary-brand),
+            var(--secondary-brand)
+        );
     }
 
     /* &:focus-within, */

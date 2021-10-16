@@ -21,7 +21,11 @@ const Layout = ({ children, title = 'Sberify 2.0', index }) => {
                         <header className="relative h-12 flex items-center py-4 z-10 box-content">
                             <nav className="flex justify-between w-72">
                                 {Object.keys(Route).map((pathName) => (
-                                    <Link href={Route[pathName]} index={index} key={pathName}>
+                                    <Link
+                                        href={Route[pathName]}
+                                        index={index}
+                                        key={pathName}
+                                    >
                                         {pathName}
                                     </Link>
                                 ))}
@@ -34,7 +38,9 @@ const Layout = ({ children, title = 'Sberify 2.0', index }) => {
                                         'left-3',
                                         'w-4',
                                         'h-4',
-                                        index ? 'text-[#ffffff]' : 'text-primary',
+                                        index
+                                            ? 'text-[#ffffff]'
+                                            : 'text-primary',
                                         'fill-current'
                                     )}
                                 />
@@ -44,8 +50,12 @@ const Layout = ({ children, title = 'Sberify 2.0', index }) => {
                                         'h-full',
                                         'pr-4',
                                         'pl-8',
-                                        index ? 'text-[#ffffff]' : 'text-tertiary',
-                                        index ? 'bg-[rgba(255,255,255,0.2)]' : 'bg-primary',
+                                        index
+                                            ? 'text-[#ffffff]'
+                                            : 'text-tertiary',
+                                        index
+                                            ? 'bg-[rgba(255,255,255,0.2)]'
+                                            : 'bg-primary',
                                         'rounded-2xl'
                                     )}
                                 />

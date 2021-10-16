@@ -5,14 +5,14 @@
     "main": "index.js",
     "dependencies": {
         "@apollo/client": "^3.4.12",
-        "@lifeomic/axios-fetch": "^2.0.2",
-        "apollo-link-rest": "^0.8.0-beta.0",
-        "graphql": "^15.5.3",
         "@emotion/react": "^11.4.1",
         "@emotion/styled": "^11.3.0",
+        "@lifeomic/axios-fetch": "^2.0.2",
+        "apollo-link-rest": "^0.8.0-beta.0",
         "axios": "^0.21.1",
         "embla-carousel": "^4.5.3",
-        "next": "11.1.2",
+        "graphql": "^15.5.3",
+        "next": "^11.1.2",
         "next-themes": "^0.0.15",
         "nextjs-progressbar": "^0.0.11",
         "preact": "^10.5.14",
@@ -33,6 +33,7 @@
         "classnames": "^2.2.6",
         "dotenv": "^10.0.0",
         "eslint": "^7.20.0",
+        "eslint-config-next": "11.1.2",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-jsx-a11y": "^6.4.1",
         "eslint-plugin-prettier": "^3.3.1",
@@ -48,8 +49,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint --fix **/*.{js,jsx,ts,tsx}",
-        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md,json}\""
+        "lint": "next lint",
+        "format": "prettier-eslint --write \"**/*.{js,jsx,ts,tsx,css,md,json}\""
     },
     "repository": {
         "type": "git",
