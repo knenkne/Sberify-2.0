@@ -72,8 +72,9 @@ const globalStyle = () => css`
     }
 
     body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+            'Helvetica Neue', sans-serif;
         font-weight: 400;
         font-size: 16px;
         text-rendering: optimizeLegibility;
@@ -84,7 +85,11 @@ const globalStyle = () => css`
 
     #nprogress .bar {
         width: 100%;
-        background: linear-gradient(90deg, var(--primary-brand), var(--secondary-brand));
+        background: linear-gradient(
+            90deg,
+            var(--primary-brand),
+            var(--secondary-brand)
+        );
     }
 
     #nprogress .peg {

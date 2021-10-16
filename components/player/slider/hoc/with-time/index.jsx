@@ -6,13 +6,22 @@ import { BlockStyled, TimeStyled } from './styles';
 
 const withTime = (WrappedSlider) => {
     const WithTime = ({ onChange, time, duration }) => {
-        const currentTrackPercent = useMemo(() => getPercent(time, duration), [time, duration]);
+        const currentTrackPercent = useMemo(
+            () => getPercent(time, duration),
+            [time, duration]
+        );
 
         const [percent, setPercent] = useState(currentTrackPercent);
         const [isRewinding, setIsRewinding] = useState(false);
 
-        const currentTime = useMemo(() => getTime(percent, duration), [percent, duration]);
-        const leftTime = useMemo(() => getLeftTime(currentTime, duration), [currentTime]);
+        const currentTime = useMemo(
+            () => getTime(percent, duration),
+            [percent, duration]
+        );
+        const leftTime = useMemo(
+            () => getLeftTime(currentTime, duration),
+            [currentTime]
+        );
 
         useEffect(() => {
             // Let the track precent lead if there is no rewinding

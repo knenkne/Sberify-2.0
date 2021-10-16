@@ -19,7 +19,16 @@ import {
 
 // common.constants
 
-const Track = ({ id, name, artists, image, i, preview_url, playing, onClick }) => {
+const Track = ({
+    id,
+    name,
+    artists,
+    image,
+    i,
+    preview_url,
+    playing,
+    onClick
+}) => {
     // TODO: parse at backennd
     const [cleanName] = name.split(FEAT_REGEXP);
 
@@ -38,7 +47,8 @@ const Track = ({ id, name, artists, image, i, preview_url, playing, onClick }) =
             {preview_url && (
                 <button
                     className="group-hover:opacity-100 absolute flex items-center justify-center w-14 h-14 bg-secondary opacity-0 cursor-pointer rounded"
-                    onClick={handlePlayButtonClick}>
+                    onClick={handlePlayButtonClick}
+                >
                     {!playing ? (
                         <PlayIcon className="w-4 h-4 fill-current text-primary" />
                     ) : (

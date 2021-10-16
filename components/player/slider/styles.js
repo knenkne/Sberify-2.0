@@ -23,7 +23,8 @@ export const SliderStyled = styled.div(
             content: '';
             background-color: var(--primary-text);
             width: calc(
-                ${THUMB_SIZE}px + 100% / 100 * ${percent} - (${THUMB_SIZE}px / 100 * ${percent})
+                ${THUMB_SIZE}px + 100% / 100 * ${percent} -
+                    (${THUMB_SIZE}px / 100 * ${percent})
             );
             height: ${SLIDER_HEIGHT}px;
             position: absolute;

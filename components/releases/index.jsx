@@ -38,14 +38,16 @@ const Releases = ({ releases }) => {
                 after:from-[var(--secondary-BG)] 
                 after:to-transparent
                 bg-secondary
-        ">
+        "
+        >
             <div
                 className="
                     embla 
                     h-full
                     overflow-hidden
                 "
-                ref={emblaRef}>
+                ref={emblaRef}
+            >
                 <div className="embla__container flex items-center h-full ml-10">
                     {releases.map(({ id, name, images, artists }) => {
                         const coverUrl = images[1].url;
@@ -54,11 +56,13 @@ const Releases = ({ releases }) => {
                         return (
                             <div
                                 className="embla__slide group flex-shrink-0 relative w-36 h-36 box-content pr-10"
-                                key={id}>
+                                key={id}
+                            >
                                 <NextLink href={`/album/${id}`} passHref>
                                     <a
                                         className="relative block w-36 h-36 rounded bg-secondary shadow-md overflow-hidden group-hover:-translate-y-10 group-hover:shadow-lg focus:-translate-y-10 delay-75 duration-300"
-                                        onClick={handleClick}>
+                                        onClick={handleClick}
+                                    >
                                         <div className="absolute top-0 left-0 w-full h-full bg-primary animate-pulse" />
                                         <NextImage
                                             src={coverUrl}

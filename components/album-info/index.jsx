@@ -48,7 +48,11 @@ const AlbumInfo = (props) => {
                         <h4 className="font-medium text-base text-secondary ml-1 -mt-2">
                             {props.artists.map(({ name, id }) => (
                                 <>
-                                    <NextLink href={`/artist/${id}`} passHref key={id}>
+                                    <NextLink
+                                        href={`/artist/${id}`}
+                                        passHref
+                                        key={id}
+                                    >
                                         <a className="text-secondary duration-300 hover:text-secondary-hover hover:text-shadow">
                                             {name}
                                         </a>

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import cx from 'classnames';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -28,8 +27,17 @@ const Link = ({ href, children, index }) => {
                     active &&
                         `font-medium ${
                             index ? 'text-[#ffffff]' : 'text-primary'
-                        } after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 after:bg-gradient-to-r after:from-brand-primary after:to-brand-secondary`
-                )}>
+                        } 
+                        after:absolute 
+                        after:w-full 
+                        after:h-0.5 
+                        after:bottom-0 
+                        after:left-0 
+                        after:bg-gradient-to-r 
+                        after:from-brand-primary 
+                        after:to-brand-secondary`
+                )}
+            >
                 {children}
             </a>
         </NextLink>
