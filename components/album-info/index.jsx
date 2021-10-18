@@ -8,7 +8,7 @@ import Tracks from '../tracks';
 const AlbumInfo = (props) => {
     return (
         <>
-            <div className="bg-secondary px-10 pb-12 shadow-md z-10">
+            <div className="bg-secondary pb-12 shadow-md z-10 col-start-2 col-end-3 row-start-2 row-end-3">
                 <div className="flex items-end">
                     <Cover
                         src={props.images[1].url}
@@ -38,7 +38,7 @@ const AlbumInfo = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="bg-tertiary h-full pb-10">
+            <div className="bg-tertiary pb-10 col-span-full row-start-3 row-end-5 pl-96">
                 <Tracks tracks={props.tracks} image={props.images[1].url} />
             </div>
         </>

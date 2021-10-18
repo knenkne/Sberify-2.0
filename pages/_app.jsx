@@ -6,11 +6,8 @@ import { ThemeProvider } from 'next-themes';
 import NextNprogress from 'nextjs-progressbar';
 
 import Layout from '../components/layout';
-import { patchPreact } from '../lib/patch-preact';
 import { nextNprogressOptions } from '../shared/constants';
 import { PlayerProvider } from '../store';
-
-patchPreact();
 
 // eslint-disable-next-line react/prop-types
 const App = ({ Component, pageProps }) => {
@@ -20,7 +17,6 @@ const App = ({ Component, pageProps }) => {
         <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
             <PlayerProvider>
                 <NextNprogress options={nextNprogressOptions} />
-
                 <Layout index={pathname === '/'}>
                     <Component {...pageProps} />
                 </Layout>
