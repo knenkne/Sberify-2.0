@@ -54,14 +54,14 @@ const Releases = ({ releases }) => {
                 "
                 ref={emblaRef}
             >
-                <div className="embla__container flex items-center h-full ml-8">
+                <div className="embla__container flex items-center h-full ml-10">
                     {releases.map(({ id, name, images, artists }) => {
                         const [, { url }] = images;
                         const [{ name: artist }] = artists;
 
                         return (
                             <div
-                                className="embla__slide group flex-shrink-0 relative w-36 h-36 box-content pr-8"
+                                className="embla__slide group flex-shrink-0 relative w-36 h-36 box-content pr-10"
                                 key={id}
                             >
                                 <NextLink href={`/album/${id}`} passHref>

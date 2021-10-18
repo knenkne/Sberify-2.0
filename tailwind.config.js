@@ -24,7 +24,8 @@ module.exports = {
                 nav: 'var(--nav-BG)'
             },
             gridTemplateColumns: {
-                layout: '26rem 1fr'
+                // sidebar / content
+                layout: '26.5rem 1fr'
             },
             gridTemplateRows: {
                 // header / gradient / content / carousel

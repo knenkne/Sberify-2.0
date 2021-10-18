@@ -71,7 +71,7 @@ const Tracks = ({ tracks, image }) => {
     const handlePlayButtonClick = (track) => setTrack(track);
 
     return (
-        <ol className="p-10 list-decimal list-inside text-purple-800">
+        <ol className="pt-10 px-10 list-decimal list-inside text-purple-800">
             {tracks.map((track, i) => (
                 <Track
                     key={track.id}
