@@ -15,7 +15,7 @@
         "next": "^11.1.2",
         "next-themes": "^0.0.15",
         "nextjs-progressbar": "^0.0.11",
-        "preact": "^10.5.14",
+        "preact": "^10.5.15",
         "prop-types": "^15.7.2",
         "qs": "^6.10.1",
         "react": "17.0.2",

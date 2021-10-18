@@ -10,12 +10,12 @@ import { REVALIDATION_PERIOD } from '../shared/constants';
 const Home = ({ releases }) => {
     return (
         <>
-            <div className="relative flex-1 -mt-24 overflow-hidden">
+            <div className="col-span-full row-span-full">
                 <NextImage
                     src={banner}
                     alt="Featured: Machine Gun Kelly"
                     objectFit="cover"
-                    objectPosition="top left"
+                    objectPosition="right center"
                     layout="fill"
                     placeholder="blur"
                     priority

@@ -1,6 +1,6 @@
-import ThemeButton from '../button/theme';
-import Player from '../player';
-import { HeaderStyled, ProfileStyled } from './styles';
+// import ThemeButton from '../button/theme';
+// import Player from '../player';
+// import { HeaderStyled, ProfileStyled } from './styles';
 
 const Sidebar = () => {
     return (

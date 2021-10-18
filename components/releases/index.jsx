@@ -24,12 +24,13 @@ const Releases = ({ releases }) => {
 
     return (
         // TODO: semantic components
-        <div
+        <section
+            // TODO: w-screen FF
             className="                    
                 relative
                 h-56
-                -mt-28
-                flex-shrink-0 
+                pl-96
+                max-w-full
                 after:absolute 
                 after:-top-28
                 after:left-0 
@@ -39,6 +40,10 @@ const Releases = ({ releases }) => {
                 after:from-[var(--secondary-BG)] 
                 after:to-transparent
                 bg-secondary
+                row-start-6
+                row-end-7
+                col-start-1
+                col-end-3
         "
         >
             <div
@@ -49,22 +54,22 @@ const Releases = ({ releases }) => {
                 "
                 ref={emblaRef}
             >
-                <div className="embla__container flex items-center h-full ml-10">
+                <div className="embla__container flex items-center h-full ml-8">
                     {releases.map(({ id, name, images, artists }) => {
-                        const coverUrl = images[1].url;
-                        const artist = artists[0].name;
+                        const [, { url }] = images;
+                        const [{ name: artist }] = artists;
 
                         return (
                             <div
-                                className="embla__slide group flex-shrink-0 relative w-36 h-36 box-content pr-10"
+                                className="embla__slide group flex-shrink-0 relative w-36 h-36 box-content pr-8"
                                 key={id}
                             >
                                 <NextLink href={`/album/${id}`} passHref>
                                     <a onClick={handleClick}>
                                         <Cover
-                                            src={coverUrl}
+                                            src={url}
                                             alt={`${name} by ${artist}`}
-                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-hover:shadow-lg group-focus-within:-translate-y-10 delay-75 duration-300"
+                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-hover:shadow-lg group-focus-within:-translate-y-10 delay-75 duration-300 shadow-sidebar"
                                         />
                                     </a>
                                 </NextLink>
@@ -81,7 +86,7 @@ const Releases = ({ releases }) => {
                     })}
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
