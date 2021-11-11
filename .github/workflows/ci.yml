@@ -33,4 +33,8 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
- 
+          
+      - name: End-to-end
+        uses: cypress-io/github-action@v2
+        with:
+          config: baseUrl=${{ steps.deploy-vercel-staging.outputs.preview-url }}
