@@ -1,4 +1,4 @@
-on: [ push, pull_request ]
+on: [ push ]
 jobs:
   vercel:
     runs-on: ubuntu-latest
@@ -22,3 +22,9 @@ jobs:
         run: |
           npm ci
           npm run build
+        
+      - name: Lint 
+        run: npm run lint
+
+      - name: Test
+        uses: cypress-io/github-action@v2
