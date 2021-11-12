@@ -4,6 +4,7 @@ export const RELEASES_COUNT = 50;
 export const PLAYLISTS_COUNT = 1;
 export const MARKET_COUNTRY = 'US';
 export const FEAT_REGEXP = /\(()(feat|ft|with)/;
+export const DEFAULT_TRACK_DURATION = 30;
 
 export const Theme = {
     DARK: 'dark',

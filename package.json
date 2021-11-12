@@ -26,7 +26,11 @@
         "@emotion/babel-plugin": "^11.3.0",
         "@emotion/babel-preset-css-prop": "10.0.27",
         "@next/bundle-analyzer": "^11.1.2",
+        "@testing-library/jest-dom": "^5.15.0",
+        "@testing-library/react": "^12.1.2",
+        "@testing-library/react-hooks": "^7.0.2",
         "autoprefixer": "^10.3.4",
+        "babel-jest": "^27.3.1",
         "babel-plugin-emotion": "10.0.27",
         "babel-plugin-inline-react-svg": "^2.0.1",
         "babel-plugin-macros": "^2.8.0",
@@ -41,16 +45,18 @@
         "eslint-plugin-react": "^7.22.0",
         "eslint-plugin-react-hooks": "^4.2.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
+        "jest": "^27.3.1",
         "postcss": "^8.3.6",
         "prettier": "^2.2.1",
-        "tailwindcss": "^2.2.9",
-        "twin.macro": "^2.7.0"
+        "react-test-renderer": "^17.0.2",
+        "tailwindcss": "^2.2.9"
     },
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
+        "test": "jest",
         "cypress": "cypress open",
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md,json}\""
     },

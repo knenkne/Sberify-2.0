@@ -1,7 +1,7 @@
 import { Route } from '../../shared/constants';
 
 describe('Navigation', () => {
-    it('Should navigate to the pages with correct text and styles', () => {
+    it('should navigate to the pages with correct text and styles', () => {
         // Start from the index page
         cy.visit(Route.DISCOVER);
 
