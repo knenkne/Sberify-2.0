@@ -26,6 +26,9 @@ jobs:
       - name: Lint 
         run: npm run lint
 
+      - name: Unit testing 
+        run: npm run test
+
       - name: Deploy
         id: deploy-vercel-staging
         uses: amondnet/vercel-action@v20
@@ -35,7 +38,7 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           scope: ${{ secrets.VERCEL_ORG_ID }}
           
-      - name: End-to-end
+      - name: End-to-end testing
         uses: cypress-io/github-action@v2
         with:
           config: baseUrl=${{ steps.deploy-vercel-staging.outputs.preview-url }}
