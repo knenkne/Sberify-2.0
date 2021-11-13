@@ -5,8 +5,8 @@
 import { useEmblaCarousel } from 'embla-carousel/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
-import { cleanName } from '../../shared/utils';
 
+import { cleanName } from '../../shared/utils';
 import Cover from '../cover';
 
 const Releases = ({ releases }) => {
