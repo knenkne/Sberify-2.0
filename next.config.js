@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 module.exports = {
+    swcMinify: true,
     env: {
         BASE_URL: process.env.BASE_URL,
         CLIENT_SECRET: process.env.CLIENT_SECRET,
