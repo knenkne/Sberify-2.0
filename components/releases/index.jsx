@@ -5,6 +5,7 @@
 import { useEmblaCarousel } from 'embla-carousel/react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
+import { cleanName } from '../../shared/utils';
 
 import Cover from '../cover';
 
@@ -75,7 +76,8 @@ const Releases = ({ releases }) => {
                                 </NextLink>
                                 <div className="-mt-9">
                                     <h3 className="font-roboto font-medium text-primary leading-5 truncate">
-                                        {name}
+                                        {/* TODO: prettify on server */}
+                                        {cleanName(name)}
                                     </h3>
                                     <h4 className="font-roboto font-medium text-secondary text-xs truncate">
                                         {artist}
