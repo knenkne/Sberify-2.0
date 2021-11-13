@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import NextLink from 'next/link';
 import { useContext } from 'react';
 
 import PauseIcon from '../../public/icons/pause.svg';
