@@ -7,14 +7,14 @@ import Tracks from '../tracks';
 const AlbumInfo = (props) => {
     return (
         <>
-            <div className="bg-secondary pb-12 shadow-md z-10 col-start-1 col-end-3 row-start-2 row-end-3 pl-96">
+            <div className="bg-secondary pb-12 shadow-md z-10 col-start-1 col-end-3 row-start-2 row-end-3 pl-96 pr-10 min-w-0">
                 <div className="flex items-end ml-10">
                     <Cover
                         src={props.images[1].url}
                         alt={`${props.name} by ${props.artist}`}
                         className="shadow-lg w-72 h-72 flex-shrink-0 rounded-lg mr-5"
                     />
-                    <div className="relative min-w-0 flex-grow">
+                    <div className="relative flex-grow min-w-0">
                         <h3
                             className="w-full truncate font-archivo font-black text-7xl text-primary"
                             title={props.name}
@@ -31,11 +31,6 @@ const AlbumInfo = (props) => {
                                     >
                                         {name}
                                     </Link>
-                                    {/* <NextLink href={`/artist/${id}`} passHref key={id}>
-                                        <a className="text-secondary duration-300 hover:text-secondary-hover hover:text-shadow">
-                                            {name}
-                                        </a>
-                                    </NextLink> */}
                                     {` • `}
                                 </>
                             ))}

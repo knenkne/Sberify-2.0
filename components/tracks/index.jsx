@@ -6,18 +6,6 @@ import PlayIcon from '../../public/icons/play.svg';
 import { cleanName } from '../../shared/utils';
 import { PlayerContext } from '../../store';
 import { Link } from '../link';
-import {
-    TrackArtistsStyled,
-    TrackArtistStyled,
-    TrackInfoStyled,
-    TrackNameStyled,
-    TrackNumberStyled
-    // TrackPlayButtonStyled,
-    // TracksStyled
-    // TrackStyled
-} from './styles';
-
-// common.constants
 
 const Track = (props) => {
     const { id, name, artists, image, previewUrl, playing, onClick } = props;
@@ -32,7 +20,27 @@ const Track = (props) => {
     };
 
     return (
-        <li className="group relative flex items-center h-14 rounded hover:bg-secondary pl-14">
+        <li
+            className="
+            group 
+            relative
+            flex 
+            items-center
+            h-14
+            pl-14
+            rounded 
+            hover:bg-secondary 
+            before:absolute 
+            before:w-14 
+            before:h-14 
+            before:flex 
+            before:items-center 
+            before:justify-center
+            before:left-0
+            before:font-roboto
+            before:text-secondary
+            "
+        >
             {previewUrl && (
                 <button
                     className="group-hover:opacity-100 absolute top-0 left-0 flex items-center justify-center w-14 h-14 bg-secondary opacity-0 cursor-pointer rounded"
@@ -45,23 +53,30 @@ const Track = (props) => {
                     )}
                 </button>
             )}
-            {/* <TrackNumberStyled>{i + 1}</TrackNumberStyled> */}
-            <TrackInfoStyled>
-                <TrackNameStyled>{cleanName(name)}</TrackNameStyled>
-                <TrackArtistsStyled>
+            <div className="flex-grow">
+                {/* TODO: common */}
+                <h3 className="font-roboto font-medium text-primary leading-5 truncate">
+                    {cleanName(name)}
+                </h3>
+                {/* TODO: common */}
+                <ul className="font-roboto font-medium flex text-xs">
                     {artists.map(({ name, id }) => (
-                        <TrackArtistStyled key={id}>
+                        <li className="feat-item relative" key={id}>
                             <Link
                                 className="text-secondary hover:text-secondary-hover"
                                 href={`/artist/${id}`}
                             >
                                 {name}
                             </Link>
-                        </TrackArtistStyled>
+                        </li>
                     ))}
-                </TrackArtistsStyled>
-            </TrackInfoStyled>
-            {previewUrl && <TrackNumberStyled>0:30</TrackNumberStyled>}
+                </ul>
+            </div>
+            {previewUrl && (
+                <span className="flex h-14 w-14 items-center justify-center font-roboto text-md text-secondary">
+                    0:30
+                </span>
+            )}
         </li>
     );
 };

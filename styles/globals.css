@@ -51,6 +51,16 @@
         -webkit-font-smoothing: antialiased;
         background-color: var(--secondary-BG);
     }
+
+    ol {
+        counter-reset: ol;
+        list-style-type: none;
+    }
+
+    ol > li::before {
+        counter-increment: ol;
+        content: counters(ol, '') !important;
+    }
 }
 
 #nprogress .bar {
@@ -61,4 +71,17 @@
 #nprogress .peg {
     display: none !important;
     height: 0px !important;
+}
+
+/* Not a first (main) artist -> It's a feat */
+.feat-item:nth-of-type(2)::before {
+    content: ' ft. ';
+    color: var(--primary-text);
+    white-space: pre;
+}
+
+.feat-item:nth-of-type(n + 3)::before {
+    content: ', ';
+    color: var(--primary-text);
+    white-space: pre;
 }
