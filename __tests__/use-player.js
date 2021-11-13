@@ -1,5 +1,3 @@
-import 'react-test-renderer';
-
 import { act, renderHook } from '@testing-library/react-hooks';
 
 import { usePlayer } from '../components/player/use-player-2';
@@ -12,8 +10,11 @@ describe('usePlayer', () => {
     it('initializes', () => {
         const { result } = renderHook(() => usePlayer(src));
 
-        expect(result.current.state.audio).toBeInstanceOf(HTMLAudioElement);
-        expect(result.current.state.audio.src).toBe(src);
+        expect(Object.keys(result.current).length).toBe(3);
+        expect(result.current.audio).toBeInstanceOf(HTMLAudioElement);
+        expect(result.current.audio.src).toBe(src);
+        expect(result.current.controls).toBeInstanceOf(Object);
+        expect(result.current.state).toBeInstanceOf(Object);
     });
 
     it('toggles play state', () => {

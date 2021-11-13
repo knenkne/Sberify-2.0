@@ -41,10 +41,10 @@ const usePlayer = (src) => {
         };
     }, [audio]);
 
-    const state = { audio, isPlaying, time };
+    const state = { isPlaying, time };
     const controls = { toggle, rewind };
 
-    return { state, controls };
+    return { audio, state, controls };
 };
 
 export { usePlayer };
