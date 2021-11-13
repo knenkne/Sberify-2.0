@@ -1,5 +1,3 @@
-import 'react-test-renderer';
-
 import { act, renderHook } from '@testing-library/react-hooks';
 
 import { usePlayer } from '../components/player/use-player-2';

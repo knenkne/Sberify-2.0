@@ -30,6 +30,9 @@ module.exports = {
             gridTemplateRows: {
                 // header / gradient / content / carousel
                 layout: '6rem 21rem 1fr 14rem'
+            },
+            boxShadow: {
+                sidebar: 'rgb(18 18 18 / 24%) 0px 1px 2px, rgb(18 18 18 / 60%) 0px 8px 16px'
             }
         },
         gradientColorStops: {
@@ -40,10 +43,8 @@ module.exports = {
         },
         fontFamily: {
             archivo: ['Archivo'],
-            roboto: ['Roboto']
-        },
-        boxShadow: {
-            sidebar: 'rgb(18 18 18 / 24%) 0px 1px 2px, rgb(18 18 18 / 60%) 0px 8px 16px'
+            roboto: ['Roboto'],
+            segoe: ['Segoe UI']
         }
     },
     plugins: [

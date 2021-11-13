@@ -6,6 +6,7 @@ import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
 import { cleanName } from '../../shared/utils';
 import { PlayerContext } from '../../store';
+import { Link } from '../link';
 import {
     TrackArtistsStyled,
     TrackArtistStyled,
@@ -51,11 +52,12 @@ const Track = (props) => {
                 <TrackArtistsStyled>
                     {artists.map(({ name, id }) => (
                         <TrackArtistStyled key={id}>
-                            <NextLink href={`/artist/${id}`} passHref>
-                                <a className="text-secondary duration-300 hover:text-secondary-hover hover:text-shadow">
-                                    {name}
-                                </a>
-                            </NextLink>
+                            <Link
+                                className="text-secondary hover:text-secondary-hover"
+                                href={`/artist/${id}`}
+                            >
+                                {name}
+                            </Link>
                         </TrackArtistStyled>
                     ))}
                 </TrackArtistsStyled>
