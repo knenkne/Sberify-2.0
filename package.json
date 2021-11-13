@@ -12,14 +12,14 @@
         "axios": "^0.21.1",
         "embla-carousel": "^4.5.3",
         "graphql": "^15.5.3",
-        "next": "^11.1.2",
+        "next": "^12.0.3",
         "next-themes": "^0.0.15",
-        "nextjs-progressbar": "^0.0.11",
+        "nextjs-progressbar": "^0.0.13",
         "preact": "^10.5.15",
         "prop-types": "^15.7.2",
         "qs": "^6.10.1",
-        "react": "17.0.2",
-        "react-dom": "17.0.2"
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
     },
     "devDependencies": {
         "@babel/core": "^7.15.0",
@@ -38,7 +38,7 @@
         "cypress": "^9.0.0",
         "dotenv": "^10.0.0",
         "eslint": "^7.20.0",
-        "eslint-config-next": "11.1.2",
+        "eslint-config-next": "^12.0.3",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-jsx-a11y": "^6.4.1",
         "eslint-plugin-prettier": "^3.3.1",
