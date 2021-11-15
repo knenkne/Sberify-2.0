@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { cleanName, humanizeDate } from '../../shared/utils';
-import Cover from '../cover';
-import { Link } from '../link';
+import { Cover } from '../common/cover';
+import { Link } from '../common/link';
 import Tracks from '../tracks';
 
 const AlbumInfo = (props) => {
@@ -11,7 +11,7 @@ const AlbumInfo = (props) => {
                 <div className="flex items-end ml-10">
                     <Cover
                         src={props.images[1].url}
-                        alt={`${props.name} by ${props.artist}`}
+                        alt={`${props.name} by ${props.artists[0].name}`}
                         className="shadow-lg w-72 h-72 flex-shrink-0 rounded-lg mr-5"
                     />
                     <div className="relative flex-grow min-w-0">

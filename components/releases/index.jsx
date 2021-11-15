@@ -7,8 +7,9 @@ import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
 import { cleanName } from '../../shared/utils';
-import Cover from '../cover';
+import { Cover } from '../common/cover';
 
+// TODO: Release
 const Releases = ({ releases }) => {
     const [emblaRef, embla] = useEmblaCarousel({
         loop: false,
@@ -70,7 +71,7 @@ const Releases = ({ releases }) => {
                                         <Cover
                                             src={url}
                                             alt={`${name} by ${artist}`}
-                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 duration-300 shadow-lg"
+                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 duration-300 shadow-lg bg-secondary"
                                         />
                                     </a>
                                 </NextLink>

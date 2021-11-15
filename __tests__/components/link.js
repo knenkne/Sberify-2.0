@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 
 import { render, screen } from '@testing-library/react';
 
-import { Link } from '../../components/link';
+import { Link } from '../../components/common/link';
 
 const href = '#';
 const text = 'text';

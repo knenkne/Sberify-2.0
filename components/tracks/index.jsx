@@ -5,7 +5,7 @@ import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
 import { cleanName } from '../../shared/utils';
 import { PlayerContext } from '../../store';
-import { Link } from '../link';
+import { Link } from '../common/link';
 
 const Track = (props) => {
     const { id, name, artists, image, previewUrl, playing, onClick } = props;
