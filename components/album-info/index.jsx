@@ -5,6 +5,7 @@ import { FeatList } from '../common/feat-list';
 import Tracks from '../tracks';
 
 const AlbumInfo = (props) => {
+    console.log(props.tracks[0].artists);
     return (
         <>
             <div className="bg-secondary pb-12 shadow-md z-10 col-start-1 col-end-3 row-start-2 row-end-3 pl-96 pr-10 min-w-0">
