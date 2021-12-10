@@ -5,7 +5,7 @@ import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
 import { cleanName } from '../../shared/utils';
 import { PlayerContext } from '../../store';
-import { Link } from '../common/link';
+import { FeatList } from '../common/feat-list';
 
 const Track = (props) => {
     const { id, name, artists, image, previewUrl, playing, onClick } = props;
@@ -59,18 +59,7 @@ const Track = (props) => {
                     {cleanName(name)}
                 </h3>
                 {/* TODO: common */}
-                <ul className="font-roboto font-medium flex text-xs">
-                    {artists.map(({ name, id }) => (
-                        <li className="feat-item relative" key={id}>
-                            <Link
-                                className="text-secondary hover:text-secondary-hover"
-                                href={`/artist/${id}`}
-                            >
-                                {name}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+                <FeatList artists={artists} className="font-roboto font-medium flex text-xs" />
             </div>
             {previewUrl && (
                 <span className="flex h-14 w-14 items-center justify-center font-roboto text-md text-secondary">

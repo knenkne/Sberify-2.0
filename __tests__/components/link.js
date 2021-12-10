@@ -12,6 +12,7 @@ describe('Link', () => {
         expect(Link).toBeDefined();
     });
 
+    // TODO: href is required
     it('renders with correct href', () => {
         render(<Link href={href} />);
 

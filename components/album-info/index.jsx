@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { cleanName, humanizeDate } from '../../shared/utils';
 import { Cover } from '../common/cover';
-import { Link } from '../common/link';
+import { FeatList } from '../common/feat-list';
 import Tracks from '../tracks';
 
 const AlbumInfo = (props) => {
@@ -21,19 +21,9 @@ const AlbumInfo = (props) => {
                         >
                             {cleanName(props.name)}
                         </h3>
-                        <h4 className="font-segoe font-semibold text-base text-secondary leading-none ml-1">
-                            {props.artists.map(({ name, id }) => (
-                                <>
-                                    <Link
-                                        className="hover:text-secondary-hover"
-                                        href={`/artist/${id}`}
-                                        key={id}
-                                    >
-                                        {name}
-                                    </Link>
-                                    {` • `}
-                                </>
-                            ))}
+                        <h4 className="flex font-opensans font-semibold text-base text-secondary leading-none whitespace-pre">
+                            <FeatList artists={props.artists} />
+                            {` • `}
                             {humanizeDate(props.releaseDate)}
                         </h4>
                     </div>

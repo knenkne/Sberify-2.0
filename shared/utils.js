@@ -6,7 +6,7 @@ export const capitalize = ([first, ...rest], locale = navigator.language) =>
 export const humanizeDate = (dateISO) => {
     const dateParsed = new Date(dateISO);
 
-    return ` ${months[dateParsed.getUTCMonth()]} ${dateParsed.getFullYear()}`;
+    return `${months[dateParsed.getUTCMonth()]} ${dateParsed.getFullYear()}`;
 };
 
 // clean name from .feat/.ft/with

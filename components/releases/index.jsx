@@ -2,20 +2,28 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402
-import { useEmblaCarousel } from 'embla-carousel/react';
+// TODO: dynamic
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
 import { cleanName } from '../../shared/utils';
 import { Cover } from '../common/cover';
 
+const emblaCarouselOptions = {
+    loop: false,
+    align: 'start',
+    containScroll: 'keepSnaps',
+    skipSnaps: true
+};
+const autoplayPluginOptions = { stopOnMouseEnter: true };
+
 // TODO: Release
 const Releases = ({ releases }) => {
-    const [emblaRef, embla] = useEmblaCarousel({
-        loop: false,
-        align: 'start',
-        containScroll: 'keepSnaps'
-    });
+    const [emblaRef, embla] = useEmblaCarousel(emblaCarouselOptions, [
+        Autoplay(autoplayPluginOptions)
+    ]);
 
     // tiny hack for preact to stop propogation while drag the carousel
     const handleClick = (e) => {
@@ -77,7 +85,6 @@ const Releases = ({ releases }) => {
                                 </NextLink>
                                 <div className="-mt-9">
                                     <h3 className="font-roboto font-medium text-primary leading-5 truncate">
-                                        {/* TODO: prettify on server */}
                                         {cleanName(name)}
                                     </h3>
                                     <h4 className="font-roboto font-medium text-secondary text-xs truncate">
