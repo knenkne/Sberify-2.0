@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useContext } from 'react';
 
 import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
 import { cleanName } from '../../shared/utils';
-import { PlayerContext } from '../../store';
 import { FeatList } from '../common/feat-list';
 
 const Track = (props) => {
@@ -71,10 +69,6 @@ const Track = (props) => {
 };
 
 const Tracks = ({ tracks, image }) => {
-    const { currentTrack, setTrack, paused } = useContext(PlayerContext);
-    // TODO: useCallback insideusecallback
-    const handlePlayButtonClick = (track) => setTrack(track);
-
     return (
         <ol className="pt-10 px-10 list-decimal list-inside text-purple-800">
             {tracks.map((track, i) => (
@@ -82,8 +76,8 @@ const Tracks = ({ tracks, image }) => {
                     key={track.id}
                     // TODO: counter pseudo
                     i={i}
-                    playing={currentTrack?.id === track.id && !paused}
-                    onClick={handlePlayButtonClick}
+                    // playing={currentTrack?.id === track.id && !paused}
+                    // onClick={handlePlayButtonClick}
                     image={image}
                     {...track}
                 />

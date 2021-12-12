@@ -17,6 +17,11 @@ module.exports = {
                     hover: 'var(--nav-hover)'
                 }
             },
+            colors: {
+                primary: 'var(--primary-BG)',
+                secondary: 'var(--secondary-BG)',
+                tertiary: 'var(--tertiary-BG)'
+            },
             backgroundColor: {
                 primary: 'var(--primary-BG)',
                 secondary: 'var(--secondary-BG)',

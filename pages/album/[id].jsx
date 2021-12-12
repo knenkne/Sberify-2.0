@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import AlbumInfo from '../../components/album-info';
-import createApolloClient from '../../lib/apollo';
+import client from '../../lib/apollo';
 import { GET_ALBUM, GET_RELEASES } from '../../lib/apollo/queries';
 
 // TODO: extract here from albuminfo component
@@ -10,11 +10,9 @@ const Album = (props) => (
 );
 
 export async function getStaticPaths() {
-    const apolloClient = createApolloClient();
-
     const {
         data: { releases }
-    } = await apolloClient.query({
+    } = await client.query({
         query: GET_RELEASES
     });
 
@@ -25,11 +23,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
-    const apolloClient = createApolloClient();
-
     const {
         data: { album }
-    } = await apolloClient.query({
+    } = await client.query({
         query: GET_ALBUM,
         variables: { id }
     });
