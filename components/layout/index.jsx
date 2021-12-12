@@ -7,8 +7,6 @@ import Header from './header';
 import Sidebar from './sidebar';
 
 const Layout = ({ children, title = 'Sberify 2.0', index, playlist }) => {
-    // const { data, loading, error } = useQuery(GET_RELEASES);
-
     return (
         <>
             <Head>
@@ -27,7 +25,8 @@ Layout.propTypes = {
     children: PropTypes.node,
     gradient: PropTypes.node,
     title: PropTypes.string,
-    index: PropTypes.bool
+    index: PropTypes.bool,
+    playlist: PropTypes.array
 };
 
 export default Layout;
