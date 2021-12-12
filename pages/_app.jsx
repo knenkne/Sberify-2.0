@@ -5,8 +5,6 @@ import { ThemeProvider } from 'next-themes';
 import NextNprogress from 'nextjs-progressbar';
 
 import Layout from '../components/layout';
-import client from '../lib/apollo';
-import { GET_PLAYLIST_TRACKS, GET_PLAYLISTS } from '../lib/apollo/queries';
 import { nextNprogressOptions } from '../shared/constants';
 // eslint-disable-next-line react/prop-types
 const App = ({ Component, pageProps, router, playlist }) => {
@@ -22,23 +20,23 @@ const App = ({ Component, pageProps, router, playlist }) => {
     );
 };
 
-App.getInitialProps = async () => {
-    const {
-        data: { playlists }
-    } = await client.query({
-        query: GET_PLAYLISTS
-    });
+// App.getInitialProps = async () => {
+//     const {
+//         data: { playlists }
+//     } = await client.query({
+//         query: GET_PLAYLISTS
+//     });
 
-    const [{ id }] = playlists;
+//     const [{ id }] = playlists;
 
-    const {
-        data: { tracks }
-    } = await client.query({
-        query: GET_PLAYLIST_TRACKS,
-        variables: { id }
-    });
+//     const {
+//         data: { tracks }
+//     } = await client.query({
+//         query: GET_PLAYLIST_TRACKS,
+//         variables: { id }
+//     });
 
-    return { playlist: tracks };
-};
+//     return { playlist: tracks };
+// };
 
 export default App;
