@@ -4,6 +4,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 module.exports = {
     swcMinify: true,
+    experiments: {
+        topLevelAwait: true
+    },
     env: {
         BASE_URL: process.env.BASE_URL,
         CLIENT_SECRET: process.env.CLIENT_SECRET,
@@ -11,6 +14,8 @@ module.exports = {
         API_URL: process.env.API_URL
     },
     webpack: (config) => {
+        config.experiments = { topLevelAwait: true, layers: true };
+
         Object.assign(config.resolve.alias, {
             react: 'preact/compat',
             'react-dom/test-utils': 'preact/test-utils',
