@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { DEFAULT_TRACK_DURATION } from '../../shared/constants';
 
 const usePlayer = (src) => {
-    const [audio] = useState(new Audio(src));
+    const [audio] = useState(typeof window !== 'undefined' ? new Audio(src) : null);
     const [time, setTime] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -32,6 +32,7 @@ const usePlayer = (src) => {
             setTime(0);
         };
 
+        audio.volume = 0.1;
         audio.addEventListener('timeupdate', handleTimeUpdate);
         audio.addEventListener('ended', handleEnded);
 

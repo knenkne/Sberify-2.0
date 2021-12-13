@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-const SLIDER_HEIGHT = 4;
-const THUMB_SIZE = SLIDER_HEIGHT * 3;
+const SLIDER_HEIGHT = 2;
+const THUMB_SIZE = SLIDER_HEIGHT * 4;
 
 export const ThumbStyled = styled.div`
     position: absolute;
@@ -21,13 +21,12 @@ export const SliderStyled = styled.div(
 
         &::before {
             content: '';
-            background-color: var(--primary-text);
+            background: linear-gradient(to right, var(--primary-brand), var(--secondary-brand));
             width: calc(
                 ${THUMB_SIZE}px + 100% / 100 * ${percent} - (${THUMB_SIZE}px / 100 * ${percent})
             );
             height: ${SLIDER_HEIGHT}px;
             position: absolute;
-            border-radius: 10px;
             top: 0;
             left: 0;
             pointer-events: none;
@@ -50,14 +49,13 @@ export const InputStyled = styled.input`
     -webkit-appearance: none;
     appearance: none;
     /* TODO: theme */
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--tertiary-BG);
 
     height: ${SLIDER_HEIGHT}px;
     width: 100%;
     cursor: pointer;
     opacity: 1;
     margin: 0 auto;
-    border-radius: 10px;
 
     &:focus {
         outline: none;
