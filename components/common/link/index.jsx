@@ -8,7 +8,9 @@ const Link = ({ href, children, active, className = '' }) => {
 
     return (
         <NextLink href={href} passHref>
-            <a className={`hover:text-shadow-explicit duration-300 ${className}`.trim()}>
+            <a
+                className={`hover:text-shadow-explicit transition-shadow duration-300 ${className}`.trim()}
+            >
                 {children}
             </a>
         </NextLink>

@@ -72,7 +72,7 @@ const Releases = ({ releases }) => {
                                         <Cover
                                             src={url}
                                             alt={`${name} by ${artist}`}
-                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 duration-300 shadow-lg bg-secondary"
+                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 trainsition-transform duration-300 shadow-lg bg-secondary"
                                         />
                                     </a>
                                 </NextLink>
