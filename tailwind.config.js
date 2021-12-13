@@ -17,6 +17,11 @@ module.exports = {
                     hover: 'var(--nav-hover)'
                 }
             },
+            colors: {
+                primary: 'var(--primary-BG)',
+                secondary: 'var(--secondary-BG)',
+                tertiary: 'var(--tertiary-BG)'
+            },
             backgroundColor: {
                 primary: 'var(--primary-BG)',
                 secondary: 'var(--secondary-BG)',
@@ -43,8 +48,8 @@ module.exports = {
         },
         fontFamily: {
             archivo: ['Archivo'],
-            roboto: ['Roboto'],
-            segoe: ['Segoe UI']
+            roboto: ['Roboto', 'Segoe UI'],
+            opensans: ['Open Sans', 'Roboto', 'Segoe UI']
         }
     },
     plugins: [

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { cleanName, humanizeDate } from '../../shared/utils';
-import Cover from '../cover';
-import { Link } from '../link';
+import { Cover } from '../common/cover';
+import { FeatList } from '../common/feat-list';
 import Tracks from '../tracks';
 
 const AlbumInfo = (props) => {
@@ -11,7 +11,7 @@ const AlbumInfo = (props) => {
                 <div className="flex items-end ml-10">
                     <Cover
                         src={props.images[1].url}
-                        alt={`${props.name} by ${props.artist}`}
+                        alt={`${props.name} by ${props.artists[0].name}`}
                         className="shadow-lg w-72 h-72 flex-shrink-0 rounded-lg mr-5"
                     />
                     <div className="relative flex-grow min-w-0">
@@ -21,19 +21,9 @@ const AlbumInfo = (props) => {
                         >
                             {cleanName(props.name)}
                         </h3>
-                        <h4 className="font-segoe font-semibold text-base text-secondary leading-none ml-1">
-                            {props.artists.map(({ name, id }) => (
-                                <>
-                                    <Link
-                                        className="hover:text-secondary-hover"
-                                        href={`/artist/${id}`}
-                                        key={id}
-                                    >
-                                        {name}
-                                    </Link>
-                                    {` • `}
-                                </>
-                            ))}
+                        <h4 className="flex font-opensans font-semibold text-base text-secondary leading-none whitespace-pre">
+                            <FeatList artists={props.artists} />
+                            {` • `}
                             {humanizeDate(props.releaseDate)}
                         </h4>
                     </div>

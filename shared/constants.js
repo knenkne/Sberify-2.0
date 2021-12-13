@@ -1,9 +1,9 @@
-// 3 days revalidation
-export const REVALIDATION_PERIOD = 60 * 60 * 24 * 3;
+// 1 day revalidation
+export const REVALIDATION_PERIOD = 60 * 60 * 24;
 export const RELEASES_COUNT = 50;
 export const PLAYLISTS_COUNT = 1;
 export const MARKET_COUNTRY = 'US';
-export const FEAT_REGEXP = /\(()(feat|ft|w|with)/;
+export const FEAT_REGEXP = /\(()(feat|ft|w|with)/gi;
 export const DEFAULT_TRACK_DURATION = 30;
 
 export const Theme = {

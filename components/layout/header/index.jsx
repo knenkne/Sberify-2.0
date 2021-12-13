@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import SearchIcon from '../../../public/icons/search.svg';
 import { Route } from '../../../shared/constants';
-import { Link } from '../../link';
+import { Link } from '../../common/link';
 
 // eslint-disable-next-line react/prop-types
 const Header = ({ index }) => {
@@ -42,6 +42,7 @@ const Header = ({ index }) => {
                                 after:to-brand-secondary`
                             )}
                             href={Route[pathName]}
+                            active={active}
                             key={pathName}
                         >
                             {pathName}
