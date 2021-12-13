@@ -2,11 +2,10 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-// import { GET_RELEASES } from '../../lib/apollo/queries';
 import Header from './header';
 import Sidebar from './sidebar';
 
-const Layout = ({ children, title = 'Sberify 2.0', index, playlist = [] }) => {
+const Layout = ({ children, title = 'Sberify 2.0', index, playlist }) => {
     return (
         <>
             <Head>
