@@ -18,8 +18,17 @@ jobs:
         with:
           node-version: '14'
       
-      - name: Setup NPM
+      - name: Setup npm
         run: npm install -g npm
+
+      - name: Setup dotenv
+        run: |
+          touch .env
+          echo BASE_URL=${{ secrets.BASE_URL }} >> .env
+          echo CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} >> .env
+          echo TOKEN_URL=${{ secrets.TOKEN_URL }} >> .env
+          echo API_URL=${{ secrets.API_URL }} >> .env
+          echo API_VERSION=${{ secrets.API_VERSION }} >> .env
 
       - name: Build 
         run: |
