@@ -36,7 +36,7 @@ const Releases = ({ releases }) => {
         // TODO: semantic components
         <section
             // TODO: w-screen FF
-            className="                    
+            className={`                
                 relative
                 h-56
                 pl-96
@@ -54,16 +54,9 @@ const Releases = ({ releases }) => {
                 row-end-7
                 col-start-1
                 col-end-3
-        "
+        `.trim()}
         >
-            <div
-                className="
-                    embla 
-                    h-full
-                    overflow-hidden
-                "
-                ref={emblaRef}
-            >
+            <div className="embla h-full overflow-hidden" ref={emblaRef}>
                 <div className="embla__container flex items-center h-full ml-10">
                     {releases.map(({ id, name, images, artists }) => {
                         const [, { url }] = images;

@@ -11,7 +11,8 @@ module.exports = {
         BASE_URL: process.env.BASE_URL,
         CLIENT_SECRET: process.env.CLIENT_SECRET,
         TOKEN_URL: process.env.TOKEN_URL,
-        API_URL: process.env.API_URL
+        API_URL: process.env.API_URL,
+        API_VERSION: process.env.API_VERSION
     },
     webpack: (config) => {
         config.experiments = { topLevelAwait: true, layers: true };
