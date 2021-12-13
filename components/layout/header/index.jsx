@@ -42,6 +42,7 @@ const Header = ({ index }) => {
                                 after:to-brand-secondary`
                             )}
                             href={Route[pathName]}
+                            active={active}
                             key={pathName}
                         >
                             {pathName}

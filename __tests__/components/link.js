@@ -28,4 +28,14 @@ describe('Link', () => {
 
         expect(screen.getByRole('link')).toHaveTextContent(text);
     });
+
+    it('renders without href as it is active', () => {
+        render(
+            <Link href={href} active>
+                <span>{text}</span>
+            </Link>
+        );
+
+        expect(screen.getByText(text).href).toBe(undefined);
+    });
 });
