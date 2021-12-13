@@ -6,13 +6,14 @@ import { VOLUME_RATIO } from './constants';
 import Slider from './slider';
 import withTime from './slider/hoc/with-time';
 import {
-    ArtistNameStyled,
+    // ArtistNameStyled,
     ControlsStyled,
-    ImageStyled,
-    InfoStyled,
+    // ImageStyled,
+    // InfoStyled,
+    PlaceholderStyled,
     PlayButtonStyled,
     PlayerStyled,
-    SongNameStyled,
+    // SongNameStyled,
     WrapperStyled
 } from './styles';
 import usePlayer from './use-player';
@@ -46,32 +47,33 @@ const Player = () => {
         [duration]
     );
 
-    const handleVolumeSliderChange = useCallback((percent) => {
-        const ratio = percent / 100;
+    // const handleVolumeSliderChange = useCallback((percent) => {
+    //     const ratio = percent / 100;
 
-        setVolume(ratio);
-    }, []);
+    //     setVolume(ratio);
+    // }, []);
 
     const TimeSlider = useMemo(() => withTime(Slider), []);
-    const volumePercent = useMemo(() => (volume * 100 * VOLUME_RATIO).toFixed(1), [volume]);
+    // const volumePercent = useMemo(() => (volume * 100 * VOLUME_RATIO).toFixed(1), [volume]);
 
     return (
         <WrapperStyled>
             <PlayerStyled>
                 {element}
-                <ImageStyled
+                {/* <ImageStyled
                     src={currentTrack?.image}
                     alt={`${currentTrack?.name} by ${currentTrack?.artist}`}
-                />
-                <InfoStyled>
+                /> */}
+                <PlaceholderStyled />
+                {/* <InfoStyled>
                     <SongNameStyled>{currentTrack?.name}</SongNameStyled>
                     <ArtistNameStyled>{currentTrack?.artist}</ArtistNameStyled>
-                </InfoStyled>
+                </InfoStyled> */}
                 <TimeSlider time={time} duration={duration} onChange={handleTimeSliderChange} />
                 <ControlsStyled>
                     <PlayButtonStyled onClick={handlePlayButtonClick} />
                 </ControlsStyled>
-                <Slider percent={volumePercent} onChange={handleVolumeSliderChange} />
+                {/* <Slider percent={volumePercent} onChange={handleVolumeSliderChange} /> */}
             </PlayerStyled>
         </WrapperStyled>
     );
