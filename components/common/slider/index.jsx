@@ -1,7 +1,9 @@
+import { memo } from 'react';
+
 /* eslint-disable react/prop-types */
 const SLIDER_STEP = 0.1;
 
-const Slider = ({ value = 0, onChange }) => {
+const Slider = memo(({ value = 0, onChange, ...rest }) => {
     const handleChange = ({ target }) => {
         const { value: nextValue } = target;
 
@@ -28,9 +30,12 @@ const Slider = ({ value = 0, onChange }) => {
                 value={value}
                 step={SLIDER_STEP}
                 onChange={handleChange}
+                {...rest}
             />
         </div>
     );
-};
+});
+
+Slider.displayName = 'Slider';
 
 export { Slider };
