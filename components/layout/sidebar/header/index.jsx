@@ -3,13 +3,15 @@
 import { useEffect, useMemo } from 'react';
 
 // import Slider from '../../../common/slider';
-import Slider from '../../../common/slider';
+import { Slider } from '../../../common/slider';
 import withTime from '../../../player/slider/hoc/with-time';
 import { usePlayer } from '../../../player/use-player-2';
 import { SidebarItem } from '../item';
 
 const SidebarHeader = ({ track }) => {
-    const { audio, state, controls } = usePlayer(track.previewUrl);
+    const { audio, state, controls } = usePlayer(
+        'https://p.scdn.co/mp3-preview/08ee0b47896a05fd298e91377b60f4af095c4d1f?cid=169f7aea4c204f00ba96ece98b15e24d'
+    );
 
     const handleClick = () => {
         controls.toggle();
@@ -36,7 +38,7 @@ const SidebarHeader = ({ track }) => {
             /> */}
             <SidebarItem {...track} />
             {/* <Slider percent={(state.time / audio?.duration) * 100} onChange={handleChange} /> */}
-            <Slider value={state.time / audio?.duration} onChange={handleChange} />
+            <Slider value={(state.time / audio?.duration) * 100} onChange={handleChange} />
             {/* <TimeSlider time={state.time} duration={audio?.duration} onChange={handleChange} /> */}
             <button onClick={handleClick} className="fixed top-10 left-10">
                 Play
