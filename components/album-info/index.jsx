@@ -21,7 +21,7 @@ const AlbumInfo = (props) => {
                         >
                             {cleanName(props.name)}
                         </h3>
-                        <h4 className="flex font-opensans font-semibold text-base text-secondary leading-none whitespace-pre">
+                        <h4 className="flex font-roboto font-medium text-base text-secondary leading-none whitespace-pre">
                             <FeatList artists={props.artists} />
                             {` • `}
                             {humanizeDate(props.releaseDate)}

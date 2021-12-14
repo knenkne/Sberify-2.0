@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 
 import { Link } from '../link';
 
-const FeatList = ({ artists, className = '' }) => {
-    if (!artists) {
-        throw new Error('Artists list should not be empty');
-    }
+const FeatList = ({ artists = [], className = '' }) => {
+    // if (!artists) {
+    //     throw new Error('Artists list should not be empty');
+    // }
 
     return (
         <ul className={`flex ${className}`.trim()}>

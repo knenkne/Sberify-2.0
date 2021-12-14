@@ -6,7 +6,7 @@ const THUMB_SIZE = SLIDER_HEIGHT * 4;
 
 export const ThumbStyled = styled.div`
     position: absolute;
-    background-color: var(--tertiary-BG);
+    background-color: var(--primary-text);
     border-radius: 50%;
     pointer-events: none;
     user-select: none;
@@ -49,7 +49,7 @@ export const InputStyled = styled.input`
     -webkit-appearance: none;
     appearance: none;
     /* TODO: theme */
-    background-color: var(--tertiary-BG);
+    background-color: #fff;
 
     height: ${SLIDER_HEIGHT}px;
     width: 100%;

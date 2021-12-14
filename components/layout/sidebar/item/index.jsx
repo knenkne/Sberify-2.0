@@ -10,7 +10,7 @@ const SidebarItem = ({ id, name, album, artists }) => (
         key={id}
     >
         <Cover
-            src={album.images[2].url}
+            src={album?.images[2].url}
             alt="TODO:"
             className="w-10 h-10 rounded overflow-hidden mr-2 flex-shrink-0"
             shimmerClassName="bg-secondary"

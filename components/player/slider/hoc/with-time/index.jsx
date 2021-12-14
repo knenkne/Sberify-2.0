@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -5,14 +6,14 @@ import { formatTime, getLeftTime, getPercent, getTime } from '../../../utils';
 import { BlockStyled, TimeStyled } from './styles';
 
 const withTime = (WrappedSlider) => {
-    const WithTime = ({ onChange, time, duration }) => {
+    const WithTime = ({ onChange, time = 0, duration = 30 }) => {
         const currentTrackPercent = useMemo(() => getPercent(time, duration), [time, duration]);
 
         const [percent, setPercent] = useState(currentTrackPercent);
         const [isRewinding, setIsRewinding] = useState(false);
 
-        const currentTime = useMemo(() => getTime(percent, duration), [percent, duration]);
-        const leftTime = useMemo(() => getLeftTime(currentTime, duration), [currentTime]);
+        // const currentTime = useMemo(() => getTime(percent, duration), [percent, duration]);
+        // const leftTime = useMemo(() => getLeftTime(currentTime, duration), [currentTime]);
 
         useEffect(() => {
             // Let the track precent lead if there is no rewinding
@@ -51,10 +52,10 @@ const withTime = (WrappedSlider) => {
                     onMouseDown={handleMouseDown}
                     onMouseUp={handleMouseUp}
                 />
-                <BlockStyled>
+                {/* <BlockStyled>
                     <TimeStyled>{formatTime(currentTime)}</TimeStyled>
                     <TimeStyled>-{formatTime(leftTime)}</TimeStyled>
-                </BlockStyled>
+                </BlockStyled> */}
             </>
         );
     };
