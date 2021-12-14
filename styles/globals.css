@@ -82,7 +82,6 @@
     scrollbar-width: none;
 }
 
-
 .slider-thumb::-moz-range-thumb {
     opacity: 0;
     border: 0;
@@ -96,7 +95,6 @@
     pointer-events: none;
     user-select: none;
 }
-
 
 /* Not a first (main) artist -> It's a feat */
 .feat-item:nth-of-type(2)::before {

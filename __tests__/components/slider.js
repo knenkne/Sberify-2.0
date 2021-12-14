@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Slider } from '../../components/common/slider';
+import { withIndependentSlide } from '../../components/common/slider/hoc';
 
 const value = '65.5';
 
@@ -30,8 +31,24 @@ describe('Slider', () => {
         const slider = screen.getByRole('slider');
 
         fireEvent.change(slider, { target: { value } });
-
         expect(handleChange).toBeCalledTimes(1);
         expect(handleChange).toBeCalledWith(value);
+    });
+
+    it('renders with independent slide HOC', () => {
+        const WithIndependentSlide = withIndependentSlide(Slider);
+        const handleChange = jest.fn(() => value);
+        render(<WithIndependentSlide onChange={handleChange} />);
+        const slider = screen.getByRole('slider');
+
+        // Initial
+        expect(slider.value).toBe('0');
+
+        // After DnD
+        fireEvent.mouseDown(slider);
+        fireEvent.change(slider, { target: { value } });
+        fireEvent.mouseUp(slider);
+        expect(handleChange).toBeCalledWith(value);
+        expect(slider.value).toBe(value);
     });
 });
