@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { usePlayer } from '../components/player/use-player-2';
+import { usePlayer } from '../components/player/use-player';
 import { DEFAULT_TRACK_DURATION } from '../shared/constants';
 
 const src =

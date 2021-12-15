@@ -30,6 +30,7 @@ const Slider = memo(({ value = 0, onChange, ...rest }) => {
                 value={value}
                 step={SLIDER_STEP}
                 onChange={handleChange}
+                onInput={handleChange}
                 {...rest}
             />
         </div>

@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-// TODO: root folder
 import { cleanName } from '../../../../shared/utils';
 import { Cover } from '../../../common/cover';
 import { FeatList } from '../../../common/feat-list';
 
+// TODO: accept children -> reuse at header
 const SidebarItem = ({ id, name, album, artists }) => (
     <li
         className="flex h-16 w-full px-4 items-center border-b border-b-secondary last-of-type:border-0"
