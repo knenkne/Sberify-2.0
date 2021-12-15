@@ -12,13 +12,15 @@ const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary' }) =>
     return (
         <div className={`relative overflow-hidden ${className}`.trim()}>
             {!isLoaded && <div className={`w-full h-full animate-pulse ${shimmerClassName}`} />}
-            <NextImage
-                src={src}
-                alt={alt}
-                layout="fill"
-                onLoadingComplete={handleLoadingComplete}
-                unoptimized
-            />
+            {src && (
+                <NextImage
+                    src={src}
+                    alt={alt}
+                    layout="fill"
+                    onLoadingComplete={handleLoadingComplete}
+                    unoptimized
+                />
+            )}
         </div>
     );
 };

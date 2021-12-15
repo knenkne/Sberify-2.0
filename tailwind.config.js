@@ -48,8 +48,7 @@ module.exports = {
         },
         fontFamily: {
             archivo: ['Archivo'],
-            roboto: ['Roboto', 'Segoe UI'],
-            opensans: ['Open Sans', 'Roboto', 'Segoe UI']
+            roboto: ['Roboto', 'Segoe UI', 'Open Sans']
         }
     },
     plugins: [

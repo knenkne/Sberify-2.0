@@ -7,12 +7,12 @@ import Tracks from '../tracks';
 const AlbumInfo = (props) => {
     return (
         <>
-            <div className="bg-secondary pb-12 shadow-md z-10 col-start-1 col-end-3 row-start-2 row-end-3 pl-96 pr-10 min-w-0">
+            <div className="bg-secondary pb-12 shadow-md shadow-black/50 z-10 col-start-1 col-end-3 row-start-2 row-end-3 pl-96 pr-10 min-w-0">
                 <div className="flex items-end ml-10">
                     <Cover
                         src={props.images[1].url}
                         alt={`${props.name} by ${props.artists[0].name}`}
-                        className="shadow-lg w-72 h-72 flex-shrink-0 rounded-lg mr-5"
+                        className="w-72 h-72 flex-shrink-0 rounded-lg mr-5 shadow-md shadow-black/50"
                     />
                     <div className="relative flex-grow min-w-0">
                         <h3
@@ -21,7 +21,7 @@ const AlbumInfo = (props) => {
                         >
                             {cleanName(props.name)}
                         </h3>
-                        <h4 className="flex font-opensans font-semibold text-base text-secondary leading-none whitespace-pre">
+                        <h4 className="flex font-roboto font-medium text-base text-secondary leading-none whitespace-pre">
                             <FeatList artists={props.artists} />
                             {` • `}
                             {humanizeDate(props.releaseDate)}

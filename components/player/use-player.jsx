@@ -1,64 +1,51 @@
-import React, { useEffect, useReducer, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
-import { DEFAULT_VOLUME, VOLUME_RATIO } from './constants';
-import { setTime, setVolume } from './store/actions';
-import reducer from './store/reducer';
+import { DEFAULT_TRACK_DURATION } from '../../shared/constants';
 
-const initialState = {
-    time: 0,
-    duration: 30,
-    paused: true,
-    volume: DEFAULT_VOLUME
-};
+const usePlayer = (src) => {
+    const [audio] = useState(typeof window !== 'undefined' ? new Audio(src) : null);
+    const [time, setTime] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
 
-const usePlayer = ({ src, paused, onEnded }) => {
-    const ref = useRef(null);
-    // TODO: volume
-    // TODO: remove reducer
-    const [state, dispatch] = useReducer(reducer, initialState);
-    const { volume, duration } = state;
+    const toggle = () => {
+        setIsPlaying(!isPlaying);
+        !isPlaying ? audio.play() : audio.pause();
+    };
 
-    const element = React.createElement('audio', {
-        src,
-        controls: false,
-        ref,
-        onTimeUpdate: () => {
-            const audio = ref.current;
-            const { currentTime } = audio;
+    const rewind = (time) => {
+        const minTime = 0;
+        const maxTime = audio.duration || DEFAULT_TRACK_DURATION;
+        // Prevent overflow
+        const preparedTime = Math.min(Math.max(minTime, time), maxTime);
 
-            dispatch(setTime(currentTime));
-        },
-        onEnded: () => {
-            onEnded();
-            dispatch(setTime(0));
-        }
-    });
-
-    const controls = {
-        rewind: (time) => {
-            const audio = ref.current;
-
-            audio.currentTime = Math.min(duration, Math.max(0, time));
-        },
-        setVolume: (percent) => {
-            // TODO: remove dispatch
-            dispatch(setVolume(percent / VOLUME_RATIO));
-        }
+        setTime(preparedTime);
+        audio.currentTime = preparedTime;
     };
 
     useEffect(() => {
-        const audio = ref.current;
+        const handleTimeUpdate = (e) => {
+            const { currentTime } = e.target;
+            setTime(currentTime);
+        };
 
-        src && !paused ? audio.play() : audio.pause();
-    }, [src, paused]);
+        const handleEnded = () => {
+            setTime(0);
+        };
 
-    useEffect(() => {
-        const audio = ref.current;
+        audio.volume = 0.1;
+        audio.addEventListener('timeupdate', handleTimeUpdate);
+        audio.addEventListener('ended', handleEnded);
 
-        audio.volume = volume;
-    }, [volume]);
+        return () => {
+            audio.removeEventListener('timeupdate', handleTimeUpdate);
+            audio.removeEventListener('ended', handleEnded);
+        };
+    }, [audio]);
 
-    return { element, state, controls };
+    const state = { isPlaying, time };
+    const controls = { toggle, rewind };
+
+    return { audio, state, controls };
 };
 
-export default usePlayer;
+export { usePlayer };

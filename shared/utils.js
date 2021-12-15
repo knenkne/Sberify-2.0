@@ -10,4 +10,4 @@ export const humanizeDate = (dateISO) => {
 };
 
 // clean name from .feat/.ft/with
-export const cleanName = (name) => name.split(FEAT_REGEXP).shift().trim();
+export const cleanName = (name = '') => name.split(FEAT_REGEXP).shift().trim();
