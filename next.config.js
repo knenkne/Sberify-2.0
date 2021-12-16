@@ -7,6 +7,7 @@ module.exports = {
     experiments: {
         topLevelAwait: true
     },
+    optimizeFonts: false,
     env: {
         CLIENT_SECRET: process.env.CLIENT_SECRET,
         TOKEN_URL: process.env.TOKEN_URL,
