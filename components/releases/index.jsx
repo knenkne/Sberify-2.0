@@ -2,19 +2,28 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402
-import { useEmblaCarousel } from 'embla-carousel/react';
+// TODO: dynamic
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
 import { cleanName } from '../../shared/utils';
-import Cover from '../cover';
+import { Cover } from '../common/cover';
 
+const emblaCarouselOptions = {
+    loop: false,
+    align: 'start',
+    containScroll: 'keepSnaps',
+    skipSnaps: true
+};
+const autoplayPluginOptions = { stopOnMouseEnter: true };
+
+// TODO: Release
 const Releases = ({ releases }) => {
-    const [emblaRef, embla] = useEmblaCarousel({
-        loop: false,
-        align: 'start',
-        containScroll: 'keepSnaps'
-    });
+    const [emblaRef, embla] = useEmblaCarousel(emblaCarouselOptions, [
+        Autoplay(autoplayPluginOptions)
+    ]);
 
     // tiny hack for preact to stop propogation while drag the carousel
     const handleClick = (e) => {
@@ -27,7 +36,7 @@ const Releases = ({ releases }) => {
         // TODO: semantic components
         <section
             // TODO: w-screen FF
-            className="                    
+            className={`                
                 relative
                 h-56
                 pl-96
@@ -45,16 +54,9 @@ const Releases = ({ releases }) => {
                 row-end-7
                 col-start-1
                 col-end-3
-        "
+        `.trim()}
         >
-            <div
-                className="
-                    embla 
-                    h-full
-                    overflow-hidden
-                "
-                ref={emblaRef}
-            >
+            <div className="embla h-full overflow-hidden" ref={emblaRef}>
                 <div className="embla__container flex items-center h-full ml-10">
                     {releases.map(({ id, name, images, artists }) => {
                         const [, { url }] = images;
@@ -70,13 +72,12 @@ const Releases = ({ releases }) => {
                                         <Cover
                                             src={url}
                                             alt={`${name} by ${artist}`}
-                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 duration-300 shadow-lg"
+                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 trainsition-transform duration-300 shadow-lg bg-secondary"
                                         />
                                     </a>
                                 </NextLink>
                                 <div className="-mt-9">
                                     <h3 className="font-roboto font-medium text-primary leading-5 truncate">
-                                        {/* TODO: prettify on server */}
                                         {cleanName(name)}
                                     </h3>
                                     <h4 className="font-roboto font-medium text-secondary text-xs truncate">

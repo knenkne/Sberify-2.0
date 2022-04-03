@@ -2,7 +2,7 @@ import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 
 import Releases from '../components/releases';
-import createApolloClient from '../lib/apollo';
+import client from '../lib/apollo';
 import { GET_RELEASES } from '../lib/apollo/queries';
 import banner from '../public/images/banner.jpg';
 import { REVALIDATION_PERIOD } from '../shared/constants';
@@ -27,11 +27,9 @@ const Home = ({ releases }) => {
 };
 
 export async function getStaticProps() {
-    const apolloClient = createApolloClient();
-
     const {
         data: { releases }
-    } = await apolloClient.query({
+    } = await client.query({
         query: GET_RELEASES
     });
 

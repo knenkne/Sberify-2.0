@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { usePlayer } from '../components/player/use-player-2';
+import { usePlayer } from '../components/player/use-player';
 import { DEFAULT_TRACK_DURATION } from '../shared/constants';
 
 const src =
@@ -45,7 +45,7 @@ describe('usePlayer', () => {
         act(() => result.current.controls.rewind(-Infinity));
         expect(result.current.state.time).toBe(0);
 
-        // Positive - more than DEFAULT_TRACK_DURATION
+        // Positive and more than DEFAULT_TRACK_DURATION
         act(() => result.current.controls.rewind(Infinity));
         expect(result.current.state.time).toBe(DEFAULT_TRACK_DURATION);
     });

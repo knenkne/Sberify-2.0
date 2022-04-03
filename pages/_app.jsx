@@ -1,27 +1,27 @@
 /* eslint-disable react/prop-types */
 import '../styles/globals.css';
 
-import { useRouter } from 'next/router';
+import { ApolloProvider } from '@apollo/client/react';
 import { ThemeProvider } from 'next-themes';
 import NextNprogress from 'nextjs-progressbar';
 
 import Layout from '../components/layout';
+import client from '../lib/apollo';
 import { nextNprogressOptions } from '../shared/constants';
-import { PlayerProvider } from '../store';
 
 // eslint-disable-next-line react/prop-types
-const App = ({ Component, pageProps }) => {
-    const { pathname } = useRouter();
+const App = ({ Component, pageProps, router }) => {
+    const { pathname } = router;
 
     return (
-        <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
-            <PlayerProvider>
+        <ApolloProvider client={client}>
+            <ThemeProvider enableSystem={false} defaultTheme="dark" disableTransitionOnChange>
                 <NextNprogress options={nextNprogressOptions} />
                 <Layout index={pathname === '/'}>
                     <Component {...pageProps} />
                 </Layout>
-            </PlayerProvider>
-        </ThemeProvider>
+            </ThemeProvider>
+        </ApolloProvider>
     );
 };
 
