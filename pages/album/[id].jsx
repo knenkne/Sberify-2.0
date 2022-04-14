@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
+import { gql } from 'graphql-request';
+
 import AlbumInfo from '../../components/album-info';
-import client from '../../lib/apollo';
-import { GET_ALBUM, GET_RELEASES } from '../../lib/apollo/queries';
+import { client } from '../../shared/utils';
 
 // TODO: extract here from albuminfo component
 const Album = (props) => (
@@ -11,11 +12,41 @@ const Album = (props) => (
 
 export async function getStaticPaths() {
     const {
-        data: { releases }
-    } = await client.query({
-        query: GET_RELEASES
-    });
+        getReleases: {
+            albums: { items: releases }
+        }
+    } = await client.request(gql`
+        query Releases {
+            getReleases {
+                albums {
+                    items {
+                        id
+                        name
+                        artists {
+                            id
+                            name
+                        }
+                        images {
+                            url
+                        }
+                        tracks {
+                            items {
+                                id
+                                name
+                                artists {
+                                    id
+                                    name
+                                }
+                                previewUrl
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `);
 
+    console.log('ааа', releases);
     return {
         paths: releases.map(({ id }) => ({ params: { id } })),
         fallback: 'blocking'
@@ -24,14 +55,49 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { id } }) {
     const {
-        data: { album }
-    } = await client.query({
-        query: GET_ALBUM,
-        variables: { id }
-    });
+        getAlbum: {
+            name,
+            release_date,
+            images,
+            artists,
+            tracks: { items }
+        }
+    } = await client.request(gql`
+        query Album {
+            getAlbum(id: "${id}") {
+                name
+                release_date
+                images {
+                    width
+                    height
+                    url
+                }
+                artists {
+                    name
+                }
+                tracks {
+                    items {
+                        id
+                        name
+                        previewUrl
+                        artists {
+                            id
+                            name
+                        }
+                    }
+                }
+            }
+        }
+    `);
 
     return {
-        props: album
+        props: {
+            name,
+            releaseDate: release_date,
+            images,
+            artists,
+            tracks: items
+        }
     };
 }
 
