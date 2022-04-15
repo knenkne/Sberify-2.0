@@ -28,8 +28,6 @@ const refreshAccessToken = () =>
 // We could add that logic to _middleware
 const { token_type, access_token } = await refreshAccessToken();
 
-console.log(`${token_type} ${access_token}`);
-
 export const client = new GraphQLClient(process.env.MIDDLE_URL, {
     headers: {
         'Content-Type': 'application/json',
