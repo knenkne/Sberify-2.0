@@ -2,10 +2,10 @@ import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 
 import Releases from '../components/releases';
-import client from '../lib/apollo';
-import { GET_RELEASES } from '../lib/apollo/queries';
+import { GET_RELEASES } from '../lib/graphql/queries';
 import banner from '../public/images/banner.jpg';
 import { REVALIDATION_PERIOD } from '../shared/constants';
+import { client } from '../shared/utils';
 
 const Home = ({ releases }) => {
     return (
@@ -28,10 +28,10 @@ const Home = ({ releases }) => {
 
 export async function getStaticProps() {
     const {
-        data: { releases }
-    } = await client.query({
-        query: GET_RELEASES
-    });
+        getReleases: {
+            albums: { items: releases }
+        }
+    } = await client.request(GET_RELEASES);
 
     return {
         props: {
