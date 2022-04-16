@@ -7,7 +7,7 @@ import Tracks from '../tracks';
 const AlbumInfo = ({ images, name, artists, releaseDate, tracks }) => {
     const [, { url }] = images;
     const [{ artistName }] = artists;
-
+    console.log(artists)
     return (
         <>
             <div className="bg-secondary pb-12 shadow-md shadow-black/50 z-10 col-start-1 col-end-3 row-start-2 row-end-3 pl-96 pr-10 min-w-0">
