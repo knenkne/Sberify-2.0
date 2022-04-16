@@ -27,6 +27,8 @@ jobs:
           touch .env
           echo CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} >> .env
           echo TOKEN_URL=${{ secrets.TOKEN_URL }} >> .env
+          echo MIDDLE_SECRET=${{ secrets.MIDDLE_SECRET }} >> .env
+          echo MIDDLE_URL=${{ secrets.MIDDLE_URL }} >> .env
           echo API_URL=${{ secrets.API_URL }} >> .env
           echo API_VERSION=${{ secrets.API_VERSION }} >> .env
 
