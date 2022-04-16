@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { cleanName } from '../../../../shared/utils';
+import { cleanTitle } from '../../../../shared/utils';
 import { Cover } from '../../../common/cover';
 import { FeatList } from '../../../common/feat-list';
 import { SidebarItem } from '../item';
@@ -23,7 +23,7 @@ const SidebarBody = ({ tracks }) => {
                             />
                             <div className="min-w-0">
                                 <h3 className="w-full relative block font-roboto font-medium text-primary leading-5 truncate text-sm">
-                                    {cleanName(track.name)}
+                                    {cleanTitle(track.name)}
                                 </h3>
                                 <FeatList
                                     artists={track.artists}

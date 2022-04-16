@@ -2,7 +2,7 @@
 
 import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
-import { cleanName } from '../../shared/utils';
+import { cleanTitle } from '../../shared/utils';
 import { FeatList } from '../common/feat-list';
 
 const Tracks = ({ tracks }) => {
@@ -31,7 +31,7 @@ const Tracks = ({ tracks }) => {
                  before:text-secondary
                  "
                 >
-                    {track.previewUrl && (
+                    {track.preview_url && (
                         <button className="group-hover:opacity-100 absolute top-0 left-0 flex items-center justify-center w-14 h-14 bg-secondary opacity-0 cursor-pointer rounded">
                             {!track.playing ? (
                                 <PlayIcon className="w-4 h-4 fill-current text-primary" />
@@ -43,7 +43,7 @@ const Tracks = ({ tracks }) => {
                     <div className="flex-grow">
                         {/* TODO: common */}
                         <h3 className="font-roboto font-medium text-primary leading-5 truncate">
-                            {cleanName(track.name)}
+                            {cleanTitle(track.name)}
                         </h3>
                         {/* TODO: common */}
                         <FeatList
@@ -51,7 +51,7 @@ const Tracks = ({ tracks }) => {
                             className="font-roboto font-medium text-xs"
                         />
                     </div>
-                    {track.previewUrl && (
+                    {track.preview_url && (
                         <span className="flex h-14 w-14 items-center justify-center font-roboto text-md text-secondary">
                             0:30
                         </span>

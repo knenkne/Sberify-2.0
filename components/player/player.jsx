@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 
 import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
-import { cleanName } from '../../shared/utils';
+import { cleanTitle } from '../../shared/utils';
 import { FeatList } from '../common/feat-list';
 import { Slider } from '../common/slider';
 import { withIndependentSlide } from '../common/slider/hoc';
@@ -46,7 +46,7 @@ const Player = ({
                 <div className="truncate">
                     {/* TODO: common */}
                     <h3 className="font-roboto font-medium text-primary leading-5 truncate text-sm">
-                        {cleanName(name)}
+                        {cleanTitle(name)}
                     </h3>
                     <FeatList artists={artists} className="font-roboto font-medium text-xs" />
                 </div>

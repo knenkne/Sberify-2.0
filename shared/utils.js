@@ -12,7 +12,7 @@ export const humanizeDate = (dateISO) => {
 };
 
 // clean name from .feat/.ft/with
-export const cleanName = (name = '') => name.split(FEAT_REGEXP).shift().trim();
+export const cleanTitle = (title = '') => title.split(FEAT_REGEXP).shift().trim();
 
 const refreshAccessToken = () =>
     fetch(process.env.TOKEN_URL, {
