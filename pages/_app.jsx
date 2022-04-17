@@ -7,6 +7,7 @@ import NextNprogress from 'nextjs-progressbar';
 import Layout from '../components/layout';
 import { nextNprogressOptions } from '../shared/constants';
 
+// TODO: OpenGraph
 // eslint-disable-next-line react/prop-types
 const App = ({ Component, pageProps, router }) => {
     const { pathname } = router;

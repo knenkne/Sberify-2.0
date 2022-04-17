@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { DEFAULT_TRACK_DURATION } from '../../shared/constants';
+import { DEFAULT_TRACK_DURATION, DEFAULT_VOLUME } from '../../shared/constants';
 
-const usePlayer = (src) => {
-    const [audio] = useState(typeof window !== 'undefined' ? new Audio(src) : null);
+const usePlayer = (src, onEnded = () => void 0) => {
+    const [audio] = useState(typeof window === 'undefined' ? null : new Audio(src));
     const [time, setTime] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -30,9 +30,11 @@ const usePlayer = (src) => {
 
         const handleEnded = () => {
             setTime(0);
+            setIsPlaying(false);
+            onEnded();
         };
 
-        audio.volume = 0.1;
+        audio.volume = DEFAULT_VOLUME;
         audio.addEventListener('timeupdate', handleTimeUpdate);
         audio.addEventListener('ended', handleEnded);
 
@@ -40,7 +42,7 @@ const usePlayer = (src) => {
             audio.removeEventListener('timeupdate', handleTimeUpdate);
             audio.removeEventListener('ended', handleEnded);
         };
-    }, [audio]);
+    }, [audio, onEnded]);
 
     const state = { isPlaying, time };
     const controls = { toggle, rewind };

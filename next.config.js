@@ -7,6 +7,7 @@ module.exports = {
     experiments: {
         topLevelAwait: true
     },
+    optimizeFonts: false,
     env: {
         CLIENT_SECRET: process.env.CLIENT_SECRET,
         MIDDLE_SECRET: process.env.MIDDLE_SECRET,
@@ -24,6 +25,7 @@ module.exports = {
                 'react-dom': 'preact/compat'
             });
         }
+
         return config;
     }
 };
