@@ -2,7 +2,6 @@
 import cx from 'classnames';
 
 import SearchIcon from '../../public/icons/search.svg';
-import { Template } from '../common/template';
 
 // TODO: Remove index deps, classNames as props
 const Search = ({ index }) => {

@@ -3,8 +3,8 @@ import { FeatList } from '../../components/common/feat-list';
 import { Template } from '../../components/common/template';
 import Tracks from '../../components/tracks';
 import { GET_ALBUM, GET_RELEASES } from '../../lib/graphql/queries';
-import { humanizeDate } from '../../shared/utils';
 import { client } from '../../shared/qraphql-client';
+import { humanizeDate } from '../../shared/utils';
 
 const Album = ({ name, releaseDate, image, artists, tracks }) => {
     const subtitle = (

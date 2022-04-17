@@ -16,10 +16,11 @@ const emblaCarouselOptions = {
 };
 const autoplayPluginOptions = { stopOnMouseEnter: true };
 
-const Carousel = ({ children }) => {
-    const [emblaRef, embla] = useEmblaCarousel(emblaCarouselOptions, [
-        Autoplay(autoplayPluginOptions)
-    ]);
+const Carousel = ({ autoplay = false, children }) => {
+    const [emblaRef, embla] = useEmblaCarousel(
+        emblaCarouselOptions,
+        autoplay ? [Autoplay(autoplayPluginOptions)] : []
+    );
 
     // tiny hack for preact to stop propogation while drag the carousel
     const handleClick = (e) => {
@@ -44,7 +45,8 @@ const Carousel = ({ children }) => {
 };
 
 Carousel.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    autoplay: PropTypes.bool
 };
 
 export { Carousel };

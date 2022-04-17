@@ -7,29 +7,29 @@ import { FeatList } from '../common/feat-list';
 
 const Tracks = ({ tracks }) => {
     return (
-        <ol className="pt-10 px-10 list-decimal list-inside">
+        <ol className="w-full pt-6 px-10 list-decimal list-inside">
             {tracks.map((track) => (
                 <li
                     key={track.id}
-                    className="
-                 group 
-                 relative
-                 flex 
-                 items-center
-                 h-14
-                 pl-14
-                 rounded 
-                 hover:bg-secondary 
-                 before:absolute 
-                 before:w-14 
-                 before:h-14 
-                 before:flex 
-                 before:items-center 
-                 before:justify-center
-                 before:left-0
-                 before:font-roboto
-                 before:text-secondary
-                 "
+                    className={`
+                        group 
+                        relative
+                        flex 
+                        items-center
+                        h-14
+                        pl-14
+                        rounded 
+                        hover:bg-secondary 
+                        before:absolute 
+                        before:w-14 
+                        before:h-14 
+                        before:flex 
+                        before:items-center 
+                        before:justify-center
+                        before:left-0
+                        before:font-roboto
+                        before:text-secondary
+                    `.trim()}
                 >
                     {track.preview_url && (
                         <button className="group-hover:opacity-100 absolute top-0 left-0 flex items-center justify-center w-14 h-14 bg-secondary opacity-0 cursor-pointer rounded">

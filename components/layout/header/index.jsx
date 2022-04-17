@@ -12,7 +12,7 @@ const Header = ({ index }) => {
     const [cleanPathname] = pathname.split('/[');
 
     return (
-        <header className="relative flex items-center px-24 z-10 box-content col-span-full row-start-1 row-end-1">
+        <header className="relative flex items-center px-24 z-10 box-content col-span-full row-start-1 row-end-2">
             {/* TODO: mock for logo */}
             <div className="w-72 mr-10" />
             <nav className="flex justify-between w-72 font-archivo">

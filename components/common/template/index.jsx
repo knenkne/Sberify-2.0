@@ -25,7 +25,7 @@ const Template = ({ title, subtitle, image, children }) => (
                 </div>
             </div>
         </div>
-        <div className="bg-tertiary pb-10 col-span-full row-start-3 row-end-5 pl-96">
+        <div className="w-full flex flex-col items-start bg-tertiary col-span-full row-start-3 row-end-5 pl-96 pb-10">
             {children}
         </div>
     </>

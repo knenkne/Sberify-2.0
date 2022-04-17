@@ -13,7 +13,7 @@ const Home = ({ releases }) => {
             <div className="col-span-full row-span-full">
                 <NextImage
                     src={banner}
-                    alt="Featured: Machine Gun Kelly"
+                    alt="Featured: Smth"
                     objectFit="cover"
                     objectPosition="right center"
                     layout="fill"
@@ -21,7 +21,12 @@ const Home = ({ releases }) => {
                     priority
                 />
             </div>
-            <Releases releases={releases} />
+            <Releases
+                unwrapped
+                autoplay
+                releases={releases}
+                className="relative pl-96 after:from-[var(--secondary-BG)] bg-secondary"
+            />
         </>
     );
 };

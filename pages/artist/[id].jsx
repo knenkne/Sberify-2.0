@@ -3,16 +3,19 @@ import { Template } from '../../components/common/template';
 // TODO: common carousel
 import Releases from '../../components/releases';
 import Tracks from '../../components/tracks';
+import { withLimit } from '../../components/tracks/hoc';
 import { GET_ARTIST } from '../../lib/graphql/queries';
 import { client } from '../../shared/qraphql-client';
 import { capitalize } from '../../shared/utils';
 
 const Artist = ({ name, image, genres, tracks, albums }) => {
     const subtitle = genres.map(capitalize).join(' • ');
+    const TracksWithLimit = withLimit(Tracks);
+
     return (
         <Template title={name} subtitle={subtitle} image={image}>
-            <Tracks tracks={tracks} />
-            <Releases releases={albums} />
+            <TracksWithLimit tracks={tracks} />
+            <Releases releases={albums} className="after:from-[var(--tertiary-BG)] bg-tertiary" />
         </Template>
     );
 };
