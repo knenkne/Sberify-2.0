@@ -3,37 +3,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402
 // TODO: dynamic
-import Autoplay from 'embla-carousel-autoplay';
-import useEmblaCarousel from 'embla-carousel-react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
 import { cleanTitle } from '../../shared/utils';
+import { Carousel } from '../common/carousel';
 import { Cover } from '../common/cover';
 
-const emblaCarouselOptions = {
-    loop: false,
-    align: 'start',
-    containScroll: 'keepSnaps',
-    skipSnaps: true
-};
-const autoplayPluginOptions = { stopOnMouseEnter: true };
-
-// TODO: Release
-const Releases = ({ releases }) => {
-    const [emblaRef, embla] = useEmblaCarousel(emblaCarouselOptions, [
-        Autoplay(autoplayPluginOptions)
-    ]);
-
-    // tiny hack for preact to stop propogation while drag the carousel
-    const handleClick = (e) => {
-        if (!embla?.clickAllowed()) {
-            e.preventDefault();
-        }
-    };
-
+const Releases = ({ onClick, releases }) => {
     return (
-        // TODO: semantic components
         <section
             // TODO: w-screen FF
             className={`                
@@ -56,45 +34,44 @@ const Releases = ({ releases }) => {
                 col-end-3
         `.trim()}
         >
-            <div className="embla h-full overflow-hidden" ref={emblaRef}>
-                <div className="embla__container flex items-center h-full ml-10">
-                    {releases.map(({ id, name, images, artists }) => {
-                        const [, { url }] = images;
-                        const [{ name: artist }] = artists;
+            <Carousel>
+                {releases.map(({ id, name, images, artists }) => {
+                    const [, { url }] = images;
+                    const [{ name: artist }] = artists;
 
-                        return (
-                            <div
-                                className="embla__slide group flex-shrink-0 relative w-36 h-36 box-content pr-10"
-                                key={id}
-                            >
-                                <NextLink href={`/album/${id}`} passHref>
-                                    <a onClick={handleClick}>
-                                        <Cover
-                                            src={url}
-                                            alt={`${name} by ${artist}`}
-                                            className="w-36 h-36 rounded group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 trainsition-transform duration-300 shadow-md shadow-black/50 bg-secondary"
-                                        />
-                                    </a>
-                                </NextLink>
-                                <div className="-mt-9">
-                                    <h3 className="font-roboto font-medium text-primary leading-5 truncate">
-                                        {cleanTitle(name)}
-                                    </h3>
-                                    <h4 className="font-roboto font-medium text-secondary text-xs truncate">
-                                        {artist}
-                                    </h4>
-                                </div>
+                    return (
+                        <li
+                            className="group flex-shrink-0 relative w-36 h-36 box-content pr-10"
+                            key={id}
+                        >
+                            <NextLink href={`/album/${id}`} passHref>
+                                <a onClick={onClick}>
+                                    <Cover
+                                        src={url}
+                                        alt={`${name} by ${artist}`}
+                                        className="w-36 h-36 rounded group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 trainsition-transform duration-300 shadow-md shadow-black/50 bg-secondary"
+                                    />
+                                </a>
+                            </NextLink>
+                            <div className="-mt-9">
+                                <h3 className="font-roboto font-medium text-primary leading-5 truncate">
+                                    {cleanTitle(name)}
+                                </h3>
+                                <h4 className="font-roboto font-medium text-secondary text-xs truncate">
+                                    {artist}
+                                </h4>
                             </div>
-                        );
-                    })}
-                </div>
-            </div>
+                        </li>
+                    );
+                })}
+            </Carousel>
         </section>
     );
 };
 
 Releases.propTypes = {
-    releases: PropTypes.array
+    releases: PropTypes.array,
+    onClick: PropTypes.func
 };
 
 export default Releases;

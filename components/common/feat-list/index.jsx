@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import { Link } from '../link';
 
+// TODO: no link for first artist
 const FeatList = ({ artists = [], className = '' }) => {
     // if (!artists) {
     //     throw new Error('Artists list should not be empty');
