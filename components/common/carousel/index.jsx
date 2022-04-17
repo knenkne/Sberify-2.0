@@ -17,20 +17,28 @@ const emblaCarouselOptions = {
 const autoplayPluginOptions = { stopOnMouseEnter: true };
 
 const Carousel = ({ autoplay = false, children }) => {
-    const [emblaRef] = useEmblaCarousel(
+    const [emblaRef, embla] = useEmblaCarousel(
         emblaCarouselOptions,
         autoplay ? [Autoplay(autoplayPluginOptions)] : []
     );
 
+    // tiny hack for preact to stop capturing while drag the carousel
+    const handleClick = (e) => {
+        if (!embla?.clickAllowed()) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    };
+
     return (
-        <div className="embla h-full overflow-hidden" ref={emblaRef}>
+        <div className="embla h-full overflow-hidden" ref={emblaRef} onClickCapture={handleClick}>
             <ul className="embla__container flex items-center h-full ml-10">
-                {children.map((child) =>
-                    cloneElement(child, {
+                {children.map((child) => {
+                    return cloneElement(child, {
                         ...child.props,
                         className: `embla__slide ${child.props.className}`
-                    })
-                )}
+                    });
+                })}
             </ul>
         </div>
     );
