@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import { render, screen, waitFor } from '@testing-library/react';
+import { cleanup, render, screen, waitFor } from '@testing-library/react';
 
 import { Cover } from '../../components/common/cover';
 
@@ -17,6 +17,8 @@ jest.mock('next/image', () => ({ src, alt, onLoadingComplete }) => {
 });
 
 describe('Cover', () => {
+    afterEach(cleanup);
+
     it('initializes', () => {
         expect(Cover).toBeDefined();
     });

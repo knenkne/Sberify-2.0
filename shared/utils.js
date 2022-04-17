@@ -1,5 +1,3 @@
-import { GraphQLClient } from 'graphql-request';
-
 import { FEAT_REGEXP, months } from './constants';
 
 export const capitalize = ([first, ...rest], locale = navigator.language) =>
@@ -13,25 +11,3 @@ export const humanizeDate = (dateISO) => {
 
 // clean name from .feat/.ft/with
 export const cleanTitle = (title = '') => title.split(FEAT_REGEXP).shift().trim();
-
-const refreshAccessToken = () =>
-    fetch(process.env.TOKEN_URL, {
-        method: 'POST',
-        headers: {
-            Authorization: `Basic ${process.env.CLIENT_SECRET}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: 'grant_type=client_credentials'
-    }).then((res) => res.json());
-
-// When support for configuring gSSP to use Edge Functions lands,
-// We could add that logic to _middleware
-const { token_type, access_token } = await refreshAccessToken();
-
-export const client = new GraphQLClient(process.env.MIDDLE_URL, {
-    headers: {
-        'Content-Type': 'application/json',
-        'x-hasura-admin-secret': process.env.MIDDLE_SECRET,
-        Authorization: `${token_type} ${access_token}`
-    }
-});

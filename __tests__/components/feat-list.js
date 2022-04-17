@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 
 import { FeatList } from '../../components/common/feat-list';
 
@@ -21,6 +21,8 @@ const artists = [
 const className = 'mt-2 w-max';
 
 describe('FeatList', () => {
+    afterEach(cleanup);
+
     it('initializes', () => {
         expect(FeatList).toBeDefined();
     });
