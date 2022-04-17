@@ -34,46 +34,44 @@ const Releases = ({ releases, className = '', unwrapped = false, autoplay = fals
         `.trim()}
         >
             <Carousel autoplay={autoplay}>
-                {releases.map(
-                    ({ id, name, images, artists, release_date: releaseDate, onClick }) => {
-                        const [, { url }] = images;
-                        const [{ name: artist }] = artists;
+                {releases.map(({ id, name, images, artists, release_date: releaseDate }) => {
+                    const [, { url }] = images;
+                    const [{ name: artist }] = artists;
 
-                        return (
-                            <li
-                                className={cx(
-                                    'group flex-shrink-0 relative w-36 box-content pr-10',
-                                    unwrapped && 'h-36'
-                                )}
-                                key={id}
-                            >
-                                <NextLink href={`/album/${id}`} passHref>
-                                    <a onClick={onClick}>
-                                        <Cover
-                                            src={url}
-                                            alt={`${name} by ${artist}`}
-                                            // TODO: margin-top (2)
-                                            className={cx(
-                                                'w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary',
-                                                unwrapped &&
-                                                    'group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 trainsition-transform duration-300'
-                                            )}
-                                        />
-                                    </a>
-                                </NextLink>
-                                <div className={cx(unwrapped ? '-mt-9' : 'mt-2')}>
-                                    <h3 className="font-roboto font-medium text-primary leading-5 truncate">
-                                        {cleanTitle(name)}
-                                    </h3>
-                                    <h4 className="font-roboto font-medium text-secondary text-xs truncate">
-                                        {/* TODO: common Typography common Headline */}
-                                        {releaseDate ? humanizeDate(releaseDate) : artist}
-                                    </h4>
-                                </div>
-                            </li>
-                        );
-                    }
-                )}
+                    return (
+                        <li
+                            className={cx(
+                                'group flex-shrink-0 relative w-36 box-content pr-10',
+                                unwrapped && 'h-36'
+                            )}
+                            key={id}
+                        >
+                            <NextLink href={`/album/${id}`} passHref>
+                                <a>
+                                    <Cover
+                                        src={url}
+                                        alt={`${name} by ${artist}`}
+                                        // TODO: margin-top (2)
+                                        className={cx(
+                                            'w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary',
+                                            unwrapped &&
+                                                'group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 trainsition-transform duration-300'
+                                        )}
+                                    />
+                                </a>
+                            </NextLink>
+                            <div className={cx(unwrapped ? '-mt-9' : 'mt-2')}>
+                                <h3 className="font-roboto font-medium text-primary leading-5 truncate">
+                                    {cleanTitle(name)}
+                                </h3>
+                                <h4 className="font-roboto font-medium text-secondary text-xs truncate">
+                                    {/* TODO: common Typography common Headline */}
+                                    {releaseDate ? humanizeDate(releaseDate) : artist}
+                                </h4>
+                            </div>
+                        </li>
+                    );
+                })}
             </Carousel>
         </section>
     );
