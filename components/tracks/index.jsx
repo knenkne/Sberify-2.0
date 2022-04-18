@@ -42,7 +42,7 @@ const Tracks = ({ tracks }) => {
                     )}
                     <div className="flex-grow">
                         {/* TODO: common */}
-                        <h3 className="font-roboto font-medium text-primary leading-5 truncate">
+                        <h3 className="font-roboto font-medium text-primary text-base leading-5 truncate">
                             {cleanTitle(track.name)}
                         </h3>
                         {/* TODO: common */}
