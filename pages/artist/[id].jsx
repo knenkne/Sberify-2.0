@@ -15,10 +15,7 @@ const Artist = ({ name, image, genres, tracks, albums }) => {
     return (
         <Template title={name} subtitle={subtitle} image={image}>
             <TracksWithLimit tracks={tracks} />
-            <Releases
-                releases={albums}
-                className="after:from-[var(--tertiary-BG)] bg-tertiary mt-auto"
-            />
+            <Releases releases={albums} className="after:from-[var(--tertiary-BG)] bg-tertiary" />
         </Template>
     );
 };
