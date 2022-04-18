@@ -42,6 +42,11 @@
         --secondary-shadow-2: -6px 4px 12px rgba(18, 18, 18, 0.48);
     }
 
+    html {
+        /* TODO: responsive design */
+        /* font-size: calc(100vw * 16 / 1920); */
+    }
+
     body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
             'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

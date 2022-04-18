@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import ChevronIcon from '../../../public/icons/chevron.svg';
 
-const LIMIT = 4;
+const LIMIT = 5;
 
 const withLimit = (WrappedTracks) => {
     const WithLimit = ({ tracks }) => {

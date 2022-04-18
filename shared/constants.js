@@ -1,6 +1,6 @@
 // 1 day revalidation
 export const REVALIDATION_PERIOD = 60 * 60 * 24;
-export const RELEASES_COUNT = 50;
+export const RELEASES_COUNT = 20;
 export const PLAYLISTS_COUNT = 1;
 export const MARKET_COUNTRY = 'US';
 // TODO [feat. | ft.]

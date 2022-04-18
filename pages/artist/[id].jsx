@@ -4,7 +4,7 @@ import { Template } from '../../components/common/template';
 import Releases from '../../components/releases';
 import Tracks from '../../components/tracks';
 import { withLimit } from '../../components/tracks/hoc';
-import { GET_ARTIST } from '../../lib/graphql/queries';
+import { GET_ARTIST, GET_RELEASES } from '../../lib/graphql/queries';
 import { client } from '../../shared/qraphql-client';
 import { capitalize } from '../../shared/utils';
 
@@ -15,13 +15,33 @@ const Artist = ({ name, image, genres, tracks, albums }) => {
     return (
         <Template title={name} subtitle={subtitle} image={image}>
             <TracksWithLimit tracks={tracks} />
-            <Releases releases={albums} className="after:from-[var(--tertiary-BG)] bg-tertiary" />
+            <Releases
+                releases={albums}
+                className="after:from-[var(--tertiary-BG)] bg-tertiary mt-auto"
+            />
         </Template>
     );
 };
 
+export async function getStaticPaths() {
+    const {
+        getReleases: {
+            albums: { items: releases }
+        }
+    } = await client.request(GET_RELEASES);
+
+    return {
+        paths: releases.reduce((acc, { artists }) => {
+            acc.push(...artists.map(({ id }) => ({ params: { id } })));
+
+            return acc;
+        }, []),
+        fallback: 'blocking'
+    };
+}
+
 // TODO: getStaticProps
-export async function getServerSideProps({ params: { id } }) {
+export async function getStaticProps({ params: { id } }) {
     const {
         getArtist: { name, images, genres },
         getArtistTopTracks: { tracks },
