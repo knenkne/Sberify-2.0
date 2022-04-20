@@ -1,14 +1,24 @@
 /* eslint-disable react/prop-types */
+import { useRouter } from 'next/router';
+
 import { Template } from '../../components/common/template';
 // TODO: common carousel
 import Releases from '../../components/releases';
 import Tracks from '../../components/tracks';
 import { withLimit } from '../../components/tracks/hoc';
 import { GET_ARTIST, GET_RELEASES } from '../../lib/graphql/queries';
+import { REVALIDATION_PERIOD } from '../../shared/constants';
 import { client } from '../../shared/qraphql-client';
 import { capitalize } from '../../shared/utils';
 
 const Artist = ({ name, image, genres, tracks, albums }) => {
+    const {isFallback} = useRouter();
+
+    // TODO: Loaders
+    if (isFallback) {
+        return <div>Loading...</div>;
+    }
+
     const subtitle = genres.map(capitalize).join(' • ');
     const TracksWithLimit = withLimit(Tracks);
 
@@ -33,7 +43,7 @@ export async function getStaticPaths() {
 
             return acc;
         }, []),
-        fallback: 'blocking'
+        fallback: true
     };
 }
 
@@ -65,7 +75,8 @@ export async function getStaticProps({ params: { id } }) {
                     return acc;
                 }, {})
             ).flat()
-        }
+        },
+        revalidate: REVALIDATION_PERIOD
     };
 }
 

@@ -11,6 +11,7 @@ import { cleanTitle, humanizeDate } from '../../shared/utils';
 import { Carousel } from '../common/carousel';
 import { Cover } from '../common/cover';
 
+// TODO: remove wrapped mode
 const Releases = ({ releases, className = '', unwrapped = false, autoplay = false }) => {
     return (
         <section
