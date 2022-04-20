@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import { fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
 import { Slider } from '../../components/common/slider';
 import { withIndependentSlide } from '../../components/common/slider/hoc';
@@ -8,6 +8,8 @@ import { withIndependentSlide } from '../../components/common/slider/hoc';
 const value = '65.5';
 
 describe('Slider', () => {
+    afterEach(cleanup);
+
     it('initializes', () => {
         expect(Slider).toBeDefined();
     });

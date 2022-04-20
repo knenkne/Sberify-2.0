@@ -2,10 +2,10 @@ import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 
 import Releases from '../components/releases';
-import client from '../lib/apollo';
-import { GET_RELEASES } from '../lib/apollo/queries';
+import { GET_RELEASES } from '../lib/graphql/queries';
 import banner from '../public/images/banner.jpg';
 import { REVALIDATION_PERIOD } from '../shared/constants';
+import { client } from '../shared/qraphql-client';
 
 const Home = ({ releases }) => {
     return (
@@ -13,7 +13,7 @@ const Home = ({ releases }) => {
             <div className="col-span-full row-span-full">
                 <NextImage
                     src={banner}
-                    alt="Featured: Machine Gun Kelly"
+                    alt="Featured: Smth"
                     objectFit="cover"
                     objectPosition="right center"
                     layout="fill"
@@ -21,17 +21,22 @@ const Home = ({ releases }) => {
                     priority
                 />
             </div>
-            <Releases releases={releases} />
+            <Releases
+                unwrapped
+                autoplay
+                releases={releases}
+                className="relative pl-96 after:from-[var(--secondary-BG)] bg-secondary"
+            />
         </>
     );
 };
 
 export async function getStaticProps() {
     const {
-        data: { releases }
-    } = await client.query({
-        query: GET_RELEASES
-    });
+        getReleases: {
+            albums: { items: releases }
+        }
+    } = await client.request(GET_RELEASES);
 
     return {
         props: {
