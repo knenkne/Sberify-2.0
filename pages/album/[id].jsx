@@ -3,6 +3,7 @@ import { FeatList } from '../../components/common/feat-list';
 import { Template } from '../../components/common/template';
 import Tracks from '../../components/tracks';
 import { GET_ALBUM, GET_RELEASES } from '../../lib/graphql/queries';
+import { REVALIDATION_PERIOD } from '../../shared/constants';
 import { client } from '../../shared/qraphql-client';
 import { humanizeDate } from '../../shared/utils';
 
@@ -57,7 +58,8 @@ export async function getStaticProps({ params: { id } }) {
             image: images[1].url,
             artists,
             tracks: items
-        }
+        },
+        revalidate: REVALIDATION_PERIOD
     };
 }
 

@@ -42,6 +42,7 @@ export async function getStaticProps() {
         props: {
             releases
         },
+        // TODO: on-demand revalidation via cron
         revalidate: REVALIDATION_PERIOD
     };
 }
