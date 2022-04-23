@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
+import getConfig from 'next/config';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+
 import { FeatList } from '../../components/common/feat-list';
 import { Template } from '../../components/common/template';
 import Tracks from '../../components/tracks';
-import { GET_ALBUM, GET_RELEASES } from '../../lib/graphql/queries';
+// eslint-disable-next-line no-unused-vars
+import { GET_ALBUM, GET_RELEASES, GET_SEVERAL_ALBUMS } from '../../lib/graphql/queries';
 import { REVALIDATION_PERIOD } from '../../shared/constants';
-import { client } from '../../shared/qraphql-client';
+import { BuildCache, client } from '../../shared/qraphql-client';
 import { humanizeDate } from '../../shared/utils';
 
 const Album = ({ name, releaseDate, image, artists, tracks }) => {
@@ -30,6 +34,10 @@ export async function getStaticPaths() {
         }
     } = await client.request(GET_RELEASES);
 
+    if (getConfig().serverRuntimeConfig.phase === PHASE_PRODUCTION_BUILD) {
+        await BuildCache.ALBUMS.fill(releases.map(({ id }) => id));
+    }
+
     return {
         paths: releases.map(({ id }) => ({ params: { id } })),
         fallback: 'blocking'
@@ -38,16 +46,14 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { id } }) {
     const {
-        getAlbum: {
-            name,
-            release_date,
-            images,
-            artists,
-            tracks: { items }
-        }
-    } = await client.request(GET_ALBUM, {
-        id
-    });
+        name,
+        release_date,
+        images,
+        artists,
+        tracks: { items }
+    } = getConfig().serverRuntimeConfig.phase === PHASE_PRODUCTION_BUILD
+        ? BuildCache.ALBUMS.data
+        : {};
 
     return {
         props: {
