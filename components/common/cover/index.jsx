@@ -2,7 +2,7 @@ import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary' }) => {
+const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary', isLoading }) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const handleLoadingComplete = () => {
@@ -12,7 +12,7 @@ const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary' }) =>
     return (
         <div className={`relative overflow-hidden ${className}`.trim()}>
             {!isLoaded && <div className={`w-full h-full animate-pulse ${shimmerClassName}`} />}
-            {src && (
+            {src && !isLoading && (
                 <NextImage
                     src={src}
                     alt={alt}
@@ -29,7 +29,8 @@ Cover.propTypes = {
     src: PropTypes.string,
     alt: PropTypes.string,
     className: PropTypes.string,
-    shimmerClassName: PropTypes.string
+    shimmerClassName: PropTypes.string,
+    isLoading: PropTypes.bool
 };
 
 export { Cover };
