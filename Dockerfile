@@ -1,7 +1,7 @@
 FROM hasura/graphql-engine
 
 # Enable the console
-ENV HASURA_GRAPHQL_ENABLE_CONSOLE=false
+ENV HASURA_GRAPHQL_ENABLE_CONSOLE=true
 
 # Enable debugging mode. It should be disabled in production.
 ENV HASURA_GRAPHQL_DEV_MODE=true
