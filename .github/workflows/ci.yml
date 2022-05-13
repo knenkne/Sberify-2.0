@@ -1,63 +1,61 @@
 on: [push]
 jobs:
-  ci:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code  
-        uses: actions/checkout@v2
+    ci:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v2
 
-      - name: Cache Dependencies 
-        uses: actions/cache@v2
-        with:
-          path: ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+            - name: Cache Dependencies
+              uses: actions/cache@v2
+              with:
+                  path: ${{ github.workspace }}/.next/cache
+                  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+                  restore-keys: |
+                      ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
-      - name: Setup Node 14 
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      
-      - name: Setup npm
-        run: npm install -g npm
+            - name: Setup Node 14
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '14'
 
-      - name: Setup dotenv
-        run: |
-          touch .env
-          echo CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} >> .env
-          echo TOKEN_URL=${{ secrets.TOKEN_URL }} >> .env
-          echo MIDDLE_SECRET=${{ secrets.MIDDLE_SECRET }} >> .env
-          echo MIDDLE_URL=${{ secrets.MIDDLE_URL }} >> .env
-          echo API_URL=${{ secrets.API_URL }} >> .env
-          echo API_VERSION=${{ secrets.API_VERSION }} >> .env
+            - name: Setup npm
+              run: npm install -g npm
 
-      - name: Build 
-        run: |
-          npm ci
-          npm run build
-        
-      - name: Lint 
-        run: npm run lint
+            - name: Setup dotenv
+              run: |
+                  touch .env
+                  echo CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} >> .env
+                  echo TOKEN_URL=${{ secrets.TOKEN_URL }} >> .env
+                  echo MIDDLE_SECRET=${{ secrets.MIDDLE_SECRET }} >> .env
+                  echo MIDDLE_URL=${{ secrets.MIDDLE_URL }} >> .env
+                  echo API_URL=${{ secrets.API_URL }} >> .env
+                  echo API_VERSION=${{ secrets.API_VERSION }} >> .env
 
-      - name: Unit testing 
-        run: npm run test
+            - name: Setup dependencies
+              run: npm ci
 
-      - name: Deploy
-        id: deploy-vercel-staging
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          scope: ${{ secrets.VERCEL_ORG_ID }}
-          
-      - name: End-to-end testing
-        uses: cypress-io/github-action@v2
-        with:
-          record: true
-          config: baseUrl=${{ steps.deploy-vercel-staging.outputs.preview-url }}
-        env: 
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Lint
+              run: npm run lint
+
+            - name: Unit testing
+              run: npm run test
+
+            - name: Deploy
+              id: deploy-vercel-staging
+              uses: amondnet/vercel-action@v20
+              with:
+                  vercel-token: ${{ secrets.VERCEL_TOKEN }}
+                  vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+                  vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  scope: ${{ secrets.VERCEL_ORG_ID }}
+
+            - name: End-to-end testing
+              uses: cypress-io/github-action@v2
+              with:
+                  record: true
+                  config: baseUrl=${{ steps.deploy-vercel-staging.outputs.preview-url }}
+              env:
+                  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,9 +2,9 @@
 import { FeatList } from '../../components/common/feat-list';
 import { Template } from '../../components/common/template';
 import Tracks from '../../components/tracks';
-import { GET_ALBUM, GET_RELEASES } from '../../lib/graphql/queries';
-import { REVALIDATION_PERIOD } from '../../shared/constants';
-import { client } from '../../shared/qraphql-client';
+// eslint-disable-next-line no-unused-vars
+import { GET_ALBUM, GET_RELEASES, GET_SEVERAL_ALBUMS } from '../../lib/graphql/queries';
+import { BuildQueue, client } from '../../shared/qraphql-client';
 import { humanizeDate } from '../../shared/utils';
 
 const Album = ({ name, releaseDate, image, artists, tracks }) => {
@@ -30,6 +30,8 @@ export async function getStaticPaths() {
         }
     } = await client.request(GET_RELEASES);
 
+    await BuildQueue.ALBUMS.fill(releases.map(({ id }) => id));
+
     return {
         paths: releases.map(({ id }) => ({ params: { id } })),
         fallback: 'blocking'
@@ -37,6 +39,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
+    // get data from build queue or fetch it
     const {
         getAlbum: {
             name,
@@ -45,9 +48,11 @@ export async function getStaticProps({ params: { id } }) {
             artists,
             tracks: { items }
         }
-    } = await client.request(GET_ALBUM, {
-        id
-    });
+    } =
+        BuildQueue.ALBUMS.data ||
+        (await client.request(GET_ALBUM, {
+            id
+        }));
 
     return {
         props: {
@@ -58,8 +63,7 @@ export async function getStaticProps({ params: { id } }) {
             image: images[1].url,
             artists,
             tracks: items
-        },
-        revalidate: REVALIDATION_PERIOD
+        }
     };
 }
 
