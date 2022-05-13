@@ -1,7 +1,4 @@
 /* eslint-disable react/prop-types */
-import getConfig from 'next/config';
-import { PHASE_PRODUCTION_BUILD } from 'next/constants';
-
 import { FeatList } from '../../components/common/feat-list';
 import { Template } from '../../components/common/template';
 import Tracks from '../../components/tracks';
@@ -33,9 +30,7 @@ export async function getStaticPaths() {
         }
     } = await client.request(GET_RELEASES);
 
-    if (getConfig().serverRuntimeConfig.phase === PHASE_PRODUCTION_BUILD) {
-        await BuildQueue.ALBUMS.fill(releases.map(({ id }) => id));
-    }
+    await BuildQueue.ALBUMS.fill(releases.map(({ id }) => id));
 
     return {
         paths: releases.map(({ id }) => ({ params: { id } })),
@@ -44,15 +39,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
-    const data =
-        getConfig().serverRuntimeConfig.phase === PHASE_PRODUCTION_BUILD
-            ? BuildQueue.ALBUMS.data
-            : await client.request(GET_ALBUM, {
-                  id
-              });
-
-    console.error(data, getConfig().serverRuntimeConfig.phase);
-
     const {
         getAlbum: {
             name,
@@ -61,7 +47,11 @@ export async function getStaticProps({ params: { id } }) {
             artists,
             tracks: { items }
         }
-    } = data;
+    } =
+        BuildQueue.ALBUMS.data ||
+        (await client.request(GET_ALBUM, {
+            id
+        }));
 
     return {
         props: {

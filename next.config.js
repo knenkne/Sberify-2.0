@@ -2,10 +2,7 @@ const dotenv = require('dotenv');
 // const bundleAnalyzer = require('@next/bundle-analyzer');
 
 dotenv.config();
-module.exports = (phase) => ({
-    serverRuntimeConfig: {
-        phase
-    },
+module.exports = () => ({
     swcMinify: true,
     experimental: {
         topLevelAwait: true,
