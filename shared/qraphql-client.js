@@ -48,7 +48,7 @@ class Queue {
                 })
             )
         ).then((responses) => {
-            this.cache = responses
+            this.queue = responses
                 .flatMap(({ getSeveralAlbums: { albums } }) => albums)
                 .map((album) => ({
                     getAlbum: album
@@ -57,7 +57,7 @@ class Queue {
     }
 
     get data() {
-        return this.cache.shift();
+        return this.queue.shift();
     }
 }
 
