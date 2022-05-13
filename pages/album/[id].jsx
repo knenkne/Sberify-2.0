@@ -44,6 +44,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
+    const data =
+        getConfig().serverRuntimeConfig.phase === PHASE_PRODUCTION_BUILD
+            ? BuildQueue.ALBUMS.data
+            : await client.request(GET_ALBUM, {
+                  id
+              });
+
+    console.error(data);
+
     const {
         getAlbum: {
             name,
@@ -52,12 +61,7 @@ export async function getStaticProps({ params: { id } }) {
             artists,
             tracks: { items }
         }
-    } =
-        getConfig().serverRuntimeConfig.phase === PHASE_PRODUCTION_BUILD
-            ? BuildQueue.ALBUMS.data
-            : await client.request(GET_ALBUM, {
-                  id
-              });
+    } = data;
 
     return {
         props: {
