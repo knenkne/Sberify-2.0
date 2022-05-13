@@ -32,6 +32,9 @@ jobs:
                   echo API_URL=${{ secrets.API_URL }} >> .env
                   echo API_VERSION=${{ secrets.API_VERSION }} >> .env
 
+            - name: Setup dependencies
+              run: npm ci
+
             - name: Lint
               run: npm run lint
 
