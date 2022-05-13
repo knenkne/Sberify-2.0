@@ -25,8 +25,8 @@ export const client = new GraphQLClient(process.env.MIDDLE_URL, {
 });
 
 // Workaround to not create single requests at build time
-class Cache {
-    cache = [];
+class Queue {
+    queue = [];
 
     constructor({ query, chunkSize }) {
         this.query = query;
@@ -48,7 +48,11 @@ class Cache {
                 })
             )
         ).then((responses) => {
-            this.cache = responses.flatMap(({ getSeveralAlbums: { albums } }) => albums);
+            this.cache = responses
+                .flatMap(({ getSeveralAlbums: { albums } }) => albums)
+                .map((album) => ({
+                    getAlbum: album
+                }));
         });
     }
 
@@ -57,10 +61,10 @@ class Cache {
     }
 }
 
-const createCache = (options) => new Cache(options);
+const createQueue = (options) => new Queue(options);
 
-export const BuildCache = {
-    ALBUMS: createCache({
+export const BuildQueue = {
+    ALBUMS: createQueue({
         query: GET_SEVERAL_ALBUMS,
         chunkSize: 20
     })

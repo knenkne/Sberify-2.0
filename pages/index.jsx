@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Releases from '../components/releases';
 import { GET_RELEASES } from '../lib/graphql/queries';
 import banner from '../public/images/banner.jpg';
-import { REVALIDATION_PERIOD } from '../shared/constants';
 import { client } from '../shared/qraphql-client';
 
 const Home = ({ releases }) => {
@@ -41,9 +40,9 @@ export async function getStaticProps() {
     return {
         props: {
             releases
-        },
+        }
         // TODO: on-demand revalidation via cron
-        revalidate: REVALIDATION_PERIOD
+        // revalidate: REVALIDATION_PERIOD
     };
 }
 
