@@ -51,7 +51,7 @@ export async function getStaticProps({ params: { id } }) {
                   id
               });
 
-    console.error(data);
+    console.error(data, getConfig().serverRuntimeConfig.phase);
 
     const {
         getAlbum: {
