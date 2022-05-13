@@ -39,6 +39,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
+    // get data from build queue or fetch it
     const {
         getAlbum: {
             name,
