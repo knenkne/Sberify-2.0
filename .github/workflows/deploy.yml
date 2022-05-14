@@ -1,36 +1,47 @@
+name: Deploy
 on: [push]
 jobs:
-    setup:
+    deploy:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - name: Checkout Code
+              uses: actions/checkout@v2
 
-            - uses: actions/setup-node@v2
+            - name: Cache Dependencies
+              uses: actions/cache@v2
+              with:
+                  path: ${{ github.workspace }}/.next/cache
+                  key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+                  restore-keys: |
+                      ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
+            - name: Setup Node 14
+              uses: actions/setup-node@v2
               with:
                   node-version: '14'
 
-            - run: npm ci
+            - name: Setup npm
+              run: npm install -g npm
 
-    test:
-        needs: setup
-        runs-on: ubuntu-latest
-        steps:
+            - name: Setup dotenv
+              run: |
+                  touch .env
+                  echo CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} >> .env
+                  echo TOKEN_URL=${{ secrets.TOKEN_URL }} >> .env
+                  echo MIDDLE_SECRET=${{ secrets.MIDDLE_SECRET }} >> .env
+                  echo MIDDLE_URL=${{ secrets.MIDDLE_URL }} >> .env
+                  echo API_URL=${{ secrets.API_URL }} >> .env
+                  echo API_VERSION=${{ secrets.API_VERSION }} >> .env
+
+            - name: Setup dependencies
+              run: npm ci
+
             - name: Lint
               run: npm run lint
 
-            - name: Unit
+            - name: Unit testing
               run: npm run test
 
-    build:
-        needs: test
-        runs-on: ubuntu-latest
-        steps:
-            - run: npm run build
-
-    deploy:
-        needs: test
-        runs-on: ubuntu-latest
-        steps:
             - name: Start deployment
               uses: bobheadxi/deployments@v1
               id: deployment
@@ -38,8 +49,6 @@ jobs:
                   step: start
                   token: ${{ secrets.GITHUB_TOKEN }}
                   env: ${{ fromJSON('["Production", "Preview"]')[github.ref != 'refs/heads/main'] }}
-
-            - uses: actions/checkout@v2
 
             - uses: amondnet/vercel-action@v20
               id: deploy-vercel-staging
