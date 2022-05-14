@@ -50,7 +50,17 @@ jobs:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   env: ${{ fromJSON('["Production", "Preview"]')[github.ref != 'refs/heads/main'] }}
 
-            - uses: amondnet/vercel-action@v20
+            - name: Deploy to Hasura
+              uses: tibotiber/hasura-action@master
+              with:
+                  args: migrate apply
+              env:
+                  HASURA_ENDPOINT: ${{ secrets.HASURA_ENDPOINT }}
+                  HASURA_ADMIN_SECRET: ${{ secrets.HASURA_ADMIN_SECRET }}
+                  HASURA_WORKDIR: hasura
+
+            - name: Deploy to Vercel
+              uses: amondnet/vercel-action@v20
               id: deploy-vercel-staging
               with:
                   vercel-token: ${{ secrets.VERCEL_TOKEN }}
@@ -76,4 +86,5 @@ jobs:
                   step: finish
                   token: ${{ secrets.GITHUB_TOKEN }}
                   status: ${{ job.status }}
+                  env: ${{ steps.deployment.outputs.env }}
                   deployment_id: ${{ steps.deployment.outputs.deployment_id }}
