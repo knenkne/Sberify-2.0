@@ -47,7 +47,7 @@ const Releases = ({ releases, className = '', unwrapped = false, autoplay = fals
                             )}
                             key={id}
                         >
-                            <NextLink href={`/album/${id}`} passHref>
+                            <NextLink href={`/album/${id}`} passHref prefetch={false}>
                                 <a>
                                     <Cover
                                         src={url}
