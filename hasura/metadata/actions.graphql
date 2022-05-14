@@ -1,0 +1,94 @@
+type Query {
+    getAlbum(id: String!): Album
+}
+
+type Query {
+    getArtist(id: String!): Artist
+}
+
+type Query {
+    getArtistAlbums(id: String!): Albums
+}
+
+type Query {
+    getArtistTopTracks(id: String!): RawTracks
+}
+
+type Query {
+    getReleases: Releases
+}
+
+type Query {
+    getSeveralAlbums(ids: String!): RawAlbums
+}
+
+type Query {
+    test(arg1: SampleInput!): SampleOutput
+}
+
+input Args {
+    id: String!
+}
+
+input SampleInput {
+    username: String!
+    password: String!
+}
+
+type AlbumOutput {
+    name: String!
+}
+
+type Album {
+    id: String!
+    name: String!
+    release_date: String!
+    images: [Image]!
+    artists: [Artist]!
+    tracks: Tracks!
+}
+
+type Image {
+    height: Int!
+    width: Int!
+    url: String!
+}
+
+type Artist {
+    id: String!
+    name: String!
+    images: [Image]!
+    href: String!
+    genres: [String]!
+}
+
+type Track {
+    id: String!
+    name: String!
+    artists: [Artist]!
+    preview_url: String!
+}
+
+type Tracks {
+    items: [Track]!
+}
+
+type Releases {
+    albums: Albums
+}
+
+type Albums {
+    items: [Album]
+}
+
+type RawTracks {
+    tracks: [Track]
+}
+
+type RawAlbums {
+    albums: [Album]
+}
+
+type SampleOutput {
+    accessToken: String!
+}

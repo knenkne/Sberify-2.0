@@ -14,6 +14,7 @@ const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary', isLo
             {!isLoaded && <div className={`w-full h-full animate-pulse ${shimmerClassName}`} />}
             {src && !isLoading && (
                 <NextImage
+                    priority={true}
                     src={src}
                     alt={alt}
                     layout="fill"

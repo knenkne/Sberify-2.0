@@ -1,0 +1,5 @@
+- name: revalidate
+  webhook: https://sberify-git-refs-headsfeaturegraphql-knenkne.vercel.app/api/revalidate?secret=knenkne
+  schedule: 0 12 * * 5
+  include_in_metadata: true
+  payload: {}

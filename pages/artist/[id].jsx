@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useRouter } from 'next/router';
 
@@ -8,11 +9,11 @@ import Tracks from '../../components/tracks';
 import { withLimit } from '../../components/tracks/hoc';
 import { GET_ARTIST, GET_RELEASES } from '../../lib/graphql/queries';
 import { REVALIDATION_PERIOD } from '../../shared/constants';
-import { client } from '../../shared/qraphql-client';
+import { client, getSeveralAlbums } from '../../shared/qraphql-client';
 import { capitalize } from '../../shared/utils';
 
 const Artist = ({ name, image, genres, tracks, albums }) => {
-    const {isFallback} = useRouter();
+    const { isFallback } = useRouter();
 
     // TODO: Loaders
     if (isFallback) {
@@ -38,11 +39,12 @@ export async function getStaticPaths() {
     } = await client.request(GET_RELEASES);
 
     return {
-        paths: releases.reduce((acc, { artists }) => {
-            acc.push(...artists.map(({ id }) => ({ params: { id } })));
+        paths: [],
+        // paths: releases.reduce((acc, { artists }) => {
+        //     acc.push(...artists.map(({ id }) => ({ params: { id } })));
 
-            return acc;
-        }, []),
+        //     return acc;
+        // }, []),
         fallback: true
     };
 }
