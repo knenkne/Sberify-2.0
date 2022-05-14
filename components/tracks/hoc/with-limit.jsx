@@ -16,22 +16,24 @@ const withLimit = (WrappedTracks) => {
         return (
             <>
                 <WrappedTracks tracks={isLimited ? tracks.slice(0, LIMIT) : tracks} />
-                <button
-                    className="flex items-center h-4 ml-10 px-5 rounded text-secondary hover:text-primary mt-2 mb-7"
-                    onClick={handleClick}
-                >
-                    <div
-                        className={cx(
-                            'flex items-center justify-center mr-5 h-full',
-                            !isLimited && 'rotate-180'
-                        )}
+                {tracks.length > LIMIT && (
+                    <button
+                        className="flex items-center h-4 ml-10 px-5 rounded text-secondary hover:text-primary mt-2 mb-auto"
+                        onClick={handleClick}
                     >
-                        <ChevronIcon className="h-full fill-current" />
-                    </div>
-                    <span className="font-roboto font-medium text-xs">
-                        {isLimited ? 'More tracks' : 'Less tracks'}
-                    </span>
-                </button>
+                        <div
+                            className={cx(
+                                'flex items-center justify-center mr-5 h-full',
+                                !isLimited && 'rotate-180'
+                            )}
+                        >
+                            <ChevronIcon className="h-full fill-current" />
+                        </div>
+                        <span className="font-roboto font-medium text-xs">
+                            {isLimited ? 'More tracks' : 'Less tracks'}
+                        </span>
+                    </button>
+                )}
             </>
         );
     };

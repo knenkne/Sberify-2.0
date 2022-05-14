@@ -44,8 +44,10 @@ const Template = ({ title, subtitle, image, children, isLoading }) => {
             <div className="w-full flex flex-col items-start bg-tertiary col-span-full row-start-3 row-end-5 pl-96 pb-10">
                 {isLoading ? (
                     <ol className="w-full pt-6 px-10 list-decimal list-inside">
-                        <li
-                            className="
+                        {new Array(5).fill('').map((_, i) => (
+                            <li
+                                key={`track-skeleton-${i}`}
+                                className="
                         relative
                         flex 
                         flex-col
@@ -62,98 +64,11 @@ const Template = ({ title, subtitle, image, children, isLoading }) => {
                         before:text-secondary
                         justify-center
                         "
-                        >
-                            <div className="h-5 bg-secondary w-48 rounded mb-1 animate-pulse"></div>
-                            <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                        </li>
-                        <li
-                            className="
-                        relative
-                        flex 
-                        flex-col
-                        h-14
-                        pl-14
-                        before:absolute 
-                        before:w-14 
-                        before:h-14 
-                        before:flex 
-                        before:items-center 
-                        before:justify-center
-                        before:left-0
-                        before:font-roboto
-                        before:text-secondary
-                        justify-center
-                        "
-                        >
-                            <div className="h-5 bg-secondary w-48 rounded mb-1 animate-pulse"></div>
-                            <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                        </li>
-                        <li
-                            className="
-                        relative
-                        flex 
-                        flex-col
-                        h-14
-                        pl-14
-                        before:absolute 
-                        before:w-14 
-                        before:h-14 
-                        before:flex 
-                        before:items-center 
-                        before:justify-center
-                        before:left-0
-                        before:font-roboto
-                        before:text-secondary
-                        justify-center
-                        "
-                        >
-                            <div className="h-5 bg-secondary w-48 rounded mb-1 animate-pulse"></div>
-                            <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                        </li>
-                        <li
-                            className="
-                        relative
-                        flex 
-                        flex-col
-                        h-14
-                        pl-14
-                        before:absolute 
-                        before:w-14 
-                        before:h-14 
-                        before:flex 
-                        before:items-center 
-                        before:justify-center
-                        before:left-0
-                        before:font-roboto
-                        before:text-secondary
-                        justify-center
-                        "
-                        >
-                            <div className="h-5 bg-secondary w-48 rounded mb-1 animate-pulse"></div>
-                            <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                        </li>
-                        <li
-                            className="
-                        relative
-                        flex 
-                        flex-col
-                        h-14
-                        pl-14
-                        before:absolute 
-                        before:w-14 
-                        before:h-14 
-                        before:flex 
-                        before:items-center 
-                        before:justify-center
-                        before:left-0
-                        before:font-roboto
-                        before:text-secondary
-                        justify-center
-                        "
-                        >
-                            <div className="h-5 bg-secondary w-48 rounded mb-1 animate-pulse"></div>
-                            <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                        </li>
+                            >
+                                <div className="h-5 bg-secondary w-48 rounded mb-1 animate-pulse"></div>
+                                <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                            </li>
+                        ))}
                     </ol>
                 ) : (
                     children
