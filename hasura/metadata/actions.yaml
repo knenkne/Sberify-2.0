@@ -1,0 +1,121 @@
+actions:
+  - name: getAlbum
+    definition:
+      kind: ""
+      handler: https://api.spotify.com/v1/albums/
+      forward_client_headers: true
+      timeout: 60
+      request_transform:
+        request_headers:
+          remove_headers:
+            - content-type
+          add_headers: {}
+        body:
+          action: remove
+        url: '{{$base_url}}{{$body.input.id}}'
+        method: GET
+        version: 2
+        query_params: {}
+        template_engine: Kriti
+  - name: getArtist
+    definition:
+      kind: ""
+      handler: https://api.spotify.com/v1/artists/
+      forward_client_headers: true
+      request_transform:
+        request_headers:
+          remove_headers:
+            - content-type
+          add_headers: {}
+        body:
+          action: remove
+        url: '{{$base_url}}{{$body.input.id}}'
+        method: GET
+        version: 2
+        query_params: {}
+        template_engine: Kriti
+  - name: getArtistAlbums
+    definition:
+      kind: ""
+      handler: https://api.spotify.com/v1/artists/
+      forward_client_headers: true
+      request_transform:
+        request_headers:
+          remove_headers:
+            - content-type
+          add_headers: {}
+        body:
+          action: remove
+        url: '{{$base_url}}{{$body.input.id}}/albums'
+        method: GET
+        version: 2
+        query_params:
+          market: US
+        template_engine: Kriti
+  - name: getArtistTopTracks
+    definition:
+      kind: ""
+      handler: https://api.spotify.com/v1/artists/
+      forward_client_headers: true
+      request_transform:
+        request_headers:
+          remove_headers:
+            - content-type
+          add_headers: {}
+        body:
+          action: remove
+        url: '{{$base_url}}{{$body.input.id}}/top-tracks'
+        method: GET
+        version: 2
+        query_params:
+          market: US
+        template_engine: Kriti
+  - name: getReleases
+    definition:
+      kind: ""
+      handler: https://api.spotify.com/v1/browse/new-releases
+      forward_client_headers: true
+      request_transform:
+        request_headers:
+          remove_headers:
+            - content-type
+          add_headers: {}
+        body:
+          action: remove
+        method: GET
+        version: 2
+        query_params:
+          country: US
+          limit: "50"
+        template_engine: Kriti
+  - name: getSeveralAlbums
+    definition:
+      kind: ""
+      handler: https://api.spotify.com/v1/albums
+      forward_client_headers: true
+      request_transform:
+        request_headers:
+          remove_headers:
+            - content-type
+          add_headers: {}
+        body:
+          action: remove
+        method: GET
+        version: 2
+        query_params:
+          ids: '{{$body.input.ids}}'
+        template_engine: Kriti
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: Album
+    - name: Image
+    - name: Artist
+    - name: Track
+    - name: Tracks
+    - name: Releases
+    - name: Albums
+    - name: RawTracks
+    - name: RawAlbums
+  scalars: []

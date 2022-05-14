@@ -39,32 +39,45 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { id } }) {
-    // get data from build queue or fetch it
-    const {
-        getAlbum: {
-            name,
-            release_date,
-            images,
-            artists,
-            tracks: { items }
-        }
-    } =
-        BuildQueue.ALBUMS.data ||
-        (await client.request(GET_ALBUM, {
-            id
-        }));
+    try {
+        const {
+            getAlbum: {
+                name,
+                release_date,
+                images,
+                artists,
+                tracks: { items }
+            }
+        } =
+            BuildQueue.ALBUMS.data ||
+            (await client.request(GET_ALBUM, {
+                id
+            }));
 
-    return {
-        props: {
-            id,
-            name,
-            releaseDate: release_date,
-            // Mid quality image 300x300
-            image: images[1].url,
-            artists,
-            tracks: items
+        return {
+            props: {
+                id,
+                name,
+                releaseDate: release_date,
+                // Mid quality image 300x300
+                image: images[1].url,
+                artists,
+                tracks: items
+            }
+        };
+    } catch ({ response }) {
+        const { error, status } = response;
+
+        console.error(error);
+
+        switch (status) {
+            case 404: {
+                return {
+                    notFound: true
+                };
+            }
         }
-    };
+    }
 }
 
 export default Album;
