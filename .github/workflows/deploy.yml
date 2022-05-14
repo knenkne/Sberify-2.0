@@ -53,7 +53,7 @@ jobs:
             - name: Deploy to Hasura
               uses: tibotiber/hasura-action@master
               with:
-                  args: migrate apply
+                  args: metadata apply
               env:
                   HASURA_ENDPOINT: ${{ secrets.HASURA_ENDPOINT }}
                   HASURA_ADMIN_SECRET: ${{ secrets.HASURA_ADMIN_SECRET }}
