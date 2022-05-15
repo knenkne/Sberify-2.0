@@ -45,7 +45,7 @@ const Tracks = ({ tracks, isLoading }) => {
                         <Typography className="leading-5" as="h3" isLoading={isLoading}>
                             {cleanTitle(track.name)}
                         </Typography>
-                        <Typography size="xs" isLoading={isLoading}>
+                        <Typography size="xs" as="h4" isLoading={isLoading}>
                             <FeatList
                                 artists={track.artists}
                                 className="font-roboto font-medium text-xs"

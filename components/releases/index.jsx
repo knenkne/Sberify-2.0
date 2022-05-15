@@ -44,7 +44,11 @@ const Releases = ({ releases, className = '', autoplay = false }) => {
                                 <Typography className="text-primary leading-none truncate" as="h3">
                                     {cleanTitle(name)}
                                 </Typography>
-                                <Typography className="text-secondary" size="xs">
+                                <Typography
+                                    className="text-secondary"
+                                    size="xs"
+                                    as={releaseDate ? 'p' : 'h4'}
+                                >
                                     {releaseDate ? humanizeDate(releaseDate) : artist}
                                 </Typography>
                             </div>

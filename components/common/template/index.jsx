@@ -24,6 +24,7 @@ const Template = ({ title, subtitle, image, alt, children, isLoading }) => {
                             className="flex leading-none whitespace-pre text-secondary"
                             size="sm"
                             isLoading={isLoading}
+                            as="h4"
                         >
                             {subtitle}
                         </Typography>

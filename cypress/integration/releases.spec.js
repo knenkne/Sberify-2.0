@@ -22,8 +22,8 @@ describe('Releases', () => {
             cy.visit(link.attr('href'));
             cy.url().should('include', link.attr('href'));
 
-            cy.get('main > div h3').first().should('have.text', title);
-            cy.get('main > div h4').first().should('include.text', artist);
+            cy.get('main > div').first().find('h2').should('have.text', title);
+            cy.get('main > div').first().find('h4').should('include.text', artist);
         });
     });
 });
