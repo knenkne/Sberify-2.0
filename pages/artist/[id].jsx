@@ -1,72 +1,23 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useRouter } from 'next/router';
-import { Cover } from '../../components/common/cover';
 
 import { Template } from '../../components/common/template';
-// TODO: common carousel
 import Releases from '../../components/releases';
 import Tracks from '../../components/tracks';
 import { withLimit } from '../../components/tracks/hoc';
 import { GET_ARTIST, GET_RELEASES } from '../../lib/graphql/queries';
 import { REVALIDATION_PERIOD } from '../../shared/constants';
-import { client, getSeveralAlbums } from '../../shared/qraphql-client';
+import { client } from '../../shared/qraphql-client';
 import { capitalize } from '../../shared/utils';
 
 const Artist = ({ name, image, genres, tracks, albums }) => {
     const { isFallback } = useRouter();
 
-    // TODO: Loaders
     if (isFallback) {
         return (
             <Template isLoading={isFallback}>
-                <div className="pl-10 flex mt-auto overflow-hidden w-full">
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                    <div>
-                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
-                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
-                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
-                    </div>
-                </div>
+                <Tracks isLoading={isFallback} />
             </Template>
         );
     }

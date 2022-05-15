@@ -38,9 +38,9 @@ describe('Template', () => {
         expect(screen.getByRole('heading', { name: title }).title).toBe(title);
 
         // Subtitle
-        expect(screen.getByRole('heading', { level: 4 }).innerHTML).toBe(
+        expect(screen.getByRole('heading', { name: title }).nextSibling.innerHTML).toBe(
             ReactDOMServer.renderToStaticMarkup(subtitle)
-        );
+        );;
 
         // Children
         expect(template.container.lastChild.innerHTML).toBe(

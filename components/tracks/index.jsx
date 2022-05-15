@@ -4,11 +4,12 @@ import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
 import { cleanTitle } from '../../shared/utils';
 import { FeatList } from '../common/feat-list';
+import { Typography } from '../common/typography';
 
-const Tracks = ({ tracks }) => {
+const Tracks = ({ tracks, isLoading }) => {
     return (
         <ol className="w-full pt-6 px-10 list-decimal list-inside">
-            {tracks.map((track) => (
+            {(isLoading ? new Array(5).fill('') : tracks).map((track) => (
                 <li
                     key={track.id}
                     className={`
@@ -41,15 +42,15 @@ const Tracks = ({ tracks }) => {
                         </button>
                     )}
                     <div className="flex-grow">
-                        {/* TODO: common */}
-                        <h3 className="font-roboto font-medium text-primary text-base leading-5 truncate">
+                        <Typography className="leading-5" as="h3" isLoading={isLoading}>
                             {cleanTitle(track.name)}
-                        </h3>
-                        {/* TODO: common */}
-                        <FeatList
-                            artists={track.artists}
-                            className="font-roboto font-medium text-xs"
-                        />
+                        </Typography>
+                        <Typography size="xs" isLoading={isLoading}>
+                            <FeatList
+                                artists={track.artists}
+                                className="font-roboto font-medium text-xs"
+                            />
+                        </Typography>
                     </div>
                     {track.preview_url && (
                         <span className="flex h-14 w-14 items-center justify-center font-roboto text-md text-secondary">
