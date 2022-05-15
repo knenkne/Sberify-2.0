@@ -41,8 +41,7 @@ export async function getStaticPaths() {
     await BuildQueue.ALBUMS.fill(releases.map(({ id }) => id));
 
     return {
-        // paths: releases.map(({ id }) => ({ params: { id } })),
-        paths: [],
+        paths: releases.map(({ id }) => ({ params: { id } })),
         fallback: true
     };
 }
