@@ -4,10 +4,11 @@ import cx from 'classnames';
 import { cleanTitle } from '../../../shared/utils';
 import { Cover } from '../cover';
 
+// TODO: to layout + common skeletons
 const Template = ({ title, subtitle, image, children, isLoading }) => {
     return (
         <>
-            <div className="bg-secondary pb-10 shadow-md shadow-black/50 z-10 col-start-1 col-end-3 row-start-2 row-end-3 pl-96 pr-10 min-w-0">
+            <div className="col-span-full row-start-2 row-end-3 bg-secondary pb-10 shadow-md shadow-black/50 z-10 pl-96 pr-10 min-w-0">
                 <div className={cx(isLoading && 'animate-pulse', 'flex items-end ml-10')}>
                     {isLoading ? (
                         <div className="w-60 h-60 flex-shrink-0 rounded-lg mr-5 shadow-md shadow-black/50 bg-primary" />
@@ -42,7 +43,7 @@ const Template = ({ title, subtitle, image, children, isLoading }) => {
                 </div>
             </div>
             <div className="w-full flex flex-col items-start bg-tertiary col-span-full row-start-3 row-end-5 pl-96 pb-10">
-                {isLoading ? (
+                {isLoading && (
                     <ol className="w-full pt-6 px-10 list-decimal list-inside">
                         {new Array(5).fill('').map((_, i) => (
                             <li
@@ -70,9 +71,8 @@ const Template = ({ title, subtitle, image, children, isLoading }) => {
                             </li>
                         ))}
                     </ol>
-                ) : (
-                    children
                 )}
+                {children}
             </div>
         </>
     );

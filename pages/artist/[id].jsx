@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useRouter } from 'next/router';
+import { Cover } from '../../components/common/cover';
 
 import { Template } from '../../components/common/template';
 // TODO: common carousel
@@ -17,7 +18,57 @@ const Artist = ({ name, image, genres, tracks, albums }) => {
 
     // TODO: Loaders
     if (isFallback) {
-        return <div>Loading...</div>;
+        return (
+            <Template isLoading={isFallback}>
+                <div className="pl-10 flex mt-auto overflow-hidden w-full">
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                    <div>
+                        <Cover className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary mr-10 mb-2" />
+                        <div className="h-4 bg-secondary w-32 rounded animate-pulse mb-1"></div>
+                        <div className="h-4 bg-secondary w-20 rounded animate-pulse"></div>
+                    </div>
+                </div>
+            </Template>
+        );
     }
 
     const subtitle = genres.map(capitalize).join(' • ');
@@ -26,7 +77,7 @@ const Artist = ({ name, image, genres, tracks, albums }) => {
     return (
         <Template title={name} subtitle={subtitle} image={image}>
             <TracksWithLimit tracks={tracks} />
-            <Releases releases={albums} className="after:from-[var(--tertiary-BG)] bg-tertiary" />
+            <Releases releases={albums} />
         </Template>
     );
 };

@@ -22,27 +22,32 @@ const Home = ({ releases }) => {
             </div>
             <div
                 className={`
-                    relative 
-                    w-full 
-                    row-start-6 
-                    row-end-7 
-                    col-start-1 
-                    col-end-3 
-                    after:absolute 
-                    after:-top-28
-                    after:left-0 
-                    after:w-full 
-                    after:h-28
-                    after:bg-gradient-to-t
-                    after:to-transparent
-                    after:from-[var(--secondary-BG)]
-                    bg-secondary
+                    w-full
+                    flex
+                    flex-col
+                    col-span-full
+                    row-start-3
+                    row-end-5
                 `.trim()}
             >
                 <Releases
                     autoplay
                     releases={releases}
-                    className="pl-96 pb-10 after:from-[var(--secondary-BG)]"
+                    className={`
+                        relative
+                        pl-96 
+                        pb-10
+                        after:absolute 
+                        after:-top-28
+                        after:left-0 
+                        after:w-full 
+                        after:h-28
+                        after:bg-gradient-to-t
+                        after:to-transparent
+                        after:from-[var(--secondary-BG)] 
+                        bg-secondary 
+                        mt-auto
+                    `.trim()}
                 />
             </div>
         </>
