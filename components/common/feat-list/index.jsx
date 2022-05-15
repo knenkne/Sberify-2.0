@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Link } from '../link';
 
 // TODO: no link for first artist
-const FeatList = ({ artists = [], className = '' }) => {
+const FeatList = ({ artists = [] }) => {
     // if (!artists) {
     //     throw new Error('Artists list should not be empty');
     // }
 
     return (
-        <p className={`block truncate min-w-0 ${className}`.trim()}>
+        <>
             {artists.map(({ name, id }) => (
                 <Link
                     key={id}
@@ -19,7 +19,7 @@ const FeatList = ({ artists = [], className = '' }) => {
                     {name}
                 </Link>
             ))}
-        </p>
+        </>
     );
 };
 

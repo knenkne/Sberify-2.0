@@ -1,94 +1,107 @@
 type Query {
-    getAlbum(id: String!): Album
+  damn2(
+    arg1: SampleInput!
+  ): SampleOutput
 }
 
 type Query {
-    getArtist(id: String!): Artist
+  getAlbum(
+    id: String!
+  ): Album
 }
 
 type Query {
-    getArtistAlbums(id: String!): Albums
+  getArtist(
+    id: String!
+  ): Artist
 }
 
 type Query {
-    getArtistTopTracks(id: String!): RawTracks
+  getArtistAlbums(
+    id: String!
+  ): Albums
 }
 
 type Query {
-    getReleases: Releases
+  getArtistTopTracks(
+    id: String!
+  ): RawTracks
 }
 
 type Query {
-    getSeveralAlbums(ids: String!): RawAlbums
+  getReleases: Releases
 }
 
 type Query {
-    test(arg1: SampleInput!): SampleOutput
+  getSeveralAlbums(
+    ids: String!
+  ): RawAlbums
 }
 
 input Args {
-    id: String!
+  id: String!
 }
 
 input SampleInput {
-    username: String!
-    password: String!
+  username: String!
+  password: String!
 }
 
 type AlbumOutput {
-    name: String!
+  name: String!
 }
 
 type Album {
-    id: String!
-    name: String!
-    release_date: String!
-    images: [Image]!
-    artists: [Artist]!
-    tracks: Tracks!
+  id: String!
+  name: String!
+  release_date: String!
+  images: [Image]!
+  artists: [Artist]!
+  tracks: Tracks!
 }
 
 type Image {
-    height: Int!
-    width: Int!
-    url: String!
+  height: Int!
+  width: Int!
+  url: String!
 }
 
 type Artist {
-    id: String!
-    name: String!
-    images: [Image]!
-    href: String!
-    genres: [String]!
+  id: String!
+  name: String!
+  images: [Image]!
+  href: String!
+  genres: [String]!
 }
 
 type Track {
-    id: String!
-    name: String!
-    artists: [Artist]!
-    preview_url: String!
+  id: String!
+  name: String!
+  artists: [Artist]!
+  preview_url: String!
 }
 
 type Tracks {
-    items: [Track]!
+  items: [Track]!
 }
 
 type Releases {
-    albums: Albums
+  albums: Albums
 }
 
 type Albums {
-    items: [Album]
+  items: [Album]
 }
 
 type RawTracks {
-    tracks: [Track]
+  tracks: [Track]
 }
 
 type RawAlbums {
-    albums: [Album]
+  albums: [Album]
 }
 
 type SampleOutput {
-    accessToken: String!
+  accessToken: String!
 }
+

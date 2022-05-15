@@ -3,21 +3,23 @@
 import { useRouter } from 'next/router';
 
 import { Template } from '../../components/common/template';
-// TODO: common carousel
 import Releases from '../../components/releases';
 import Tracks from '../../components/tracks';
 import { withLimit } from '../../components/tracks/hoc';
 import { GET_ARTIST, GET_RELEASES } from '../../lib/graphql/queries';
 import { REVALIDATION_PERIOD } from '../../shared/constants';
-import { client, getSeveralAlbums } from '../../shared/qraphql-client';
+import { client } from '../../shared/qraphql-client';
 import { capitalize } from '../../shared/utils';
 
 const Artist = ({ name, image, genres, tracks, albums }) => {
     const { isFallback } = useRouter();
 
-    // TODO: Loaders
     if (isFallback) {
-        return <div>Loading...</div>;
+        return (
+            <Template isLoading={isFallback}>
+                <Tracks isLoading={isFallback} />
+            </Template>
+        );
     }
 
     const subtitle = genres.map(capitalize).join(' • ');
@@ -26,7 +28,7 @@ const Artist = ({ name, image, genres, tracks, albums }) => {
     return (
         <Template title={name} subtitle={subtitle} image={image}>
             <TracksWithLimit tracks={tracks} />
-            <Releases releases={albums} className="after:from-[var(--tertiary-BG)] bg-tertiary" />
+            <Releases releases={albums} />
         </Template>
     );
 };

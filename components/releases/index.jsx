@@ -3,35 +3,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/402
 // TODO: dynamic
-import cx from 'classnames';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 
 import { cleanTitle, humanizeDate } from '../../shared/utils';
 import { Carousel } from '../common/carousel';
 import { Cover } from '../common/cover';
+import { Typography } from '../common/typography';
 
 // TODO: remove wrapped mode
-const Releases = ({ releases, className = '', unwrapped = false, autoplay = false }) => {
+const Releases = ({ releases, className = '', autoplay = false }) => {
     return (
         <section
-            // TODO: w-screen FF
             className={`
                 ${className}
-                ${cx(unwrapped && 'h-56')}
                 w-full
                 max-w-full
-                after:absolute 
-                after:-top-28
-                after:left-0 
-                after:w-full 
-                after:h-28
-                after:bg-gradient-to-t
-                after:to-transparent
-                row-start-6
-                row-end-7
-                col-start-1
-                col-end-3
         `.trim()}
         >
             <Carousel autoplay={autoplay}>
@@ -41,10 +28,7 @@ const Releases = ({ releases, className = '', unwrapped = false, autoplay = fals
 
                     return (
                         <li
-                            className={cx(
-                                'group flex-shrink-0 relative w-36 box-content pr-10',
-                                unwrapped && 'h-36'
-                            )}
+                            className="group flex-shrink-0 relative w-36 box-content pr-10"
                             key={id}
                         >
                             <NextLink href={`/album/${id}`} passHref prefetch={false}>
@@ -52,23 +36,21 @@ const Releases = ({ releases, className = '', unwrapped = false, autoplay = fals
                                     <Cover
                                         src={url}
                                         alt={`${name} by ${artist}`}
-                                        // TODO: margin-top (2)
-                                        className={cx(
-                                            'w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary',
-                                            unwrapped &&
-                                                'group-hover:-translate-y-10 group-focus-within:-translate-y-10 delay-75 trainsition-transform duration-300'
-                                        )}
+                                        className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary"
                                     />
                                 </a>
                             </NextLink>
-                            <div className={cx(unwrapped ? '-mt-9' : 'mt-2')}>
-                                <h3 className="font-roboto font-medium text-primary leading-5 truncate">
+                            <div className="mt-3">
+                                <Typography className="text-primary leading-none truncate" as="h3">
                                     {cleanTitle(name)}
-                                </h3>
-                                <h4 className="font-roboto font-medium text-secondary text-xs truncate">
-                                    {/* TODO: common Typography common Headline */}
+                                </Typography>
+                                <Typography
+                                    className="text-secondary"
+                                    size="xs"
+                                    as={releaseDate ? 'p' : 'h4'}
+                                >
                                     {releaseDate ? humanizeDate(releaseDate) : artist}
-                                </h4>
+                                </Typography>
                             </div>
                         </li>
                     );
@@ -81,8 +63,7 @@ const Releases = ({ releases, className = '', unwrapped = false, autoplay = fals
 Releases.propTypes = {
     releases: PropTypes.array,
     className: PropTypes.string,
-    autoplay: PropTypes.bool,
-    unwrapped: PropTypes.bool
+    autoplay: PropTypes.bool
 };
 
 export default Releases;

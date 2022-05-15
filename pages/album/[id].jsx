@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { useRouter } from 'next/router';
+
 import { FeatList } from '../../components/common/feat-list';
 import { Template } from '../../components/common/template';
 import Tracks from '../../components/tracks';
@@ -8,6 +10,12 @@ import { BuildQueue, client } from '../../shared/qraphql-client';
 import { humanizeDate } from '../../shared/utils';
 
 const Album = ({ name, releaseDate, image, artists, tracks }) => {
+    const { isFallback } = useRouter();
+
+    if (isFallback) {
+        return <Template isLoading={isFallback} />;
+    }
+
     const subtitle = (
         <>
             <FeatList artists={artists} />
@@ -34,7 +42,7 @@ export async function getStaticPaths() {
 
     return {
         paths: releases.map(({ id }) => ({ params: { id } })),
-        fallback: 'blocking'
+        fallback: true
     };
 }
 

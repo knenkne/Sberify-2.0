@@ -20,12 +20,36 @@ const Home = ({ releases }) => {
                     priority
                 />
             </div>
-            <Releases
-                unwrapped
-                autoplay
-                releases={releases}
-                className="relative pl-96 after:from-[var(--secondary-BG)] bg-secondary"
-            />
+            <div
+                className={`
+                    w-full
+                    flex
+                    flex-col
+                    col-span-full
+                    row-start-3
+                    row-end-5
+                `.trim()}
+            >
+                <Releases
+                    autoplay
+                    releases={releases}
+                    className={`
+                        relative
+                        pl-96 
+                        pb-10
+                        after:absolute 
+                        after:-top-28
+                        after:left-0 
+                        after:w-full 
+                        after:h-28
+                        after:bg-gradient-to-t
+                        after:to-transparent
+                        after:from-[var(--secondary-BG)] 
+                        bg-secondary 
+                        mt-auto
+                    `.trim()}
+                />
+            </div>
         </>
     );
 };

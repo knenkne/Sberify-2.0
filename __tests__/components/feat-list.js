@@ -18,7 +18,6 @@ const artists = [
         id: '3'
     }
 ];
-const className = 'mt-2 w-max';
 
 describe('FeatList', () => {
     afterEach(cleanup);
@@ -34,18 +33,12 @@ describe('FeatList', () => {
 
     it('renders with correct links', () => {
         const featList = render(<FeatList artists={artists} />);
-        const { children } = featList.container.firstChild;
+        const { children } = featList.container;
 
         expect(children.length).toBe(artists.length);
 
         for (const artist of artists) {
             expect(screen.getByText(artist.name).href).toMatch(artist.id);
         }
-    });
-
-    it('renders with correct className', () => {
-        const featList = render(<FeatList artists={artists} className={className} />);
-
-        expect(featList.container.firstChild.className).toMatch(className);
     });
 });

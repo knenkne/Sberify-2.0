@@ -30,11 +30,11 @@ module.exports = {
             },
             gridTemplateColumns: {
                 // sidebar / content
-                layout: '26.5rem 1fr'
+                layout: '6rem 18rem 2.5rem 1fr 6rem'
             },
             gridTemplateRows: {
                 // header / gradient / content / carousel
-                layout: '6rem 17.5rem 1fr 14rem'
+                layout: '6rem 17.5rem 1fr 2.5rem'
             },
             boxShadow: {
                 sidebar: 'rgb(18 18 18 / 24%) 0px 1px 2px, rgb(18 18 18 / 60%) 0px 8px 16px'
