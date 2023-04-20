@@ -3,9 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 module.exports = () => ({
-    swcMinify: true,
     experimental: {
-        topLevelAwait: true,
         cpus: 1
     },
     optimizeFonts: false,
