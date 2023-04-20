@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 
 import { usePlayer } from '../components/player';
 import { DEFAULT_TRACK_DURATION } from '../shared/constants';
