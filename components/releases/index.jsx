@@ -31,14 +31,12 @@ const Releases = ({ releases, className = '', autoplay = false }) => {
                             className="group flex-shrink-0 relative w-36 box-content pr-10"
                             key={id}
                         >
-                            <NextLink href={`/album/${id}`} passHref prefetch={false}>
-                                <a>
-                                    <Cover
-                                        src={url}
-                                        alt={`${name} by ${artist}`}
-                                        className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary"
-                                    />
-                                </a>
+                            <NextLink href={`/album/${id}`} prefetch={false}>
+                                <Cover
+                                    src={url}
+                                    alt={`${name} by ${artist}`}
+                                    className="w-36 h-36 rounded shadow-md shadow-black/50 bg-secondary"
+                                />
                             </NextLink>
                             <div className="mt-3">
                                 <Typography className="text-primary leading-none truncate" as="h3">

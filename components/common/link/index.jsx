@@ -7,12 +7,12 @@ const Link = ({ href, children, active, className = '' }) => {
     }
 
     return (
-        <NextLink href={href} passHref prefetch={false}>
-            <a
-                className={`hover:text-shadow-explicit transition-shadow duration-300 ${className}`.trim()}
-            >
-                {children}
-            </a>
+        <NextLink
+            href={href}
+            prefetch={false}
+            className={`hover:text-shadow-explicit transition-shadow duration-300 ${className}`.trim()}
+        >
+            {children}
         </NextLink>
     );
 };
