@@ -6,6 +6,7 @@ const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary', isLo
     const [isLoaded, setIsLoaded] = useState(false);
 
     const handleLoadingComplete = () => {
+        console.log('kekw');
         setIsLoaded(true);
     };
 
@@ -17,7 +18,7 @@ const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary', isLo
                     priority={true}
                     src={src}
                     alt={alt}
-                    layout="fill"
+                    fill={true}
                     onLoadingComplete={handleLoadingComplete}
                     unoptimized
                 />

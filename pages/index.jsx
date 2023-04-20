@@ -13,9 +13,7 @@ const Home = ({ releases }) => {
                 <NextImage
                     src={banner}
                     alt="Featured: Smth"
-                    objectFit="cover"
-                    objectPosition="right center"
-                    layout="fill"
+                    fill={true}
                     placeholder="blur"
                     priority
                 />
