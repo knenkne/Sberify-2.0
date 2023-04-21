@@ -4,7 +4,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 module.exports = () => ({
     experimental: {
-        cpus: 1
+        cpus: 1,
+        appDir: true
     },
     optimizeFonts: false,
     env: {

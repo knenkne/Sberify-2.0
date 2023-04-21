@@ -1,22 +1,18 @@
 // import { useQuery } from '@apollo/client';
-import dynamic from 'next/dynamic';
-import Head from 'next/head';
+// import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
 
 import Header from './header';
+import Sidebar from './sidebar';
 
-const Sidebar = dynamic(() => import('./sidebar'));
+// const Sidebar = dynamic(() => import('./sidebar'));
 
-const Layout = ({ children, title = 'Sberify 2.0', index }) => {
+const Layout = ({ children }) => {
     return (
         <>
-            <Head>
-                <title>{title}</title>
-            </Head>
             <main className="min-h-screen grid grid-cols-layout grid-rows-layout">
-                <Header index={index} className="col-span-full row-start-1 row-end-2 px-24" />
+                <Header index className="col-span-full row-start-1 row-end-2 px-24" />
                 <Sidebar className="col-start-2 col-end-3 row-start-2 row-end-4" />
-                {/* TODO: <main /> */}
                 {children}
             </main>
         </>

@@ -1,3 +1,4 @@
+'use client';
 import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -6,7 +7,6 @@ const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary', isLo
     const [isLoaded, setIsLoaded] = useState(false);
 
     const handleLoadingComplete = () => {
-        console.log('kekw');
         setIsLoaded(true);
     };
 

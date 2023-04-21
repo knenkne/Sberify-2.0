@@ -40,7 +40,7 @@ describe('Template', () => {
         // Subtitle
         expect(screen.getByRole('heading', { name: title }).nextSibling.innerHTML).toBe(
             ReactDOMServer.renderToStaticMarkup(subtitle)
-        );;
+        );
 
         // Children
         expect(template.container.lastChild.innerHTML).toBe(

@@ -6,10 +6,16 @@ import { GET_RELEASES } from '../lib/graphql/queries';
 import banner from '../public/images/banner.jpg';
 import { client } from '../shared/qraphql-client';
 
-const Home = ({ releases }) => {
+const Page = async () => {
+    const {
+        getReleases: {
+            albums: { items: releases }
+        }
+    } = await client.request(GET_RELEASES);
+
     return (
         <>
-            <div className="col-span-full row-span-full">
+            {/* <div className="col-span-full row-span-full">
                 <NextImage
                     src={banner}
                     alt="Featured: Smth"
@@ -17,7 +23,7 @@ const Home = ({ releases }) => {
                     placeholder="blur"
                     priority
                 />
-            </div>
+            </div> */}
             <div
                 className={`
                     w-full
@@ -44,32 +50,15 @@ const Home = ({ releases }) => {
                         after:to-transparent
                         after:from-[var(--secondary-BG)] 
                         bg-secondary 
-                        mt-auto
-                    `.trim()}
+                        mt-auto`.trim()}
                 />
             </div>
         </>
     );
 };
 
-export async function getStaticProps() {
-    const {
-        getReleases: {
-            albums: { items: releases }
-        }
-    } = await client.request(GET_RELEASES);
-
-    return {
-        props: {
-            releases
-        }
-        // TODO: on-demand revalidation via cron
-        // revalidate: REVALIDATION_PERIOD
-    };
-}
-
-Home.propTypes = {
+Page.propTypes = {
     releases: PropTypes.array
 };
 
-export default Home;
+export default Page;
