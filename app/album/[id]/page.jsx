@@ -58,7 +58,7 @@ async function getAlbum({ id }) {
                 tracks: { items }
             }
         } =
-            BuildQueue.ALBUMS.data ||
+            BuildQueue.ALBUMS.getData(id) ||
             (await client.request(GET_ALBUM, {
                 id
             }));

@@ -62,8 +62,10 @@ class Queue {
         });
     }
 
-    get data() {
-        return this.queue.shift();
+    // TODO: https://github.com/vercel/next.js/issues/48722
+    // shift after fix
+    getData(id) {
+        return this.queue.find(({ getAlbum }) => getAlbum.id === id);
     }
 }
 

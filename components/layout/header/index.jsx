@@ -31,7 +31,7 @@ const Header = ({ index, className = '' }) => {
                                 'uppercase',
                                 !active &&
                                     (index
-                                        ? 'text-[rgba(255,255,255,0.8)] hover:text-[#ffffff] hover:text-shadow-explicit'
+                                        ? 'text-[rgba(255,255,255,0.7)] hover:text-[#ffffff] hover:text-shadow-explicit'
                                         : 'text-secondary hover:text-tertiary-hover hover:text-shadow'),
                                 active &&
                                     `font-medium ${index ? 'text-[#ffffff]' : 'text-primary'}
