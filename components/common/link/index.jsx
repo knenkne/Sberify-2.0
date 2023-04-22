@@ -10,6 +10,7 @@ const Link = ({ href, children, active, className = '' }) => {
         <NextLink
             href={href}
             className={`hover:text-shadow-explicit transition-shadow duration-300 ${className}`.trim()}
+            prefetch={false}
         >
             {children}
         </NextLink>
