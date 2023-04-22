@@ -1,7 +1,7 @@
-// 'use client';
+'use client';
 
 import cx from 'classnames';
-import { usePathname } from 'next/navigation';
+import { useSelectedLayoutSegment  } from 'next/navigation';
 
 import { Route } from '../../../shared/constants';
 import { Link } from '../../common/link';
@@ -9,6 +9,7 @@ import { Search } from '../../search';
 
 // eslint-disable-next-line react/prop-types
 const Header = ({ index, className = '' }) => {
+    const segment = useSelectedLayoutSegment();
     // /albums/[id] -> /albums
     // const pathname = usePathname();
     // const [cleanPathname] = pathname.split('/[');
@@ -19,7 +20,7 @@ const Header = ({ index, className = '' }) => {
             <div className="w-72 mr-10" />
             <nav className="flex justify-between w-72 font-archivo">
                 {Object.keys(Route).map((pathName) => {
-                    const active = true === Route[pathName];
+                    const active = pathName.startsWith((segment || 'DISCOVER').toUpperCase());
 
                     return (
                         <Link
