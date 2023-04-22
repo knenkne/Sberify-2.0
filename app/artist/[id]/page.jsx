@@ -5,25 +5,12 @@ import { Template } from '../../../components/common/template';
 import Releases from '../../../components/releases';
 import { TracksWithLimit } from '../../../components/tracks/hoc/with-limit';
 import { GET_ARTIST, GET_RELEASES } from '../../../lib/graphql/queries';
-import { REVALIDATION_PERIOD } from '../../../shared/constants';
 import { client } from '../../../shared/qraphql-client';
 import { capitalize } from '../../../shared/utils';
 
 export default async function Page({ params }) {
     const { name, image, genres, tracks, albums } = await getArtist(params);
-    // const { isFallback } = useRouter();
-
-    // if (isFallback) {
-    //     return (
-    //         <Template isLoading={isFallback}>
-    //             <Tracks isLoading={isFallback} />
-    //         </Template>
-    //     );
-    // }
-
     const subtitle = genres.map(capitalize).join(' • ');
-    // TODO:
-    // withLimit(Tracks);
 
     return (
         <Template title={name} subtitle={subtitle} image={image}>
@@ -43,7 +30,6 @@ export async function generateStaticParams() {
     return [];
 }
 
-// TODO: getStaticProps
 export async function getArtist({ id }) {
     const {
         getArtist: { name, images, genres },

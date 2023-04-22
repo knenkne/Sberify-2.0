@@ -10,9 +10,6 @@ import { Search } from '../../search';
 // eslint-disable-next-line react/prop-types
 const Header = ({ index, className = '' }) => {
     const segment = useSelectedLayoutSegment();
-    // /albums/[id] -> /albums
-    // const pathname = usePathname();
-    // const [cleanPathname] = pathname.split('/[');
 
     return (
         <header className={`${className} relative flex items-center z-10 box-content`.trim()}>

@@ -9,15 +9,6 @@ import { humanizeDate } from '../../../shared/utils';
 
 export default async function Page({ params }) {
     const { name, releaseDate, image, artists, tracks } = await getAlbum(params);
-    // console.error(params);
-    // const data = await getAlbum(params);
-    // console.log({ data });
-
-    // const { isFallback } = useRouter();
-
-    // if (isFallback) {
-    //     return <Template isLoading={isFallback} />;
-    // }
 
     const subtitle = (
         <>
@@ -85,45 +76,3 @@ async function getAlbum({ id }) {
         }
     }
 }
-
-// export async function getStaticProps({ params: { id } }) {
-// try {
-//     const {
-//         getAlbum: {
-//             name,
-//             release_date,
-//             images,
-//             artists,
-//             tracks: { items }
-//         }
-//     } =
-//         BuildQueue.ALBUMS.data ||
-//         (await client.request(GET_ALBUM, {
-//             id
-//         }));
-
-//     return {
-//         props: {
-//             id,
-//             name,
-//             releaseDate: release_date,
-//             // Mid quality image 300x300
-//             image: images[1].url,
-//             artists,
-//             tracks: items
-//         }
-//     };
-// } catch ({ response }) {
-//     const { error, status } = response;
-
-//     console.error(error);
-
-//     switch (status) {
-//         case 404: {
-//             return {
-//                 notFound: true
-//             };
-//         }
-//     }
-// }
-// }
