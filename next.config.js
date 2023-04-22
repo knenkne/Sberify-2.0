@@ -3,10 +3,9 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 module.exports = () => ({
-    swcMinify: true,
     experimental: {
-        topLevelAwait: true,
-        cpus: 1
+        cpus: 1,
+        appDir: true
     },
     optimizeFonts: false,
     env: {
@@ -19,11 +18,16 @@ module.exports = () => ({
     },
     webpack: (config, { dev, isServer }) => {
         config.experiments = { topLevelAwait: true, layers: true };
-        Object.assign(config.resolve.alias, {
-            react: 'preact/compat',
-            'react-dom/test-utils': 'preact/test-utils',
-            'react-dom': 'preact/compat'
+
+        config.module.rules.push({
+            test: /\.svg$/i,
+            use: ['@svgr/webpack']
         });
+        // Object.assign(config.resolve.alias, {
+        //     react: 'preact/compat',
+        //     'react-dom/test-utils': 'preact/test-utils',
+        //     'react-dom': 'preact/compat'
+        // });
 
         return config;
     }

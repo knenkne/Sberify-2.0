@@ -13,7 +13,7 @@ export const Typography = ({ className = '', isLoading, children, as = 'p', size
     return createElement(
         as,
         {
-            className: `${className} font-roboto font-medium text-${size}`
+            className: `${className} font-roboto font-medium text-${size} truncate`
         },
         children
     );

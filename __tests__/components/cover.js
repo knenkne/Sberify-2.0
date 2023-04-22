@@ -11,7 +11,7 @@ const className = 'w-full';
 jest.mock('next/image', () => ({ src, alt, onLoadingComplete }) => {
     setTimeout(() => {
         onLoadingComplete();
-    }, 1000);
+    }, 500);
 
     return <img src={src} alt={alt} />;
 });

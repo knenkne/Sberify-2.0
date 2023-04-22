@@ -48,7 +48,7 @@ const withIndependentSlide = (WrappedSlider) => {
     WithIndependentSlide.displayName = `WithIndependentSlide(${WrappedSlider.name})`;
     WithIndependentSlide.propTypes = {
         onChange: PropTypes.func.isRequired,
-        value: PropTypes.string
+        value: PropTypes.number
     };
 
     return WithIndependentSlide;

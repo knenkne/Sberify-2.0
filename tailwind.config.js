@@ -2,7 +2,7 @@ const plugin = require('tailwindcss/plugin');
 
 module.exports = {
     mode: 'jit',
-    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    purge: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: 'class',
     theme: {
         extend: {
@@ -47,8 +47,8 @@ module.exports = {
             }
         },
         fontFamily: {
-            archivo: ['Archivo'],
-            roboto: ['Roboto', 'Segoe UI', 'Open Sans']
+            archivo: ['var(--Archivo)'],
+            roboto: ['var(--Roboto)', 'Segoe UI', 'Open Sans']
         }
     },
     plugins: [

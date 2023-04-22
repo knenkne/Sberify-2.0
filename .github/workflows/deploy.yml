@@ -15,10 +15,10 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
-            - name: Setup Node 14
-              uses: actions/setup-node@v2
+            - name: Setup Node 16
+              uses: actions/setup-node@v3
               with:
-                  node-version: '14'
+                  node-version: '16.8.0'
 
             - name: Setup npm
               run: npm install -g npm

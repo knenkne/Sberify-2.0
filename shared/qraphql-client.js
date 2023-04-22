@@ -3,14 +3,20 @@ import { GraphQLClient } from 'graphql-request';
 import { GET_SEVERAL_ALBUMS } from '../lib/graphql/queries';
 
 const refreshAccessToken = () =>
-    fetch(process.env.TOKEN_URL, {
-        method: 'POST',
-        headers: {
-            Authorization: `Basic ${process.env.CLIENT_SECRET}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
+    fetch(
+        process.env.TOKEN_URL,
+        {
+            method: 'POST',
+            headers: {
+                Authorization: `Basic ${process.env.CLIENT_SECRET}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'grant_type=client_credentials'
         },
-        body: 'grant_type=client_credentials'
-    }).then((res) => res.json());
+        {
+            cache: 'no-store'
+        }
+    ).then((res) => res.json());
 
 // When support for configuring gSSP to use Edge Functions lands,
 // We could add that logic to _middleware
@@ -56,8 +62,10 @@ class Queue {
         });
     }
 
-    get data() {
-        return this.queue.shift();
+    // TODO: https://github.com/vercel/next.js/issues/48722
+    // shift after fix
+    getData(id) {
+        return this.queue.find(({ getAlbum }) => getAlbum.id === id);
     }
 }
 

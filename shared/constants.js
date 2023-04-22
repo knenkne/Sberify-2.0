@@ -19,7 +19,7 @@ export const Route = {
     ALBUMS: '/album'
 };
 
-export const nextNprogressOptions = {
+export const progressbarOptions = {
     showSpinner: false
 };
 

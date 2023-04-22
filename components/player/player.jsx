@@ -4,15 +4,15 @@ import { useCallback, useMemo } from 'react';
 import PauseIcon from '../../public/icons/pause.svg';
 import PlayIcon from '../../public/icons/play.svg';
 import { cleanTitle } from '../../shared/utils';
-import { FeatList } from '../common/feat-list';
+// import { FeatList } from '../common/feat-list';
 import { Slider } from '../common/slider';
 import { withIndependentSlide } from '../common/slider/hoc';
 import { usePlayer } from './';
 
 const Player = ({
     src = 'https://p.scdn.co/mp3-preview/232ec4947072d2765b40be161391bbf346ad9d85?cid=169f7aea4c204f00ba96ece98b15e24',
-    name,
-    artists
+    name
+    // artists
 }) => {
     const { audio, state, controls } = usePlayer(src);
     const value = (state.time / audio?.duration) * 100 || 0;
@@ -48,7 +48,7 @@ const Player = ({
                     <h3 className="font-roboto font-medium text-primary leading-5 truncate text-sm">
                         {cleanTitle(name)}
                     </h3>
-                    <FeatList artists={artists} className="font-roboto font-medium text-xs" />
+                    {/* <FeatList artists={artists} className="font-roboto font-medium text-xs" /> */}
                 </div>
             </div>
             <WithIndependentSlide value={value} onChange={handleChange} />

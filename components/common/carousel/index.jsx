@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -32,7 +33,7 @@ const Carousel = ({ autoplay = false, children }) => {
 
     return (
         <div className="embla h-full overflow-hidden" ref={emblaRef} onClickCapture={handleClick}>
-            <ul className="embla__container flex items-center h-full ml-10">
+            <ul className="embla__container flex ml-10">
                 {children.map((child) => {
                     return cloneElement(child, {
                         ...child.props,

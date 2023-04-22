@@ -6,16 +6,21 @@ import { GET_RELEASES } from '../lib/graphql/queries';
 import banner from '../public/images/banner.jpg';
 import { client } from '../shared/qraphql-client';
 
-const Home = ({ releases }) => {
+export default async function Page() {
+    const {
+        getReleases: {
+            albums: { items: releases }
+        }
+    } = await client.request(GET_RELEASES);
+
     return (
         <>
             <div className="col-span-full row-span-full">
                 <NextImage
+                    className="object-cover"
                     src={banner}
                     alt="Featured: Smth"
-                    objectFit="cover"
-                    objectPosition="right center"
-                    layout="fill"
+                    fill={true}
                     placeholder="blur"
                     priority
                 />
@@ -46,32 +51,13 @@ const Home = ({ releases }) => {
                         after:to-transparent
                         after:from-[var(--secondary-BG)] 
                         bg-secondary 
-                        mt-auto
-                    `.trim()}
+                        mt-auto`.trim()}
                 />
             </div>
         </>
     );
-};
-
-export async function getStaticProps() {
-    const {
-        getReleases: {
-            albums: { items: releases }
-        }
-    } = await client.request(GET_RELEASES);
-
-    return {
-        props: {
-            releases
-        }
-        // TODO: on-demand revalidation via cron
-        // revalidate: REVALIDATION_PERIOD
-    };
 }
 
-Home.propTypes = {
+Page.propTypes = {
     releases: PropTypes.array
 };
-
-export default Home;

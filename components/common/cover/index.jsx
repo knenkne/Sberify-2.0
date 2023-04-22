@@ -1,3 +1,4 @@
+'use client';
 import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -14,10 +15,11 @@ const Cover = ({ src, alt, className = '', shimmerClassName = 'bg-primary', isLo
             {!isLoaded && <div className={`w-full h-full animate-pulse ${shimmerClassName}`} />}
             {src && !isLoading && (
                 <NextImage
+                    className="object-cover"
                     priority={true}
                     src={src}
                     alt={alt}
-                    layout="fill"
+                    fill={true}
                     onLoadingComplete={handleLoadingComplete}
                     unoptimized
                 />
