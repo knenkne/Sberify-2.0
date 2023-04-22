@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import { FeatList } from '../../../components/common/feat-list';
 import { Template } from '../../../components/common/template';
 import Tracks from '../../../components/tracks';
@@ -29,7 +28,7 @@ export default async function Page({ params }) {
     );
 
     return (
-        <Template title={name} subtitle={subtitle} image={image}>
+        <Template title={name} subtitle={subtitle} image={image} alt={name}>
             <Tracks tracks={tracks} />
         </Template>
     );

@@ -1,12 +1,12 @@
-// import NextImage from 'next/image';
+import NextImage from 'next/image';
 import PropTypes from 'prop-types';
 
 import Releases from '../components/releases';
 import { GET_RELEASES } from '../lib/graphql/queries';
-// import banner from '../public/images/banner.jpg';
+import banner from '../public/images/banner.jpg';
 import { client } from '../shared/qraphql-client';
 
-const Page = async () => {
+export default async function Page() {
     const {
         getReleases: {
             albums: { items: releases }
@@ -15,15 +15,16 @@ const Page = async () => {
 
     return (
         <>
-            {/* <div className="col-span-full row-span-full">
+            <div className="col-span-full row-span-full">
                 <NextImage
+                    className="object-cover"
                     src={banner}
                     alt="Featured: Smth"
                     fill={true}
                     placeholder="blur"
                     priority
                 />
-            </div> */}
+            </div>
             <div
                 className={`
                     w-full
@@ -55,10 +56,8 @@ const Page = async () => {
             </div>
         </>
     );
-};
+}
 
 Page.propTypes = {
     releases: PropTypes.array
 };
-
-export default Page;
