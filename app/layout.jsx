@@ -1,9 +1,10 @@
-import '../styles/globals.css';
-// import NextNprogress from 'nextjs-progressbar';
 import { Roboto, Archivo } from 'next/font/google';
+
 import Layout from '../components/layout';
-// import { nextNprogressOptions } from '../shared/constants';
-// href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;900&family=Roboto:wght@400;500&display=swap"
+import '../styles/globals.css';
+// import { Progressbar } from '../components/progressbar';
+import Progressbar from 'nextjs-toploader';
+import { progressbarOptions } from '../shared/constants';
 
 const roboto = Roboto({
     subsets: ['cyrillic'],
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
             className={`${roboto.variable} ${archivo.variable}`}
         >
             <body>
+                <Progressbar {...progressbarOptions} />
                 <Layout>{children}</Layout>
             </body>
         </html>

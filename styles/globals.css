@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-    /* TODO: remove after upgrade nextjs to next minor */
-    [data-nextjs-scroll-focus-boundary] {
-        display: contents;
-    }
-
     :root {
         --primary-BG: #ffffff;
         --secondary-BG: #f5f5f5;
