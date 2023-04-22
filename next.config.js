@@ -18,6 +18,11 @@ module.exports = () => ({
     },
     webpack: (config, { dev, isServer }) => {
         config.experiments = { topLevelAwait: true, layers: true };
+
+        config.module.rules.push({
+            test: /\.svg$/i,
+            use: ['@svgr/webpack']
+        });
         // Object.assign(config.resolve.alias, {
         //     react: 'preact/compat',
         //     'react-dom/test-utils': 'preact/test-utils',

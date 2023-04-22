@@ -1,10 +1,22 @@
 import '../styles/globals.css';
-
 // import NextNprogress from 'nextjs-progressbar';
-
+import { Roboto, Archivo } from 'next/font/google';
 import Layout from '../components/layout';
-import { usePathname } from 'next/navigation';
 // import { nextNprogressOptions } from '../shared/constants';
+// href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;900&family=Roboto:wght@400;500&display=swap"
+
+const roboto = Roboto({
+    subsets: ['cyrillic'],
+    display: 'swap',
+    weight: ['400', '500'],
+    variable: '--Roboto'
+});
+
+const archivo = Archivo({
+    subsets: [],
+    weight: ['400', '500', '900'],
+    variable: '--Archivo'
+});
 
 export const metadata = {
     title: 'Next.js',
@@ -13,7 +25,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" data-theme="dark" style={{ colorScheme: 'dark' }}>
+        <html
+            lang="en"
+            data-theme="dark"
+            style={{ colorScheme: 'dark' }}
+            className={`${roboto.variable} ${archivo.variable}`}
+        >
             <body>
                 <Layout>{children}</Layout>
             </body>

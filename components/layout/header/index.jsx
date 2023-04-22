@@ -1,7 +1,7 @@
 'use client';
 
 import cx from 'classnames';
-import { useSelectedLayoutSegment  } from 'next/navigation';
+import { useSelectedLayoutSegment } from 'next/navigation';
 
 import { Route } from '../../../shared/constants';
 import { Link } from '../../common/link';
