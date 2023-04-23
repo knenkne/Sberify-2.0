@@ -33,7 +33,7 @@ const Releases = ({ releases, className = '', autoplay = false }) => {
                             className="group flex-shrink-0 relative w-36 box-content pr-10"
                             key={id}
                         >
-                            <NextLink href={`/album/${id}`} prefetch={false}>
+                            <NextLink href={`/album/${id}`}>
                                 <Cover
                                     src={url}
                                     alt={`${name} by ${artist}`}

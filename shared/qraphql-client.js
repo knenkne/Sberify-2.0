@@ -10,7 +10,7 @@ const refreshAccessToken = () =>
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: 'grant_type=client_credentials',
-        cache: 'no-store'
+        cache: 'no-cache'
     }).then((res) => res.json());
 
 const createClient = () => {
