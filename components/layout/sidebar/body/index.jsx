@@ -24,14 +24,16 @@ const SidebarBody = ({ tracks }) => {
                                 className="w-10 h-10 rounded overflow-hidden mr-2 flex-shrink-0"
                                 shimmerClassName="bg-secondary"
                             />
-                            <div className="min-w-0">
+                            <div className="min-w-0 flex flex-col">
                                 <h3 className="w-full relative block font-roboto font-medium text-primary leading-5 truncate text-sm">
                                     {cleanTitle(track.name)}
                                 </h3>
-                                <FeatList
-                                    artists={track.artists}
-                                    className="font-roboto font-medium text-xs"
-                                />
+                                <h4 className=" font-roboto font-medium text-xs truncate">
+                                    <FeatList
+                                        artists={track.artists}
+                                        className="font-roboto font-medium text-xs"
+                                    />
+                                </h4>
                             </div>
                         </SidebarItem>
                     </li>

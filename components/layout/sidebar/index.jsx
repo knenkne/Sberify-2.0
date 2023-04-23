@@ -119,7 +119,7 @@ const Sidebar = ({ className = '' }) => {
         <aside
             className={`${className} sticky top-24 flex flex-col z-20 max-h-[calc(100vh-96px-40px)]`.trim()}
         >
-            <SidebarHeader track={[]} />
+            <SidebarHeader track={tracks[0]} />
             <SidebarBody tracks={tracks} />
             {/* <HeaderStyled>
                 <ProfileStyled />
