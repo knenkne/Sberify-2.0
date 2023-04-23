@@ -8,7 +8,7 @@ import { SidebarItem } from '../item';
 const SidebarBody = ({ tracks }) => {
     return (
         <div className="w-72 h-full bg-primary rounded-lg shadow-md shadow-black/75 no-scrollbar overflow-y-scroll">
-            <ul className="py-1">
+            <ul className="py-1 px-4">
                 {tracks.map((track) => (
                     <li
                         key={track.id}
@@ -16,7 +16,10 @@ const SidebarBody = ({ tracks }) => {
                     >
                         <SidebarItem>
                             <Cover
-                                src={track.album?.images[2].url}
+                                src={
+                                    track.album?.images[2].url ||
+                                    'https://i.scdn.co/image/ab67616d00001e02cf8c47967e5c6bbc7dca5abb'
+                                }
                                 alt="TODO:"
                                 className="w-10 h-10 rounded overflow-hidden mr-2 flex-shrink-0"
                                 shimmerClassName="bg-secondary"
