@@ -14,7 +14,7 @@ const Header = ({ index, className = '' }) => {
     return (
         <header className={`${className} relative flex items-center z-10 box-content`.trim()}>
             {/* TODO: mock for logo */}
-            <div className="w-72 mr-10 font-roboto font-extrabold text-[54px] text-center leading-none">
+            <div className="w-72 mr-10 font-roboto font-extrabold text-2xl leading-none">
                 СБЕРИФАЙ
             </div>
             <nav className="flex justify-between w-72 font-archivo">

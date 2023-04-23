@@ -54,11 +54,11 @@ const Player = ({
                     <FeatList artists={artists} className="font-roboto font-medium text-xs" />
                 </div>
 
-                <button className="relative z-10 w-8 h-8 ml-auto flex items-center justify-center rounded cursor-pointer">
-                    <ShuffleIcon className="w-5 h-5 fill-transparent stroke-current opacity-60 hover:opacity-80" />
+                <button className="relative z-10 w-8 h-8 ml-auto flex items-center justify-center rounded cursor-pointer text-secondary hover:text-primary">
+                    <ShuffleIcon className="w-5 h-5 fill-transparent stroke-current" />
                 </button>
-                <button className="relative z-10 w-8 h-8 flex items-center justify-center rounded cursor-pointer">
-                    <RepeatIcon className="w-5 h-5 fill-current opacity-60 hover:opacity-80" />
+                <button className="relative z-10 w-8 h-8 flex items-center justify-center rounded cursor-pointer text-secondary hover:text-primary">
+                    <RepeatIcon className="w-5 h-5 fill-current" />
                 </button>
             </div>
             <WithIndependentSlide value={value} onChange={handleChange} />
