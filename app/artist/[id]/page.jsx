@@ -5,7 +5,7 @@ import { Template } from '../../../components/common/template';
 import Releases from '../../../components/releases';
 import { TracksWithLimit } from '../../../components/tracks/hoc/with-limit';
 import { GET_ARTIST, GET_RELEASES } from '../../../lib/graphql/queries';
-import { client } from '../../../shared/qraphql-client';
+import { getClient } from '../../../shared/qraphql-client';
 import { capitalize } from '../../../shared/utils';
 
 export default async function Page({ params }) {
@@ -21,6 +21,7 @@ export default async function Page({ params }) {
 }
 
 export async function generateStaticParams() {
+    const client = await getClient();
     const {
         getReleases: {
             albums: { items: releases }
@@ -31,6 +32,7 @@ export async function generateStaticParams() {
 }
 
 export async function getArtist({ id }) {
+    const client = await getClient();
     const {
         getArtist: { name, images, genres },
         getArtistTopTracks: { tracks },
