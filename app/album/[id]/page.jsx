@@ -4,7 +4,7 @@ import { Template } from '../../../components/common/template';
 import Tracks from '../../../components/tracks';
 // eslint-disable-next-line no-unused-vars
 import { GET_ALBUM, GET_RELEASES, GET_SEVERAL_ALBUMS } from '../../../lib/graphql/queries';
-import { BuildQueue, client } from '../../../shared/qraphql-client';
+import { BuildQueue, getClient } from '../../../shared/qraphql-client';
 import { humanizeDate } from '../../../shared/utils';
 
 export default async function Page({ params }) {
@@ -26,19 +26,21 @@ export default async function Page({ params }) {
 }
 
 export async function generateStaticParams() {
+    const client = await getClient();
     const {
         getReleases: {
             albums: { items: releases }
         }
     } = await client.request(GET_RELEASES);
 
-    await BuildQueue.ALBUMS.fill(releases.map(({ id }) => id));
+    await BuildQueue.ALBUMS.fill({ client, ids: releases.map(({ id }) => id) });
 
     return releases.map(({ id }) => ({ id }));
 }
 
 async function getAlbum({ id }) {
     try {
+        const client = await getClient();
         const {
             getAlbum: {
                 name,

@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import Releases from '../components/releases';
 import { GET_RELEASES } from '../lib/graphql/queries';
 import banner from '../public/images/banner.jpg';
-import { client } from '../shared/qraphql-client';
+import { REVALIDATION_PERIOD } from '../shared/constants';
+import { getClient } from '../shared/qraphql-client';
 
+export const revalidate = REVALIDATION_PERIOD;
 export default async function Page() {
+    const client = await getClient();
     const {
         getReleases: {
             albums: { items: releases }

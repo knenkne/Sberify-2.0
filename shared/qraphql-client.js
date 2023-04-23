@@ -3,33 +3,37 @@ import { GraphQLClient } from 'graphql-request';
 import { GET_SEVERAL_ALBUMS } from '../lib/graphql/queries';
 
 const refreshAccessToken = () =>
-    fetch(
-        process.env.TOKEN_URL,
-        {
-            method: 'POST',
-            headers: {
-                Authorization: `Basic ${process.env.CLIENT_SECRET}`,
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'grant_type=client_credentials'
+    fetch(process.env.TOKEN_URL, {
+        method: 'POST',
+        headers: {
+            Authorization: `Basic ${process.env.CLIENT_SECRET}`,
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
-        {
-            cache: 'no-store'
+        body: 'grant_type=client_credentials',
+        cache: 'no-store'
+    }).then((res) => res.json());
+
+const createClient = () => {
+    let client = null;
+
+    return async () => {
+        if (!client) {
+            const { token_type, access_token } = await refreshAccessToken();
+            client = new GraphQLClient(process.env.MIDDLE_URL, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-hasura-admin-secret': process.env.MIDDLE_SECRET,
+                    Authorization: `${token_type} ${access_token}`
+                },
+                fetch
+            });
         }
-    ).then((res) => res.json());
 
-// When support for configuring gSSP to use Edge Functions lands,
-// We could add that logic to _middleware
-const { token_type, access_token } = await refreshAccessToken();
+        return client;
+    };
+};
 
-export const client = new GraphQLClient(process.env.MIDDLE_URL, {
-    headers: {
-        'Content-Type': 'application/json',
-        'x-hasura-admin-secret': process.env.MIDDLE_SECRET,
-        Authorization: `${token_type} ${access_token}`
-    }
-});
-
+export const getClient = createClient();
 // Workaround to not create single requests at build time
 class Queue {
     queue = [];
@@ -39,7 +43,7 @@ class Queue {
         this.chunkSize = chunkSize;
     }
 
-    async fill(ids) {
+    async fill({ client, ids }) {
         const chunks = [];
 
         for (let i = 0; i < ids.length; i += this.chunkSize) {
