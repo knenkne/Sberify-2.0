@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <main className="min-h-screen grid grid-cols-layout grid-rows-layout">
-                <Header index className="col-span-full row-start-1 row-end-2 px-24" />
+                <Header index className="col-start-4 col-end-5 row-start-1 row-end-2" />
                 <Sidebar className="col-start-2 col-end-3 row-start-2 row-end-4" />
                 {children}
             </main>

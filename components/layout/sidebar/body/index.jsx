@@ -21,7 +21,6 @@ const SidebarBody = ({ tracks }) => {
                     setList={setOrder}
                     animation={200}
                     ghostClass="opacity-0"
-                    forceFallback
                 >
                     {order.map((track) => (
                         <li

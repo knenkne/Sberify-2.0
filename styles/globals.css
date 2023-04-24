@@ -78,10 +78,6 @@
     height: 0px !important;
 }
 
-.sortable-fallback {
-    opacity: 1 !important;
-}
-
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }

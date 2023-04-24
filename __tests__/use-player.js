@@ -24,11 +24,11 @@ describe('usePlayer', () => {
         expect(result.current.state.isPlaying).toBe(false);
 
         // Play
-        act(() => result.current.controls.toggle());
+        act(() => result.current.controls.togglePlay());
         expect(result.current.state.isPlaying).toBe(true);
 
         // Pause
-        act(() => result.current.controls.toggle());
+        act(() => result.current.controls.togglePlay());
         expect(result.current.state.isPlaying).toBe(false);
     });
 

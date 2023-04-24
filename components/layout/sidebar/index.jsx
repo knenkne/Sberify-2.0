@@ -116,17 +116,23 @@ const tracks = [
 const Sidebar = ({ className = '' }) => {
     return (
         // TODO: max-h w/ min-h
-        <aside
-            className={`${className} sticky top-24 flex flex-col z-20 max-h-[calc(100vh-96px-40px)]`.trim()}
-        >
-            <SidebarHeader track={tracks[0]} />
-            <SidebarBody tracks={tracks} />
-            {/* <HeaderStyled>
+        <>
+            {/* TODO: mock for logo */}
+            <div className="flex items-center w-72 mr-10 font-roboto font-extrabold text-2xl leading-none row-start-1 col-start-2 col-end-3 row-end-2 sticky top-0 z-20">
+                СБЕРИФАЙ
+            </div>
+            <aside
+                className={`${className} sticky top-24 flex flex-col z-20 max-h-[calc(100vh-96px-40px)]`.trim()}
+            >
+                <SidebarHeader track={tracks[0]} />
+                <SidebarBody tracks={tracks} />
+                {/* <HeaderStyled>
                 <ProfileStyled />
                 <ThemeButton />
             </HeaderStyled>
             <Player /> */}
-        </aside>
+            </aside>
+        </>
     );
 };
 

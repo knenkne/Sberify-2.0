@@ -6,10 +6,20 @@ const usePlayer = (src, onEnded = () => void 0) => {
     const [audio] = useState(typeof window === 'undefined' ? null : new Audio(src));
     const [time, setTime] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isLooping, setIsLooping] = useState(false);
+    const [isShuffling, setIsShuffling] = useState(false);
 
-    const toggle = () => {
+    const togglePlay = () => {
         setIsPlaying(!isPlaying);
         !isPlaying ? audio.play() : audio.pause();
+    };
+
+    const toggleLoop = () => {
+        setIsLooping(!isLooping);
+    };
+
+    const toggleShuffle = () => {
+        setIsShuffling(!isShuffling);
     };
 
     const rewind = (time) => {
@@ -30,8 +40,9 @@ const usePlayer = (src, onEnded = () => void 0) => {
 
         const handleEnded = () => {
             setTime(0);
-            setIsPlaying(false);
-            onEnded();
+            setIsPlaying(isLooping);
+
+            isLooping ? audio.play() : onEnded();
         };
 
         audio.volume = DEFAULT_VOLUME;
@@ -44,8 +55,8 @@ const usePlayer = (src, onEnded = () => void 0) => {
         };
     }, [audio, onEnded]);
 
-    const state = { isPlaying, time };
-    const controls = { toggle, rewind };
+    const state = { isPlaying, isLooping, isShuffling, time };
+    const controls = { togglePlay, toggleLoop, toggleShuffle, rewind };
 
     return { audio, state, controls };
 };

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import cx from 'classnames';
 import { useCallback, useMemo } from 'react';
 
 // TODO: entry point + aliases
@@ -21,8 +22,16 @@ const Player = ({
     const { audio, state, controls } = usePlayer(src);
     const value = (state.time / audio?.duration) * 100 || 0;
 
-    const handleClick = () => {
-        controls.toggle();
+    const handlePlayClick = () => {
+        controls.togglePlay();
+    };
+
+    const handleLoopClick = () => {
+        controls.toggleLoop();
+    };
+
+    const handleShuffleClick = () => {
+        controls.toggleShuffle();
     };
 
     const handleChange = useCallback(
@@ -39,12 +48,12 @@ const Player = ({
             <div className="flex h-full w-full items-center flex-wrap px-4">
                 <button
                     className="relative z-10 w-10 h-10 mr-2 flex items-center justify-center rounded cursor-pointer after:absolute after:bg-primary after:w-full after:h-full after:opacity-70 after:-z-[1]"
-                    onClick={handleClick}
+                    onClick={handlePlayClick}
                 >
-                    {!state.isPlaying ? (
-                        <PlayIcon className="w-5 h-5 fill-current text-primary" />
-                    ) : (
+                    {state.isPlaying ? (
                         <PauseIcon className="w-5 h-5 fill-current text-primary" />
+                    ) : (
+                        <PlayIcon className="w-5 h-5 fill-current text-primary" />
                     )}
                 </button>
                 <div className="min-w-0 flex flex-col">
@@ -53,11 +62,22 @@ const Player = ({
                     </h3>
                     <FeatList artists={artists} className="font-roboto font-medium text-xs" />
                 </div>
-
-                <button className="relative z-10 w-8 h-8 ml-auto flex items-center justify-center rounded cursor-pointer text-secondary hover:text-primary">
+                <button
+                    className={cx(
+                        'relative z-10 w-8 h-8 ml-auto flex items-center justify-center rounded cursor-pointer hover:text-primary',
+                        state.isShuffling ? 'text-primary' : 'text-secondary'
+                    )}
+                    onClick={handleShuffleClick}
+                >
                     <ShuffleIcon className="w-5 h-5 fill-transparent stroke-current" />
                 </button>
-                <button className="relative z-10 w-8 h-8 flex items-center justify-center rounded cursor-pointer text-secondary hover:text-primary">
+                <button
+                    className={cx(
+                        'relative z-10 w-8 h-8 flex items-center justify-center rounded cursor-pointer hover:text-primary',
+                        state.isLooping ? 'text-primary' : 'text-secondary'
+                    )}
+                    onClick={handleLoopClick}
+                >
                     <RepeatIcon className="w-5 h-5 fill-current" />
                 </button>
             </div>
