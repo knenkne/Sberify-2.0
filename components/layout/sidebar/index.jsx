@@ -1,119 +1,99 @@
 /* eslint-disable react/prop-types */
+'use client';
+
+import { useState } from 'react';
+
 import { SidebarBody } from './body';
 import { SidebarHeader } from './header';
 
-const tracks = [
+const _tracks = [
     {
-        id: '3jksOdXCaDXyGiZ7L4YZbp',
-        name: 'All Nighter',
+        id: '7mNL3QEySPKTLJD98NftJB',
+        name: '3am',
         preview_url:
-            'https://p.scdn.co/mp3-preview/2ed76999181ad64abf02d0c9743101be42dda47c?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [{ id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' }]
-    },
-    {
-        id: '3j11iDncb7ZeDMw7lFucqM',
-        name: 'The Motto',
-        preview_url:
-            'https://p.scdn.co/mp3-preview/f1bc601f20aed02799fc5adaf39c664e4ffa5101?cid=169f7aea4c204f00ba96ece98b15e24d',
+            'https://p.scdn.co/mp3-preview/225f0157e2b654c5796aea1502655f6421453c84?cid=169f7aea4c204f00ba96ece98b15e24d',
         artists: [
-            { id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' },
-            { id: '4npEfmQ6YuiwW1GpUmaq3F', name: 'Ava Max' }
+            { id: '5he5w2lnU9x7JFhnwcekXX', name: 'Skrillex' },
+            { id: '0uzKt8lgkTlxm4OUWiCX3H', name: 'Prentiss' },
+            { id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }
         ]
     },
     {
-        id: '36gcliMRX1vCpgnrZE3dFZ',
-        name: '10:35',
+        id: '72HgCBwPcalbwbJ5p0AoLE',
+        name: "Don't Dance",
         preview_url:
-            'https://p.scdn.co/mp3-preview/6e88ed9108e2c0c493903a7d280183d6d6855272?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [
-            { id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' },
-            { id: '45dkTj5sMRSjrmBSBeiHym', name: 'Tate McRae' }
-        ]
+            'https://p.scdn.co/mp3-preview/598f9d379546b3ba76280f317ef6560fa0d88d5c?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     },
     {
-        id: '57uNXnf4ciHYP4HktbIbzC',
-        name: 'The Business',
+        id: '2VFxYVlUzDQQrf9ZLDXUIn',
+        name: "Dear Child (I've Been Dying to Reach You)",
         preview_url:
-            'https://p.scdn.co/mp3-preview/e516723e41dab08c241fc981aeed21407f322d72?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [{ id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' }]
+            'https://p.scdn.co/mp3-preview/7e2dd6d35abb30ed32ffe20403f7d00f2ca004ec?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     },
     {
-        id: '2N5cFPLy0TIasTWkfT1hri',
-        name: 'Chills (LA Hills)',
+        id: '4fzFTfi0vqetgu5EN3q6w4',
+        name: "You'll Be Fine",
         preview_url:
-            'https://p.scdn.co/mp3-preview/d70ec0908af8a338d327195e838f3cf2ea2b0d3d?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [
-            { id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' },
-            { id: '31W5EY0aAly4Qieq6OFu6I', name: 'A Boogie Wit da Hoodie' }
-        ]
+            'https://p.scdn.co/mp3-preview/ececd9e84852f973508259fb0e05d36033e0acea?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     },
     {
-        id: '5pNFibJLq7dvoDVIIcQBkn',
-        name: 'Hot In It',
+        id: '2dEhwuWWerT5m50dljWmGu',
+        name: 'Right Outside (feat. Chino Moreno)',
         preview_url:
-            'https://p.scdn.co/mp3-preview/e0deb5ab5c14c3fdc54fb8aea726ece21d8229ef?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [
-            { id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' },
-            { id: '25uiPmTg16RbhZWAqwLBy5', name: 'Charli XCX' }
-        ]
+            'https://p.scdn.co/mp3-preview/1748f7cce157593212b927bc8de510d1f3506896?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     },
     {
-        id: '4PNKy9P3xrzqMwVzRjxBKt',
-        name: 'Pump It Louder',
+        id: '2NDik5wgjUlOKl7x4nhJYW',
+        name: 'Trading Doses',
         preview_url:
-            'https://p.scdn.co/mp3-preview/518043558ca2da3e1bf4dd105e22a797a85309de?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [
-            { id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' },
-            { id: '1yxSLGMDHlW21z4YXirZDS', name: 'Black Eyed Peas' }
-        ]
+            'https://p.scdn.co/mp3-preview/a4d433a2aecb5b1a2d03b7d299555d6de1371f0b?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     },
     {
-        id: '0AnHkrPoDm29bsN2cuPte7',
-        name: 'Learn 2 Love',
+        id: '40c603vX2YwVDp7tSjtgji',
+        name: 'East Coast Winters',
         preview_url:
-            'https://p.scdn.co/mp3-preview/d7e8e91ca283f2fab0c30b6eb50b2cd849a222be?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [{ id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' }]
+            'https://p.scdn.co/mp3-preview/4daf1f08dc6c63743a250b7aab5691b4ccfca667?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     },
     {
-        id: '0v2Swij0g2VfvSq3c3uaG3',
-        name: "Don't Be Shy",
+        id: '1qzHWFG6S1UIjFi4NnL2yn',
+        name: 'Center of It All',
         preview_url:
-            'https://p.scdn.co/mp3-preview/b5b4a420871f198f6526d15d58fa3c90c4a4ad0a?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [
-            { id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' },
-            { id: '790FomKkXshlbRYZFtlgla', name: 'KAROL G' }
-        ]
+            'https://p.scdn.co/mp3-preview/1ad0135aa45062dc9783afac5e5d547976266f78?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     },
     {
-        id: '4TkWIoKGDdEbsEtWo7iAaa',
-        name: 'Bet My Dollar',
+        id: '5cGPQy9Ve0WnLn7sJMHSjS',
+        name: 'Slowing Down (Long Time Coming)',
         preview_url:
-            'https://p.scdn.co/mp3-preview/f02f706dbfa415fa73d65bf435e2cd82757e8b01?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [
-            { id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' },
-            { id: '5pDjmC5mRl7vDJhsjVwNfk', name: 'Freya Ridings' }
-        ]
+            'https://p.scdn.co/mp3-preview/99a457d4ad123865b8934357b19dd88ec82009f0?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     },
     {
-        id: '62Y7aTOJiDxdOzDTwym6TL',
-        name: 'Back Around',
+        id: '55uo07VOaxz3idi6p34Wsa',
+        name: "I Don't Want to Die Tonight",
         preview_url:
-            'https://p.scdn.co/mp3-preview/e5188e4f2f7713376fd6ab52b70c574bf64c754a?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [
-            { id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' },
-            { id: '7mGI9Sd66FqHjIkwzkgbG7', name: 'AR/CO' }
-        ]
-    },
-    {
-        id: '3IhM5Mber8KA0NaRNpK2px',
-        name: 'Lay Low',
-        preview_url:
-            'https://p.scdn.co/mp3-preview/c72e6fe8815d52bbb721e00feed6e669170ab0b7?cid=169f7aea4c204f00ba96ece98b15e24d',
-        artists: [{ id: '2o5jDhtHVPhrJdv3cEQ99Z', name: 'Ti?sto' }]
+            'https://p.scdn.co/mp3-preview/f467353dbd2caea9f9fe3ef3508097eddc358175?cid=169f7aea4c204f00ba96ece98b15e24d',
+        artists: [{ id: '0hxmHf6CqXsOLWgGXjmr7I', name: 'Anthony Green' }]
     }
 ];
 
 const Sidebar = ({ className = '' }) => {
+    const [tracks, setTracks] = useState(_tracks);
+
+    const handleNextTrack = () => {
+        setTracks(tracks.slice(1));
+    };
+
+    const handleShuffle = (state) => {
+        setTracks([tracks[0], ...state]);
+    };
+
     return (
         // TODO: max-h w/ min-h
         <>
@@ -124,8 +104,12 @@ const Sidebar = ({ className = '' }) => {
             <aside
                 className={`${className} sticky top-24 flex flex-col z-20 max-h-[calc(100vh-96px-40px)]`.trim()}
             >
-                <SidebarHeader track={tracks[0]} />
-                <SidebarBody tracks={tracks} />
+                <SidebarHeader track={tracks[0]} onNextTrack={handleNextTrack} />
+                <SidebarBody
+                    tracks={tracks.slice(1)}
+                    onShuffle={handleShuffle}
+                    key={tracks[0].id}
+                />
                 {/* <HeaderStyled>
                 <ProfileStyled />
                 <ThemeButton />

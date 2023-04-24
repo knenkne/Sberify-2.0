@@ -3,15 +3,18 @@ import { useEffect, useState } from 'react';
 import { DEFAULT_TRACK_DURATION, DEFAULT_VOLUME } from '../../shared/constants';
 
 const usePlayer = (src, onEnded = () => void 0) => {
-    const [audio] = useState(typeof window === 'undefined' ? null : new Audio(src));
+    // TODO: client component?
+    const [audio] = useState(typeof window === 'undefined' ? null : new Audio());
     const [time, setTime] = useState(0);
+    const [duration, setDuration] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isLooping, setIsLooping] = useState(false);
     const [isShuffling, setIsShuffling] = useState(false);
 
     const togglePlay = () => {
         setIsPlaying(!isPlaying);
-        !isPlaying ? audio.play() : audio.pause();
+
+        isPlaying ? audio.pause() : audio.play();
     };
 
     const toggleLoop = () => {
@@ -33,6 +36,22 @@ const usePlayer = (src, onEnded = () => void 0) => {
     };
 
     useEffect(() => {
+        if (!src) {
+            // End of tracks
+            setIsPlaying(false);
+
+            return;
+        }
+
+        const handleLoadedData = () => {
+            setDuration(audio.duration);
+
+            // Next track autoplay
+            if (isPlaying) {
+                audio.play();
+            }
+        };
+
         const handleTimeUpdate = (e) => {
             const { currentTime } = e.target;
             setTime(currentTime);
@@ -40,25 +59,31 @@ const usePlayer = (src, onEnded = () => void 0) => {
 
         const handleEnded = () => {
             setTime(0);
-            setIsPlaying(isLooping);
 
             isLooping ? audio.play() : onEnded();
         };
 
-        audio.volume = DEFAULT_VOLUME;
+        audio.addEventListener('loadeddata', handleLoadedData);
         audio.addEventListener('timeupdate', handleTimeUpdate);
         audio.addEventListener('ended', handleEnded);
 
+        if (audio.src !== src) {
+            audio.src = src;
+        }
+
+        audio.volume = DEFAULT_VOLUME;
+
         return () => {
+            audio.removeEventListener('loadeddata', handleLoadedData);
             audio.removeEventListener('timeupdate', handleTimeUpdate);
             audio.removeEventListener('ended', handleEnded);
         };
-    }, [audio, onEnded]);
+    }, [src, audio, onEnded, isLooping, isPlaying]);
 
-    const state = { isPlaying, isLooping, isShuffling, time };
+    const state = { isPlaying, isLooping, isShuffling, time, duration };
     const controls = { togglePlay, toggleLoop, toggleShuffle, rewind };
 
-    return { audio, state, controls };
+    return { state, controls };
 };
 
 export { usePlayer };
