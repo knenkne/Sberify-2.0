@@ -9,35 +9,33 @@ const src =
 describe('usePlayer', () => {
     it('initializes', () => {
         const { result } = renderHook(() => usePlayer(src));
-
-        expect(Object.keys(result.current).length).toBe(3);
-        expect(result.current.audio).toBeInstanceOf(HTMLAudioElement);
-        expect(result.current.audio.src).toBe(src);
+        expect(Object.keys(result.current).length).toBe(2);
         expect(result.current.controls).toBeInstanceOf(Object);
         expect(result.current.state).toBeInstanceOf(Object);
     });
 
-    it('toggles play state', () => {
+    it.each`
+        value            | handler
+        ${'isPlaying'}   | ${'togglePlay'}
+        ${'isLooping'}   | ${'toggleLoop'}
+        ${'isShuffling'} | ${'toggleShuffle'}
+    `(`toggles $value state`, ({ value, handler }) => {
         const { result } = renderHook(() => usePlayer(src));
 
-        // Default
-        expect(result.current.state.isPlaying).toBe(false);
+        expect(result.current.state[value]).toBe(false);
 
-        // Play
-        act(() => result.current.controls.togglePlay());
-        expect(result.current.state.isPlaying).toBe(true);
+        act(() => result.current.controls[handler]());
+        expect(result.current.state[value]).toBe(true);
 
-        // Pause
-        act(() => result.current.controls.togglePlay());
-        expect(result.current.state.isPlaying).toBe(false);
+        act(() => result.current.controls[handler]());
+        expect(result.current.state[value]).toBe(false);
     });
 
     it('rewinds', () => {
         const { result } = renderHook(() => usePlayer(src));
-
-        // Default
         expect(result.current.state.time).toBe(0);
 
+        // Positive input
         act(() => result.current.controls.rewind(5));
         expect(result.current.state.time).toBe(5);
 
