@@ -47,4 +47,21 @@ describe('usePlayer', () => {
         act(() => result.current.controls.rewind(Infinity));
         expect(result.current.state.time).toBe(DEFAULT_TRACK_DURATION);
     });
+
+    it('plays next track', () => {
+        const { result } = renderHook(() => usePlayer(src));
+        expect(result.current.state.time).toBe(0);
+
+        // Positive input
+        act(() => result.current.controls.rewind(5));
+        expect(result.current.state.time).toBe(5);
+
+        // Negative input
+        act(() => result.current.controls.rewind(-Infinity));
+        expect(result.current.state.time).toBe(0);
+
+        // Positive and more than DEFAULT_TRACK_DURATION
+        act(() => result.current.controls.rewind(Infinity));
+        expect(result.current.state.time).toBe(DEFAULT_TRACK_DURATION);
+    });
 });

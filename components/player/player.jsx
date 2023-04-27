@@ -13,9 +13,9 @@ import { Slider } from '../common/slider';
 import { withIndependentSlide } from '../common/slider/hoc';
 import { usePlayer } from './';
 
-const Player = ({ track, onNextTrack }) => {
+const Player = ({ track, onTrackEnd }) => {
     const { name, artists, preview_url } = track || {};
-    const { state, controls } = usePlayer(preview_url, onNextTrack);
+    const { state, controls } = usePlayer(preview_url, onTrackEnd);
     const value = (state.time / state.duration) * 100 || 0;
 
     const handlePlayClick = () => {
