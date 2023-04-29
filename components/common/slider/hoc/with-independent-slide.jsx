@@ -2,8 +2,10 @@
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useState } from 'react';
 
+import { noop } from '../../../../shared/constants';
+
 const withIndependentSlide = (WrappedSlider) => {
-    const WithIndependentSlide = ({ value: outerValue, onChange }) => {
+    const WithIndependentSlide = ({ value: outerValue, onChange, onInput = noop }) => {
         const [innerValue, setInnerValue] = useState(0);
         const [isSliding, setIsSliding] = useState(false);
 
@@ -19,9 +21,10 @@ const withIndependentSlide = (WrappedSlider) => {
             // Set the new outer value when rewinding has ended
             if (!isSliding && innerValue !== outerValue) {
                 onChange(innerValue);
+                onInput(innerValue);
             }
             // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [isSliding]);
+        }, [isSliding, innerValue]);
 
         const handleChange = useCallback((value) => {
             setInnerValue(value);
@@ -39,16 +42,18 @@ const withIndependentSlide = (WrappedSlider) => {
             <WrappedSlider
                 value={innerValue}
                 onChange={handleChange}
+                onInput={handleChange}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
             />
         );
     };
 
-    WithIndependentSlide.displayName = `WithIndependentSlide(${WrappedSlider.name})`;
+    WithIndependentSlide.displayName = `WithIndependentSlide(${WrappedSlider.displayName})`;
     WithIndependentSlide.propTypes = {
         onChange: PropTypes.func.isRequired,
-        value: PropTypes.number
+        onInput: PropTypes.func,
+        value: PropTypes.string
     };
 
     return WithIndependentSlide;

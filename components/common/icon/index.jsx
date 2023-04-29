@@ -1,12 +1,18 @@
-// TODO: onClick -> button | span
+import { createElement } from 'react';
+
 // eslint-disable-next-line react/prop-types
-const Icon = ({ Svg, ...props }) => (
-    <button
-        className="shrink-0 relative z-10 w-8 h-8 ml-3 flex items-center justify-center rounded cursor-pointer text-secondary hover:text-primary"
-        {...props}
-    >
-        <Svg className="w-5 h-5 stroke-current" />
-    </button>
-);
+const Icon = ({ Svg, className, svgClassName, role, onClick, id, ...props }) => {
+    const as = role || (onClick ? 'button' : 'span');
+
+    return createElement(
+        as,
+        {
+            className,
+            onClick,
+            ...props
+        },
+        <Svg className={svgClassName} id={id} />
+    );
+};
 
 export { Icon };

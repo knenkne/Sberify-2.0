@@ -37,3 +37,5 @@ export const months = [
     'November',
     'December'
 ];
+
+export const noop = () => void 0;

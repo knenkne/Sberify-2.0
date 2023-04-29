@@ -1,21 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { DEFAULT_TRACK_DURATION, DEFAULT_VOLUME } from '../../shared/constants';
 
-const usePlayer = (src, onEnded = () => void 0) => {
-    // TODO: client component?
-    const [audio] = useState(typeof window === 'undefined' ? null : new Audio());
+const usePlayer = ({ audioRef, src, onEnded = () => void 0 }) => {
     const [time, setTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isLooping, setIsLooping] = useState(false);
     const [isShuffling, setIsShuffling] = useState(false);
 
-    const togglePlay = () => {
-        setIsPlaying(!isPlaying);
+    const togglePlay = useCallback(() => {
+        const audio = audioRef.current;
 
+        setIsPlaying(!isPlaying);
         isPlaying ? audio.pause() : audio.play();
-    };
+    }, [audioRef, isPlaying]);
 
     const toggleLoop = () => {
         setIsLooping(!isLooping);
@@ -26,6 +25,8 @@ const usePlayer = (src, onEnded = () => void 0) => {
     };
 
     const rewind = (time) => {
+        const audio = audioRef.current;
+
         const minTime = 0;
         const maxTime = audio.duration || DEFAULT_TRACK_DURATION;
         // Prevent overflow
@@ -36,6 +37,12 @@ const usePlayer = (src, onEnded = () => void 0) => {
     };
 
     useEffect(() => {
+        const audio = audioRef.current;
+
+        if (!audio) {
+            return;
+        }
+
         if (!src) {
             // End of tracks
             setIsPlaying(false);
@@ -63,22 +70,37 @@ const usePlayer = (src, onEnded = () => void 0) => {
             isLooping ? audio.play() : onEnded();
         };
 
-        audio.addEventListener('loadeddata', handleLoadedData);
-        audio.addEventListener('timeupdate', handleTimeUpdate);
-        audio.addEventListener('ended', handleEnded);
-
         if (audio.src !== src) {
             audio.src = src;
         }
 
         audio.volume = DEFAULT_VOLUME;
 
+        audio.addEventListener('loadeddata', handleLoadedData);
+        audio.addEventListener('timeupdate', handleTimeUpdate);
+        audio.addEventListener('ended', handleEnded);
+
         return () => {
             audio.removeEventListener('loadeddata', handleLoadedData);
             audio.removeEventListener('timeupdate', handleTimeUpdate);
             audio.removeEventListener('ended', handleEnded);
         };
-    }, [src, audio, onEnded, isLooping, isPlaying]);
+    }, [audioRef, src, onEnded, isPlaying, isLooping]);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                togglePlay();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [togglePlay]);
 
     const state = { isPlaying, isLooping, isShuffling, time, duration };
     const controls = { togglePlay, toggleLoop, toggleShuffle, rewind };

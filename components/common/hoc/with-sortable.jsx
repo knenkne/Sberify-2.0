@@ -5,7 +5,7 @@ import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-
 import { CSS } from '@dnd-kit/utilities';
 import { Children, cloneElement } from 'react';
 
-import DragIcon from '../../../public/icons/drag.svg';
+import { DragIcon } from '../../../public/icons';
 import { Icon } from '../icon';
 
 const SortableItem = ({ id, children: child, ...props }) => {
@@ -27,7 +27,14 @@ const SortableItem = ({ id, children: child, ...props }) => {
         ref: setNodeRef,
         children: [
             ...child.props.children,
-            <Icon key={`${id}-drag-button`} Svg={DragIcon} {...attributes} {...listeners} />
+            <Icon
+                key={`${id}-drag-button`}
+                Svg={DragIcon}
+                className="shrink-0 relative z-10 w-8 h-8 ml-3 flex items-center justify-center rounded cursor-pointer text-secondary hover:text-primary"
+                svgClassName="w-5 h-5 stroke-current"
+                {...attributes}
+                {...listeners}
+            />
         ],
         ...props
     });
@@ -56,7 +63,7 @@ const withSortable = (WrappedComponent) => {
         </DndContext>
     );
 
-    WithSortable.displayName = `WithLimit(${WrappedComponent.name})`;
+    WithSortable.displayName = `WithLimit(${WrappedComponent.displayName})`;
 
     return WithSortable;
 };
