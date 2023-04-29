@@ -76,11 +76,7 @@ const Player = ({ track, onTrackEnd }) => {
                     onClick={handleLoopClick}
                 />
             </div>
-            <SliderWithIndependentSlide
-                value={value}
-                onChange={handleChange}
-                onInput={handleChange}
-            />
+            <SliderWithIndependentSlide value={value} onChange={handleChange} />
         </>
     );
 };

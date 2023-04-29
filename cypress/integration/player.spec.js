@@ -19,11 +19,13 @@ describe('Player', () => {
         getPlayButton().find('svg').should('have.attr', 'data-id', 'pause-icon');
 
         cy.get('body').trigger('keydown', { code: 'Space' });
+        cy.get('body').trigger('keyup', { code: 'Space' });
 
         getAudio().should('have.prop', 'paused', true);
         getPlayButton().find('svg').should('have.attr', 'data-id', 'play-icon');
 
         cy.get('body').trigger('keydown', { code: 'Space' });
+        cy.get('body').trigger('keyup', { code: 'Space' });
 
         getAudio().should('have.prop', 'paused', false);
         getPlayButton().find('svg').should('have.attr', 'data-id', 'pause-icon');
@@ -31,8 +33,24 @@ describe('Player', () => {
 
     it('should rewind audio', () => {
         getRewindInput()
-            .invoke('val', 100 / 2)
-            .trigger('input');
+            .trigger('focus')
+            .trigger('keydown', { code: 'ArrowRight', release: false })
+            .trigger('keydown', { code: 'ArrowRight', release: false })
+            .trigger('keydown', { code: 'ArrowRight', release: false })
+            .trigger('keydown', { code: 'ArrowRight', release: false })
+            .trigger('keydown', { code: 'ArrowRight', release: false })
+            .trigger('keydown', { code: 'ArrowRight', release: false })
+            .trigger('keydown', { code: 'ArrowRight', release: false })
+            .trigger('keydown', { code: 'ArrowRight', release: false });
+
+        getAudio()
+            .invoke('prop', 'currentTime')
+            .should(
+                'satisfy',
+                (currentTime) => Math.round(currentTime) === DEFAULT_TRACK_DURATION / 2
+            );
+
+        getRewindInput().trigger('focus').trigger('keydown', { code: 'ArrowLeft', release: false });
 
         getAudio()
             .invoke('prop', 'currentTime')
