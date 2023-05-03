@@ -1,10 +1,17 @@
+import { arrayMove } from '@dnd-kit/sortable';
 import { useCallback, useEffect, useState } from 'react';
 
-import { DEFAULT_TRACK_DURATION, DEFAULT_VOLUME } from '../../shared/constants';
+import {
+    DEFAULT_TRACK_DURATION,
+    DEFAULT_VOLUME,
+    intersect,
+    shuffle
+} from '../../../shared/constants';
 
 let keyDowned = false;
 
-const usePlayer = ({ audioRef, src, onEnded = () => void 0 }) => {
+const usePlayer = ({ audioRef, tracks: initialTracks }) => {
+    const [tracks, setTracks] = useState(initialTracks);
     const [time, setTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -14,16 +21,22 @@ const usePlayer = ({ audioRef, src, onEnded = () => void 0 }) => {
     const togglePlay = useCallback(() => {
         const audio = audioRef.current;
 
-        setIsPlaying(!isPlaying);
         isPlaying ? audio.pause() : audio.play();
+        setIsPlaying(!isPlaying);
     }, [audioRef, isPlaying]);
+
+    const toggleShuffle = () => {
+        const [currentTrack, ...nextTracks] = tracks;
+
+        setTracks([
+            currentTrack,
+            ...(isShuffling ? intersect(initialTracks, nextTracks) : shuffle(nextTracks))
+        ]);
+        setIsShuffling(!isShuffling);
+    };
 
     const toggleLoop = () => {
         setIsLooping(!isLooping);
-    };
-
-    const toggleShuffle = () => {
-        setIsShuffling(!isShuffling);
     };
 
     const rewind = (time) => {
@@ -38,14 +51,26 @@ const usePlayer = ({ audioRef, src, onEnded = () => void 0 }) => {
         audio.currentTime = preparedTime;
     };
 
+    const reorder = (active, over) => {
+        const [currentTrack] = tracks;
+        // If track is already playing
+        if (currentTrack.id === active.id) {
+            return;
+        }
+        const activeIndex = tracks.findIndex((track) => track.id === active.id);
+        const overIndex = tracks.findIndex((track) => track.id === over.id);
+        setTracks(arrayMove(tracks, activeIndex, overIndex));
+    };
+
     useEffect(() => {
         const audio = audioRef.current;
+        const [currentTrack, ...nextTracks] = tracks;
 
         if (!audio) {
             return;
         }
 
-        if (!src) {
+        if (!currentTrack.src) {
             // End of tracks
             setIsPlaying(false);
 
@@ -69,11 +94,11 @@ const usePlayer = ({ audioRef, src, onEnded = () => void 0 }) => {
         const handleEnded = () => {
             setTime(0);
 
-            isLooping ? audio.play() : onEnded();
+            isLooping ? audio.play() : setTracks(nextTracks);
         };
 
-        if (audio.src !== src) {
-            audio.src = src;
+        if (audio.src !== currentTrack.src) {
+            audio.src = currentTrack.src;
         }
 
         audio.volume = DEFAULT_VOLUME;
@@ -87,7 +112,7 @@ const usePlayer = ({ audioRef, src, onEnded = () => void 0 }) => {
             audio.removeEventListener('timeupdate', handleTimeUpdate);
             audio.removeEventListener('ended', handleEnded);
         };
-    }, [audioRef, src, onEnded, isPlaying, isLooping]);
+    }, [audioRef, tracks, isPlaying, isLooping]);
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -113,8 +138,15 @@ const usePlayer = ({ audioRef, src, onEnded = () => void 0 }) => {
         };
     }, [togglePlay]);
 
-    const state = { isPlaying, isLooping, isShuffling, time, duration };
-    const controls = { togglePlay, toggleLoop, toggleShuffle, rewind };
+    const state = {
+        isPlaying,
+        isLooping,
+        isShuffling,
+        time,
+        duration,
+        tracks
+    };
+    const controls = { togglePlay, toggleLoop, toggleShuffle, rewind, reorder };
 
     return { state, controls };
 };

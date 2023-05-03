@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-
+import { withLimit } from '../../../components/common/hoc';
 import { Template } from '../../../components/common/template';
 import Releases from '../../../components/releases';
-import { TracksWithLimit } from '../../../components/tracks/hoc/with-limit';
+import Tracks from '../../../components/tracks';
 import { GET_ARTIST, GET_RELEASES } from '../../../lib/graphql/queries';
 import { getClient } from '../../../shared/qraphql-client';
 import { capitalize } from '../../../shared/utils';
@@ -12,6 +12,9 @@ export default async function Page({ params }) {
     const { name, image, genres, tracks, albums } = await getArtist(params);
     const subtitle = genres.map(capitalize).join(' • ');
 
+    // TODO: remove from server component
+    // const TracksWithLimit = withLimit(Tracks);
+    const TracksWithLimit = Tracks;
     return (
         <Template title={name} subtitle={subtitle} image={image}>
             <TracksWithLimit tracks={tracks} />

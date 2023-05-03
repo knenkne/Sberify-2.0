@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import { ChevronIcon } from '../../../public/icons';
-import Tracks from '..';
 
 const LIMIT = 5;
 
@@ -48,6 +47,4 @@ const withLimit = (WrappedTracks) => {
     return WithLimit;
 };
 
-const TracksWithLimit = withLimit(Tracks);
-
-export { TracksWithLimit, withLimit };
+export { withLimit };

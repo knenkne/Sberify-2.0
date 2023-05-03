@@ -39,3 +39,27 @@ export const months = [
 ];
 
 export const noop = () => void 0;
+
+export const shuffle = (array) => {
+    const shuffled = [...array];
+
+    let currentIndex = shuffled.length,
+        randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [shuffled[currentIndex], shuffled[randomIndex]] = [
+            shuffled[randomIndex],
+            shuffled[currentIndex]
+        ];
+    }
+
+    return shuffled;
+};
+
+export const intersect = (firstArray, secondArray) =>
+    firstArray.filter(({ id: firstId }) =>
+        secondArray.find(({ id: secondId }) => firstId === secondId)
+    );

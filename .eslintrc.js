@@ -16,7 +16,8 @@ module.exports = {
         es6: true,
         browser: true, // Enables browser globals like window and document
         amd: true, // Enables require() and define() as global variables as per the amd spec.
-        node: true // Enables Node.js global variables and Node.js scoping.
+        node: true, // Enables Node.js global variables and Node.js scoping.
+        'jest/globals': true
     },
     extends: [
         'eslint:recommended',
@@ -39,5 +40,5 @@ module.exports = {
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error'
     },
-    plugins: ['simple-import-sort']
+    plugins: ['simple-import-sort', 'jest']
 };
