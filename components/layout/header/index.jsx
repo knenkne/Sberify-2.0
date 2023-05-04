@@ -13,8 +13,6 @@ const Header = ({ index, className = '' }) => {
 
     return (
         <header className={`${className} relative flex items-center z-10 box-content`.trim()}>
-            {/* TODO: mock for logo */}
-            <div className="w-72 mr-10" />
             <nav className="flex justify-between w-72 font-archivo">
                 {Object.keys(Route).map((pathName) => {
                     const active = pathName.startsWith((segment || 'DISCOVER').toUpperCase());

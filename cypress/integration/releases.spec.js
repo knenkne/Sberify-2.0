@@ -14,7 +14,7 @@ describe('Releases', () => {
         });
     });
 
-    it('should redirect to ceratin release', () => {
+    it('should redirect to certain release', () => {
         cy.get(`a[href^="${Route.ALBUMS}/"]`).each((link) => {
             const title = link.parent().find('h3').text();
             const artist = link.parent().find('h4').text();
@@ -22,8 +22,8 @@ describe('Releases', () => {
             cy.visit(link.attr('href'));
             cy.url().should('include', link.attr('href'));
 
-            cy.get('main > div').first().find('h2').should('have.text', title);
-            cy.get('main > div').first().find('h4').should('include.text', artist);
+            cy.get('main > div').eq(0).find('h2').should('have.text', title);
+            cy.get('main > div').eq(0).find('h4').should('include.text', artist);
         });
     });
 });

@@ -3,7 +3,7 @@
 import cx from 'classnames';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-import SearchIcon from '../../public/icons/search.svg';
+import { SearchIcon } from '../../public/icons';
 
 // TODO: Remove index deps, classNames as props
 const Search = () => {

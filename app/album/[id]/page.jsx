@@ -7,6 +7,8 @@ import { GET_ALBUM, GET_RELEASES, GET_SEVERAL_ALBUMS } from '../../../lib/graphq
 import { BuildQueue, getClient } from '../../../shared/qraphql-client';
 import { humanizeDate } from '../../../shared/utils';
 
+export const dynamic = 'force-static';
+
 export default async function Page({ params }) {
     const { name, releaseDate, image, artists, tracks } = await getAlbum(params);
 

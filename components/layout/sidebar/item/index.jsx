@@ -1,9 +1,13 @@
 /* eslint-disable react/prop-types */
+import { forwardRef } from 'react';
 
-const SidebarItem = ({ id, children, className = '' }) => (
-    <div className={`flex h-16 w-full px-4 items-center ${className}`.trim()} key={id}>
+// TODO: 'as li'
+const SidebarItem = forwardRef(({ className = '', children, ...props }, ref) => (
+    <li className={`flex h-16 w-full items-center ${className}`.trim()} ref={ref} {...props}>
         {children}
-    </div>
-);
+    </li>
+));
+
+SidebarItem.displayName = 'SidebarItem';
 
 export { SidebarItem };

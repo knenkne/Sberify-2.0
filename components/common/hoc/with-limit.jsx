@@ -4,8 +4,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import ChevronIcon from '../../../public/icons/chevron.svg';
-import Tracks from '..';
+import { ChevronIcon } from '../../../public/icons';
 
 const LIMIT = 5;
 
@@ -48,6 +47,4 @@ const withLimit = (WrappedTracks) => {
     return WithLimit;
 };
 
-const TracksWithLimit = withLimit(Tracks);
-
-export { TracksWithLimit, withLimit };
+export { withLimit };

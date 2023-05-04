@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 
 import { Slider } from '../../components/common/slider';
-import { withIndependentSlide } from '../../components/common/slider/hoc';
+import { withIndependentSlide } from '../../components/common/hoc';
 
 const value = '65.5';
 

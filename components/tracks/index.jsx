@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import PauseIcon from '../../public/icons/pause.svg';
-import PlayIcon from '../../public/icons/play.svg';
+import { PauseIcon, PlayIcon } from '../../public/icons';
 import { cleanTitle } from '../../shared/utils';
 import { FeatList } from '../common/feat-list';
 import { Typography } from '../common/typography';

@@ -1,13 +1,28 @@
-import { memo } from 'react';
-
 /* eslint-disable react/prop-types */
 const SLIDER_STEP = 0.1;
+const KEYBOARD_MULTIPLIER = 50;
+const DirectionMultiplier = {
+    ArrowRight: 1,
+    ArrowLeft: -1
+};
 
-const Slider = memo(({ value = 0, onChange, ...rest }) => {
+const Slider = ({ value = '0', onChange, ...rest }) => {
     const handleChange = ({ target }) => {
         const { value: nextValue } = target;
-
         onChange(parseFloat(nextValue).toFixed(1));
+    };
+
+    const handleKeyDown = (e) => {
+        const directionMultiplier = DirectionMultiplier[e.code];
+
+        if (!directionMultiplier) {
+            return;
+        }
+
+        e.preventDefault();
+        onChange(
+            (parseFloat(value) + SLIDER_STEP * KEYBOARD_MULTIPLIER * directionMultiplier).toFixed(1)
+        );
     };
 
     return (
@@ -30,12 +45,12 @@ const Slider = memo(({ value = 0, onChange, ...rest }) => {
                 value={value}
                 step={SLIDER_STEP}
                 onChange={handleChange}
-                onInput={handleChange}
+                onKeyDown={handleKeyDown}
                 {...rest}
             />
         </div>
     );
-});
+};
 
 Slider.displayName = 'Slider';
 

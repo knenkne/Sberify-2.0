@@ -21,7 +21,7 @@ const withIndependentSlide = (WrappedSlider) => {
                 onChange(innerValue);
             }
             // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [isSliding]);
+        }, [isSliding, innerValue]);
 
         const handleChange = useCallback((value) => {
             setInnerValue(value);
@@ -45,10 +45,11 @@ const withIndependentSlide = (WrappedSlider) => {
         );
     };
 
-    WithIndependentSlide.displayName = `WithIndependentSlide(${WrappedSlider.name})`;
+    WithIndependentSlide.displayName = `WithIndependentSlide(${WrappedSlider.displayName})`;
     WithIndependentSlide.propTypes = {
         onChange: PropTypes.func.isRequired,
-        value: PropTypes.number
+        onInput: PropTypes.func,
+        value: PropTypes.string
     };
 
     return WithIndependentSlide;
