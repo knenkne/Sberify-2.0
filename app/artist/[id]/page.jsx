@@ -23,16 +23,16 @@ export default async function Page({ params }) {
     );
 }
 
-export async function generateStaticParams() {
-    const client = await getClient();
-    const {
-        getReleases: {
-            albums: { items: releases }
-        }
-    } = await client.request(GET_RELEASES);
+// export async function generateStaticParams() {
+//     const client = await getClient();
+//     const {
+//         getReleases: {
+//             albums: { items: releases }
+//         }
+//     } = await client.request(GET_RELEASES);
 
-    return [];
-}
+//     return [];
+// }
 
 export async function getArtist({ id }) {
     const client = await getClient();
